@@ -60,13 +60,9 @@ kodi_login()
 	
 	echo "Configuring auto login..."
 	
-	echo "Changing lightdm configuration..."
-	
 	FILE="/etc/lightdm/lightdm.conf"
 	
 	sed -i 's/#autologin-user=/autologin-user=lls/g' ${FILE}
-	sed -i 's/#autologin-session=/autologin-session=Kodi/g' ${FILE}
-	sed -i 's/#autologin-user-timeout=0/autologin-user-timeout=0/g' ${FILE}
 	
 	cat ${FILE}
 	
@@ -78,8 +74,6 @@ kodi_login()
 	
 	echo "[SeatDefaults]" > ${FILE}
 	echo "autologin-user=lls" >> ${FILE}
-	echo "autologin-session=Kodi" >> ${FILE}
-	echo "autologin-user-timeout=0" >> ${FILE}
 	
 	cat ${FILE}
 	
