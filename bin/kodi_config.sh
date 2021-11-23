@@ -24,7 +24,11 @@ kodi_config()
 	
 	echo "Removing some directories..."
 	
-	rmdir -fv "Área de trabalho" "Downloads" "Documentos" "Imagens" "Música" "Modelos" "Público"
+	DIR="/home/lls"
+	
+	rmdir -fv "${DIR}/Área de trabalho" "${DIR}/Downloads" "${DIR}/Documentos" "${DIR}/Imagens" "${DIR}/Música" "${DIR}/Modelos" "${DIR}/Público"
+	
+	ls ${DIR}
 	
 }
 
