@@ -58,6 +58,8 @@ kodi_nfs()
 kodi_login()
 {
 	
+	# Login in Kodi before reboot
+	
 	echo "Configuring auto login..."
 	
 	FILE="/etc/lightdm/lightdm.conf"
@@ -76,6 +78,8 @@ kodi_login()
 	echo "autologin-user=lls" >> ${FILE}
 	
 	cat ${FILE}
+	
+	# Login in Kodi before reboot
 	
 }
 
