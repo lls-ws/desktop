@@ -26,7 +26,7 @@ kodi_config()
 	
 	DIR="/home/lls"
 	
-	rmdir -fv "${DIR}/Área de trabalho" "${DIR}/Downloads" "${DIR}/Documentos" "${DIR}/Imagens" "${DIR}/Música" "${DIR}/Modelos" "${DIR}/Público"
+	rmdir -v "${DIR}/Área de trabalho" "${DIR}/Downloads" "${DIR}/Documentos" "${DIR}/Imagens" "${DIR}/Música" "${DIR}/Modelos" "${DIR}/Público"
 	
 	ls ${DIR}
 	
