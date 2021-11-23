@@ -37,7 +37,7 @@ kodi_install()
 
 	echo "Install Essencial Apps..."
 	
-	apt-get -y install mcedit kodi kodi-inputstream-adaptive
+	apt-get -y install mcedit kodi kodi-inputstream-adaptive kodi-screensaver-asteroids kodi-screensaver-biogenesis kodi-screensaver-greynetic kodi-screensaver-pingpong kodi-screensaver-pyro kodi-screensaver-shadertoy kodi-visualization-fishbmc kodi-visualization-pictureit kodi-visualization-shadertoy kodi-visualization-spectrum kodi-visualization-waveform
 	
 }
 
