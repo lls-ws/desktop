@@ -54,6 +54,9 @@ if [ `id -u` -ne 0 ]; then
 fi
 
 case "$1" in
+	ssh)
+		bash bin/kali_config.sh "$1"
+		;;
 	upgrade)
 		bash bin/kali_config.sh "$1"
 		;;
@@ -67,13 +70,14 @@ case "$1" in
 		kodi_config
 		;;
 	all)
+		bash bin/kali_config.sh "ssh"
 		bash bin/kali_config.sh "upgrade"
 		bash bin/kali_config.sh "locale"
 		bash bin/kali_config.sh "hosts"
 		
 		;;
 	*)
-		echo "Use: $0 {all|upgrade|locale|hosts|kodi}"
+		echo "Use: $0 {all|ssh|upgrade|locale|hosts|kodi}"
 		exit 1
 		;;
 esac
