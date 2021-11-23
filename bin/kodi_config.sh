@@ -60,13 +60,14 @@ kodi_login()
 	
 	echo "Configuring auto login..."
 	
-	echo "Uncomment the following line:"
-	echo "#autologin-user="
+	echo "Changing lightdm configuration..."
 	
-	echo "And add the user you want to autologin:"
-	echo "#autologin-user=lls"
+	FILE="/etc/lightdm/lightdm.conf"
 	
-	mcedit /etc/lightdm/lightdm.conf
+	sed -i 's/#autologin-user=/autologin-user=lls/g' ${FILE}
+	sed -i 's/#autologin-session=/autologin-session=Kodi/g' ${FILE}
+	
+	cat ${FILE}
 	
 	echo "Create a custom configuration file:"
 	
@@ -76,6 +77,9 @@ kodi_login()
 	
 	echo "[SeatDefaults]" > ${FILE}
 	echo "autologin-user=lls" >> ${FILE}
+	echo "autologin-session=Kodi" >> ${FILE}
+	
+	cat ${FILE}
 	
 }
 
