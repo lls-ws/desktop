@@ -254,29 +254,33 @@ kali_links()
 grub_conf()
 {
 	
-	# login image config
-	rm -fv /boot/grub/themes/kali/grub-16x9.png
-	rm -fv /usr/share/images/desktop-base/login-background.svg
-	rm -fv /usr/share/images/desktop-base/login-background.png
-	rm -fv /usr/share/images/desktop-base/desktop-grub.png
-	rm -fv /usr/share/backgrounds/kali/kali-light-16x9.png
+	echo "Configuring grub..."
 	
-	cp -fv /home/lls/Imagens/wallpaper.png /boot/grub/themes/kali/background.png
-	cp -fv /home/lls/Imagens/wallpaper.png /boot/grub/themes/kali/grub-4x3.png
-	cp -fv /home/lls/Imagens/wallpaper.png /boot/grub/themes/kali/grub-16x9.png
+	#rm -fv /boot/grub/themes/kali/grub-16x9.png
+	#rm -fv /usr/share/images/desktop-base/login-background.svg
+	#rm -fv /usr/share/images/desktop-base/login-background.png
+	#rm -fv /usr/share/images/desktop-base/desktop-grub.png
+	#rm -fv /usr/share/backgrounds/kali/kali-light-16x9.png
 	
-	cp -fv /home/lls/Imagens/wallpaper.svg /usr/share/images/desktop-base/login-background.svg
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/images/desktop-base/login-background.png
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/images/desktop-base/desktop-grub.png
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/backgrounds/kali/kali-light-16x9.png
+	IMG_PNG="images/wallpaper.png"
+	IMG_SVG="images/wallpaper.svg"
 	
-	cp -fv /home/lls/Imagens/wallpaper.svg /usr/share/desktop-base/kali-theme/login/background.svg
-	cp -fv /home/lls/Imagens/wallpaper.svg /usr/share/desktop-base/kali-theme/login/background
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/desktop-base/kali-theme/wallpaper/contents/images/3840x2160.png
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/desktop-base/kali-theme/wallpaper/contents/images/2560x1600.png
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/desktop-base/kali-theme/wallpaper/contents/images/1600x1200.png
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/desktop-base/kali-theme/grub/grub-4x3.png
-	cp -fv /home/lls/Imagens/wallpaper.png /usr/share/desktop-base/kali-theme/grub/grub-16x9.png
+	cp -fv ${IMG_PNG} /boot/grub/themes/kali/background.png
+	cp -fv ${IMG_PNG} /boot/grub/themes/kali/grub-4x3.png
+	cp -fv ${IMG_PNG} /boot/grub/themes/kali/grub-16x9.png
+	
+	cp -fv ${IMG_SVG} /usr/share/images/desktop-base/login-background.svg
+	cp -fv ${IMG_PNG} /usr/share/images/desktop-base/login-background.png
+	cp -fv ${IMG_PNG} /usr/share/images/desktop-base/desktop-grub.png
+	cp -fv ${IMG_PNG} /usr/share/backgrounds/kali/kali-light-16x9.png
+	
+	cp -fv ${IMG_SVG} /usr/share/desktop-base/kali-theme/login/background.svg
+	cp -fv ${IMG_SVG} /usr/share/desktop-base/kali-theme/login/background
+	cp -fv ${IMG_PNG} /usr/share/desktop-base/kali-theme/wallpaper/contents/images/3840x2160.png
+	cp -fv ${IMG_PNG} /usr/share/desktop-base/kali-theme/wallpaper/contents/images/2560x1600.png
+	cp -fv ${IMG_PNG} /usr/share/desktop-base/kali-theme/wallpaper/contents/images/1600x1200.png
+	cp -fv ${IMG_PNG} /usr/share/desktop-base/kali-theme/grub/grub-4x3.png
+	cp -fv ${IMG_PNG} /usr/share/desktop-base/kali-theme/grub/grub-16x9.png
 	
 	echo "GRUB_BACKGROUND='/usr/share/images/desktop-base/login-background.png'" >> /etc/default/grub
 	

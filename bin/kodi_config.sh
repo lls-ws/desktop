@@ -6,27 +6,41 @@
 
 kodi_config()
 {
+	
+	echo "Removing some directories..."
+	
+	rmdir -rfv "Área de trabalho" "Downloads" "Documentos" "Imagens" "Música" "Modelos" "Público"
+	
+}
 
-	# Step 1 - Disable monitor LCD
-	FILE="/etc/X11/xorg.conf.d/10-monitor.conf"
+kodi_install()
+{
+
+	echo "Install Essencial Apps..."
 	
-	echo 'Section "Monitor"'			> ${FILE}
-	echo '	Identifier   "LVDS"' 		>> ${FILE}
-	echo '	Option "Disable" "true"' 	>> ${FILE}
-	echo 'EndSection'					>> ${FILE}
+	apt-get -y install mcedit kodi kodi-inputstream-adaptive
 	
-	cat ${FILE}
+}
+
+kodi_nfs()
+{
+	echo "Mount a nfs shared..."
 	
-	# Step 2 - Mount a nfs shared
-	IP="192.168.0.170"
+	HOST="dell"
 	
 	FILE="/etc/fstab"
 	
-	echo "${IP}:/mnt/windows/Videos /home/lls/Vídeos/  nfs  noauto,x-systemd.automount  0  0" >> ${FILE}
+	echo "${HOST}:/mnt/windows/Videos /home/lls/Vídeos/  nfs  noauto,x-systemd.automount  0  0" >> ${FILE}
 	
 	cat ${FILE}
+
+}
+
+kodi_login()
+{
 	
-	# Step 3 - Auto login
+	echo "Configuring auto login..."
+	
 	echo "Uncomment the following line:"
 	echo "#autologin-user="
 	
@@ -44,7 +58,21 @@ kodi_config()
 	echo "[SeatDefaults]" > ${FILE}
 	echo "autologin-user=lls" >> ${FILE}
 	
-	reboot
+}
+
+kodi_hdmi()
+{
+
+	echo "Disable monitor LCD..."
+	
+	FILE="/etc/X11/xorg.conf.d/10-monitor.conf"
+	
+	echo 'Section "Monitor"'			> ${FILE}
+	echo '	Identifier   "LVDS"' 		>> ${FILE}
+	echo '	Option "Disable" "true"' 	>> ${FILE}
+	echo 'EndSection'					>> ${FILE}
+	
+	cat ${FILE}
 	
 }
 
@@ -57,27 +85,48 @@ case "$1" in
 	ssh)
 		bash bin/kali_config.sh "$1"
 		;;
+	hosts)
+		bash bin/kali_config.sh "$1"
+		;;	
 	upgrade)
 		bash bin/kali_config.sh "$1"
 		;;
 	locale)
 		bash bin/kali_config.sh "$1"
 		;;
-	hosts)
+	grub)
 		bash bin/kali_config.sh "$1"
-		;;	
-	kodi)
+		;;
+	config)
 		kodi_config
+		;;
+	install)
+		kodi_install
+		;;
+	nfs)
+		kodi_nfs
+		;;
+	login)
+		kodi_login
+		;;
+	hdmi)
+		kodi_hdmi
 		;;
 	all)
 		bash bin/kali_config.sh "ssh"
+		bash bin/kali_config.sh "hosts"
 		bash bin/kali_config.sh "upgrade"
 		bash bin/kali_config.sh "locale"
-		bash bin/kali_config.sh "hosts"
-		
+		bash bin/kali_config.sh "grub"
+		kodi_config
+		kodi_install
+		kodi_nfs
+		kodi_login
+		kodi_hdmi
+		reboot
 		;;
 	*)
-		echo "Use: $0 {all|ssh|upgrade|locale|hosts|kodi}"
+		echo "Use: $0 {all|ssh|hosts|upgrade|locale|grub|config|install|nfs|login|hdmi}"
 		exit 1
 		;;
 esac
