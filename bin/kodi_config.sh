@@ -4,12 +4,8 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-kodi_config()
+kodi_grub()
 {
-	
-	echo "Removing some directories..."
-	
-	rmdir -rfv "Área de trabalho" "Downloads" "Documentos" "Imagens" "Música" "Modelos" "Público"
 	
 	echo "Set time 0 to Grub..."
 	
@@ -20,6 +16,15 @@ kodi_config()
 	cat ${FILE}
 
 	update-grub
+	
+}
+
+kodi_config()
+{
+	
+	echo "Removing some directories..."
+	
+	rmdir -fv "Área de trabalho" "Downloads" "Documentos" "Imagens" "Música" "Modelos" "Público"
 	
 }
 
@@ -106,6 +111,7 @@ case "$1" in
 		;;
 	grub)
 		bash bin/kali_config.sh "$1"
+		kodi_grub
 		;;
 	config)
 		kodi_config
@@ -128,6 +134,7 @@ case "$1" in
 		bash bin/kali_config.sh "upgrade"
 		bash bin/kali_config.sh "locale"
 		bash bin/kali_config.sh "grub"
+		kodi_grub
 		kodi_config
 		kodi_install
 		kodi_nfs
