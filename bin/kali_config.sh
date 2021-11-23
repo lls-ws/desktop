@@ -256,12 +256,6 @@ grub_conf()
 	
 	echo "Configuring grub..."
 	
-	#rm -fv /boot/grub/themes/kali/grub-16x9.png
-	#rm -fv /usr/share/images/desktop-base/login-background.svg
-	#rm -fv /usr/share/images/desktop-base/login-background.png
-	#rm -fv /usr/share/images/desktop-base/desktop-grub.png
-	#rm -fv /usr/share/backgrounds/kali/kali-light-16x9.png
-	
 	IMG_PNG="images/wallpaper.png"
 	IMG_SVG="images/wallpaper.svg"
 	

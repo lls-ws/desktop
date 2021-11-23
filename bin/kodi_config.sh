@@ -11,6 +11,16 @@ kodi_config()
 	
 	rmdir -rfv "Área de trabalho" "Downloads" "Documentos" "Imagens" "Música" "Modelos" "Público"
 	
+	echo "Set time 0 to Grub..."
+	
+	FILE="/etc/default/grub"
+	
+	sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' ${FILE}
+	
+	cat ${FILE}
+
+	update-grub
+	
 }
 
 kodi_install()
