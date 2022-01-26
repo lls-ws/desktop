@@ -31,16 +31,16 @@ kali_locale()
 kali_hosts()
 {
 	
-	echo "127.0.0.1			localhost" 							> /etc/hosts
-	echo "192.168.0.1		miyagi.lls.net.br		miyagi"		>> /etc/hosts
-	echo "192.168.0.150		repeater.lls.net.br		repeater" 	>> /etc/hosts
-	echo "192.168.0.160		samsung.lls.net.br		samsung" 	>> /etc/hosts
-	echo "192.168.0.170		dell.lls.net.br			dell" 		>> /etc/hosts
-	echo "192.168.0.180		motorola.lls.net.br		motorola" 	>> /etc/hosts
-	echo "192.168.0.190		xiaomi.lls.net.br		xiaomi"		>> /etc/hosts
-	echo "192.168.0.200		asus.lls.net.br			asus" 		>> /etc/hosts
-	echo "208.67.222.222	opendns.lls.net.br		opendns" 	>> /etc/hosts
-	echo "208.67.220.220	opendns2.lls.net.br		opendns2" 	>> /etc/hosts
+	echo "127.0.0.1			localhost" 					> /etc/hosts
+	echo "192.168.15.1		router.lls.net.br		router"		>> /etc/hosts
+	echo "192.168.15.150		repeater.lls.net.br		repeater" 	>> /etc/hosts
+	echo "192.168.15.160		samsung.lls.net.br		samsung" 	>> /etc/hosts
+	echo "192.168.15.170		dell.lls.net.br			dell" 		>> /etc/hosts
+	echo "192.168.15.180		motorola.lls.net.br		motorola" 	>> /etc/hosts
+	echo "192.168.15.190		xiaomi.lls.net.br		xiaomi"		>> /etc/hosts
+	echo "192.168.15.200		asus.lls.net.br			asus" 		>> /etc/hosts
+	echo "208.67.222.222		opendns.lls.net.br		opendns" 	>> /etc/hosts
+	echo "208.67.220.220		opendns2.lls.net.br		opendns2" 	>> /etc/hosts
 	
 	cat /etc/hosts
 	
