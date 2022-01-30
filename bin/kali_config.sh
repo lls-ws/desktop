@@ -459,9 +459,9 @@ case "$1" in
 		user_config
 		;;
 	browser)
-		#chrome_install
+		chrome_install
 		#seamonkey_install
-		teamviewer_install
+		#teamviewer_install
 		;;
 	geany)
 		geany_install
