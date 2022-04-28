@@ -37,7 +37,7 @@ kodi_install()
 
 	echo "Install Essencial Apps..."
 	
-	apt-get -y install mcedit kodi kodi-inputstream-adaptive
+	apt-get -y install mcedit kodi kodi-inputstream-adaptive kodi-pvr-iptvsimple
 	
 }
 
