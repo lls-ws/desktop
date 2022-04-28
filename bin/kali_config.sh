@@ -278,6 +278,8 @@ grub_conf()
 	
 	echo "GRUB_BACKGROUND='/usr/share/images/desktop-base/login-background.png'" >> /etc/default/grub
 	
+	sed -i 's/Light/Dark/g' /etc/lightdm/lightdm-gtk-greeter.conf
+	
 	update-grub
 	
 }
