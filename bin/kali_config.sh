@@ -266,7 +266,10 @@ grub_conf()
 	cp -fv ${IMG_SVG} /usr/share/images/desktop-base/login-background.svg
 	cp -fv ${IMG_PNG} /usr/share/images/desktop-base/login-background.png
 	cp -fv ${IMG_PNG} /usr/share/images/desktop-base/desktop-grub.png
+	cp -fv ${IMG_PNG} /usr/share/backgrounds/kali/kali-dark-16x9.png
+	cp -fv ${IMG_PNG} /usr/share/backgrounds/kali/kali-light-4x3.png
 	cp -fv ${IMG_PNG} /usr/share/backgrounds/kali/kali-light-16x9.png
+	cp -fv ${IMG_PNG} /usr/share/backgrounds/kali/kali-light-16x10.png
 	
 	cp -fv ${IMG_SVG} /usr/share/desktop-base/kali-theme/login/background.svg
 	cp -fv ${IMG_SVG} /usr/share/desktop-base/kali-theme/login/background
