@@ -279,6 +279,7 @@ grub_conf()
 	cp -fv ${IMG_PNG} /usr/share/desktop-base/kali-theme/grub/grub-4x3.png
 	cp -fv ${IMG_PNG} /usr/share/desktop-base/kali-theme/grub/grub-16x9.png
 	
+	echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
 	echo "GRUB_BACKGROUND='/usr/share/images/desktop-base/login-background.png'" >> /etc/default/grub
 	
 	sed -i 's/Light/Dark/g' /etc/lightdm/lightdm-gtk-greeter.conf
