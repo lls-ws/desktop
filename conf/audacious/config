@@ -29,6 +29,14 @@ entry2=http://relay.uturnradio.com/classic_rock_32.m3u
 path=/home/lls
 
 [skins]
+equalizer_visible=TRUE
+equalizer_x=319
+equalizer_y=140
+player_x=319
+player_y=24
+playlist_visible=TRUE
+playlist_x=594
+playlist_y=24
 skin=/usr/share/audacious/Skins/Default
 
 [statusicon]
