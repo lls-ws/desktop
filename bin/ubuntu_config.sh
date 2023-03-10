@@ -67,7 +67,7 @@ update_file()
 	DIR_CONF="$2"
 	DIR_CLOUD="$3"
 	
-	# Copy Geany Configuration
+	# Copy File Configuration
 	rm -fv ${DIR_CONF}/${FILE_CONF}
 	
 	cp -fv ${DIR_CLOUD}/${FILE_CONF} ${DIR_CONF}
