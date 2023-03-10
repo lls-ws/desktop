@@ -1,2 +1,2 @@
-# Kali Linux
-Scripts to configure Kali Linux
+# Desktop Linux
+Scripts to configure Kali and Ubuntu Linux
