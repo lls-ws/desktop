@@ -1,0 +1,14 @@
+title=Radios
+uri=http://listen.uturnradio.com:80/classic_rock_32
+title=Van%20Halen%20-%20Don%27t%20Tell%20Me
+artist=Uturn%20Radio%3A%20Classic%20Rock%20Music
+bitrate=32
+codec=MPEG-2/4%20AAC
+uri=https://cloud2.cdnseguro.com:20000/stream
+artist=KissFM
+bitrate=64
+codec=MPEG-2/4%20AAC
+uri=https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_89FM_ADP.aac
+artist=89FM
+bitrate=128
+codec=MPEG-2/4%20AAC

@@ -7,10 +7,9 @@
 apps_install()
 {
 
-	# Install Essencial Apps
+	echo "Install Essencial Apps..."
 	apt -y install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
 	apt -y install ubuntu-restricted-extras
-	apt -y install audacious
 	apt -y install stacer
 	
 }
@@ -18,11 +17,11 @@ apps_install()
 browsers_install()
 {
 
-	# Install Google Chrome
+	echo "Install Google Chrome..."
 	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
 	cd /tmp && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && cd ..
 	
-	# Install Opera VPN
+	echo "Install Opera VPN..."
 	echo "deb https://deb.opera.com/opera-stable/ stable non-free" | tee /etc/apt/sources.list.d/opera-stable.list
 	cd /tmp && wget -q -O - https://deb.opera.com/archive.key | apt-key add - && cd ..
 	
@@ -33,7 +32,7 @@ browsers_install()
 geany_install()
 {
 
-	# Install Geany
+	echo "Install Geany..."
 	apt -y install geany
 	git clone https://github.com/geany/geany-themes.git
 	cd geany-themes
@@ -44,18 +43,46 @@ geany_install()
 	cp -rf /root/.config/geany/colorschemes /home/lls/.config/geany
 	chown -v lls.lls /home/lls/.config/geany/colorschemes
 	
-	# Configure Geany
-	update_file "geany.conf" "/home/lls/.config/geany" "conf/geany"
-	update_file "keybindings.conf" "/home/lls/.config/geany" "conf/geany"
+	echo "Configure Geany..."
+	
+	NAME_DIR="geany"
+	
+	update_file "geany.conf" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	update_file "keybindings.conf" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	
+}
+
+audacious_install()
+{
+
+	echo "Install Audacious..."
+	apt -y install audacious
+	
+	echo "Configure Audacious..."
+	
+	NAME_DIR="audacious"
+	
+	update_file "config" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	update_file "1000.audpl" "/home/lls/.config/${NAME_DIR}/playlists" "conf/${NAME_DIR}/playlists"
 	
 }
 
 desktop_backup()
 {
 
-	# Backup Geany
-	update_file "geany.conf" "conf/geany" "/home/lls/.config/geany"
-	update_file "keybindings.conf" "conf/geany" "/home/lls/.config/geany"
+	echo "Backup Geany..."
+	
+	NAME_DIR="geany"
+	
+	update_file "geany.conf" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	update_file "keybindings.conf" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	
+	echo "Backup Audacious..."
+	
+	NAME_DIR="audacious"
+	
+	update_file "config" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	update_file "1000.audpl" "conf/${NAME_DIR}/playlists" "/home/lls/.config/${NAME_DIR}/playlists"
 	
 }
 
@@ -67,7 +94,14 @@ update_file()
 	DIR_CONF="$2"
 	DIR_CLOUD="$3"
 	
-	# Copy File Configuration
+	if [ ! -d ${DIR_CONF} ]; then
+	
+		mkdir -pv ${DIR_CONF}
+		chown -v lls.lls ${DIR_CONF}
+	
+	fi
+	
+	echo "Copy File Configuration..."
 	rm -fv ${DIR_CONF}/${FILE_CONF}
 	
 	cp -fv ${DIR_CLOUD}/${FILE_CONF} ${DIR_CONF}
@@ -91,6 +125,9 @@ case "$1" in
 	geany)
 		geany_install
 		;;
+	audacious)
+		audacious_install
+		;;
 	backup)
 		desktop_backup
 		;;
@@ -98,9 +135,10 @@ case "$1" in
 		apps_install
 		browsers_install
 		geany_install
+		audacious_install
 		;;
 	*)
-		echo "Use: $0 {all|install|browsers|geany|backup}"
+		echo "Use: $0 {all|install|browsers|geany|audacious|backup}"
 		exit 1
 		;;
 esac
