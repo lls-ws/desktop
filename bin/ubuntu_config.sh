@@ -22,7 +22,7 @@ browsers_install()
 	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
 	cd /tmp && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && cd ..
 	
-	# Install Opera
+	# Install Opera VPN
 	echo "deb https://deb.opera.com/opera-stable/ stable non-free" | tee /etc/apt/sources.list.d/opera-stable.list
 	cd /tmp && wget -q -O - https://deb.opera.com/archive.key | apt-key add - && cd ..
 	
