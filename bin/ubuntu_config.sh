@@ -9,6 +9,7 @@ apps_install()
 
 	echo "Install Essencial Apps..."
 	apt -y install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
+	apt -y install gnome-shell-extension-prefs
 	apt -y install ubuntu-restricted-extras
 	apt -y install stacer
 	
