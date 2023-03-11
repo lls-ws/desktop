@@ -1,7 +1,12 @@
 active 0
 playing 0
 playlist 0
+position 0
+shuffle 0
+resume-state 1
+resume-time 5094
+playlist 1
 position 1
 shuffle 0,1
 resume-state 1
-resume-time 1889506
+resume-time 4933493

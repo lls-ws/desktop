@@ -69,6 +69,21 @@ audacious_install()
 	
 }
 
+streamtuner_install()
+{
+
+	echo "Install Streamtuner..."
+	apt -y install streamtuner2 streamripper
+	
+	echo "Configure Streamtuner..."
+	
+	NAME_DIR="streamtuner2"
+	
+	update_file "settings.json" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	update_file "bookmarks.json" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	
+}
+
 desktop_backup()
 {
 
@@ -87,6 +102,13 @@ desktop_backup()
 	update_file "plugin-registry" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
 	update_file "playlist-state" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
 	update_file "1000.audpl" "conf/${NAME_DIR}/playlists" "/home/lls/.config/${NAME_DIR}/playlists"
+	
+	echo "Backup Streamtuner..."
+	
+	NAME_DIR="streamtuner2"
+	
+	update_file "settings.json" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	update_file "bookmarks.json" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
 	
 }
 
@@ -132,6 +154,9 @@ case "$1" in
 	audacious)
 		audacious_install
 		;;
+	streamtuner)
+		streamtuner_install
+		;;
 	backup)
 		desktop_backup
 		;;
@@ -142,7 +167,7 @@ case "$1" in
 		audacious_install
 		;;
 	*)
-		echo "Use: $0 {all|install|browsers|geany|audacious|backup}"
+		echo "Use: $0 {all|install|browsers|geany|audacious|streamtuner|backup}"
 		exit 1
 		;;
 esac

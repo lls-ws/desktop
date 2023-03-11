@@ -12,8 +12,8 @@ url_opener_win=485,303,384,183
 
 [gtkui]
 column_widths=10,465,288,10,175,175,10,100,36,10,275,275,275,10,275
-player_x=50
-player_y=77
+player_x=511
+player_y=280
 
 [gtkui-layout]
 item0_name=Ferramenta de Busca
