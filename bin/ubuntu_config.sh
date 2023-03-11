@@ -11,6 +11,7 @@ apps_install()
 	apt -y install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
 	apt -y install gnome-shell-extension-prefs
 	apt -y install ubuntu-restricted-extras
+	apt -y install gnome-tweaks
 	apt -y install stacer
 	
 }
@@ -19,6 +20,8 @@ scripts_install()
 {
 	
 	copy_file "stream_record.sh"
+	
+	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
 	
 }
 
