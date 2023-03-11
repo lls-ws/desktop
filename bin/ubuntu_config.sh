@@ -14,6 +14,13 @@ apps_install()
 	
 }
 
+scripts_install()
+{
+	
+	copy_file "stream_record.sh"
+	
+}
+
 browsers_install()
 {
 
@@ -136,6 +143,30 @@ update_file()
 	
 }
 
+copy_file()
+{
+	
+	SCRIPT_FILE="$1"
+	
+	DIR_BIN="/usr/bin"
+	
+	if [ ! -f "bin/${SCRIPT_FILE}" ]; then
+	
+		echo "File ${SCRIPT_FILE} not found!"
+		exit 1
+	
+	fi
+	
+	if [ -f "${DIR_BIN}/${SCRIPT_FILE}" ]; then
+	
+		rm -fv ${DIR_BIN}/${SCRIPT_FILE}
+	
+	fi
+	
+	cp -fv bin/${SCRIPT_FILE} ${DIR_BIN}/${SCRIPT_FILE}
+	
+}
+
 if [ `id -u` -ne 0 ]; then
 	echo "Run script as root"
 	exit 1
@@ -144,6 +175,9 @@ fi
 case "$1" in
 	install)
 		apps_install
+		;;
+	scripts)
+		scripts_install
 		;;
 	browsers)
 		browsers_install
@@ -162,12 +196,14 @@ case "$1" in
 		;;
 	all)
 		apps_install
+		scripts_install
 		browsers_install
 		geany_install
 		audacious_install
+		streamtuner_install
 		;;
 	*)
-		echo "Use: $0 {all|install|browsers|geany|audacious|streamtuner|backup}"
+		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|backup}"
 		exit 1
 		;;
 esac
