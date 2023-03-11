@@ -22,6 +22,7 @@ scripts_install()
 	copy_file "stream_record.sh"
 	
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
+	update_file "wallpaper.png" "/home/lls/.local/share/backgrounds" "images"
 	
 }
 
