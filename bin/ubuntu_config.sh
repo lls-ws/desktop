@@ -63,6 +63,8 @@ audacious_install()
 	NAME_DIR="audacious"
 	
 	update_file "config" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	update_file "plugin-registry" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	update_file "playlist-state" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
 	update_file "1000.audpl" "/home/lls/.config/${NAME_DIR}/playlists" "conf/${NAME_DIR}/playlists"
 	
 }
@@ -82,6 +84,8 @@ desktop_backup()
 	NAME_DIR="audacious"
 	
 	update_file "config" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	update_file "plugin-registry" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	update_file "playlist-state" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
 	update_file "1000.audpl" "conf/${NAME_DIR}/playlists" "/home/lls/.config/${NAME_DIR}/playlists"
 	
 }

@@ -1,6 +1,7 @@
 
 [audacious]
 repeat=TRUE
+show_interface=FALSE
 
 [audgui]
 eq_preset_win=472,252,409,286
@@ -11,7 +12,6 @@ url_opener_win=485,303,384,183
 
 [gtkui]
 column_widths=10,465,288,10,175,175,10,100,36,10,275,275,275,10,275
-player_maximized=TRUE
 
 [gtkui-layout]
 item0_name=Ferramenta de Busca
