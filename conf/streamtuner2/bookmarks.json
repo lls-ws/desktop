@@ -1,7 +1,7 @@
 {
     "favourite": [
         {
-            "bitrate": 32,
+            "bitrate": 128,
             "deleted": false,
             "extra": "bookmarks",
             "favicon": "/home/lls/.config/streamtuner2/icons/www.uturnradio.com.png",
@@ -15,7 +15,7 @@
             "search_col": "#2B2B2B",
             "search_set": false,
             "title": "Uturn Radio: Classic Rock Music",
-            "url": "http://listen.uturnradio.com:80/classic_rock_32.m3u"
+            "url": "http://listen.uturnradio.com:80/classic_rock"
         },
         {
             "bitrate": 64,

@@ -82,7 +82,7 @@
     "radiotime_maxpages": "10",
     "radiotray_map": "group",
     "record": {
-        "audio/*": "x-terminal-emulator -e \"streamripper http://listen.uturnradio.com:80/classic_rock_32.m3u -d /home/lls/M\u00fasica -s\"",
+        "audio/*": "x-terminal-emulator -e \"streamripper http://listen.uturnradio.com:80/classic_rock -d /home/lls/M\u00fasica -s\"",
         "video/youtube": "xdg-open"
     },
     "reddit_keep_all": false,
