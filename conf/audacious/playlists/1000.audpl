@@ -1,8 +1,8 @@
 title=Radios
 uri=http://listen.uturnradio.com:80/classic_rock
-title=Elvis%20Presley%20-%20Can%27t%20Help%20Falling%20In%20Love%20/%20Elvis
+title=Kiss%20-%20I%20Wanna%20Rock%20and%20Roll%20All%20Night
 artist=Uturn%20Radio%3A%20Classic%20Rock%20Music
-bitrate=32
+bitrate=128
 codec=MPEG-2/4%20AAC
 uri=https://cloud2.cdnseguro.com:20000/stream
 artist=camp

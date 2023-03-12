@@ -13,6 +13,7 @@ apps_install()
 	apt -y install ubuntu-restricted-extras
 	apt -y install gnome-tweaks
 	apt -y install stacer
+	apt -y install mc
 	
 }
 
@@ -22,7 +23,7 @@ scripts_install()
 	copy_file "stream_record.sh"
 	
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
-	update_file "wallpaper.png" "/home/lls/.local/share/backgrounds" "images"
+	update_file "wallpaper.png" "/home/${USER}/.local/share/backgrounds" "images"
 	
 }
 
@@ -43,84 +44,121 @@ browsers_install()
 
 geany_install()
 {
-
-	echo "Install Geany..."
-	apt -y install geany
-	git clone https://github.com/geany/geany-themes.git
-	cd geany-themes
+	
+	APP_NAME="geany"
+	
+	echo "Install ${APP_NAME}..."
+	apt -y install ${APP_NAME}
+	
+	git clone https://github.com/${APP_NAME}/${APP_NAME}-themes.git
+	
+	cd ${APP_NAME}-themes
 	./install.sh
 	cd ..
-	rm -rf geany-themes
-	rm -rf /home/lls/.config/geany/colorschemes
-	cp -rf /root/.config/geany/colorschemes /home/lls/.config/geany
-	chown -v lls.lls /home/lls/.config/geany/colorschemes
 	
-	echo "Configure Geany..."
+	rm -rf ${APP_NAME}-themes
 	
-	NAME_DIR="geany"
+	rm -rf ${DIR_CONFIG}/${APP_NAME}/colorschemes
+	cp -rf /root/.config/${APP_NAME}/colorschemes ${DIR_CONFIG}/${APP_NAME}
+	chown -v ${USER}.${USER} ${DIR_CONFIG}/${APP_NAME}/colorschemes
 	
-	update_file "geany.conf" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
-	update_file "keybindings.conf" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	echo "Configure ${APP_NAME}..."
+	
+	update_file "${APP_NAME}.conf" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_file "keybindings.conf" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
 	
 }
 
 audacious_install()
 {
-
-	echo "Install Audacious..."
-	apt -y install audacious
 	
-	echo "Configure Audacious..."
+	APP_NAME="audacious"
 	
-	NAME_DIR="audacious"
+	echo "Install ${APP_NAME}..."
+	apt -y install ${APP_NAME}
 	
-	update_file "config" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
-	update_file "plugin-registry" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
-	update_file "playlist-state" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
-	update_file "1000.audpl" "/home/lls/.config/${NAME_DIR}/playlists" "conf/${NAME_DIR}/playlists"
+	echo "Configure ${APP_NAME}..."
+	
+	update_file "config" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_file "plugin-registry" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_file "playlist-state" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_file "1000.audpl" "${DIR_CONFIG}/${APP_NAME}/playlists" "conf/${APP_NAME}/playlists"
 	
 }
 
 streamtuner_install()
 {
 
-	echo "Install Streamtuner..."
-	apt -y install streamtuner2 streamripper
+	APP_NAME="streamtuner2"
 	
-	echo "Configure Streamtuner..."
+	echo "Install ${APP_NAME}..."
+	apt -y install ${APP_NAME} streamripper
 	
-	NAME_DIR="streamtuner2"
+	echo "Configure ${APP_NAME}..."
 	
-	update_file "settings.json" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
-	update_file "bookmarks.json" "/home/lls/.config/${NAME_DIR}" "conf/${NAME_DIR}"
+	update_file "settings.json" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_file "bookmarks.json" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	
+}
+
+transmission_install()
+{
+	
+	APP_NAME="transmission-daemon"
+	
+	echo "Install ${APP_NAME}..."
+	apt -y install ${APP_NAME}
+	
+	echo "Configure ${APP_NAME}..."
+	
+	DIR_ETC="/etc/${APP_NAME}"
+	
+	FILE_SET="settings.json"
+	
+	service ${APP_NAME} stop
+	
+	cp -fv ${DIR_ETC}/${FILE_SET} ${DIR_ETC}/${FILE_SET}.bak
+	
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
+	
+	chown -v debian-transmission.debian-transmission ${DIR_ETC}/${FILE_SET}*
+	
+	service ${APP_NAME} start
+	service ${APP_NAME} status
 	
 }
 
 desktop_backup()
 {
 
-	echo "Backup Geany..."
+	APP_NAME="geany"
 	
-	NAME_DIR="geany"
+	echo "Backup ${APP_NAME}..."
 	
-	update_file "geany.conf" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
-	update_file "keybindings.conf" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	update_file "${APP_NAME}.conf" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_file "keybindings.conf" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
 	
-	echo "Backup Audacious..."
+	APP_NAME="audacious"
 	
-	NAME_DIR="audacious"
+	echo "Backup ${APP_NAME}..."
 	
-	update_file "config" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
-	update_file "plugin-registry" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
-	update_file "playlist-state" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
-	update_file "1000.audpl" "conf/${NAME_DIR}/playlists" "/home/lls/.config/${NAME_DIR}/playlists"
+	update_file "config" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_file "plugin-registry" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_file "playlist-state" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_file "1000.audpl" "conf/${APP_NAME}/playlists" "${DIR_CONFIG}/${APP_NAME}/playlists"
 	
-	echo "Backup Streamtuner..."
+	APP_NAME="streamtuner2"
 	
-	NAME_DIR="streamtuner2"
+	echo "Backup ${APP_NAME}..."
 	
-	update_file "settings.json" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
-	update_file "bookmarks.json" "conf/${NAME_DIR}" "/home/lls/.config/${NAME_DIR}"
+	update_file "settings.json" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_file "bookmarks.json" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
+	APP_NAME="transmission-daemon"
+	
+	echo "Backup ${APP_NAME}..."
+	
+	update_file "settings.json" "etc/${APP_NAME}" "/etc/${APP_NAME}"
 	
 }
 
@@ -129,46 +167,46 @@ update_file()
 
 	FILE_CONF="$1"
 	
-	DIR_CONF="$2"
+	DIR_APP="$2"
 	DIR_CLOUD="$3"
 	
-	if [ ! -d ${DIR_CONF} ]; then
+	if [ ! -d ${DIR_APP} ]; then
 	
-		mkdir -pv ${DIR_CONF}
-		chown -v lls.lls ${DIR_CONF}
+		mkdir -pv ${DIR_APP}
+		chown -v ${USER}.${USER} ${DIR_APP}
 	
 	fi
 	
 	echo "Copy File Configuration..."
-	rm -fv ${DIR_CONF}/${FILE_CONF}
+	rm -fv ${DIR_APP}/${FILE_CONF}
 	
-	cp -fv ${DIR_CLOUD}/${FILE_CONF} ${DIR_CONF}
+	cp -fv ${DIR_CLOUD}/${FILE_CONF} ${DIR_APP}
 	
-	chown -v lls.lls ${DIR_CONF}/${FILE_CONF}
+	chown -v ${USER}.${USER} ${DIR_APP}/${FILE_CONF}
 	
 }
 
 copy_file()
 {
 	
-	SCRIPT_FILE="$1"
+	FILE_SCRIPT="$1"
 	
 	DIR_BIN="/usr/bin"
 	
-	if [ ! -f "bin/${SCRIPT_FILE}" ]; then
+	if [ ! -f "bin/${FILE_SCRIPT}" ]; then
 	
-		echo "File ${SCRIPT_FILE} not found!"
+		echo "File ${FILE_SCRIPT} not found!"
 		exit 1
 	
 	fi
 	
-	if [ -f "${DIR_BIN}/${SCRIPT_FILE}" ]; then
+	if [ -f "${DIR_BIN}/${FILE_SCRIPT}" ]; then
 	
-		rm -fv ${DIR_BIN}/${SCRIPT_FILE}
+		rm -fv ${DIR_BIN}/${FILE_SCRIPT}
 	
 	fi
 	
-	cp -fv bin/${SCRIPT_FILE} ${DIR_BIN}/${SCRIPT_FILE}
+	cp -fv bin/${FILE_SCRIPT} ${DIR_BIN}/${FILE_SCRIPT}
 	
 }
 
@@ -176,6 +214,18 @@ if [ `id -u` -ne 0 ]; then
 	echo "Run script as root"
 	exit 1
 fi
+
+USER=`git config user.name`
+
+if [ -z "${USER}" ]; then
+		
+	echo "Not found a user name!"
+	echo "Use: git_conf.sh name {NAME}"
+	exit 1
+	
+fi
+
+DIR_CONFIG="/home/${USER}/.config"
 
 case "$1" in
 	install)
@@ -196,6 +246,9 @@ case "$1" in
 	streamtuner)
 		streamtuner_install
 		;;
+	transmission)
+		transmission_install
+		;;
 	backup)
 		desktop_backup
 		;;
@@ -206,9 +259,10 @@ case "$1" in
 		geany_install
 		audacious_install
 		streamtuner_install
+		transmission_install
 		;;
 	*)
-		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|backup}"
+		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|backup}"
 		exit 1
 		;;
 esac
