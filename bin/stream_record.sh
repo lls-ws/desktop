@@ -9,9 +9,9 @@ record_radio()
 	
 	LINE_NUMBER="$1"
 	
-	DIR_MP3="/home/lls/Música"
+	DIR_MP3="/home/${USER}/Música"
 	
-	PLAY_LIST="/home/lls/.config/audacious/playlists/1000.audpl"
+	PLAY_LIST="/home/${USER}/.config/audacious/playlists/1000.audpl"
 	
 	URL_RADIO=`cat ${PLAY_LIST} | grep uri | cut -f 2 -d "=" | sed -n ''${LINE_NUMBER}'p'`
 	
@@ -23,6 +23,16 @@ record_radio()
 	streamripper ${URL_RADIO} -d ${DIR_MP3} -s
 	
 }
+
+USER=`git config user.name`
+
+if [ -z "${USER}" ]; then
+		
+	echo "Not found a user name!"
+	echo "Use: git_conf.sh name {NAME}"
+	exit 1
+	
+fi
 
 case "$1" in
 	1)

@@ -25,6 +25,12 @@ scripts_install()
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
 	update_file "wallpaper.png" "/home/${USER}/.local/share/backgrounds" "images"
 	
+	FILE_BASH="/home/${USER}/.bash_aliases"
+	
+	cp -fv conf/bash_aliases ${FILE_BASH}
+	
+	chown -v ${USER}.${USER} ${FILE_BASH}
+	
 }
 
 browsers_install()
@@ -117,11 +123,29 @@ transmission_install()
 	
 	service ${APP_NAME} stop
 	
-	cp -fv ${DIR_ETC}/${FILE_SET} ${DIR_ETC}/${FILE_SET}.bak
+	USER_TRANSMISISON="debian-transmission"
+	
+	if [ ! -f "${DIR_ETC}/${FILE_SET}.bak" ]; then
+	
+		cp -fv ${DIR_ETC}/${FILE_SET} ${DIR_ETC}/${FILE_SET}.bak
+		
+		usermod -a -G ${USER_TRANSMISISON} ${USER}
+	
+	fi
 	
 	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
 	
-	chown -v debian-transmission.debian-transmission ${DIR_ETC}/${FILE_SET}*
+	chown -v ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_ETC}/${FILE_SET}
+	
+	DIR_TRANSMISSION="/home/torrents"
+	
+	if [ ! -d "${DIR_TRANSMISSION}" ]; then
+	
+		mkdir -pv ${DIR_TRANSMISSION}/.incomplete
+	
+	fi
+	
+	chown -Rv ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_TRANSMISSION}
 	
 	service ${APP_NAME} start
 	service ${APP_NAME} status
