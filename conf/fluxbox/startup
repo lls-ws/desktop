@@ -1,0 +1,18 @@
+#!/bin/sh
+# Script de inicialização do Fluxbox
+
+# Desabilitando economia de energia
+#setterm -blank 1 -powersave on -powerdown 30 &
+
+# nao desliga
+#setterm -blank 0 -powersave off -powerdown 0 &
+#xset dpms 0 0 0 &
+#xset -dpms &
+#xset s off &
+
+# Muda a cor do papel de parede
+#fbsetroot -solid black &
+fbsetbg -a /usr/share/images/desktop-base/login-background.png &
+
+# Iniciando o fluxbox
+exec fluxbox

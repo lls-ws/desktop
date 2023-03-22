@@ -13,7 +13,7 @@ apps_install()
 	apt -y install ubuntu-restricted-extras
 	apt -y install gnome-tweaks
 	apt -y install stacer
-	apt -y install mc
+	apt -y install mc curl
 	
 }
 
@@ -147,8 +147,75 @@ transmission_install()
 	
 	chown -Rv ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_TRANSMISSION}
 	
+	systemctl disable ${APP_NAME}.service
+	
 	service ${APP_NAME} start
 	service ${APP_NAME} status
+	
+}
+
+fluxbox_install()
+{
+	
+	APP_NAME="fluxbox"
+	
+	echo "Install ${APP_NAME}..."
+	apt -y install ${APP_NAME}
+	
+	echo "Configure ${APP_NAME}..."
+	
+	DIR_FLUXBOX="/home/${USER}/.${APP_NAME}"
+	
+	if [ ! -d "${DIR_FLUXBOX}" ]; then
+	
+		mkdir -v ${DIR_FLUXBOX}
+		
+		chown -v ${USER}.${USER} ${DIR_FLUXBOX}
+	
+	fi
+	
+	FILES_SET=(
+		"apps"
+		"menu"
+		"keys"
+		"init"
+		"startup"
+	)
+	
+	for FILE_SET in "${FILES_SET[@]}"
+	do
+		
+		if [ -n "${FILE_SET}" ]; then
+		
+			if [ ! -f "${DIR_FLUXBOX}/${FILE_SET}.bak" ]; then
+	
+				cp -fv ${DIR_FLUXBOX}/${FILE_SET} ${DIR_FLUXBOX}/${FILE_SET}.bak
+				
+				chown -v ${USER}.${USER} ${DIR_FLUXBOX}/${FILE_SET}.bak
+				
+				#update_file "${FILE_SET}" "${DIR_FLUXBOX}" "conf/${APP_NAME}"
+			
+			fi
+			
+		fi
+		
+	done
+	
+}
+
+lightdm_install()
+{
+	
+	APP_NAME="lightdm"
+	
+	echo "Install ${APP_NAME}..."
+	apt -y install ${APP_NAME}
+	
+	echo "Configure ${APP_NAME}..."
+	
+	dpkg-reconfigure lightdm
+	
+	cat /etc/X11/default-display-manager
 	
 }
 
@@ -273,6 +340,12 @@ case "$1" in
 	transmission)
 		transmission_install
 		;;
+	fluxbox)
+		fluxbox_install
+		;;
+	lightdm)
+		lightdm_install
+		;;
 	backup)
 		desktop_backup
 		;;
@@ -284,9 +357,10 @@ case "$1" in
 		audacious_install
 		streamtuner_install
 		transmission_install
+		fluxbox_install
 		;;
 	*)
-		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|backup}"
+		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|fluxbox|lightdm|backup}"
 		exit 1
 		;;
 esac

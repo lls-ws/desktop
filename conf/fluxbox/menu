@@ -1,0 +1,71 @@
+[begin] (Menu LLS Tecnologia)
+[encoding] {utf8}
+	
+    [exec] (Chrome) 						{google-chrome} 					<~/.fluxbox/pixmaps/google-chrome.xpm>
+    [exec] (Geany) 	 						{geany} 							<~/.fluxbox/pixmaps/geany.xpm>
+   
+[separator] 
+
+[submenu] (Network) <~/.fluxbox/pixmaps/network.xpm>
+[submenu] (WEB)
+		[exec] (Firefox) 					{firefox} 							<~/.fluxbox/pixmaps/firefox.xpm>
+		[exec] (Seamonkey) 					{seamonkey} 						<~/.fluxbox/pixmaps/seamonkey.xpm>
+[end]
+[submenu] (FTP)
+      	[exec] (Filezilla) 					{filezilla} 						<~/.fluxbox/pixmaps/filezilla.xpm>
+[end]
+[end]
+
+[submenu] (Multimedia) <~/.fluxbox/pixmaps/multimedia.xpm>
+      	[exec] (Parole) 					{parole} 							<~/.fluxbox/pixmaps/parole.xpm>
+      	[exec] (Radio) 						{streamtuner2} 						<~/.fluxbox/pixmaps/streamtuner2.xpm>
+      	[exec] (Volume) 					{pavucontrol} 						<~/.fluxbox/pixmaps/multimedia.xpm>
+[end]
+
+[submenu] (Office) <~/.fluxbox/pixmaps/office.xpm>
+      	[exec] (Gerenciador de Arquivos)  	{thunar}   							<~/.fluxbox/pixmaps/thunar.xpm>
+      	[exec] (Visualizador de Imagens)  	{ristretto}   						<~/.fluxbox/pixmaps/ristretto.xpm>      	
+      	[exec] (Editor de Texto) 			{mousepad} 							<~/.fluxbox/pixmaps/mousepad.xpm>
+      	[exec] (Calculadora) 				{mate-calc} 						<~/.fluxbox/pixmaps/mate-calc.xpm>
+[end]
+
+[submenu] (Developer) <~/.fluxbox/pixmaps/developer.xpm>
+		[exec] (ireport) 	 				{ireport} 							<~/.fluxbox/pixmaps/java.xpm>
+[end]
+
+[submenu] (Tools) <~/.fluxbox/pixmaps/tools.xpm>
+      	[exec] (Desligar o monitor) 	  	{xset -display :0.0 dpms force off}			<~/.fluxbox/pixmaps/shutdown.xpm>
+      	[exec] (Finalizar processo) 	  	{xkill} 									<~/.fluxbox/pixmaps/xkill.xpm>
+[end]
+
+[submenu] (Menu Fluxbox) <~/.fluxbox/pixmaps/anonymous.xpm>
+      [config] (Configuracao) 
+[submenu] (Estilos do Sistema) {Escolha um estilo...}
+      [stylesdir] (/usr/share/fluxbox/styles) 
+[end]
+[submenu] (Estilos do Utilizador) {Escolha um estilo...}
+      [stylesdir] (~/.fluxbox/styles)
+[end]
+      [workspaces] (Lista de Áreas de Trabalho) 
+[submenu] (Ferramentas)
+      [exec] (Nome da Janela) 	{xprop WM_CLASS|cut -d \" -f 2|xmessage -file - -center} 
+      [exec] (Capturar Tela) 	{/usr/bin/captura_tela}
+[end]
+      	[exec] (Configuracoes de Inicio) 		{geany ~/.fluxbox/startup} 
+      	[exec] (Configuracoes do Menu) 			{geany ~/.fluxbox/menu}
+      	[exec] (Configuracoes de Apps) 			{geany ~/.fluxbox/apps}
+      	[exec] (Configuracoes de Teclas) 		{geany ~/.fluxbox/keys}
+      	[exec] (Trocar Tema do GTK) 			{gtk-theme-switch2}
+      	[exec] (Executar) 						{fbrun} 
+      	[reconfig] (Recarregar configuracao) 
+      	[restart]  (Reiniciar) 
+      	[exec]     (Sobre) {(fluxbox -v; fluxbox -info | sed 1d) 2> /dev/null | xmessage -file - -center} 
+      	[separator] 
+      	[exit] (Sair) 									<~/.fluxbox/pixmaps/logout.xpm>
+[end]
+
+      [separator] 
+      [exec] (Reiniciar) 		{sudo /sbin/reboot} 								<~/.fluxbox/pixmaps/reiniciar.xpm>
+      [exec] (Desligar)  		{sudo /sbin/shutdown -h now} 						<~/.fluxbox/pixmaps/desligar.xpm>
+[endencoding]
+[end]

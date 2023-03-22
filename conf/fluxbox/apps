@@ -1,0 +1,24 @@
+[app] (name=fbrun)
+  [Position]	(WINCENTER)	{0 0}
+  [Layer]	{2}
+[end]
+[app] (name=xterm) (class=XTerm)
+  [Head]	{1}
+  [Dimensions]	{101% 7%}
+  [Position]	(UPPERLEFT)	{0% 95%}
+  [Deco]	{NONE}
+  [Layer]	{2}
+  [Close]	{no}
+[end]
+[app] (name=geany) (class=Geany)
+  [Dimensions]	{60% 95%}
+  [Position]	(UPPERLEFT)	{0% 0%}
+  [Deco]	{NONE}
+  [Close]	{no}
+[end]
+[app] (name=google-chrome) (class=Google-chrome) (role=browser)
+  [Dimensions]	{40% 95%}
+  [Position]	(UPPERLEFT)	{60% 0%}
+  [Deco]	{NONE}
+  [Close]	{no}
+[end]
