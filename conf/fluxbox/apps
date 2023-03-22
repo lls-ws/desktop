@@ -1,5 +1,5 @@
 [app] (name=fbrun)
-  [Position]	(WINCENTER)	{0 0}
+  [Position]	(CENTER)	{0 0}
   [Layer]	{2}
 [end]
 [app] (name=xterm) (class=XTerm)
@@ -8,7 +8,7 @@
   [Position]	(UPPERLEFT)	{0% 95%}
   [Deco]	{NONE}
   [Layer]	{2}
-  [Close]	{no}
+  [Close]	{yes}
 [end]
 [app] (name=geany) (class=Geany)
   [Dimensions]	{60% 95%}
@@ -19,6 +19,27 @@
 [app] (name=google-chrome) (class=Google-chrome) (role=browser)
   [Dimensions]	{40% 95%}
   [Position]	(UPPERLEFT)	{60% 0%}
+  [Deco]	{NONE}
+  [Close]	{no}
+[end]
+[app] (name=audacious) (class=Audacious)
+  [Dimensions]	{100% 100%}
+  [Position]	(UPPERLEFT)	{35% 35%}
+  [Deco]	{NONE}
+  [Maximized]	{yes}
+  [Close]	{no}
+[end]
+[app] (name=gnome-terminal-server) (class=Gnome-terminal)
+  [Dimensions]	{57% 57%}
+  [Position]	(UPPERLEFT)	{0% 0%}
+  [Deco]	{NONE}
+  [Maximized]	{yes}
+  [Close]	{no}
+[end]
+[app] (name=streamtuner2) (class=Streamtuner2)
+  [Dimensions]	{77% 100%}
+  [Position]	(UPPERLEFT)	{23% 0%}
+  [Maximized]	{yes}
   [Deco]	{NONE}
   [Close]	{no}
 [end]

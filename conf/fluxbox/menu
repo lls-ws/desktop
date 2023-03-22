@@ -1,24 +1,20 @@
 [begin] (Menu LLS Tecnologia)
 [encoding] {utf8}
 	
-    [exec] (Chrome) 						{google-chrome} 					<~/.fluxbox/pixmaps/google-chrome.xpm>
-    [exec] (Geany) 	 						{geany} 							<~/.fluxbox/pixmaps/geany.xpm>
+    [exec] (Chrome) 						{google-chrome} 					</opt/google/chrome/product_logo_32.xpm>
+    [exec] (Geany) 	 						{geany} 							</usr/share/pixmaps/geany.xpm>
+    [exec] (Audacious) 						{audacious -p} 						</usr/share/pixmaps/audacious-32.xpm>
+    [exec] (Terminal) 						{gnome-terminal --hide-menubar} 	</usr/share/pixmaps/mc.xpm>
    
-[separator] 
+[separator]
 
-[submenu] (Network) <~/.fluxbox/pixmaps/network.xpm>
-[submenu] (WEB)
-		[exec] (Firefox) 					{firefox} 							<~/.fluxbox/pixmaps/firefox.xpm>
-		[exec] (Seamonkey) 					{seamonkey} 						<~/.fluxbox/pixmaps/seamonkey.xpm>
-[end]
-[submenu] (FTP)
-      	[exec] (Filezilla) 					{filezilla} 						<~/.fluxbox/pixmaps/filezilla.xpm>
-[end]
-[end]
+	[exec] (StreamTuner) 					{streamtuner2} 						</usr/share/pixmaps/streamtuner2.xpm>
+	[exec] (Opera) 							{opera} 							</usr/share/pixmaps/opera.xpm>
+
+[separator]
 
 [submenu] (Multimedia) <~/.fluxbox/pixmaps/multimedia.xpm>
       	[exec] (Parole) 					{parole} 							<~/.fluxbox/pixmaps/parole.xpm>
-      	[exec] (Radio) 						{streamtuner2} 						<~/.fluxbox/pixmaps/streamtuner2.xpm>
       	[exec] (Volume) 					{pavucontrol} 						<~/.fluxbox/pixmaps/multimedia.xpm>
 [end]
 

@@ -8,24 +8,21 @@ apps_install()
 {
 
 	echo "Install Essencial Apps..."
-	apt -y install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
-	apt -y install gnome-shell-extension-prefs
-	apt -y install ubuntu-restricted-extras
-	apt -y install gnome-tweaks
-	apt -y install stacer
-	apt -y install mc curl
+	#apt -y install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
+	#apt -y install gnome-shell-extension-prefs
+	#apt -y install ubuntu-restricted-extras
+	#apt -y install gnome-tweaks
+	#apt -y install stacer
+	#apt -y install mc curl
 	
 }
 
 scripts_install()
 {
 	
-	copy_file "stream_record.sh"
-	
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
-	update_file "wallpaper.png" "/home/${USER}/.local/share/backgrounds" "images"
 	
-	FILE_BASH="/home/${USER}/.bash_aliases"
+	update_file "stream_record.sh" "/usr/bin" "bin"
 	
 	cp -fv conf/bash_aliases ${FILE_BASH}
 	
@@ -51,10 +48,9 @@ browsers_install()
 geany_install()
 {
 	
-	APP_NAME="geany"
+	geany_files
 	
-	echo "Install ${APP_NAME}..."
-	apt -y install ${APP_NAME}
+	install_app
 	
 	git clone https://github.com/${APP_NAME}/${APP_NAME}-themes.git
 	
@@ -64,62 +60,98 @@ geany_install()
 	
 	rm -rf ${APP_NAME}-themes
 	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	
 	rm -rf ${DIR_CONFIG}/${APP_NAME}/colorschemes
 	cp -rf /root/.config/${APP_NAME}/colorschemes ${DIR_CONFIG}/${APP_NAME}
 	chown -v ${USER}.${USER} ${DIR_CONFIG}/${APP_NAME}/colorschemes
 	
-	echo "Configure ${APP_NAME}..."
+}
+
+geany_files()
+{
 	
-	update_file "${APP_NAME}.conf" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
-	update_file "keybindings.conf" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	APP_NAME="geany"
+	
+	FILES_SET=(
+		"${APP_NAME}.conf"
+		"keybindings.conf"
+	)
 	
 }
 
 audacious_install()
 {
 	
+	audacious_files_config
+	
+	install_app
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	
+	audacious_files_playlist
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}/playlists" "conf/${APP_NAME}/playlists"
+			
+}
+
+audacious_files_config()
+{
+	
 	APP_NAME="audacious"
 	
-	echo "Install ${APP_NAME}..."
-	apt -y install ${APP_NAME}
+	FILES_SET=(
+		"config"
+		"plugin-registry"
+		"playlist-state"
+	)
 	
-	echo "Configure ${APP_NAME}..."
+}
+
+audacious_files_playlist()
+{
 	
-	update_file "config" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
-	update_file "plugin-registry" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
-	update_file "playlist-state" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
-	update_file "1000.audpl" "${DIR_CONFIG}/${APP_NAME}/playlists" "conf/${APP_NAME}/playlists"
+	FILES_SET=(
+		"1000.audpl"
+		"1001.audpl"
+		"order"
+	)
 	
 }
 
 streamtuner_install()
 {
 
+	streamtuner_files
+	
+	install_app "streamripper"
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	
+}
+
+streamtuner_files()
+{
+	
 	APP_NAME="streamtuner2"
 	
-	echo "Install ${APP_NAME}..."
-	apt -y install ${APP_NAME} streamripper
-	
-	echo "Configure ${APP_NAME}..."
-	
-	update_file "settings.json" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
-	update_file "bookmarks.json" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	FILES_SET=(
+		"settings.json"
+		"bookmarks.json"
+	)
 	
 }
 
 transmission_install()
 {
 	
-	APP_NAME="transmission-daemon"
+	transmission_file
 	
-	echo "Install ${APP_NAME}..."
-	apt -y install ${APP_NAME}
+	install_app
 	
 	echo "Configure ${APP_NAME}..."
 	
 	DIR_ETC="/etc/${APP_NAME}"
-	
-	FILE_SET="settings.json"
 	
 	service ${APP_NAME} stop
 	
@@ -154,25 +186,32 @@ transmission_install()
 	
 }
 
+transmission_file()
+{
+	
+	APP_NAME="transmission-daemon"
+	
+	FILE_SET="settings.json"
+	
+}
+
 fluxbox_install()
+{
+	
+	fluxbox_files
+	
+	install_app
+	
+	update_files "Configure" "${DIR_FLUXBOX}" "conf/${APP_NAME}"
+	
+}
+
+fluxbox_files()
 {
 	
 	APP_NAME="fluxbox"
 	
-	echo "Install ${APP_NAME}..."
-	apt -y install ${APP_NAME}
-	
-	echo "Configure ${APP_NAME}..."
-	
 	DIR_FLUXBOX="/home/${USER}/.${APP_NAME}"
-	
-	if [ ! -d "${DIR_FLUXBOX}" ]; then
-	
-		mkdir -v ${DIR_FLUXBOX}
-		
-		chown -v ${USER}.${USER} ${DIR_FLUXBOX}
-	
-	fi
 	
 	FILES_SET=(
 		"apps"
@@ -182,25 +221,6 @@ fluxbox_install()
 		"startup"
 	)
 	
-	for FILE_SET in "${FILES_SET[@]}"
-	do
-		
-		if [ -n "${FILE_SET}" ]; then
-		
-			if [ ! -f "${DIR_FLUXBOX}/${FILE_SET}.bak" ]; then
-	
-				cp -fv ${DIR_FLUXBOX}/${FILE_SET} ${DIR_FLUXBOX}/${FILE_SET}.bak
-				
-				chown -v ${USER}.${USER} ${DIR_FLUXBOX}/${FILE_SET}.bak
-				
-				#update_file "${FILE_SET}" "${DIR_FLUXBOX}" "conf/${APP_NAME}"
-			
-			fi
-			
-		fi
-		
-	done
-	
 }
 
 lightdm_install()
@@ -208,8 +228,7 @@ lightdm_install()
 	
 	APP_NAME="lightdm"
 	
-	echo "Install ${APP_NAME}..."
-	apt -y install ${APP_NAME}
+	install_app
 	
 	echo "Configure ${APP_NAME}..."
 	
@@ -222,34 +241,52 @@ lightdm_install()
 desktop_backup()
 {
 
-	APP_NAME="geany"
+	cp -fv ${FILE_BASH} conf/bash_aliases
+	
+	geany_files
+	
+	update_files "Backup" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
+	audacious_files_config
+	
+	update_files "Backup" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
+	audacious_files_playlist
+	
+	update_files "Backup" "conf/${APP_NAME}/playlists" "${DIR_CONFIG}/${APP_NAME}/playlists"
+	
+	streamtuner_files
+	
+	update_files "Backup" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
+	transmission_file
 	
 	echo "Backup ${APP_NAME}..."
 	
-	update_file "${APP_NAME}.conf" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	update_file "keybindings.conf" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_file "${FILE_SET}" "etc/${APP_NAME}" "/etc/${APP_NAME}"
 	
-	APP_NAME="audacious"
+	fluxbox_files
 	
-	echo "Backup ${APP_NAME}..."
+	update_files "Backup" "conf/${APP_NAME}" "${DIR_FLUXBOX}"
 	
-	update_file "config" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	update_file "plugin-registry" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	update_file "playlist-state" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	update_file "1000.audpl" "conf/${APP_NAME}/playlists" "${DIR_CONFIG}/${APP_NAME}/playlists"
-	
-	APP_NAME="streamtuner2"
-	
-	echo "Backup ${APP_NAME}..."
-	
-	update_file "settings.json" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	update_file "bookmarks.json" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	
-	APP_NAME="transmission-daemon"
-	
-	echo "Backup ${APP_NAME}..."
-	
-	update_file "settings.json" "etc/${APP_NAME}" "/etc/${APP_NAME}"
+}
+
+update_files()
+{
+
+	MSG_TXT="$1"
+
+	DIR_UPDATE="$2"
+	DIR_SOURCE="$3"
+
+	echo "${MSG_TXT} ${APP_NAME}..."
+
+	for FILE_SET in "${FILES_SET[@]}"
+	do
+		
+		update_file "${FILE_SET}" "${DIR_UPDATE}" "${DIR_SOURCE}"
+			
+	done
 	
 }
 
@@ -268,7 +305,8 @@ update_file()
 	
 	fi
 	
-	echo "Copy File Configuration..."
+	echo "Copy ${FILE_CONF} Configuration..."
+	
 	rm -fv ${DIR_APP}/${FILE_CONF}
 	
 	cp -fv ${DIR_CLOUD}/${FILE_CONF} ${DIR_APP}
@@ -277,27 +315,11 @@ update_file()
 	
 }
 
-copy_file()
+install_app()
 {
 	
-	FILE_SCRIPT="$1"
-	
-	DIR_BIN="/usr/bin"
-	
-	if [ ! -f "bin/${FILE_SCRIPT}" ]; then
-	
-		echo "File ${FILE_SCRIPT} not found!"
-		exit 1
-	
-	fi
-	
-	if [ -f "${DIR_BIN}/${FILE_SCRIPT}" ]; then
-	
-		rm -fv ${DIR_BIN}/${FILE_SCRIPT}
-	
-	fi
-	
-	cp -fv bin/${FILE_SCRIPT} ${DIR_BIN}/${FILE_SCRIPT}
+	echo "Install ${APP_NAME}..."
+	apt -y install ${APP_NAME} "$1"
 	
 }
 
@@ -317,6 +339,8 @@ if [ -z "${USER}" ]; then
 fi
 
 DIR_CONFIG="/home/${USER}/.config"
+
+FILE_BASH="/home/${USER}/.bash_aliases"
 
 case "$1" in
 	install)
@@ -358,6 +382,7 @@ case "$1" in
 		streamtuner_install
 		transmission_install
 		fluxbox_install
+		lightdm_install
 		;;
 	*)
 		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|fluxbox|lightdm|backup}"
