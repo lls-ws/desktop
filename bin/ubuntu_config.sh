@@ -17,6 +17,7 @@ apps_install()
 	#apt -y install mc curl
 	
 	apt -y install imagemagick ristretto pavucontrol parole thunar mate-calc mousepad
+	apt -y install xterm
 	
 }
 
@@ -25,9 +26,10 @@ scripts_install()
 	
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
 	
-	update_file "stream_record.sh" "/usr/bin" "bin"
 	update_file "change_brightness.sh" "/usr/bin" "bin"
+	update_file "stream_record.sh" "/usr/bin" "bin"
 	update_file "print_screen.sh" "/usr/bin" "bin"
+	update_file "terminal.sh" "/usr/bin" "bin"
 	update_file "crack.sh" "/usr/bin" "bin"
 	
 	cp -fv config/bash_aliases ${FILE_BASH}
@@ -199,6 +201,8 @@ transmission_install()
 	
 	fi
 	
+	groups ${USER}
+	
 	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
 	
 	chown -v ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_ETC}/${FILE_SET}
@@ -317,6 +321,30 @@ lightdm_file()
 	
 }
 
+sudo_install()
+{
+	
+	sudo_file
+	
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
+	
+	chown -v root.root ${DIR_ETC}/${FILE_SET}
+	
+	chmod -v 440 ${DIR_ETC}/${FILE_SET}
+	
+}
+
+sudo_file()
+{
+	
+	APP_NAME="sudoers.d"
+	
+	FILE_SET="lls_sudoers"
+	
+	DIR_ETC="/etc/${APP_NAME}"
+	
+}
+
 desktop_backup()
 {
 
@@ -361,6 +389,12 @@ desktop_backup()
 	echo "Backup ${APP_NAME}..."
 	
 	update_file "${FILE_SET}" "${DIR_GIT}" "${DIR_SHARE}"
+	
+	sudo_file
+	
+	update_file "${FILE_SET}" "etc/${APP_NAME}" "${DIR_ETC}"
+	
+	chmod -v 640 "etc/${APP_NAME}/${FILE_SET}"
 	
 }
 
@@ -466,6 +500,9 @@ case "$1" in
 	lightdm)
 		lightdm_install
 		;;
+	sudo)
+		sudo_install
+		;;
 	backup)
 		desktop_backup
 		;;
@@ -480,9 +517,10 @@ case "$1" in
 		fluxbox_install
 		gtk_install
 		lightdm_install
+		sudo_install
 		;;
 	*)
-		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|fluxbox|gtk|lightdm|backup}"
+		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|fluxbox|gtk|lightdm|sudo|backup}"
 		exit 1
 		;;
 esac

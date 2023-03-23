@@ -4,7 +4,7 @@
     [exec] (Chrome) 						{google-chrome} 					</opt/google/chrome/product_logo_32.xpm>
     [exec] (Geany) 	 						{geany} 							</usr/share/pixmaps/geany.xpm>
     [exec] (Audacious) 						{audacious -p} 						</usr/share/pixmaps/audacious-32.xpm>
-    [exec] (Terminal) 						{gnome-terminal --hide-menubar} 	</usr/share/pixmaps/anonymous.xpm>
+    [exec] (Terminal) 						{terminal.sh root} 					</usr/share/pixmaps/anonymous.xpm>
    
 [separator]
 
@@ -32,7 +32,9 @@
 [submenu] (Tools) </usr/share/pixmaps/tools.xpm>
       	[exec] (Desligar o monitor) 	  	{xset -display :0.0 dpms force off}			</usr/share/pixmaps/shutdown.xpm>
       	[exec] (Finalizar processo) 	  	{xkill} 									</usr/share/pixmaps/shutdown.xpm>
-      	[exec] (Capturar Tela) 				{print_screen.sh}							</usr/share/pixmaps/print_screen.xpm>		
+      	[exec] (Capturar Tela) 				{print_screen.sh}							</usr/share/pixmaps/print_screen.xpm>
+      	[exec] (Brilho -) 					{sudo change_brightness.sh}					</usr/share/pixmaps/homeoffice.xpm>
+      	[exec] (Brilho +) 					{sudo change_brightness.sh 7}				</usr/share/pixmaps/homeoffice.xpm>
 [end]
 
 [submenu] (Menu Fluxbox) </usr/share/pixmaps/homeoffice.xpm>

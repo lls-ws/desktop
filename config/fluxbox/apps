@@ -4,7 +4,7 @@
 [end]
 [app] (name=xterm) (class=XTerm)
   [Head]	{1}
-  [Dimensions]	{101% 7%}
+  [Dimensions]	{100% 6%}
   [Position]	(UPPERLEFT)	{0% 95%}
   [Deco]	{NONE}
   [Layer]	{2}
