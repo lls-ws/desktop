@@ -4,66 +4,72 @@
     [exec] (Chrome) 						{google-chrome} 					</opt/google/chrome/product_logo_32.xpm>
     [exec] (Geany) 	 						{geany} 							</usr/share/pixmaps/geany.xpm>
     [exec] (Audacious) 						{audacious -p} 						</usr/share/pixmaps/audacious-32.xpm>
-    [exec] (Terminal) 						{gnome-terminal --hide-menubar} 	<>
+    [exec] (Terminal) 						{gnome-terminal --hide-menubar} 	</usr/share/pixmaps/anonymous.xpm>
    
 [separator]
 
-	[exec] (Gerenciador de Arquivos)  		{nautilus}   						</usr/share/pixmaps/nautilus.xpm>
-	[exec] (StreamTuner) 					{streamtuner2} 						</usr/share/pixmaps/streamtuner2.xpm>
-	[exec] (Opera) 							{opera} 							</usr/share/pixmaps/opera.xpm>
-
-[separator]
-
-[submenu] (Multimedia) <~/.fluxbox/pixmaps/multimedia.xpm>
-      	[exec] (Parole) 					{parole} 							<~/.fluxbox/pixmaps/parole.xpm>
-      	[exec] (Volume) 					{pavucontrol} 						<~/.fluxbox/pixmaps/multimedia.xpm>
+[submenu] (Network) </usr/share/pixmaps/network.xpm>
+      	[exec] (Opera) 						{opera} 							</usr/share/pixmaps/opera.xpm>
 [end]
 
-[submenu] (Office) <~/.fluxbox/pixmaps/office.xpm>
-      	[exec] (Gerenciador de Arquivos)  	{thunar}   							<~/.fluxbox/pixmaps/thunar.xpm>
-      	[exec] (Visualizador de Imagens)  	{ristretto}   						<~/.fluxbox/pixmaps/ristretto.xpm>      	
-      	[exec] (Editor de Texto) 			{mousepad} 							<~/.fluxbox/pixmaps/mousepad.xpm>
-      	[exec] (Calculadora) 				{mate-calc} 						<~/.fluxbox/pixmaps/mate-calc.xpm>
+[submenu] (Multimedia) </usr/share/pixmaps/multimedia.xpm>
+      	[exec] (Volume) 					{pavucontrol} 						</usr/share/pixmaps/multimedia.xpm>
+      	[exec] (Radios) 					{streamtuner2} 						</usr/share/pixmaps/streamtuner2.xpm>
+      	[exec] (Parole) 					{parole} 							</usr/share/pixmaps/parole.xpm>
 [end]
 
-[submenu] (Developer) <~/.fluxbox/pixmaps/developer.xpm>
-		[exec] (ireport) 	 				{ireport} 							<~/.fluxbox/pixmaps/java.xpm>
+[submenu] (Office) </usr/share/pixmaps/office.xpm>
+      	[exec] (Gerenciador de Arquivos)  	{thunar}   							</usr/share/pixmaps/thunar.xpm>
+      	[exec] (Visualizador de Imagens)  	{ristretto}   						</usr/share/pixmaps/ristretto.xpm>
+      	[exec] (Editor de Texto) 			{mousepad} 							</usr/share/pixmaps/mousepad.xpm>
+      	[exec] (Calculadora) 				{mate-calc} 						</usr/share/pixmaps/mate-calc.xpm>
 [end]
 
-[submenu] (Tools) <~/.fluxbox/pixmaps/tools.xpm>
-      	[exec] (Desligar o monitor) 	  	{xset -display :0.0 dpms force off}			<~/.fluxbox/pixmaps/shutdown.xpm>
-      	[exec] (Finalizar processo) 	  	{xkill} 									<~/.fluxbox/pixmaps/xkill.xpm>
+[submenu] (Developer) </usr/share/pixmaps/developer.xpm>
+		[exec] (ireport) 	 				{ireport} 							</usr/share/pixmaps/developer.xpm>
 [end]
 
-[submenu] (Menu Fluxbox) <~/.fluxbox/pixmaps/anonymous.xpm>
-      [config] (Configuracao) 
+[submenu] (Tools) </usr/share/pixmaps/tools.xpm>
+      	[exec] (Desligar o monitor) 	  	{xset -display :0.0 dpms force off}			</usr/share/pixmaps/shutdown.xpm>
+      	[exec] (Finalizar processo) 	  	{xkill} 									</usr/share/pixmaps/shutdown.xpm>
+      	[exec] (Capturar Tela) 				{print_screen.sh}							</usr/share/pixmaps/print_screen.xpm>		
+[end]
+
+[submenu] (Menu Fluxbox) </usr/share/pixmaps/homeoffice.xpm>
+		[config] (Configuracao) 
+
 [submenu] (Estilos do Sistema) {Escolha um estilo...}
-      [stylesdir] (/usr/share/fluxbox/styles) 
-[end]
-[submenu] (Estilos do Utilizador) {Escolha um estilo...}
-      [stylesdir] (~/.fluxbox/styles)
-[end]
-      [workspaces] (Lista de Áreas de Trabalho) 
-[submenu] (Ferramentas)
-      [exec] (Nome da Janela) 	{xprop WM_CLASS|cut -d \" -f 2|xmessage -file - -center} 
-      [exec] (Capturar Tela) 	{/usr/bin/captura_tela}
-[end]
-      	[exec] (Configuracoes de Inicio) 		{geany ~/.fluxbox/startup} 
-      	[exec] (Configuracoes do Menu) 			{geany ~/.fluxbox/menu}
-      	[exec] (Configuracoes de Apps) 			{geany ~/.fluxbox/apps}
-      	[exec] (Configuracoes de Teclas) 		{geany ~/.fluxbox/keys}
-      	[exec] (Configuracoes do GTK-2.0) 		{geany ~/.gtkrc-2.0}
-      	[exec] (Configuracoes do GTK-3.0) 		{geany ~/.config/gtk-3.0/settings.ini}
-      	[exec] (Executar) 						{fbrun} 
-      	[reconfig] (Recarregar configuracao) 
-      	[restart]  (Reiniciar) 
-      	[exec]     (Sobre) {(fluxbox -v; fluxbox -info | sed 1d) 2> /dev/null | xmessage -file - -center} 
-      	[separator] 
-      	[exit] (Sair) 									<~/.fluxbox/pixmaps/logout.xpm>
+		[stylesdir] (/usr/share/fluxbox/styles) 
 [end]
 
-      [separator] 
-      [exec] (Reiniciar) 		{sudo /sbin/reboot} 								<~/.fluxbox/pixmaps/reiniciar.xpm>
-      [exec] (Desligar)  		{sudo /sbin/shutdown -h now} 						<~/.fluxbox/pixmaps/desligar.xpm>
+[submenu] (Estilos do Utilizador) {Escolha um estilo...}
+		[stylesdir] (~/.fluxbox/styles)
+[end]
+
+		[workspaces] (Lista de Áreas de Trabalho) 
+
+		[separator]
+
+      	[exec] (Configuracoes de Inicio) 		{geany ~/.fluxbox/startup} 					</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do Menu) 			{geany ~/.fluxbox/menu}						</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes de Apps) 			{geany ~/.fluxbox/apps}						</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes de Teclas) 		{geany ~/.fluxbox/keys}						</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do GTK-2.0) 		{geany ~/.gtkrc-2.0}						</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do GTK-3.0) 		{geany ~/.config/gtk-3.0/settings.ini}		</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do Aliases) 		{geany ~/.bash_aliases}						</usr/share/pixmaps/geany.xpm>
+
+		[separator]
+
+      	[exec] 	   (Executar) 					{fbrun} 
+      	[reconfig] (Recarregar configuracao)
+      	[restart]  (Reiniciar)
+      	[exec]     (Sobre) 						{(fluxbox -v; fluxbox -info | sed 1d) 2> /dev/null | xmessage -file - -center} 
+      	[separator] 
+      	[exit] (Sair) 							</usr/share/pixmaps/shutdown.xpm>
+[end]
+
+		[separator] 
+		[exec] (Reiniciar) 		{sudo /sbin/reboot} 								</usr/share/pixmaps/reboot.xpm>
+		[exec] (Desligar)  		{sudo /sbin/shutdown -h now} 						</usr/share/pixmaps/shutdown.xpm>
 [endencoding]
 [end]

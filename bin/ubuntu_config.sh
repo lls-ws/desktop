@@ -28,6 +28,7 @@ scripts_install()
 	update_file "stream_record.sh" "/usr/bin" "bin"
 	update_file "change_brightness.sh" "/usr/bin" "bin"
 	update_file "print_screen.sh" "/usr/bin" "bin"
+	update_file "crack.sh" "/usr/bin" "bin"
 	
 	cp -fv config/bash_aliases ${FILE_BASH}
 	
@@ -49,6 +50,7 @@ pixmaps_files()
 		"reboot.xpm"
 		"logout.xpm"
 		"office.xpm"
+		"network.xpm"
 		"mousepad.xpm"
 		"shutdown.xpm"
 		"mate-calc.xpm"

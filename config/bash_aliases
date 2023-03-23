@@ -15,3 +15,6 @@ alias record='sudo stream_record.sh uturn'
 
 # Change Video Brightness
 alias change_brightness='sudo change_brightness.sh'
+
+# Change Video Brightness
+alias crack='sudo crack.sh'

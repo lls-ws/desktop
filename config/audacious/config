@@ -4,7 +4,7 @@ repeat=TRUE
 show_interface=FALSE
 
 [audgui]
-eq_preset_win=472,252,409,286
+eq_preset_win=0,0,1280,800
 equalizer_win=506,251,342,288
 filebrowser_win=304,155,672,480
 filesel_path=/home/lls/Música
@@ -46,4 +46,3 @@ skin=/usr/share/audacious/Skins/Default
 
 [statusicon]
 close_to_tray=TRUE
-scroll_action=1

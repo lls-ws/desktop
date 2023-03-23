@@ -67,8 +67,8 @@ Mod1 F6 :Exec /usr/bin/cloud_connect funchal
 Mod1 F7 :Exec /usr/bin/cloud_connect asus
 
 # salva a imagem da tela
-Print :Exec /usr/bin/print_screen
-174 :Exec /usr/bin/print_screen
+Print :Exec /usr/bin/print_screen.sh
+174 :Exec /usr/bin/print_screen.sh
 
 # desliga o monitor
 Pause :Exec xset -display :0.0 dpms force off
