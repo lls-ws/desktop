@@ -1,0 +1,13 @@
+include "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc"
+
+style "user-font" {
+	font_name = "Sans 10"
+}
+
+widget_class "*" style "user-font"
+
+gtk-font-name="Sans 10"
+gtk-can-change-accels = 1
+gtk-icon-theme-name = "Tango"
+
+include "/home/lls/.gtkrc.mine"

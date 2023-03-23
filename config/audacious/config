@@ -20,7 +20,7 @@ player_y=280
 
 [gtkui-layout]
 item0_name=Ferramenta de Busca
-item0_pos=0,-1,-1,210,620
+item0_pos=0,-1,-1,210,708
 item1_name=Capa do Álbum
 item1_pos=-1,0,0,284,188
 item_count=2

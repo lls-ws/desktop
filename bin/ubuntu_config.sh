@@ -24,7 +24,7 @@ scripts_install()
 	
 	update_file "stream_record.sh" "/usr/bin" "bin"
 	
-	cp -fv conf/bash_aliases ${FILE_BASH}
+	cp -fv config/bash_aliases ${FILE_BASH}
 	
 	chown -v ${USER}.${USER} ${FILE_BASH}
 	
@@ -60,7 +60,7 @@ geany_install()
 	
 	rm -rf ${APP_NAME}-themes
 	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 	rm -rf ${DIR_CONFIG}/${APP_NAME}/colorschemes
 	cp -rf /root/.config/${APP_NAME}/colorschemes ${DIR_CONFIG}/${APP_NAME}
@@ -87,11 +87,11 @@ audacious_install()
 	
 	install_app
 	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 	audacious_files_playlist
 	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}/playlists" "conf/${APP_NAME}/playlists"
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}/playlists" "config/${APP_NAME}/playlists"
 			
 }
 
@@ -126,7 +126,7 @@ streamtuner_install()
 	
 	install_app "streamripper"
 	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "conf/${APP_NAME}"
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 }
 
@@ -202,7 +202,9 @@ fluxbox_install()
 	
 	install_app
 	
-	update_files "Configure" "${DIR_FLUXBOX}" "conf/${APP_NAME}"
+	update_files "Configure" "${DIR_FLUXBOX}" "config/${APP_NAME}"
+	
+	gtk_install
 	
 }
 
@@ -220,6 +222,30 @@ fluxbox_files()
 		"init"
 		"startup"
 	)
+	
+}
+
+gtk_install()
+{
+	
+	gtk_file
+	
+	update_file "${FILE_SET}" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+	
+	cp -fv config/gtkrc-2.0 ${FILE_GTK}
+	
+	chown -v ${USER}.${USER} ${FILE_GTK}
+	
+}
+
+gtk_file()
+{
+	
+	APP_NAME="gtk-3.0"
+	
+	FILE_SET="settings.ini"
+	
+	FILE_GTK="/home/${USER}/.gtkrc-2.0"
 	
 }
 
@@ -241,23 +267,23 @@ lightdm_install()
 desktop_backup()
 {
 
-	cp -fv ${FILE_BASH} conf/bash_aliases
+	cp -fv ${FILE_BASH} config/bash_aliases
 	
 	geany_files
 	
-	update_files "Backup" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
 	
 	audacious_files_config
 	
-	update_files "Backup" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
 	
 	audacious_files_playlist
 	
-	update_files "Backup" "conf/${APP_NAME}/playlists" "${DIR_CONFIG}/${APP_NAME}/playlists"
+	update_files "Backup" "config/${APP_NAME}/playlists" "${DIR_CONFIG}/${APP_NAME}/playlists"
 	
 	streamtuner_files
 	
-	update_files "Backup" "conf/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
 	
 	transmission_file
 	
@@ -267,7 +293,15 @@ desktop_backup()
 	
 	fluxbox_files
 	
-	update_files "Backup" "conf/${APP_NAME}" "${DIR_FLUXBOX}"
+	update_files "Backup" "config/${APP_NAME}" "${DIR_FLUXBOX}"
+	
+	gtk_file
+	
+	echo "Backup ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
+	cp -fv ${FILE_GTK} config/gtkrc-2.0
 	
 }
 
@@ -305,7 +339,7 @@ update_file()
 	
 	fi
 	
-	echo "Copy ${FILE_CONF} Configuration..."
+	echo "Copy ${FILE_CONF} configuration..."
 	
 	rm -fv ${DIR_APP}/${FILE_CONF}
 	
@@ -367,6 +401,9 @@ case "$1" in
 	fluxbox)
 		fluxbox_install
 		;;
+	gtk)
+		gtk_install
+		;;
 	lightdm)
 		lightdm_install
 		;;
@@ -382,10 +419,11 @@ case "$1" in
 		streamtuner_install
 		transmission_install
 		fluxbox_install
+		gtk_install
 		lightdm_install
 		;;
 	*)
-		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|fluxbox|lightdm|backup}"
+		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|fluxbox|gtk|lightdm|backup}"
 		exit 1
 		;;
 esac

@@ -4,10 +4,11 @@
     [exec] (Chrome) 						{google-chrome} 					</opt/google/chrome/product_logo_32.xpm>
     [exec] (Geany) 	 						{geany} 							</usr/share/pixmaps/geany.xpm>
     [exec] (Audacious) 						{audacious -p} 						</usr/share/pixmaps/audacious-32.xpm>
-    [exec] (Terminal) 						{gnome-terminal --hide-menubar} 	</usr/share/pixmaps/mc.xpm>
+    [exec] (Terminal) 						{gnome-terminal --hide-menubar} 	<>
    
 [separator]
 
+	[exec] (Gerenciador de Arquivos)  		{nautilus}   						</usr/share/pixmaps/nautilus.xpm>
 	[exec] (StreamTuner) 					{streamtuner2} 						</usr/share/pixmaps/streamtuner2.xpm>
 	[exec] (Opera) 							{opera} 							</usr/share/pixmaps/opera.xpm>
 
@@ -51,7 +52,8 @@
       	[exec] (Configuracoes do Menu) 			{geany ~/.fluxbox/menu}
       	[exec] (Configuracoes de Apps) 			{geany ~/.fluxbox/apps}
       	[exec] (Configuracoes de Teclas) 		{geany ~/.fluxbox/keys}
-      	[exec] (Trocar Tema do GTK) 			{gtk-theme-switch2}
+      	[exec] (Configuracoes do GTK-2.0) 		{geany ~/.gtkrc-2.0}
+      	[exec] (Configuracoes do GTK-3.0) 		{geany ~/.config/gtk-3.0/settings.ini}
       	[exec] (Executar) 						{fbrun} 
       	[reconfig] (Recarregar configuracao) 
       	[restart]  (Reiniciar) 
