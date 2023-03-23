@@ -8,12 +8,15 @@ apps_install()
 {
 
 	echo "Install Essencial Apps..."
+	
 	#apt -y install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
 	#apt -y install gnome-shell-extension-prefs
 	#apt -y install ubuntu-restricted-extras
 	#apt -y install gnome-tweaks
 	#apt -y install stacer
 	#apt -y install mc curl
+	
+	apt -y install imagemagick ristretto pavucontrol parole thunar mate-calc mousepad
 	
 }
 
@@ -23,10 +26,41 @@ scripts_install()
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
 	
 	update_file "stream_record.sh" "/usr/bin" "bin"
+	update_file "change_brightness.sh" "/usr/bin" "bin"
+	update_file "print_screen.sh" "/usr/bin" "bin"
 	
 	cp -fv config/bash_aliases ${FILE_BASH}
 	
 	chown -v ${USER}.${USER} ${FILE_BASH}
+	
+	pixmaps_files
+	
+}
+
+pixmaps_files()
+{
+	
+	APP_NAME="pixmaps"
+	
+	FILES_SET=(
+		"tools.xpm"
+		"thunar.xpm"
+		"parole.xpm"
+		"reboot.xpm"
+		"logout.xpm"
+		"office.xpm"
+		"mousepad.xpm"
+		"shutdown.xpm"
+		"mate-calc.xpm"
+		"developer.xpm"
+		"ristretto.xpm"
+		"anonymous.xpm"
+		"homeoffice.xpm"
+		"multimedia.xpm"
+		"print_screen.xpm"
+	)
+	
+	update_files "Configure" "/usr/share/${APP_NAME}" "images/${APP_NAME}"
 	
 }
 

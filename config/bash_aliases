@@ -12,3 +12,6 @@ alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'
 
 # Record a Stream Radio
 alias record='sudo stream_record.sh uturn'
+
+# Change Video Brightness
+alias change_brightness='sudo change_brightness.sh'
