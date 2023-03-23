@@ -79,7 +79,7 @@ Menu :RootMenu
 225 :RootMenu
 
 # colocar o papel de parede 
-Control Menu :Exec fbsetbg -a /home/lls/Imagens/wallpaper.png
+Control Menu :Exec fbsetbg -a /usr/share/backgrounds/wallpaper.png
 
 # navegador
 180 :Exec google-chrome
@@ -87,14 +87,14 @@ Control Menu :Exec fbsetbg -a /home/lls/Imagens/wallpaper.png
 
 # volume settings, using common keycodes
 # if these don't work, use xev to find out your real keycodes
-123 :Exec pactl set-sink-volume 2 +10%
-122 :Exec pactl set-sink-volume 2 -10%
-121 :Exec pactl set-sink-mute 2 toggle
+123 :Exec pactl set-sink-volume 0 +10%
+122 :Exec pactl set-sink-volume 0 -10%
+121 :Exec pactl set-sink-mute 0 toggle
 
 # parole
-173 :Exec parole -P
-171 :Exec parole -N
-172 :Exec parole -p
+173 :Exec audacious -r
+171 :Exec audacious -f
+172 :Exec audacious -t
 
 # current window commands
 Mod1 F4 :Close

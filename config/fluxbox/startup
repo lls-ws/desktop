@@ -14,6 +14,7 @@
 #fbsetroot -solid black &
 fbsetbg -a /usr/share/backgrounds/wallpaper.png &
 
+nm-applet &
 audacious -p &
 
 # Iniciando o fluxbox
