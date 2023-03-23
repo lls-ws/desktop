@@ -187,8 +187,6 @@ transmission_install()
 	
 	echo "Configure ${APP_NAME}..."
 	
-	DIR_ETC="/etc/${APP_NAME}"
-	
 	service ${APP_NAME} stop
 	
 	USER_TRANSMISISON="debian-transmission"
@@ -228,6 +226,8 @@ transmission_file()
 	APP_NAME="transmission-daemon"
 	
 	FILE_SET="settings.json"
+	
+	DIR_ETC="/etc/${APP_NAME}"
 	
 }
 
@@ -288,15 +288,32 @@ gtk_file()
 lightdm_install()
 {
 	
-	APP_NAME="lightdm"
+	lightdm_file
 	
-	install_app
+	install_app "lightdm-gtk-greeter"
 	
 	echo "Configure ${APP_NAME}..."
 	
 	dpkg-reconfigure lightdm
 	
 	cat /etc/X11/default-display-manager
+	
+	update_file "${FILE_SET}" "${DIR_SHARE}" "${DIR_GIT}"
+	
+	chown -v root.root ${DIR_SHARE}/${FILE_SET}
+	
+}
+
+lightdm_file()
+{
+	
+	APP_NAME="lightdm"
+	
+	FILE_SET="01_ubuntu.conf"
+	
+	DIR_SHARE="/usr/share/${APP_NAME}/${APP_NAME}-gtk-greeter.conf.d"
+	
+	DIR_GIT="usr/share/${APP_NAME}/${APP_NAME}-gtk-greeter.conf.d"
 	
 }
 
@@ -325,7 +342,7 @@ desktop_backup()
 	
 	echo "Backup ${APP_NAME}..."
 	
-	update_file "${FILE_SET}" "etc/${APP_NAME}" "/etc/${APP_NAME}"
+	update_file "${FILE_SET}" "etc/${APP_NAME}" "${DIR_ETC}"
 	
 	fluxbox_files
 	
@@ -338,6 +355,12 @@ desktop_backup()
 	update_file "${FILE_SET}" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
 	
 	cp -fv ${FILE_GTK} config/gtkrc-2.0
+	
+	lightdm_file
+	
+	echo "Backup ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "${DIR_GIT}" "${DIR_SHARE}"
 	
 }
 
