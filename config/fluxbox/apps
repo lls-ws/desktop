@@ -8,7 +8,7 @@
   [Position]	(UPPERLEFT)	{0% 95%}
   [Deco]	{NONE}
   [Layer]	{2}
-  [Close]	{yes}
+  [Close]	{no}
 [end]
 [app] (name=geany) (class=Geany)
   [Dimensions]	{60% 95%}
@@ -22,42 +22,13 @@
   [Deco]	{NONE}
   [Close]	{no}
 [end]
-[app] (name=audacious) (class=Audacious)
-  [Dimensions]	{100% 100%}
-  [Position]	(UPPERLEFT)	{35% 35%}
-  [Deco]	{NONE}
-  [Maximized]	{yes}
+[app] (name=mate-calc) (class=Mate-calc)
+  [Position]	(UPPERLEFT)	{31% 33%}
   [Close]	{no}
 [end]
-[app] (name=gnome-terminal-server) (class=Gnome-terminal)
-  [Dimensions]	{57% 57%}
+[app] (name=.*)
+  [Dimensions]	{100% 95%}
   [Position]	(UPPERLEFT)	{0% 0%}
   [Deco]	{NONE}
-  [Maximized]	{yes}
   [Close]	{no}
-[end]
-[app] (name=streamtuner2) (class=Streamtuner2)
-  [Dimensions]	{77% 100%}
-  [Position]	(UPPERLEFT)	{23% 0%}
-  [Deco]	{NONE}
-  [Maximized]	{yes}
-  [Close]	{no}
-[end]
-[app] (name=ristretto) (class=Ristretto)
-  [Dimensions]	{47% 58%}
-  [Position]	(UPPERLEFT)	{0% 0%}
-  [Maximized]	{yes}
-  [Close]	{yes}
-[end]
-[app] (name=parole) (class=Parole)
-  [Dimensions]	{100% 100%}
-  [Position]	(UPPERLEFT)	{0% 2%}
-  [Maximized]	{yes}
-  [Close]	{yes}
-[end]
-[app] (name=thunar) (class=Thunar) (role=Thunar-1679551132-3212122489)
-  [Dimensions]	{50% 63%}
-  [Position]	(UPPERLEFT)	{0% 0%}
-  [Maximized]	{yes}
-  [Close]	{yes}
 [end]
