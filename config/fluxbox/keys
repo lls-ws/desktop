@@ -54,17 +54,17 @@ Mod1 F1 :Exec /usr/bin/terminal.sh root
 # abrindo o terminal do usuário
 Mod1 F2 :Exec /usr/bin/terminal.sh
 
-# Abrindo terminal ssh no servidor lls.net.br
-Mod1 F3 :Exec /usr/bin/cloud_connect
+# Abrindo terminal ssh no servidor
+Mod1 F3 :Exec sudo /usr/bin/cloud_connect.sh funchal
 
-# Abrindo terminal ssh no servidor lls.net.br
-Mod1 F5 :Exec /usr/bin/cloud_connect app
+# Abrindo terminal ssh no servidor
+Mod1 F5 :Exec sudo /usr/bin/cloud_connect.sh app
 
-# Abrindo terminal ssh no servidor lls.net.br
-Mod1 F6 :Exec /usr/bin/cloud_connect funchal
+# Abrindo terminal ssh no servidor
+Mod1 F6 :Exec sudo /usr/bin/cloud_connect.sh asus
 
-# Abrindo terminal ssh no servidor asus.lls.net.br
-Mod1 F7 :Exec /usr/bin/cloud_connect asus
+# Abrindo terminal ssh no servidor
+Mod1 F7 :Exec sudo /usr/bin/cloud_connect.sh
 
 # salva a imagem da tela
 Print :Exec /usr/bin/print_screen.sh

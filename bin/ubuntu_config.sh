@@ -28,6 +28,7 @@ scripts_install()
 	
 	update_file "change_brightness.sh" "/usr/bin" "bin"
 	update_file "stream_record.sh" "/usr/bin" "bin"
+	update_file "cloud_connect.sh" "/usr/bin" "bin"
 	update_file "print_screen.sh" "/usr/bin" "bin"
 	update_file "terminal.sh" "/usr/bin" "bin"
 	update_file "crack.sh" "/usr/bin" "bin"
@@ -50,7 +51,6 @@ pixmaps_files()
 		"thunar.xpm"
 		"parole.xpm"
 		"reboot.xpm"
-		"logout.xpm"
 		"office.xpm"
 		"network.xpm"
 		"mousepad.xpm"

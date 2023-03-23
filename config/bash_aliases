@@ -16,6 +16,9 @@ alias record='sudo stream_record.sh uturn'
 # Change Video Brightness
 alias change_brightness='sudo change_brightness.sh'
 
+# Connect into a Clound
+alias cloud_connect='sudo cloud_connect.sh'
+
 # Get Wifi Password
 alias crack='sudo crack.sh'
 
