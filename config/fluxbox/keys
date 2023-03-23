@@ -87,8 +87,8 @@ Control Menu :Exec fbsetbg -a /usr/share/backgrounds/wallpaper.png
 
 # volume settings, using common keycodes
 # if these don't work, use xev to find out your real keycodes
-123 :Exec pactl set-sink-volume 0 +10%
-122 :Exec pactl set-sink-volume 0 -10%
+123 :Exec pactl set-sink-volume 0 +5%
+122 :Exec pactl set-sink-volume 0 -5%
 121 :Exec pactl set-sink-mute 0 toggle
 
 # parole
