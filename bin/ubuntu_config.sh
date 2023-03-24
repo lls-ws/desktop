@@ -9,15 +9,15 @@ apps_install()
 
 	echo "Install Essencial Apps..."
 	
-	#apt -y install arc arj cabextract lhasa p7zip p7zip-full p7zip-rar rar unrar unace unzip xz-utils zip
-	#apt -y install gnome-shell-extension-prefs
-	#apt -y install ubuntu-restricted-extras
-	#apt -y install gnome-tweaks
-	#apt -y install stacer
-	#apt -y install mc curl
-	
-	apt -y install imagemagick ristretto pavucontrol parole thunar mate-calc mousepad
-	apt -y install xterm
+	apt -y install imagemagick \
+				   ristretto \
+				   pavucontrol \
+				   parole \
+				   thunar \
+				   mate-calc \
+				   mousepad \
+				   xterm \
+				   curl
 	
 }
 
