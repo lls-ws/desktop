@@ -1,4 +1,4 @@
-# Ubuntu Desktop 22.04 LTS 64 bits
+# Ubuntu Desktop 22.04.2 LTS 64 bits
 
 Scripts to configure a custom Ubuntu Desktop
 
