@@ -16,6 +16,12 @@
   [Deco]	{NONE}
   [Close]	{no}
 [end]
+[app] (name=thunar) (class=Thunar)
+  [Dimensions]	{60% 95%}
+  [Position]	(UPPERLEFT)	{0% 0%}
+  [Deco]	{NONE}
+  [Close]	{no}
+[end]
 [app] (name=google-chrome) (class=Google-chrome) (role=browser)
   [Dimensions]	{40% 95%}
   [Position]	(UPPERLEFT)	{60% 0%}
