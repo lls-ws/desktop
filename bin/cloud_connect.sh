@@ -59,7 +59,7 @@ if [ "$2" = "ubuntu" ]; then
 
 	SSH_KEY=`ls ${DIR_SSH}/${USER}-${HOSTNAME}-*.pem | tail -1`
 	
-	USER="ubuntu"
+	USER="$2"
 
 fi
 
