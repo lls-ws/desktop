@@ -8,7 +8,9 @@ cd desktop
 
 bash bin/ubuntu_conf.sh all
 
-# For individual configs type:
+or
+
+# For individual configurations type:
 
 bash bin/ubuntu_conf.sh gtk
 
