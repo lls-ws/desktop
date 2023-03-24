@@ -10,6 +10,12 @@
   [Layer]	{2}
   [Close]	{no}
 [end]
+[app] (name=gnome-terminal-server) (class=Gnome-terminal)
+  [Dimensions]	{61% 96%}
+  [Position]	(UPPERLEFT)	{0% 0%}
+  [Deco]	{NONE}
+  [Close]	{no}
+[end]
 [app] (name=geany) (class=Geany)
   [Dimensions]	{60% 95%}
   [Position]	(UPPERLEFT)	{0% 0%}
