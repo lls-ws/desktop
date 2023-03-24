@@ -2,11 +2,7 @@
 
 Scripts to configure a custom Ubuntu Desktop
 
-Repository cloud is required!
-
 # Steps to configure:
-
-git clone https://github.com/lls-ws/cloud.git
 
 cd desktop
 
