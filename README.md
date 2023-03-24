@@ -8,8 +8,6 @@ cd desktop
 
 bash bin/ubuntu_conf.sh all
 
-or
-
 # For individual configurations type:
 
 bash bin/ubuntu_conf.sh gtk
