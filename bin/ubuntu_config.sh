@@ -470,17 +470,29 @@ DIR_CONFIG="/home/${USER}/.config"
 FILE_BASH="/home/${USER}/.bash_aliases"
 
 case "$1" in
-	install)
+	gtk)
+		gtk_install
+		;;
+	sudo)
+		sudo_install
+		;;
+	apps)
 		apps_install
+		;;
+	geany)
+		geany_install
+		;;
+	fluxbox)
+		fluxbox_install
 		;;
 	scripts)
 		scripts_install
 		;;
+	lightdm)
+		lightdm_install
+		;;
 	browsers)
 		browsers_install
-		;;
-	geany)
-		geany_install
 		;;
 	audacious)
 		audacious_install
@@ -491,36 +503,24 @@ case "$1" in
 	transmission)
 		transmission_install
 		;;
-	fluxbox)
-		fluxbox_install
-		;;
-	gtk)
-		gtk_install
-		;;
-	lightdm)
-		lightdm_install
-		;;
-	sudo)
-		sudo_install
-		;;
 	backup)
 		desktop_backup
 		;;
 	all)
+		gtk_install
+		sudo_install
 		apps_install
-		scripts_install
-		browsers_install
 		geany_install
+		fluxbox_install
+		scripts_install
+		lightdm_install
+		browsers_install
 		audacious_install
 		streamtuner_install
 		transmission_install
-		fluxbox_install
-		gtk_install
-		lightdm_install
-		sudo_install
 		;;
 	*)
-		echo "Use: $0 {all|install|scripts|browsers|geany|audacious|streamtuner|transmission|fluxbox|gtk|lightdm|sudo|backup}"
+		echo "Use: $0 {all|gtk|sudo|apps|geany|fluxbox|scripts|lightdm|browsers|audacious|streamtuner|transmission|backup}"
 		exit 1
 		;;
 esac
