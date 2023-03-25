@@ -6,6 +6,10 @@ Scripts to configure a custom Ubuntu Desktop
 
 cd desktop
 
+sudo bash bin/apps_install.sh
+
+
+
 bash bin/ubuntu_conf.sh all
 
 # For individual configurations type:

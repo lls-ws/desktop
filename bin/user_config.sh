@@ -288,39 +288,6 @@ fluxbox_files()
 }
 
 
-lightdm_install()
-{
-	
-	lightdm_file
-	
-	install_app "lightdm-gtk-greeter"
-	
-	echo "Configure ${APP_NAME}..."
-	
-	dpkg-reconfigure lightdm
-	
-	cat /etc/X11/default-display-manager
-	
-	update_file "${FILE_SET}" "${DIR_SHARE}" "${DIR_GIT}"
-	
-	chown -v root.root ${DIR_SHARE}/${FILE_SET}
-	
-}
-
-lightdm_file()
-{
-	
-	APP_NAME="lightdm"
-	
-	FILE_SET="01_ubuntu.conf"
-	
-	DIR_SHARE="/usr/share/${APP_NAME}/${APP_NAME}-gtk-greeter.conf.d"
-	
-	DIR_GIT="usr/share/${APP_NAME}/${APP_NAME}-gtk-greeter.conf.d"
-	
-}
-
-
 desktop_backup()
 {
 
