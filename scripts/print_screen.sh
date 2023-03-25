@@ -21,6 +21,12 @@ ARQ_TMP=$(echo "${ARQ_IMG}_0${CONT_IMG}")
 
 DIR_IMG="/home/${USER}/Imagens"
 
+if [ ! -d ${DIR_IMG} ]; then
+
+	mkdir -v ${DIR_IMG}
+
+fi
+
 while true
 do    
     
