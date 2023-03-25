@@ -1,1 +1,2 @@
-lls ALL=(ALL) NOPASSWD:/sbin/reboot, /sbin/shutdown, /usr/bin/xterm, /usr/bin/change_brightness.sh, /usr/bin/cloud_connect.sh, /home/lls/cloud/bin/git_conf.sh
+lls ALL=(ALL) NOPASSWD:/sbin/reboot, /sbin/shutdown, /usr/bin/xterm, /usr/bin/change_brightness.sh, /usr/bin/cloud_connect.sh
+lls ALL=(ALL) NOPASSWD:/home/lls/cloud/bin/git_conf.sh
