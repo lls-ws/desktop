@@ -26,23 +26,6 @@ gtk_file()
 	
 }
 
-apps_install()
-{
-
-	echo "Install Essencial Apps..."
-	
-	apt -y install imagemagick \
-				   ristretto \
-				   pavucontrol \
-				   parole \
-				   thunar \
-				   mate-calc \
-				   mousepad \
-				   xterm \
-				   curl
-	
-}
-
 scripts_install()
 {
 	
@@ -87,21 +70,6 @@ pixmaps_files()
 	)
 	
 	update_files "Configure" "/usr/share/${APP_NAME}" "images/${APP_NAME}"
-	
-}
-
-browsers_install()
-{
-
-	echo "Install Google Chrome..."
-	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
-	cd /tmp && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && cd ..
-	
-	echo "Install Opera VPN..."
-	echo "deb https://deb.opera.com/opera-stable/ stable non-free" | tee /etc/apt/sources.list.d/opera-stable.list
-	cd /tmp && wget -q -O - https://deb.opera.com/archive.key | apt-key add - && cd ..
-	
-	apt update && apt -y install opera-stable google-chrome-stable
 	
 }
 
@@ -327,14 +295,6 @@ update_file()
 	cp -fv ${DIR_CLOUD}/${FILE_CONF} ${DIR_APP}
 	
 	#chown -v ${USER}.${USER} ${DIR_APP}/${FILE_CONF}
-	
-}
-
-install_app()
-{
-	
-	echo "Install ${APP_NAME}..."
-	apt -y install ${APP_NAME} "$1"
 	
 }
 
