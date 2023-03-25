@@ -12,7 +12,7 @@
 
 # Muda a cor do papel de parede
 #fbsetroot -solid black &
-fbsetbg -a /usr/share/backgrounds/wallpaper.png &
+#fbsetbg -a /usr/share/backgrounds/wallpaper.png &
 
 sudo change_brightness.sh &
 

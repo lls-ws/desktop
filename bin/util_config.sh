@@ -73,6 +73,10 @@ pixmaps_conf()
 	
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
 	
+	cp -fv images/wallpaper.png /usr/share/images/fluxbox/ubuntu-dark.png
+	cp -fv images/wallpaper.png /usr/share/images/fluxbox/ubuntu-light.png
+	cp -fv images/wallpaper.png /usr/share/images/fluxbox/fluxbox.png
+	
 }
 
 case "$1" in
