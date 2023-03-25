@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to configure sudo on Ubuntu Desktop 22.04.2 LTS 64 bits
+# Script to configure sudo on Ubuntu Desktop
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
