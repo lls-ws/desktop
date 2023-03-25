@@ -7,7 +7,9 @@
 </h4>
 
 
-## Steps to configure:
+## Usage
+
+### From Command Line
 
 ```bash
 cd desktop
