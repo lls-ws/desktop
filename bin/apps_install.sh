@@ -19,20 +19,20 @@ ls /etc/apt/sources.list.d
 sudo apt update
 
 sudo apt -y install google-chrome-stable \
-					transmission-daemon \
-					opera-stable \
-					streamtuner2 \
-					streamripper \
-					imagemagick \
-					pavucontrol \
-					ristretto \
-					mate-calc \
-					audacious \
-					mousepad \
-					fluxbox \
-					lightdm \
-					parole \
-					thunar \
-					xterm \
-					geany \
-					curl
+	transmission-daemon \
+	opera-stable \
+	streamtuner2 \
+	streamripper \
+	imagemagick \
+	pavucontrol \
+	ristretto \
+	mate-calc \
+	audacious \
+	mousepad \
+	fluxbox \
+	lightdm \
+	parole \
+	thunar \
+	xterm \
+	geany \
+	curl
