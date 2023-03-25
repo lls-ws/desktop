@@ -3,4 +3,4 @@ lls ALL=(ALL) NOPASSWD:/sbin/shutdown
 lls ALL=(ALL) NOPASSWD:/usr/bin/xterm
 lls ALL=(ALL) NOPASSWD:/usr/bin/change_brightness.sh
 lls ALL=(ALL) NOPASSWD:/usr/bin/cloud_connect.sh
-lls ALL=(ALL) NOPASSWD:~/cloud/bin/git_conf.sh
+lls ALL=(ALL) NOPASSWD:/home/lls/cloud/bin/git_conf.sh
