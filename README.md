@@ -1,5 +1,5 @@
 <h1 align="center">
-  Ubuntu Desktop 22.04.2 LTS 64 bits
+  Desktop
 </h1>
 
 <h4 align="center">
