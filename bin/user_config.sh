@@ -202,61 +202,6 @@ streamtuner_files()
 	
 }
 
-transmission_install()
-{
-	
-	transmission_file
-	
-	install_app
-	
-	echo "Configure ${APP_NAME}..."
-	
-	service ${APP_NAME} stop
-	
-	USER_TRANSMISISON="debian-transmission"
-	
-	if [ ! -f "${DIR_ETC}/${FILE_SET}.bak" ]; then
-	
-		cp -fv ${DIR_ETC}/${FILE_SET} ${DIR_ETC}/${FILE_SET}.bak
-		
-		usermod -a -G ${USER_TRANSMISISON} ${USER}
-	
-	fi
-	
-	groups ${USER}
-	
-	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
-	
-	chown -v ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_ETC}/${FILE_SET}
-	
-	DIR_TRANSMISSION="/home/torrents"
-	
-	if [ ! -d "${DIR_TRANSMISSION}" ]; then
-	
-		mkdir -pv ${DIR_TRANSMISSION}/.incomplete
-	
-	fi
-	
-	chown -Rv ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_TRANSMISSION}
-	
-	systemctl disable ${APP_NAME}.service
-	
-	service ${APP_NAME} start
-	service ${APP_NAME} status
-	
-}
-
-transmission_file()
-{
-	
-	APP_NAME="transmission-daemon"
-	
-	FILE_SET="settings.json"
-	
-	DIR_ETC="/etc/${APP_NAME}"
-	
-}
-
 fluxbox_install()
 {
 	
