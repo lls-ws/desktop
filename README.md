@@ -10,4 +10,7 @@ sudo bash bin/apps_install.sh
 
 sudo bash bin/sudo_config.sh
 
-# bash bin/user_config.sh
+bash bin/user_config.sh
+
+# bash bin/daemon_config.sh
+
