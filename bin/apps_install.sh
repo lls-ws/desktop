@@ -18,7 +18,8 @@ ls /etc/apt/sources.list.d
 
 sudo apt update
 
-sudo apt -y install google-chrome-stable \
+sudo apt -y install \
+	google-chrome-stable \
 	transmission-daemon \
 	opera-stable \
 	streamtuner2 \
