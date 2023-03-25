@@ -4,47 +4,9 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-update_file()
-{
-
-	FILE_CONF="$1"
-	
-	DIR_APP="$2"
-	
-	DIR_GIT="$3"
-	
-	if [ ! -d ${DIR_APP} ]; then
-	
-		mkdir -pv ${DIR_APP}
-	
-	fi
-	
-	echo "Copy ${FILE_CONF} configuration..."
-	
-	rm -fv ${DIR_APP}/${FILE_CONF}
-	
-	cp -fv ${DIR_GIT}/${FILE_CONF} ${DIR_APP}
-	
-}
-
-update_files()
-{
-
-	MSG_TXT="$1"
-
-	DIR_UPDATE="$2"
-	DIR_SOURCE="$3"
-
-	echo -e "\n${MSG_TXT} ${APP_NAME}..."
-
-	for FILE_SET in "${FILES_SET[@]}"
-	do
-		
-		update_file "${FILE_SET}" "${DIR_UPDATE}" "${DIR_SOURCE}"
-			
-	done
-	
-}
+# Caminho das bibliotecas
+PATH=.:$(dirname $0):$PATH
+. lib/update.lib		|| exit 1
 
 aliases_conf()
 {

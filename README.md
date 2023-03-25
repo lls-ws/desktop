@@ -8,9 +8,9 @@ cd desktop
 
 sudo bash bin/apps_install.sh
 
-sudo bash bin/sudo_config.sh
+sudo bash bin/daemon_config.sh all
 
-bash bin/user_config.sh
+sudo bash bin/util_config.sh all
 
-# sudo bash bin/daemon_config.sh
+bash bin/user_config.sh all
 
