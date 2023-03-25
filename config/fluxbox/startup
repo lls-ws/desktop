@@ -14,7 +14,9 @@
 #fbsetroot -solid black &
 #fbsetbg -a /usr/share/backgrounds/wallpaper.png &
 
-rmdir -v ~/Imagens ~/Downloads ~/Documentos ~/Música ~/Vídeos ~/Público
+rm -f ~/.fehbg &
+rm -rf ~/.cache ~/.dosbox ~/.gnome ~/.local ~/snap &
+rmdir -v ~/Imagens ~/Downloads ~/Documentos ~/Música ~/Vídeos ~/Público &
 
 sudo change_brightness.sh &
 
