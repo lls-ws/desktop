@@ -44,3 +44,8 @@
   [Deco]	{NONE}
   [Close]	{no}
 [end]
+[transient] (name=org.gnome.Nautilus) (class=Org.gnome.Nautilus)
+  [Dimensions]	{36% 47%}
+  [Position]	(UPPERLEFT)	{30% 22%}
+  [Close]	{yes}
+[end]

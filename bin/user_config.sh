@@ -13,6 +13,7 @@ aliases_conf()
 	
 	cp -fv config/bash_aliases ${FILE_BASH}
 	
+	echo "Load gnome-terminal profiles..."
 	dconf load /org/gnome/terminal/legacy/profiles:/ < config/gnome-terminal-profiles.dconf
 	
 }
@@ -36,6 +37,12 @@ gtk_conf()
 	update_file "${FILE_SET}" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 	cp -fv config/gtkrc-2.0 ${FILE_GTK}
+	
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	gsettings range org.gnome.desktop.interface color-scheme
+	
+	xdg-mime default thunar.desktop inode/directory
+	xdg-mime query default inode/directory
 	
 }
 
@@ -157,6 +164,7 @@ desktop_backup()
 
 	cp -fv ${FILE_BASH} config/bash_aliases
 	
+	echo "Create gnome-terminal-profiles.dconf"
 	dconf dump /org/gnome/terminal/legacy/profiles:/ > config/gnome-terminal-profiles.dconf
 	
 	geany_files
