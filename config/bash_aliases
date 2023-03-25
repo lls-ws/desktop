@@ -24,3 +24,14 @@ alias crack='sudo crack.sh'
 
 # Open a Terminal
 alias terminal='terminal.sh'
+
+# Get a GitHub Repository
+alias git_dataflex='git clone https://github.com/lls-ws/dataflex.git'
+alias git_desktop='git clone https://github.com/lls-ws/desktop.git'
+alias git_cloud='git clone https://github.com/lls-ws/cloud.git'
+
+rmdir 'Área de Trabalho' 'Música' 'Público' 'Vídeos' 2> /dev/null
+rmdir 'Imagens' 'Downloads' 'Documentos' 2> /dev/null
+
+rm -r '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
+rm '.fehbg' 2> /dev/null

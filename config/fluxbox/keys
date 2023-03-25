@@ -49,7 +49,7 @@ Mod4 8 :Tab 8
 Mod4 9 :Tab 9
 
 # abrindo o terminal root
-Mod1 F1 :Exec /usr/bin/terminal.sh root
+Mod1 F1 :Exec /usr/bin/gnome-terminal
 
 # abrindo o terminal do usuário
 Mod1 F2 :Exec /usr/bin/terminal.sh

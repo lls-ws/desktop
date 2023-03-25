@@ -13,6 +13,8 @@ aliases_conf()
 	
 	cp -fv config/bash_aliases ${FILE_BASH}
 	
+	dconf load /org/gnome/terminal/legacy/profiles:/ < config/gnome-terminal-profiles.dconf
+	
 }
 
 gtk_files()
@@ -154,6 +156,8 @@ desktop_backup()
 {
 
 	cp -fv ${FILE_BASH} config/bash_aliases
+	
+	dconf dump /org/gnome/terminal/legacy/profiles:/ > config/gnome-terminal-profiles.dconf
 	
 	geany_files
 	
