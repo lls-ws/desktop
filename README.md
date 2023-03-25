@@ -8,3 +8,5 @@ cd desktop
 
 sudo bash bin/apps_install.sh
 
+sudo bash bin/sudo_config.sh
+
