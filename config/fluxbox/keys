@@ -76,7 +76,7 @@ Pause :Exec xset -display :0.0 dpms force off
 # menu
 Super_L :RootMenu
 Menu :RootMenu
-225 :RootMenu
+225 :Exec geany
 
 # colocar o papel de parede 
 Control Menu :Exec fbsetbg -a /usr/share/backgrounds/wallpaper.png
