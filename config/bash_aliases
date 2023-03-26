@@ -29,10 +29,12 @@ alias terminal='terminal.sh gnome'
 alias git_clone_dataflex='cd ~; git clone https://github.com/lls-ws/dataflex.git; ls'
 alias git_clone_desktop='cd ~; git clone https://github.com/lls-ws/desktop.git; ls'
 alias git_clone_cloud='cd ~; git clone https://github.com/lls-ws/cloud.git; ls'
+alias git_clone_lls-src='cd ~; git clone https://github.com/lls-ws/lls-src.git; ls'
 
 # Update a GitHub Repository
 alias git_upload_desktop='clear; cd ~/desktop; sudo ~/cloud/bin/git_conf.sh remote desktop; cd ~'
 alias git_upload_cloud='clear; cd ~/cloud; sudo ~/cloud/bin/git_conf.sh remote cloud; cd ~'
+alias git_upload_lls-src='clear; cd ~/lls-src; sudo ~/cloud/bin/git_conf.sh remote lls-src; cd ~'
 
 # Backup a user profile
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
