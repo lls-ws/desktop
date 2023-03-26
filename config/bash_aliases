@@ -37,6 +37,18 @@ alias git_upload_cloud='clear; cd ~/cloud; sudo ~/cloud/bin/git_conf.sh remote c
 # Backup a user profile
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
 
+# Comands for MariaDB
+alias maria-start='sudo service mariadb start'
+alias maria-stop='sudo service mariadb stop'
+alias maria-status='sudo service mariadb status'
+alias maria-restart='sudo service mariadb restart'
+
+# Comands for Tomcat
+alias tom-start='sudo service tomcat9 start'
+alias tom-stop='sudo service tomcat9 stop'
+alias tom-status='sudo service tomcat9 status'
+alias tom-restart='sudo service tomcat9 restart'
+
 rmdir 'Área de Trabalho' 'Música' 'Público' 'Vídeos' 2> /dev/null
 rmdir 'Imagens' 'Downloads' 'Documentos' 2> /dev/null
 
