@@ -49,6 +49,13 @@ alias tom-stop='sudo service tomcat9 stop'
 alias tom-status='sudo service tomcat9 status'
 alias tom-restart='sudo service tomcat9 restart'
 
+# Comands for Disable Services
+alias disable-snapd='sudo systemctl disable snapd.service'
+alias disable-cups='sudo systemctl disable cups.service'
+alias disable-cron='sudo systemctl disable cron.service'
+alias disable-cups-browsed='sudo systemctl disable cups-browsed.service'
+alias show-service='ls /etc/systemd/system/multi-user.target.wants'
+
 rmdir 'Área de Trabalho' 'Música' 'Público' 'Vídeos' 2> /dev/null
 rmdir 'Imagens' 'Downloads' 'Documentos' 2> /dev/null
 
