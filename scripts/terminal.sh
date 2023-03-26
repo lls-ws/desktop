@@ -3,18 +3,18 @@
 #
 # email: lls.homeoffice@gmail.com
 
-CMD_TERM="xterm -fn 10x20 -bg black -fg"
+CMD_XTERM="xterm -fn 10x20 -bg black -fg"
+
+CMD_GTERM="gnome-terminal --tab"
 
 if [ -z "$1" ]; then
 
 	COLOR="#FF0000"
 
-	${CMD_TERM} ${COLOR} &
+	${CMD_XTERM} ${COLOR} &
 
 else
 	
-	COLOR="#43D216"
-	
-	sudo ${CMD_TERM} ${COLOR} &
+	${CMD_GTERM} &
 
 fi

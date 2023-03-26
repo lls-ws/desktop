@@ -201,7 +201,7 @@ USER=$(whoami)
 
 if [ ${USER} = "root" ]; then
     
-    echo "Usuario root não permitido!"
+    echo "Root user not permited!"
     
     exit 1;
     
