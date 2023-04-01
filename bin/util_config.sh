@@ -16,6 +16,7 @@ hosts_conf()
 	echo "192.168.15.150		repeater.lls.net.br		repeater" 	>> /etc/hosts
 	echo "192.168.15.200		dell.lls.net.br			dell" 		>> /etc/hosts
 	echo "15.228.191.206		funchal.lls.net.br		funchal" 	>> /etc/hosts
+	echo "15.228.191.206		repository.lls.net.br	repository"	>> /etc/hosts
 	echo "208.67.222.222		opendns.lls.net.br		opendns" 	>> /etc/hosts
 	echo "208.67.220.220		opendns2.lls.net.br		opendns2" 	>> /etc/hosts
 	
