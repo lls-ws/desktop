@@ -6,7 +6,7 @@ show_interface=FALSE
 [audgui]
 eq_preset_win=0,0,1280,800
 equalizer_win=506,251,342,288
-filebrowser_win=304,155,672,480
+filebrowser_win=0,0,1280,760
 filesel_path=/home/lls/Música
 info_win=397,185,560,420
 no_confirm_playlist_delete=FALSE
@@ -14,7 +14,7 @@ url_opener_win=485,303,384,183
 
 [gtkui]
 column_widths=10,465,288,10,175,175,10,100,43,10,275,275,275,10,275
-player_height=760
+player_height=759
 player_width=1280
 player_x=0
 player_y=0
