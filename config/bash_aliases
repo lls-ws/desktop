@@ -61,6 +61,6 @@ alias show-service='ls /etc/systemd/system/multi-user.target.wants'
 rmdir 'Área de Trabalho' 'Música' 'Público' 'Vídeos' 2> /dev/null
 rmdir 'Imagens' 'Downloads' 'Documentos' 2> /dev/null
 
-rm -r '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
-rm '.fehbg' 2> /dev/null
+rm -rf '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
+rm -f '.fehbg' 2> /dev/null
 ls
