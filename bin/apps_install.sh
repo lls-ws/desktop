@@ -35,7 +35,6 @@ sudo apt -y install \
 	mousepad \
 	fluxbox \
 	lightdm \
-	parole \
 	thunar \
 	xterm \
 	geany \
