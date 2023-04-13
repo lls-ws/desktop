@@ -40,4 +40,5 @@ sudo apt -y install \
 	xterm \
 	geany \
 	curl \
-	kodi
+	kodi \
+	vlc
