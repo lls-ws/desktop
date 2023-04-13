@@ -1,4 +1,4 @@
-sudo change_brightness.sh &
+#sudo change_brightness.sh &
 
 audacious -p &
 nm-applet &

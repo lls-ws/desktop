@@ -67,7 +67,10 @@ scripts_conf()
 pixmaps_conf()
 {
 	
+	APP_NAME="pixmaps"
+	
 	FILES_SET=(
+		"kodi.xpm"
 		"tools.xpm"
 		"thunar.xpm"
 		"parole.xpm"
@@ -85,7 +88,7 @@ pixmaps_conf()
 		"print_screen.xpm"
 	)
 	
-	update_files "Configure" "/usr/share/${APP_NAME}" "images/pixmaps"
+	update_files "Configure" "/usr/share/${APP_NAME}" "images/${APP_NAME}"
 	
 	update_file "wallpaper.png" "/usr/share/backgrounds" "images"
 	

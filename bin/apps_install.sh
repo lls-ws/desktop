@@ -19,7 +19,10 @@ ls /etc/apt/sources.list.d
 sudo apt update
 
 sudo apt -y install \
+	kodi-inputstream-ffmpegdirect \
+	kodi-inputstream-adaptive \
 	google-chrome-stable \
+	kodi-pvr-iptvsimple \
 	transmission-daemon \
 	opera-stable \
 	streamtuner2 \
@@ -36,4 +39,5 @@ sudo apt -y install \
 	thunar \
 	xterm \
 	geany \
-	curl
+	curl \
+	kodi
