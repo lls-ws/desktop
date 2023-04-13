@@ -70,10 +70,10 @@ pixmaps_conf()
 	APP_NAME="pixmaps"
 	
 	FILES_SET=(
+		"vlc.xpm"
 		"kodi.xpm"
 		"tools.xpm"
 		"thunar.xpm"
-		"parole.xpm"
 		"reboot.xpm"
 		"office.xpm"
 		"network.xpm"

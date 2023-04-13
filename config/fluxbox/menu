@@ -15,8 +15,8 @@
 [submenu] (Multimedia) </usr/share/pixmaps/multimedia.xpm>
       	[exec] (Volume) 					{pavucontrol} 						</usr/share/pixmaps/multimedia.xpm>
       	[exec] (Radios) 					{streamtuner2} 						</usr/share/pixmaps/streamtuner2.xpm>
-      	[exec] (Parole) 					{parole} 							</usr/share/pixmaps/parole.xpm>
       	[exec] (Kodi) 						{kodi} 								</usr/share/pixmaps/kodi.xpm>
+      	[exec] (VLC) 						{vlc} 								</usr/share/pixmaps/vlc.xpm>
 [end]
 
 [submenu] (Office) </usr/share/pixmaps/office.xpm>
