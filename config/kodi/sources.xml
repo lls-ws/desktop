@@ -9,6 +9,11 @@
             <path pathversion="1">nfs://192.168.15.200/mnt/shared/filmes/</path>
             <allowsharing>true</allowsharing>
         </source>
+        <source>
+            <name>filmes_hd</name>
+            <path pathversion="1">nfs://192.168.15.200/mnt/hd_ext/</path>
+            <allowsharing>true</allowsharing>
+        </source>
     </video>
     <music>
         <default pathversion="1"></default>
