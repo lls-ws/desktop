@@ -159,6 +159,29 @@ geany_conf()
 	
 }
 
+kodi_files()
+{
+	
+	APP_NAME="kodi"
+	
+	DIR_KODI=~/.${APP_NAME}
+	
+	FILES_SET=(
+		"sources.xml"
+		"mediasources.xml"
+	)
+	
+}
+
+kodi_conf()
+{
+	
+	kodi_files
+	
+	update_files "Configure" "${DIR_KODI}/userdata" "config/${APP_NAME}"
+	
+}
+
 desktop_backup()
 {
 
@@ -193,6 +216,10 @@ desktop_backup()
 	
 	update_file "${FILE_SET}" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
 	
+	kodi_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_KODI}/userdata"
+	
 	cp -fv ${FILE_GTK} config/gtkrc-2.0
 	
 }
@@ -214,6 +241,9 @@ FILE_BASH=~/.bash_aliases
 case "$1" in
 	gtk)
 		gtk_conf
+		;;
+	kodi)
+		kodi_conf
 		;;
 	geany)
 		geany_conf
@@ -241,7 +271,7 @@ case "$1" in
 		streamtuner_conf
 		;;
 	*)
-		echo "Use: $0 {all|gtk|geany|fluxbox|aliases|audacious|streamtuner|backup}"
+		echo "Use: $0 {all|gtk|kodi|geany|fluxbox|aliases|audacious|streamtuner|backup}"
 		exit 1
 		;;
 esac

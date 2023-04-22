@@ -49,6 +49,18 @@
   [Deco]	{NONE}
   [Close]	{no}
 [end]
+[app] (name=vlc) (class=vlc) (role=vlc-main)
+  [Dimensions]	{100% 100%}
+  [Position]	(UPPERLEFT)	{0% 0%}
+  [Deco]	{NONE}
+  [Close]	{no}
+[end]
+[app] (name=vlc) (class=vlc) (role=vlc-playlist)
+  [Dimensions]	{40% 95%}
+  [Position]	(UPPERLEFT)	{60% 0%}
+  [Deco]	{NONE}
+  [Close]	{no}
+[end]
 [app] (name=.*)
   [Dimensions]	{100% 95%}
   [Position]	(UPPERLEFT)	{0% 0%}

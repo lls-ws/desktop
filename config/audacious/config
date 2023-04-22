@@ -1,4 +1,7 @@
 
+[alsa]
+mixer-element=Master
+
 [audacious]
 repeat=TRUE
 show_interface=FALSE
@@ -8,7 +11,7 @@ eq_preset_win=0,0,1280,800
 equalizer_win=506,251,342,288
 filebrowser_win=768,0,512,760
 filesel_path=/home/lls/Música
-info_win=0,0,1280,800
+info_win=768,0,642,760
 no_confirm_playlist_delete=FALSE
 url_opener_win=485,303,384,183
 

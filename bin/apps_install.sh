@@ -24,6 +24,7 @@ sudo apt -y install \
 	google-chrome-stable \
 	kodi-pvr-iptvsimple \
 	transmission-daemon \
+	nfs-kernel-server \
 	opera-stable \
 	streamtuner2 \
 	streamripper \
