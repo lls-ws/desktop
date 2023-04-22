@@ -83,7 +83,7 @@ nfs_conf()
 
 	sudo systemctl status ${APP_NAME}
 
-	#nfs_conf_dir
+	nfs_conf_dir
 	
 	cat ${DIR_ETC}/${FILE_SET}
 	
