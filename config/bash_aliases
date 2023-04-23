@@ -52,9 +52,10 @@ alias tom-status='sudo service tomcat9 status'
 alias tom-restart='sudo service tomcat9 restart'
 
 # Comands for Disable Services
-alias disable-snapd='sudo systemctl disable snapd.service'
 alias disable-cups='sudo systemctl disable cups.service'
 alias disable-cron='sudo systemctl disable cron.service'
+alias disable-snapd='sudo systemctl disable snapd.service'
+alias disable-nfs='sudo systemctl disable nfs-server.service'
 alias disable-cups-browsed='sudo systemctl disable cups-browsed.service'
 alias show-service='ls /etc/systemd/system/multi-user.target.wants'
 
