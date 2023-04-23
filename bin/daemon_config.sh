@@ -91,7 +91,7 @@ nfs_conf()
 	
 	sudo service ${APP_NAME} restart
 	
-	#systemctl disable ${APP_NAME}.service
+	systemctl disable ${APP_NAME}.service
 
 }
 	
