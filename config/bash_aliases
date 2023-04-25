@@ -1,6 +1,15 @@
 # Print my public IP
 alias myip='curl ipinfo.io/ip && echo'
 
+# Comands for HD_Externo
+alias hd-start='sudo mount /dev/sdb1 /mnt/hd_ext && df -h'
+alias hd-stop='sudo umount /mnt/hd_ext && df -h'
+
+# Comands for NFS
+alias nfs-start='sudo service nfs-server start'
+alias nfs-stop='sudo service nfs-server stop'
+alias nfs-status='sudo service nfs-server status'
+
 # Comands for Transmission
 alias t-start='sudo service transmission-daemon start'
 alias t-stop='sudo service transmission-daemon stop'

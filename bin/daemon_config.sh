@@ -100,9 +100,13 @@ nfs_conf_dir()
 	
 	DIR_SHD="/mnt/shared"
 	
-	sudo mkdir -p ${DIR_SHD}
+	if [ ! -d ${DIR_SHD} ]; then
 	
-	sudo chown -R nobody:nogroup ${DIR_SHD}
+		mkdir -p ${DIR_SHD}
+		
+	fi
+	
+	chown -R debian-transmission:debian-transmission ${DIR_SHD}
 	
 	sudo chmod 777 ${DIR_SHD}
 	
