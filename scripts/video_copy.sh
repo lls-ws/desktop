@@ -4,6 +4,32 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
+dir_create()
+{
+	
+	DIRS_SET=(
+		"filmes"
+		"series"
+		"log"
+	)
+	
+	for DIR_SET in "${DIRS_SET[@]}"
+	do
+		
+		DIR_SET=${DIR_SHARE}/${DIR_SET}
+		
+		if [ ! -d ${DIR_SET} ]; then
+	
+			mkdir -pv ${DIR_SET}
+			
+			chown -v debian-transmission:debian-transmission ${DIR_SET}
+			
+		fi
+			
+	done
+	
+}
+
 video_total()
 {
 	
@@ -14,7 +40,7 @@ video_total()
 video_show()
 {
 	
-	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" > ${FILE_LOG}
+	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | awk -F/ '{print $NF}' > ${FILE_LOG}
 	
 	video_total
 	
@@ -25,9 +51,9 @@ video_copy()
 	
 	video_show
 	
-	du -hsc ${DIR_MOVIES} 				>> ${FILE_LOG}
-	du -hsc ${DIR_VIDEO} 				>> ${FILE_LOG}
-	du -hsc ${DIR_VIDEO}/.incomplete	>> ${FILE_LOG}
+	du -hsc ${DIR_MOVIES} | head -1 >> ${FILE_LOG}
+	du -hsc ${DIR_VIDEO} | head -1 >> ${FILE_LOG}
+	du -hsc ${DIR_VIDEO}/.incomplete | head -1 >> ${FILE_LOG}
 	
 	COUNT=0
 	
@@ -47,9 +73,9 @@ video_copy()
 	
 	rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
 	
-	ls -al ${DIR_VIDEO} >> ${FILE_LOG}
+	ls ${DIR_VIDEO} >> ${FILE_LOG}
 	
-	du -hsc ${DIR_MOVIES} >> ${FILE_LOG}
+	du -hsc ${DIR_MOVIES} | head -1 >> ${FILE_LOG}
 	
 	video_log
 	
@@ -80,29 +106,7 @@ VIDEO_LOG="${DIR_LOG}/video.log"
 
 FILE_LOG="${DIR_LOG}/copy-`date +"%Y_%m_%d-%H_%M_%S"`.log"
 
-if [ ! -d ${DIR_MOVIES} ]; then
-	
-	mkdir -p ${DIR_MOVIES}
-	
-	chown debian-transmission.debian-transmission ${DIR_MOVIES}
-	
-fi
-
-if [ ! -d ${DIR_SERIES} ]; then
-	
-	mkdir -p ${DIR_SERIES}
-	
-	chown debian-transmission.debian-transmission ${DIR_SERIES}
-	
-fi
-
-if [ ! -d ${DIR_LOG} ]; then
-	
-	mkdir -p ${DIR_LOG}
-	
-	chown debian-transmission.debian-transmission ${DIR_LOG}
-	
-fi
+dir_create
 
 case "$1" in
 	show)
