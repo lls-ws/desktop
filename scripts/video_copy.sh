@@ -4,32 +4,6 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-dir_create()
-{
-	
-	DIRS_SET=(
-		"filmes"
-		"series"
-		"log"
-	)
-	
-	for DIR_SET in "${DIRS_SET[@]}"
-	do
-		
-		DIR_SET=${DIR_SHARE}/${DIR_SET}
-		
-		if [ ! -d ${DIR_SET} ]; then
-	
-			mkdir -pv ${DIR_SET}
-			
-			chown -v debian-transmission:debian-transmission ${DIR_SET}
-			
-		fi
-			
-	done
-	
-}
-
 video_total()
 {
 	
@@ -105,8 +79,6 @@ DIR_LOG="${DIR_SHARE}/log"
 VIDEO_LOG="${DIR_LOG}/video.log"
 
 FILE_LOG="${DIR_LOG}/copy-`date +"%Y_%m_%d-%H_%M_%S"`.log"
-
-dir_create
 
 case "$1" in
 	show)

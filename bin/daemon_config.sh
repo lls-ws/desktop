@@ -36,8 +36,6 @@ transmission_conf()
 	
 	DIR_ETC="/etc/${APP_NAME}"
 	
-	USER_TRANSMISISON="debian-transmission"
-	
 	echo "Configure ${APP_NAME}..."
 	
 	service ${APP_NAME} stop
@@ -106,7 +104,26 @@ nfs_conf_dir()
 		
 	fi
 	
-	chown -R debian-transmission:debian-transmission ${DIR_SHD}
+	DIRS_SET=(
+		"filmes"
+		"series"
+		"log"
+	)
+	
+	for DIR_SET in "${DIRS_SET[@]}"
+	do
+		
+		DIR_SET=${DIR_SHD}/${DIR_SET}
+		
+		if [ ! -d ${DIR_SET} ]; then
+	
+			mkdir -v ${DIR_SET}
+			
+		fi
+			
+	done
+	
+	chown -R ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_SHD}
 	
 	sudo chmod 777 ${DIR_SHD}
 	
@@ -116,22 +133,25 @@ nfs_conf_dir()
 	
 }
 
+USER_TRANSMISISON="debian-transmission"
+
 case "$1" in
+	nfs)
+		nfs_conf
+		;;
 	lightdm)
 		lightdm_conf
 		;;
 	transmission)
 		transmission_conf
 		;;
-	nfs)
-		nfs_conf
-		;;
 	all)
 		lightdm_conf
 		transmission_conf
+		nfs_conf
 		;;
 	*)
-		echo "Use: $0 {all|lightdm|transmission|nfs}"
+		echo "Use: $0 {all|nfs|lightdm|transmission}"
 		exit 1
 		;;
 esac
