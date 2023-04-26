@@ -60,7 +60,7 @@ video_log()
 	
 	FILE_LOG="${DIR_MOVIES}/filmes.log"
 	
-	find ${DIR_MOVIES} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | awk -F/ '{print $NF}' | nl -n ln > ${FILE_LOG}
+	find ${DIR_MOVIES} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | awk -F/ '{print $NF}' | sort | nl -n ln > ${FILE_LOG}
 	
 	cat ${FILE_LOG}
 	
