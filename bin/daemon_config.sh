@@ -146,9 +146,9 @@ case "$1" in
 		transmission_conf
 		;;
 	all)
+		nfs_conf
 		lightdm_conf
 		transmission_conf
-		nfs_conf
 		;;
 	*)
 		echo "Use: $0 {all|nfs|lightdm|transmission}"
