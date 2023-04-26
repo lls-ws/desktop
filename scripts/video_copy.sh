@@ -58,7 +58,7 @@ video_copy()
 video_log()
 {
 	
-	FILE_LOG="${DIR_MOVIES}/filmes.log"
+	FILE_LOG="${DIR_LOG}/filmes.log"
 	
 	find ${DIR_MOVIES} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | awk -F/ '{print $NF}' | sort | nl -n ln > ${FILE_LOG}
 	
