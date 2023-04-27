@@ -29,6 +29,12 @@ video_copy()
 	du -hsc ${DIR_VIDEO} | head -1 >> ${FILE_LOG}
 	du -hsc ${DIR_VIDEO}/.incomplete | head -1 >> ${FILE_LOG}
 	
+	if [ -f ${VIDEO_LOG} ]; then
+	
+		chown ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${VIDEO_LOG}
+	
+	fi
+	
 	COUNT=0
 	
 	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" |
@@ -60,7 +66,15 @@ video_log()
 	
 	FILE_LOG="${DIR_LOG}/filmes.log"
 	
+	if [ -f ${FILE_LOG} ]; then
+	
+		rm -f ${FILE_LOG}
+	
+	fi
+	
 	find ${DIR_MOVIES} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | awk -F/ '{print $NF}' | sort | nl -n ln > ${FILE_LOG}
+	
+	chown ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${FILE_LOG}
 	
 	cat ${FILE_LOG}
 	
@@ -79,6 +93,8 @@ DIR_LOG="${DIR_SHARE}/log"
 VIDEO_LOG="${DIR_LOG}/video.log"
 
 FILE_LOG="${DIR_LOG}/copy-`date +"%Y_%m_%d-%H_%M_%S"`.log"
+
+USER_TRANSMISISON="debian-transmission"
 
 case "$1" in
 	show)
