@@ -7,10 +7,16 @@ alias movies='clear && cat /mnt/shared/log/filmes.log'
 # Comands for HD_Externo
 alias hd-start='sudo mount /dev/sdb1 /mnt/hd_ext && df -h'
 alias hd-stop='sudo umount /mnt/hd_ext && df -h'
+alias hd-status='df -h'
 
 # Comands for NFS
-alias nfs-start='sudo service nfs-server start'
-alias nfs-stop='sudo service nfs-server stop'
+alias ssh-start='sudo service sshd start && sudo service sshd status'
+alias ssh-stop='sudo service sshd stop && sudo service sshd status'
+alias ssh-status='sudo service sshd status'
+
+# Comands for NFS
+alias nfs-start='sudo service nfs-server start && sudo service nfs-server status'
+alias nfs-stop='sudo service nfs-server stop && sudo service nfs-server status'
 alias nfs-status='sudo service nfs-server status'
 
 # Comands for Transmission

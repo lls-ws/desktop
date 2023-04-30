@@ -41,4 +41,5 @@ sudo apt -y install \
 	geany \
 	curl \
 	kodi \
-	vlc
+	vlc \
+	ssh
