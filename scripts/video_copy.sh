@@ -85,7 +85,7 @@ video_log()
 audio_copy()
 {
 	
-	COUNT_MUSIC=0
+	COUNT=0
 	
 	find ${DIR_VIDEO} -iname "*.mp3" -o -iname "*.flac" |
 	
@@ -95,9 +95,9 @@ audio_copy()
 	  
 	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
-	  ((COUNT_MUSIC++))
+	  ((COUNT++))
 	  
-	  echo -e "${COUNT_MUSIC}" >> ${FILE_LOG}
+	  echo -e "${COUNT}" >> ${FILE_LOG}
 	  
 	done
 	
