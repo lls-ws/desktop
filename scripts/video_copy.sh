@@ -51,6 +51,8 @@ video_copy()
 	  
 	done
 	
+	audio_copy
+	
 	rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
 	
 	ls ${DIR_VIDEO} >> ${FILE_LOG}
