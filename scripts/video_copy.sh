@@ -37,7 +37,7 @@ video_copy()
 	
 	COUNT=0
 	
-	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" -o -iname "*.mp3" -o -iname "*.flac" |
+	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" |
 	
 	while read FILE; do
 	  
@@ -85,7 +85,7 @@ video_log()
 audio_copy()
 {
 	
-	COUNT=0
+	COUNT_MUSIC=0
 	
 	find ${DIR_VIDEO} -iname "*.mp3" -o -iname "*.flac" |
 	
@@ -95,9 +95,9 @@ audio_copy()
 	  
 	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
-	  ((COUNT++))
+	  ((COUNT_MUSIC++))
 	  
-	  echo -e "${COUNT}" >> ${FILE_LOG}
+	  echo -e "${COUNT_MUSIC}" >> ${FILE_LOG}
 	  
 	done
 	
