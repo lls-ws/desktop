@@ -20,10 +20,10 @@ alias nfs-stop='sudo service nfs-server stop && sudo service nfs-server status'
 alias nfs-status='sudo service nfs-server status'
 
 # Comands for Transmission
-alias t-start='sudo service transmission-daemon start'
-alias t-stop='sudo service transmission-daemon stop'
+alias t-start='sudo service transmission-daemon start && sudo service transmission-daemon status'
+alias t-stop='sudo service transmission-daemon stop && sudo service transmission-daemon status'
 alias t-status='sudo service transmission-daemon status'
-alias t-reload='sudo service transmission-daemon reload'
+alias t-reload='sudo service transmission-daemon reload && sudo service transmission-daemon status'
 alias t-list='transmission-remote -n 'transmission:transmission' -l'
 alias t-basicstats='transmission-remote -n 'transmission:transmission' -st'
 alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'

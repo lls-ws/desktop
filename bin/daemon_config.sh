@@ -107,6 +107,7 @@ nfs_conf_dir()
 	DIRS_SET=(
 		"filmes"
 		"series"
+		"musica"
 		"log"
 	)
 	

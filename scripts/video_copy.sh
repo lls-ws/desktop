@@ -37,7 +37,7 @@ video_copy()
 	
 	COUNT=0
 	
-	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" |
+	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" -o -iname "*.mp3" -o -iname "*.flac" |
 	
 	while read FILE; do
 	  
@@ -80,6 +80,27 @@ video_log()
 	
 }
 
+audio_copy()
+{
+	
+	COUNT=0
+	
+	find ${DIR_VIDEO} -iname "*.mp3" -o -iname "*.flac" |
+	
+	while read FILE; do
+	  
+	  mv -fv "${FILE}" ${DIR_MUSICA} >> ${FILE_LOG}
+	  
+	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  
+	  ((COUNT++))
+	  
+	  echo -e "${COUNT}" >> ${FILE_LOG}
+	  
+	done
+	
+}
+
 DIR_VIDEO="/home/torrents"
 
 DIR_SHARE="/mnt/shared"
@@ -87,6 +108,8 @@ DIR_SHARE="/mnt/shared"
 DIR_MOVIES="${DIR_SHARE}/filmes"
 
 DIR_SERIES="${DIR_SHARE}/series"
+
+DIR_MUSICA="${DIR_SHARE}/musica"
 
 DIR_LOG="${DIR_SHARE}/log"
 
