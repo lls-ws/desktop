@@ -61,16 +61,16 @@ alias git_upload_lls-src='clear; cd ~/lls-src; sudo ~/cloud/bin/git_conf.sh remo
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
 
 # Comands for MariaDB
-alias maria-start='sudo service mariadb start'
-alias maria-stop='sudo service mariadb stop'
+alias maria-start='sudo service mariadb start && sudo service mariadb status'
+alias maria-stop='sudo service mariadb stop && sudo service mariadb status'
 alias maria-status='sudo service mariadb status'
-alias maria-restart='sudo service mariadb restart'
+alias maria-restart='sudo service mariadb restart && sudo service mariadb status'
 
 # Comands for Tomcat
-alias tom-start='sudo service tomcat9 start'
-alias tom-stop='sudo service tomcat9 stop'
-alias tom-status='sudo service tomcat9 status'
-alias tom-restart='sudo service tomcat9 restart'
+alias tomcat-start='sudo service tomcat9 start && sudo service tomcat9 status'
+alias tomcat-stop='sudo service tomcat9 stop && sudo service tomcat9 status'
+alias tomcat-status='sudo service tomcat9 status'
+alias tomcat-restart='sudo service tomcat9 restart && sudo service tomcat9 status'
 
 # Comands for Disable Services
 alias disable-cups='sudo systemctl disable cups.service'

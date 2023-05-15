@@ -3,6 +3,7 @@
 mixer-element=Master
 
 [audacious]
+no_playlist_advance=TRUE
 repeat=TRUE
 show_interface=FALSE
 
@@ -10,9 +11,12 @@ show_interface=FALSE
 eq_preset_win=0,0,1280,800
 equalizer_win=506,251,342,288
 filebrowser_win=768,0,512,760
-filesel_path=/home/lls/Música
+filesel_path=/mnt/shared
 info_win=768,0,642,760
 no_confirm_playlist_delete=FALSE
+playlist_export_win=768,0,583,760
+playlist_import_win=768,0,512,760
+playlist_path=file:///home/lls
 url_opener_win=485,303,384,183
 
 [gtkui]
@@ -27,7 +31,9 @@ item0_name=Ferramenta de Busca
 item0_pos=0,-1,-1,210,708
 item1_name=Capa do Álbum
 item1_pos=-1,0,0,284,188
-item_count=2
+item2_name=Gerenciador de Lista de Reprodução
+item2_pos=-1,768,0,508,756
+item_count=3
 
 [history]
 entry0=https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_89FM_ADP.aac
