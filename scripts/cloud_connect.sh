@@ -51,7 +51,16 @@ if [ -z "${HOSTNAME}" ]; then
 else
 
 	DNAME=${HOSTNAME}.${DNAME}
-	COLOR="#0000FF"
+	
+	if [ "${HOSTNAME}" = "app" ]; then
+	
+		COLOR="#008000"
+	
+	else
+	
+		COLOR="#0000FF"
+		
+	fi
 
 fi
 
