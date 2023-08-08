@@ -16,7 +16,8 @@ hosts_conf()
 	echo "192.168.15.200		dell.lls.net.br			dell" 		>> /etc/hosts
 	echo "192.168.15.201		kodi.lls.net.br			kodi" 		>> /etc/hosts
  	echo "192.168.15.210		asus.lls.net.br			asus" 		>> /etc/hosts
-	echo "15.228.191.206		repository.lls.net.br		repository"	>> /etc/hosts
+	echo "18.228.3.148		app.lls.net.br			app"		>> /etc/hosts
+ 	echo "15.228.191.206		repository.lls.net.br		repository"	>> /etc/hosts
 	echo "15.228.191.206		funchal.lls.net.br		funchal" 	>> /etc/hosts
 	echo "208.67.222.222		opendns.lls.net.br		opendns" 	>> /etc/hosts
 	echo "208.67.220.220		opendns2.lls.net.br		opendns2" 	>> /etc/hosts
