@@ -6,6 +6,7 @@ mixer-element=Master
 no_playlist_advance=TRUE
 repeat=TRUE
 show_interface=FALSE
+shuffle=TRUE
 
 [audgui]
 eq_preset_win=0,0,1280,800

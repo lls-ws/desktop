@@ -73,6 +73,12 @@ alias tomcat-stop='sudo service tomcat9 stop && sudo service tomcat9 status'
 alias tomcat-status='sudo service tomcat9 status'
 alias tomcat-restart='sudo service tomcat9 restart && sudo service tomcat9 status'
 
+# Comands for IpTables
+alias iptables-start='sudo service netfilter-persistent start && sudo service netfilter-persistent status'
+alias iptables-stop='sudo service netfilter-persistent stop && sudo service netfilter-persistent status'
+alias iptables-status='sudo service netfilter-persistent status'
+alias iptables-restart='sudo service netfilter-persistent restart && sudo service netfilter-persistent status'
+
 # Comands for Disable Services
 alias disable-cups='sudo systemctl disable cups.service'
 alias disable-cron='sudo systemctl disable cron.service'
