@@ -13,7 +13,7 @@ hosts_conf()
 	
 	echo "127.0.0.1				localhost" 							> /etc/hosts
 	echo "192.168.15.1			router.lls.net.br		router"		>> /etc/hosts
-	echo "192.168.15.50			repeater.lls.net.br		repeater"	>> /etc/hosts
+	echo "192.168.15.150		repeater.lls.net.br		repeater"	>> /etc/hosts
 	echo "192.168.15.200		dell.lls.net.br			dell" 		>> /etc/hosts
 	echo "192.168.15.201		kodi.lls.net.br			kodi" 		>> /etc/hosts
  	echo "192.168.15.202		mia2.lls.net.br			mia2" 		>> /etc/hosts
