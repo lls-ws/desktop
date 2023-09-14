@@ -79,6 +79,9 @@ alias iptables-stop='sudo service netfilter-persistent stop && sudo service netf
 alias iptables-status='sudo service netfilter-persistent status'
 alias iptables-restart='sudo service netfilter-persistent restart && sudo service netfilter-persistent status'
 
+# Comands for LLS-WS
+alias js-compila='sudo js_compila.sh'
+
 # Comands for Disable Services
 alias disable-cups='sudo systemctl disable cups.service'
 alias disable-cron='sudo systemctl disable cron.service'

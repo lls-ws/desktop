@@ -21,7 +21,7 @@ playlist_path=file:///home/lls
 url_opener_win=485,303,384,183
 
 [gtkui]
-column_widths=10,465,288,10,175,175,10,100,43,10,275,275,275,10,275
+column_widths=10,604,288,10,175,175,10,100,43,10,275,275,275,10,275
 player_height=760
 player_width=562
 player_x=768

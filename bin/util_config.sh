@@ -48,6 +48,8 @@ sudo_conf()
 	chmod -v 440 ${DIR_ETC}/${FILE_SET}
 
 	ls -al ${DIR_ETC}/${FILE_SET}
+	
+	cat ${DIR_ETC}/${FILE_SET}
 }
 
 scripts_conf()
@@ -57,10 +59,11 @@ scripts_conf()
 	
 	FILES_SET=(
 		"change_brightness.sh"
-		"video_copy.sh"
 		"stream_record.sh"
 		"cloud_connect.sh"
 		"print_screen.sh"
+		"video_copy.sh"
+		"js_compila.sh"
 		"terminal.sh"
 		"crack.sh"
 	)
