@@ -47,11 +47,14 @@ alias crack='sudo crack.sh'
 # Open a Terminal
 alias terminal='terminal.sh gnome'
 
+# Get a Zip GitHub Repository
+alias git_zip_lls-src='cd ~; curl -L https://github.com/lls-ws/lls-src/archive/master.zip --output ~/.lls-src/lls-src-$(date +%F).zip; ls -al ~/.lls-src/lls-src-$(date +%F).zip'
+
 # Get a GitHub Repository
 alias git_clone_dataflex='cd ~; git clone https://github.com/lls-ws/dataflex.git; ls'
 alias git_clone_desktop='cd ~; git clone https://github.com/lls-ws/desktop.git; ls'
 alias git_clone_cloud='cd ~; git clone https://github.com/lls-ws/cloud.git; ls'
-alias git_clone_lls-src='cd ~; git clone https://github.com/lls-ws/lls-src.git; ls'
+alias git_clone_lls-src='cd ~; git clone https://github.com/lls-ws/lls-src.git; git_zip_lls-src; ls'
 
 # Update a GitHub Repository
 alias git_upload_desktop='clear; cd ~/desktop; sudo ~/cloud/bin/git_conf.sh remote desktop; cd ~'
