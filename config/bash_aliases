@@ -13,20 +13,20 @@ alias hd-stop='sudo umount /mnt/hd_ext && df -h'
 alias hd-status='df -h'
 
 # Comands for NFS
-alias ssh-start='sudo service sshd start && sudo service sshd status'
-alias ssh-stop='sudo service sshd stop && sudo service sshd status'
+alias ssh-start='sudo service sshd start; sudo service sshd status'
+alias ssh-stop='sudo service sshd stop; sudo service sshd status'
 alias ssh-status='sudo service sshd status'
 
 # Comands for NFS
-alias nfs-start='sudo service nfs-server start && sudo service nfs-server status'
-alias nfs-stop='sudo service nfs-server stop && sudo service nfs-server status'
+alias nfs-start='sudo service nfs-server start; sudo service nfs-server status'
+alias nfs-stop='sudo service nfs-server stop; sudo service nfs-server status'
 alias nfs-status='sudo service nfs-server status'
 
 # Comands for Transmission
-alias t-start='sudo service transmission-daemon start && sudo service transmission-daemon status'
-alias t-stop='sudo service transmission-daemon stop && sudo service transmission-daemon status'
+alias t-start='sudo service transmission-daemon start; sudo service transmission-daemon status'
+alias t-stop='sudo service transmission-daemon stop; sudo service transmission-daemon status'
 alias t-status='sudo service transmission-daemon status'
-alias t-reload='sudo service transmission-daemon reload && sudo service transmission-daemon status'
+alias t-reload='sudo service transmission-daemon reload; sudo service transmission-daemon status'
 alias t-list='transmission-remote -n 'transmission:transmission' -l'
 alias t-basicstats='transmission-remote -n 'transmission:transmission' -st'
 alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'
@@ -65,25 +65,29 @@ alias git_upload_lls-src='clear; cd ~/lls-src; sudo ~/cloud/bin/git_conf.sh remo
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
 
 # Comands for MariaDB
-alias maria-start='sudo service mariadb start && sudo service mariadb status'
-alias maria-stop='sudo service mariadb stop && sudo service mariadb status'
+alias maria-start='sudo service mariadb start; sudo service mariadb status'
+alias maria-stop='sudo service mariadb stop; sudo service mariadb status'
 alias maria-status='sudo service mariadb status'
-alias maria-restart='sudo service mariadb restart && sudo service mariadb status'
+alias maria-restart='sudo service mariadb restart; sudo service mariadb status'
 
 # Comands for Tomcat
-alias tomcat-start='sudo service tomcat9 start && sudo service tomcat9 status'
-alias tomcat-stop='sudo service tomcat9 stop && sudo service tomcat9 status'
+alias tomcat-start='sudo service tomcat9 start; sudo service tomcat9 status'
+alias tomcat-stop='sudo service tomcat9 stop; sudo service tomcat9 status'
 alias tomcat-status='sudo service tomcat9 status'
-alias tomcat-restart='sudo service tomcat9 restart && sudo service tomcat9 status'
+alias tomcat-restart='sudo service tomcat9 restart; sudo service tomcat9 status'
 
 # Comands for IpTables
-alias iptables-start='sudo service netfilter-persistent start && sudo service netfilter-persistent status'
-alias iptables-stop='sudo service netfilter-persistent stop && sudo service netfilter-persistent status'
+alias iptables-start='sudo service netfilter-persistent start; sudo service netfilter-persistent status'
+alias iptables-stop='sudo service netfilter-persistent stop; sudo service netfilter-persistent status'
 alias iptables-status='sudo service netfilter-persistent status'
-alias iptables-restart='sudo service netfilter-persistent restart && sudo service netfilter-persistent status'
+alias iptables-restart='sudo service netfilter-persistent restart; sudo service netfilter-persistent status'
 
 # Comands for LLS-WS
 alias js-compila='sudo js_compila.sh'
+alias lls-start='clear; maria-start; tomcat-start'
+alias lls-stop='clear; maria-stop; tomcat-stop'
+alias lls-status='clear; maria-status; tomcat-status'
+alias lls-restart='clear; maria-restart; tomcat-restart'
 
 # Comands for Disable Services
 alias disable-cups='sudo systemctl disable cups.service'
