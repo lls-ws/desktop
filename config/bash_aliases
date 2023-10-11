@@ -83,7 +83,7 @@ alias iptables-status='sudo service netfilter-persistent status'
 alias iptables-restart='sudo service netfilter-persistent restart; sudo service netfilter-persistent status'
 
 # Comands for LLS-WS
-alias js-compila='sudo js_compila.sh'
+alias lls-jquery='sudo jquery-lls.sh'
 alias lls-start='clear; maria-start; tomcat-start'
 alias lls-stop='clear; maria-stop; tomcat-stop'
 alias lls-status='clear; maria-status; tomcat-status'

@@ -17,6 +17,6 @@ clear
 
 cd ${DIR_LLS}
 
-bash sh/compila_js.sh start
+bash sh/jquery-lls.sh start
 
 cd ~

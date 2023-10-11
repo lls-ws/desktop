@@ -11,8 +11,8 @@ PATH=.:$(dirname $0):$PATH
 hosts_conf()
 {
 	
-	echo "127.0.0.1			localhost" 					> /etc/hosts
-	echo "192.168.15.1		router.lls.net.br		router"		>> /etc/hosts
+	echo "127.0.0.1				localhost" 							> /etc/hosts
+	echo "192.168.15.1			router.lls.net.br		router"		>> /etc/hosts
 	echo "192.168.15.150		repeater.lls.net.br		repeater"	>> /etc/hosts
 	echo "192.168.15.200		dell.lls.net.br			dell" 		>> /etc/hosts
 	echo "192.168.15.201		kodi.lls.net.br			kodi" 		>> /etc/hosts
@@ -20,8 +20,8 @@ hosts_conf()
  	echo "192.168.15.203		samsung.lls.net.br		samsung"	>> /etc/hosts
   	echo "192.168.15.204		tablet.lls.net.br		tablet"		>> /etc/hosts
  	echo "192.168.15.210		asus.lls.net.br			asus" 		>> /etc/hosts
-	echo "18.228.3.148		funchal.lls.net.br		funchal" 	>> /etc/hosts
-	echo "18.228.3.148		repository.lls.net.br		repository"	>> /etc/hosts
+	echo "18.228.3.148			funchal.lls.net.br		funchal" 	>> /etc/hosts
+	echo "18.228.3.148			repository.lls.net.br	repository"	>> /etc/hosts
 	echo "208.67.222.222		opendns.lls.net.br		opendns" 	>> /etc/hosts
 	echo "208.67.220.220		opendns2.lls.net.br		opendns2" 	>> /etc/hosts
 	
@@ -64,7 +64,7 @@ scripts_conf()
 		"cloud_connect.sh"
 		"print_screen.sh"
 		"video_copy.sh"
-		"js_compila.sh"
+		"jquery-lls.sh"
 		"terminal.sh"
 		"crack.sh"
 	)
