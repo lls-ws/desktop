@@ -13,10 +13,8 @@ if [ ! -d ${DIR_LLS} ]; then
 
 fi
 
-clear
-
 cd ${DIR_LLS}
 
-bash sh/jquery-lls.sh start
+bash sh/jquery-lls.sh start "$1"
 
 cd ~
