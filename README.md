@@ -12,16 +12,18 @@
 ### From Command Line
 
 ```bash
-git clone https://github.com/lls-ws/desktop.git
-
-cd desktop
-
+git clone https://github.com/lls-ws/desktop.git && cd desktop
+```
+```bash
 sudo bash bin/apps_install.sh
-
+```
+```bash
 sudo bash bin/daemon_config.sh all
-
+```
+```bash
 sudo bash bin/util_config.sh all
-
+```
+```bash
 bash bin/user_config.sh all
 
 ```
