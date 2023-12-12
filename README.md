@@ -15,7 +15,7 @@
 git clone https://github.com/lls-ws/desktop.git && cd desktop
 ```
 ```bash
-sudo bash bin/apps_install.sh
+sudo bash bin/apps_install.sh all
 ```
 ```bash
 sudo bash bin/daemon_config.sh all
