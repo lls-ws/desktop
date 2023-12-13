@@ -97,9 +97,11 @@ alias disable-nfs='sudo systemctl disable nfs-server.service'
 alias disable-cups-browsed='sudo systemctl disable cups-browsed.service'
 alias show-service='ls /etc/systemd/system/multi-user.target.wants'
 
-rmdir 'Área de Trabalho' 'Música' 'Público' 'Vídeos' 2> /dev/null
-rmdir 'Imagens' 'Downloads' 'Documentos' 2> /dev/null
+# Comand for Only Upgrade Packages
+alias apt-only-upgrade='sudo apt --only-upgrade -y install $1'
 
-rm -rf '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
+rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Música' 'Público' 'Vídeos' 2> /dev/null
+
+rm -rf 'Área de Trabalho' '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
 rm -f '.fehbg' 2> /dev/null
 ls

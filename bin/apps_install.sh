@@ -78,6 +78,7 @@ install_apps() {
 		kodi-pvr-iptvsimple \
 		transmission-daemon \
 		nfs-kernel-server \
+		slick-greeter \
 		opera-stable \
 		streamtuner2 \
 		streamripper \
@@ -104,8 +105,6 @@ install_apps() {
 update_apps() {
 	
 	sudo apt update
-	
-	sudo apt --only-upgrade -y install ghostscript-x python3-update-manager
 	
 	sudo dpkg-divert --divert /etc/apt/apt.conf.d/20apt-esm-hook.conf.bak --rename --local /etc/apt/apt.conf.d/20apt-esm-hook.conf
 	

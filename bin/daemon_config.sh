@@ -14,7 +14,7 @@ lightdm_conf()
 	
 	APP_NAME="lightdm"
 	
-	FILE_SET="${APP_NAME}-gtk-greeter.conf"
+	FILE_SET="slick-greeter.conf"
 	
 	DIR_ETC="/etc/${APP_NAME}"
 	
@@ -22,9 +22,15 @@ lightdm_conf()
 	
 	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
 	
+	apt -y purge gdm3 unity-greeter
+	
+	apt -y autoremove
+	
 	dpkg-reconfigure lightdm
 	
 	cat /etc/X11/default-display-manager
+	
+	cp -fv images/wallpaper.png /usr/share/backgrounds
 	
 }
 
