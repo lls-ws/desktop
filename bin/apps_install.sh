@@ -106,6 +106,7 @@ update_apps() {
 	
 	sudo apt update
 	
+	echo "Disable APT News"
 	sudo dpkg-divert --divert /etc/apt/apt.conf.d/20apt-esm-hook.conf.bak --rename --local /etc/apt/apt.conf.d/20apt-esm-hook.conf
 	
 	ls /etc/apt/apt.conf.d
