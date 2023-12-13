@@ -8,6 +8,8 @@
 PATH=.:$(dirname $0):$PATH
 . lib/update.lib		|| exit 1
 
+check_user "$1"
+
 aliases_conf()
 {
 	
@@ -224,16 +226,6 @@ desktop_backup()
 	
 }
 
-USER=$(whoami)
-
-if [ ${USER} = "root" ]; then
-    
-    echo "Root user not permited!"
-    
-    exit 1;
-    
-fi
-
 DIR_CONFIG=~/.config
 
 FILE_BASH=~/.bash_aliases
@@ -265,8 +257,10 @@ case "$1" in
 		;;
 	all)
 		gtk_conf
+		kodi_conf
 		geany_conf
 		fluxbox_conf
+		aliases_conf
 		audacious_conf
 		streamtuner_conf
 		;;

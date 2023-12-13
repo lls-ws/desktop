@@ -4,9 +4,10 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-# Caminho das bibliotecas
 PATH=.:$(dirname $0):$PATH
 . lib/update.lib		|| exit 1
+
+check_root "$1"
 
 lightdm_conf()
 {
@@ -77,17 +78,17 @@ nfs_conf()
 	
 	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
 
-	sudo systemctl is-enabled ${APP_NAME}
+	systemctl is-enabled ${APP_NAME}
 
-	sudo systemctl status ${APP_NAME}
+	systemctl status ${APP_NAME}
 
 	nfs_conf_dir
 	
 	cat ${DIR_ETC}/${FILE_SET}
 	
-	sudo exportfs -rav
+	exportfs -rav
 	
-	sudo service ${APP_NAME} restart
+	service ${APP_NAME} stop
 	
 	systemctl disable ${APP_NAME}.service
 
@@ -95,6 +96,14 @@ nfs_conf()
 	
 nfs_conf_dir()
 {
+	
+	DIR_HD="/mnt/hd_ext"
+	
+	if [ ! -d ${DIR_HD} ]; then
+	
+		mkdir -pv ${DIR_HD}
+		
+	fi
 	
 	DIR_SHD="/mnt/shared"
 	
@@ -126,11 +135,11 @@ nfs_conf_dir()
 	
 	chown -R ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_SHD}
 	
-	sudo chmod 777 ${DIR_SHD}
+	chmod 777 ${DIR_SHD}
 	
 	ls -al ${DIR_SHD}
 	
-	sudo exportfs -a
+	exportfs -a
 	
 }
 

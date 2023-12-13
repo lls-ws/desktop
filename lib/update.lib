@@ -45,3 +45,27 @@ update_files()
 	done
 	
 }
+
+check_root() {
+	
+	if [ "$EUID" -ne 0 ]; then
+	
+		echo "Run script with sudo command!"
+		echo "Use: sudo $0 $1"
+		exit 1
+	  
+	fi
+	
+}
+
+check_user() {
+	
+	if [ "$EUID" -eq 0 ]; then
+    
+		echo "Root user not permited!"
+		echo "Use: bash $0 $1"
+		exit 1;
+		
+	fi
+	
+}

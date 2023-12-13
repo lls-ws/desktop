@@ -4,9 +4,10 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-# Caminho das bibliotecas
 PATH=.:$(dirname $0):$PATH
 . lib/update.lib		|| exit 1
+
+check_root "$1"
 
 hosts_conf()
 {
