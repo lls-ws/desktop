@@ -93,6 +93,7 @@ pixmaps_conf()
 		"developer.xpm"
 		"ristretto.xpm"
 		"anonymous.xpm"
+		"teamviewer.xpm"
 		"homeoffice.xpm"
 		"multimedia.xpm"
 		"print_screen.xpm"
