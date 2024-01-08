@@ -10,6 +10,14 @@ PATH=.:$(dirname $0):$PATH
 
 check_user "$1"
 
+DIR_LLS=~/.lls-src
+
+if [ ! -d ${DIR_LLS} ]; then
+	
+	mkdir -pv ${DIR_LLS}
+
+fi
+
 aliases_conf()
 {
 	
