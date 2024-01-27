@@ -15,6 +15,6 @@ fi
 
 cd ${DIR_LLS}
 
-bash sh/jquery-lls.sh start "$1"
+bash bin/jquery_conf.sh start "$1"
 
 cd ~
