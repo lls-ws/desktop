@@ -90,6 +90,8 @@ alias lls-status='clear; maria-status; tomcat-status'
 alias lls-restart='clear; maria-restart; tomcat-restart'
 
 # Comands for Disable Services
+alias disable-tomcat='sudo systemctl disable tomcat9.service'
+alias disable-maria='sudo systemctl disable mariadb.service'
 alias disable-cups='sudo systemctl disable cups.service'
 alias disable-cron='sudo systemctl disable cron.service'
 alias disable-snapd='sudo systemctl disable snapd.service'

@@ -28,6 +28,12 @@ bash bin/user_config.sh all
 
 ```
 
+### To Backup User Preferences
+
+```bash
+backup_user
+
+```
 
 ## License
 
