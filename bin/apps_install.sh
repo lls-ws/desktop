@@ -63,6 +63,18 @@ add_opera() {
 
 }
 
+add_flatpak() {
+
+	echo "Add Flathub Repositorie"
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+	echo "Optimize Linux Laptop Battery Life"
+	sudo systemctl enable tlp
+	sudo systemctl start tlp
+	sudo systemctl status tlp
+
+}
+
 install_apps() {
 	
 	add_google
@@ -74,6 +86,7 @@ install_apps() {
 	apt -y install \
 		kodi-inputstream-ffmpegdirect \
 		kodi-inputstream-adaptive \
+		ubuntu-restricted-extras \
 		google-chrome-stable \
 		kodi-pvr-iptvsimple \
 		transmission-daemon \
@@ -82,12 +95,14 @@ install_apps() {
 		opera-stable \
 		streamtuner2 \
 		streamripper \
+		tlp tlp-rdw \
 		imagemagick \
 		pavucontrol \
 		ristretto \
 		mate-calc \
 		audacious \
 		mousepad \
+		flatpak \
 		fluxbox \
 		lightdm \
 		thunar \
@@ -99,6 +114,8 @@ install_apps() {
 		ssh
 		
 	install_teamviewer
+	
+	add_flatpak
 
 }
 
@@ -114,7 +131,7 @@ update_apps() {
 }
 
 case "$1" in
-	all)
+	install)
 		install_apps
 		;;
 	update)
@@ -126,11 +143,14 @@ case "$1" in
 	opera)
 		add_opera
 		;;
+	flatpak)
+		add_flatpak
+		;;
 	teamviewer)
 		install_teamviewer
 		;;
 	*)
-		echo "Use: $0 {all|update|google|opera|teamviewer}"
+		echo "Use: $0 {install|update|google|opera|flatpak|teamviewer}"
 		exit 1
 		;;
 esac
