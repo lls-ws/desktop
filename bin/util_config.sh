@@ -67,6 +67,7 @@ scripts_conf()
 		"video_copy.sh"
 		"jquery-lls.sh"
 		"terminal.sh"
+		"youtube.sh"
 		"crack.sh"
 	)
 	

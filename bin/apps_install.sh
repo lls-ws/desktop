@@ -98,6 +98,7 @@ install_apps() {
 		tlp tlp-rdw \
 		imagemagick \
 		pavucontrol \
+		python3-pip \
 		ristretto \
 		mate-calc \
 		audacious \
@@ -106,6 +107,8 @@ install_apps() {
 		fluxbox \
 		lightdm \
 		thunar \
+		ffmpeg \
+		yt-dlp \
 		xterm \
 		geany \
 		curl \
