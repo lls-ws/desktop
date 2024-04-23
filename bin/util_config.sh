@@ -13,14 +13,12 @@ hosts_conf()
 {
 	
 	echo "127.0.0.1				localhost" 							> /etc/hosts
-	echo "192.168.15.1			router.lls.net.br		router"		>> /etc/hosts
-	echo "192.168.15.150		repeater.lls.net.br		repeater"	>> /etc/hosts
-	echo "192.168.15.200		dell.lls.net.br			dell" 		>> /etc/hosts
-	echo "192.168.15.201		kodi.lls.net.br			kodi" 		>> /etc/hosts
- 	echo "192.168.15.202		mia2.lls.net.br			mia2" 		>> /etc/hosts
- 	echo "192.168.15.203		samsung.lls.net.br		samsung"	>> /etc/hosts
-  	echo "192.168.15.204		tablet.lls.net.br		tablet"		>> /etc/hosts
- 	echo "192.168.15.210		asus.lls.net.br			asus" 		>> /etc/hosts
+	echo "192.168.0.1			router.lls.net.br		router"		>> /etc/hosts
+	echo "192.168.0.8		    dell.lls.net.br			dell" 		>> /etc/hosts
+ 	echo "192.168.0.7		    leandro.lls.net.br		leandro"	>> /etc/hosts
+ 	echo "192.168.0.4		    wanda.lls.net.br		wanda"		>> /etc/hosts
+ 	echo "192.168.0.3		    tv.lls.net.br			tv"			>> /etc/hosts
+ 	echo "192.168.0.2		    camera.lls.net.br		camera"		>> /etc/hosts
 	echo "18.228.3.148			funchal.lls.net.br		funchal" 	>> /etc/hosts
 	echo "18.228.3.148			repository.lls.net.br	repository"	>> /etc/hosts
 	echo "208.67.222.222		opendns.lls.net.br		opendns" 	>> /etc/hosts
