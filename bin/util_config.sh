@@ -14,7 +14,7 @@ hosts_conf()
 	
 	echo "127.0.0.1				localhost" 							> /etc/hosts
 	echo "192.168.0.1			router.lls.net.br		router"		>> /etc/hosts
-	echo "192.168.0.8		    dell.lls.net.br			dell" 		>> /etc/hosts
+	echo "192.168.0.100		    dell.lls.net.br			dell" 		>> /etc/hosts
  	echo "192.168.0.7		    leandro.lls.net.br		leandro"	>> /etc/hosts
  	echo "192.168.0.4		    wanda.lls.net.br		wanda"		>> /etc/hosts
  	echo "192.168.0.3		    tv.lls.net.br			tv"			>> /etc/hosts
