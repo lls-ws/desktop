@@ -82,7 +82,7 @@ Menu :RootMenu
 Control Menu :Exec fbsetbg -a /usr/share/backgrounds/wallpaper.png
 
 # navegador
-180 :Exec google-chrome
+180 :Exec chromium
 163 :Exec thunar
 
 # volume settings, using common keycodes

@@ -4,65 +4,43 @@
 [end]
 [app] (name=xterm) (class=XTerm)
   [Head]	{1}
-  [Dimensions]	{100% 6%}
+  [Dimensions]	{100% 8%}
   [Position]	(UPPERLEFT)	{0% 95%}
   [Deco]	{NONE}
   [Layer]	{2}
   [Close]	{no}
 [end]
-[app] (name=gnome-terminal-server) (class=Gnome-terminal)
-  [Dimensions]	{61% 96%}
+[app] (name=qterminal)
+  [Dimensions]	{40% 100%}
   [Position]	(UPPERLEFT)	{0% 0%}
   [Deco]	{NONE}
   [Close]	{no}
 [end]
-[app] (name=geany) (class=Geany)
-  [Dimensions]	{60% 95%}
+[app] (name=mousepad)
+  [Dimensions]	{40% 100%}
   [Position]	(UPPERLEFT)	{0% 0%}
   [Deco]	{NONE}
   [Close]	{no}
 [end]
 [app] (name=thunar) (class=Thunar)
-  [Dimensions]	{60% 95%}
+  [Dimensions]	{40% 100%}
   [Position]	(UPPERLEFT)	{0% 0%}
   [Deco]	{NONE}
   [Close]	{no}
 [end]
-[app] (name=google-chrome) (class=Google-chrome) (role=browser)
-  [Dimensions]	{40% 95%}
-  [Position]	(UPPERLEFT)	{60% 0%}
+[app] (name=chromium) (role=browser)
+  [Dimensions]	{60% 100%}
+  [Position]	(UPPERLEFT)	{40% 0%}
   [Deco]	{NONE}
   [Close]	{no}
 [end]
 [app] (name=mate-calc) (class=Mate-calc)
-  [Position]	(UPPERLEFT)	{31% 33%}
-  [Close]	{no}
-[end]
-[transient] (name=geany) (class=Geany) (role=GtkFileChooserDialog)
-  [Dimensions]	{60% 95%}
-  [Position]	(UPPERLEFT)	{0% 0%}
-  [Close]	{no}
-[end]
-[app] (name=audacious) (class=Audacious)
-  [Dimensions]	{40% 95%}
-  [Position]	(UPPERLEFT)	{60% 0%}
-  [Deco]	{NONE}
-  [Close]	{no}
-[end]
-[app] (name=vlc) (class=vlc) (role=vlc-main)
-  [Dimensions]	{100% 100%}
-  [Position]	(UPPERLEFT)	{0% 0%}
-  [Deco]	{NONE}
-  [Close]	{no}
-[end]
-[app] (name=vlc) (class=vlc) (role=vlc-playlist)
-  [Dimensions]	{40% 95%}
-  [Position]	(UPPERLEFT)	{60% 0%}
-  [Deco]	{NONE}
+  [Position]	(UPPERLEFT)	{52% 58%}
+  [Layer]	{2}
   [Close]	{no}
 [end]
 [app] (name=.*)
-  [Dimensions]	{100% 95%}
+  [Dimensions]	{100% 100%}
   [Position]	(UPPERLEFT)	{0% 0%}
   [Maximized]	{yes}
   [Fullscreen]	{no}
