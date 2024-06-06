@@ -4,8 +4,8 @@
 [end]
 [app] (name=xterm) (class=XTerm)
   [Head]	{1}
-  [Dimensions]	{100% 8%}
-  [Position]	(UPPERLEFT)	{0% 95%}
+  [Dimensions]	{100% 10%}
+  [Position]	(UPPERLEFT)	{0% 93%}
   [Deco]	{NONE}
   [Layer]	{2}
   [Close]	{no}
@@ -16,7 +16,7 @@
   [Deco]	{NONE}
   [Close]	{no}
 [end]
-[app] (name=mousepad)
+[app] (name=mousepad) (class=Mousepad)
   [Dimensions]	{40% 100%}
   [Position]	(UPPERLEFT)	{0% 0%}
   [Deco]	{NONE}
