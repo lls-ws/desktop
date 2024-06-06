@@ -1,21 +1,22 @@
 [begin] (Menu LLS Tecnologia)
 [encoding] {utf8}
 	
-    [exec] (Chrome) 						{google-chrome} 					</opt/google/chrome/product_logo_32.xpm>
-    [exec] (Geany) 	 						{geany} 							</usr/share/pixmaps/geany.xpm>
-    [exec] (Audacious) 						{audacious -p} 						</usr/share/pixmaps/audacious-32.xpm>
-    [exec] (Terminal) 						{gnome-terminal} 					</usr/share/pixmaps/mini.xterm_32x32.xpm>
+    [exec] (Internet) 						{chromium} 					</usr/share/pixmaps/chromium.xpm>
+    [exec] (Terminal) 						{qterminal} 					</usr/share/pixmaps/mini.xterm_32x32.xpm>
    
 [separator]
 
 [submenu] (Network) </usr/share/pixmaps/network.xpm>
-      	[exec] (Opera) 						{opera} 							</usr/share/pixmaps/opera.xpm>
-      	[exec] (Teamviewer) 				{teamviewer} 						</usr/share/pixmaps/teamviewer.xpm>
+      	[exec] (Opera) 					{opera} 						</usr/share/pixmaps/opera.xpm>
+      	[exec] (Firefox) 				{firefox} 					        </usr/share/pixmaps/firefox.xpm>
+	[exec] (Chromium) 				{chromium} 						</usr/share/pixmaps/chromium.xpm>
+	[exec] (Teamviewer) 				{teamviewer} 						</usr/share/pixmaps/teamviewer.xpm>
 [end]
 
 [submenu] (Multimedia) </usr/share/pixmaps/multimedia.xpm>
-      	[exec] (Volume) 					{pavucontrol} 						</usr/share/pixmaps/multimedia.xpm>
-      	[exec] (Radios) 					{streamtuner2} 						</usr/share/pixmaps/streamtuner2.xpm>
+      	[exec] (Audacious) 					{audacious -p} 					</usr/share/pixmaps/audacious-32.xpm>
+      	[exec] (Volume) 					{pavucontrol} 					</usr/share/pixmaps/multimedia.xpm>
+      	[exec] (Radios) 					{streamtuner2} 					</usr/share/pixmaps/streamtuner2.xpm>
       	[exec] (Kodi) 						{kodi} 								</usr/share/pixmaps/kodi.xpm>
       	[exec] (VLC) 						{vlc} 								</usr/share/pixmaps/vlc.xpm>
 [end]
@@ -39,7 +40,7 @@
       	[exec] (Brilho +) 					{sudo change_brightness.sh 7}				</usr/share/pixmaps/homeoffice.xpm>
 [end]
 
-[submenu] (Menu Fluxbox) </usr/share/pixmaps/homeoffice.xpm>
+[submenu] (Menu) </usr/share/pixmaps/homeoffice.xpm>
 		[config] (Configuracao) 
 
 [submenu] (Estilos do Sistema) {Escolha um estilo...}
@@ -54,13 +55,13 @@
 
 		[separator]
 
-      	[exec] (Configuracoes de Inicio) 		{geany ~/.fluxbox/startup} 					</usr/share/pixmaps/geany.xpm>
-      	[exec] (Configuracoes do Menu) 			{geany ~/.fluxbox/menu}						</usr/share/pixmaps/geany.xpm>
-      	[exec] (Configuracoes de Apps) 			{geany ~/.fluxbox/apps}						</usr/share/pixmaps/geany.xpm>
-      	[exec] (Configuracoes de Teclas) 		{geany ~/.fluxbox/keys}						</usr/share/pixmaps/geany.xpm>
-      	[exec] (Configuracoes do GTK-2.0) 		{geany ~/.gtkrc-2.0}						</usr/share/pixmaps/geany.xpm>
-      	[exec] (Configuracoes do GTK-3.0) 		{geany ~/.config/gtk-3.0/settings.ini}		</usr/share/pixmaps/geany.xpm>
-      	[exec] (Configuracoes do Aliases) 		{geany ~/.bash_aliases}						</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes de Inicio) 		{mousepad ~/.fluxbox/startup} 				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do Menu) 			{mousepad ~/.fluxbox/menu}				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes de Apps) 			{mousepad ~/.fluxbox/apps}				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes de Teclas) 		{mousepad ~/.fluxbox/keys}				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do GTK-2.0) 		{mousepad ~/.gtkrc-2.0}					</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do GTK-3.0) 		{mousepad ~/.config/gtk-3.0/settings.ini}		</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do Aliases) 		{mousepad ~/.bash_aliases}				</usr/share/pixmaps/geany.xpm>
 
 		[separator]
 
@@ -72,8 +73,9 @@
       	[exit] (Sair) 							</usr/share/pixmaps/shutdown.xpm>
 [end]
 
-		[separator] 
-		[exec] (Reiniciar) 		{sudo /sbin/reboot} 								</usr/share/pixmaps/reboot.xpm>
-		[exec] (Desligar)  		{sudo /sbin/shutdown -h now} 						</usr/share/pixmaps/shutdown.xpm>
+[separator] 
+
+[exit] (Sair) 							</usr/share/pixmaps/shutdown.xpm>
+
 [endencoding]
 [end]
