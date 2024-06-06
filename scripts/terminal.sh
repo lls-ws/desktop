@@ -5,7 +5,8 @@
 
 CMD_XTERM="xterm -fn 10x20 -bg black -fg"
 
-CMD_GTERM="gnome-terminal --tab"
+CMD_GTERM="qterminal"
+#CMD_GTERM="gnome-terminal --tab"
 
 if [ -z "$1" ]; then
 

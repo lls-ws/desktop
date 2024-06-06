@@ -23,8 +23,22 @@ aliases_conf()
 	
 	cp -fv config/bash_aliases ${FILE_BASH}
 	
-	echo "Load gnome-terminal profiles..."
-	dconf load /org/gnome/terminal/legacy/profiles:/ < config/gnome-terminal-profiles.dconf
+	FILE_ALIASES=~/.zshrc
+	
+	if [ -f ${FILE_ALIASES} ]; then
+	
+		echo "if [ -f ~/.bash_aliases ]; then"		>> ${FILE_ALIASES}
+		echo "   . ~/.bash_aliases"			>> ${FILE_ALIASES}
+		echo "fi"					>> ${FILE_ALIASES}
+		
+		cat ${FILE_ALIASES}
+	
+	else
+	
+		echo "Load gnome-terminal profiles..."
+		dconf load /org/gnome/terminal/legacy/profiles:/ < config/gnome-terminal-profiles.dconf
+		
+	fi
 	
 }
 
@@ -98,6 +112,8 @@ fluxbox_conf()
 {
 	
 	fluxbox_files
+	
+	sudo apt-get -y install ${APP_NAME} xterm
 	
 	update_files "Configure" "${DIR_FLUXBOX}" "config/${APP_NAME}"
 	

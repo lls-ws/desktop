@@ -88,6 +88,7 @@ pixmaps_conf()
 		"office.xpm"
 		"network.xpm"
 		"mousepad.xpm"
+		"chromium.xpm"
 		"shutdown.xpm"
 		"mate-calc.xpm"
 		"developer.xpm"

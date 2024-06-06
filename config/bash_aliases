@@ -102,8 +102,10 @@ alias show-service='ls /etc/systemd/system/multi-user.target.wants'
 # Comand for Only Upgrade Packages
 alias apt-only-upgrade='sudo apt --only-upgrade -y install $1'
 
-rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Música' 'Público' 'Vídeos' 2> /dev/null
+rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 
-rm -rf 'Área de Trabalho' '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
+rmdir 'Documents' 'Desktop' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
+
+rm -rf 'Área de trabalho' '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
 rm -f '.fehbg' 2> /dev/null
 ls
