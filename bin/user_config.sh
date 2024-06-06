@@ -31,7 +31,7 @@ aliases_conf()
 		echo "   . ~/.bash_aliases"			>> ${FILE_ALIASES}
 		echo "fi"					>> ${FILE_ALIASES}
 		
-		cat ${FILE_ALIASES}
+		cat ${FILE_ALIASES} | tail -3
 	
 	else
 	

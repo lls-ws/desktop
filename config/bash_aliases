@@ -38,8 +38,8 @@ alias record='sudo stream_record.sh uturn'
 alias change_brightness='sudo change_brightness.sh'
 
 # Connect into a Clound
-alias connect_funchal='gnome-terminal --tab --title Funchal -- ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br'
-alias connect_app='gnome-terminal --tab --title App -- ssh -i ~/.ssh/id_rsa lls@app.lls.net.br'
+alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br'
+alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br'
 
 # Get Wifi Password
 alias crack='sudo crack.sh'
