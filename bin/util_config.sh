@@ -87,6 +87,7 @@ pixmaps_conf()
 		"reboot.xpm"
 		"office.xpm"
 		"network.xpm"
+		"firefox.xpm"
 		"mousepad.xpm"
 		"chromium.xpm"
 		"shutdown.xpm"
@@ -111,6 +112,25 @@ pixmaps_conf()
 	
 }
 
+grub_conf()
+{
+	
+	sudo apt-get -y install grub-customizer
+	
+	sudo cp -fv images/wallpaper.png /usr/share/grub/themes/kali/grub-4x3.png
+	sudo cp -fv images/wallpaper.png /usr/share/grub/themes/kali/grub-16x9.png
+	
+	sudo grub-customizer
+	
+}
+
+lightdm_conf()
+{
+	
+	sudo lightdm-gtk-greeter-settings
+	
+}
+
 case "$1" in
 	sudo)
 		sudo_conf
@@ -124,6 +144,12 @@ case "$1" in
 	pixmaps)
 		pixmaps_conf
 		;;
+	grub)
+		grub_conf
+		;;
+	lightdm)
+		lightdm_conf
+		;;
 	all)
 		sudo_conf
 		hosts_conf
@@ -131,7 +157,7 @@ case "$1" in
 		pixmaps_conf
 		;;
 	*)
-		echo "Use: $0 {all|sudo|hosts|scripts|pixmaps}"
+		echo "Use: $0 {all|sudo|grub|hosts|scripts|pixmaps|lightdm}"
 		exit 1
 		;;
 esac
