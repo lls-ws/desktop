@@ -7,9 +7,12 @@
 [separator]
 
 [submenu] (Network) </usr/share/pixmaps/network.xpm>
-      	[exec] (Opera) 					{opera} 						</usr/share/pixmaps/opera.xpm>
+      	[exec] (Tor) 					{torbrowser-launcher} 					</usr/share/pixmaps/torbrowser.xpm>
       	[exec] (Firefox) 				{firefox} 					        </usr/share/pixmaps/firefox.xpm>
 	[exec] (Chromium) 				{chromium} 						</usr/share/pixmaps/chromium.xpm>
+
+	[separator]
+	
 	[exec] (Teamviewer) 				{teamviewer} 						</usr/share/pixmaps/teamviewer.xpm>
 [end]
 

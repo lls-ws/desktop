@@ -98,6 +98,7 @@ pixmaps_conf()
 		"teamviewer.xpm"
 		"homeoffice.xpm"
 		"multimedia.xpm"
+		"torbrowser.xpm"
 		"print_screen.xpm"
 	)
 	
