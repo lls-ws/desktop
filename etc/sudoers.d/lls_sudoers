@@ -1,16 +1,3 @@
-lls ALL=(ALL) NOPASSWD:/sbin/reboot
-lls ALL=(ALL) NOPASSWD:/sbin/shutdown
-lls ALL=(ALL) NOPASSWD:/usr/bin/xterm
-lls ALL=(ALL) NOPASSWD:/usr/bin/video_copy.sh
-lls ALL=(ALL) NOPASSWD:/usr/bin/change_brightness.sh
 lls ALL=(ALL) NOPASSWD:/usr/bin/cloud_connect.sh
 lls ALL=(ALL) NOPASSWD:/usr/bin/jquery-lls.sh
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service mariadb start
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service mariadb stop
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service mariadb status
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service mariadb restart
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service tomcat9 start
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service tomcat9 stop
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service tomcat9 status
-lls ALL=(ALL) NOPASSWD:/usr/sbin/service tomcat9 restart
 lls ALL=(ALL) NOPASSWD:/home/lls/cloud/bin/git_conf.sh
