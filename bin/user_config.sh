@@ -45,10 +45,6 @@ aliases_conf()
 gtk_files()
 {
 	
-	APP_NAME="gtk-3.0"
-	
-	FILE_SET="settings.ini"
-	
 	FILE_GTK=~/.gtkrc-2.0
 	
 }
@@ -57,8 +53,6 @@ gtk_conf()
 {
 	
 	gtk_files
-	
-	update_file "${FILE_SET}" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 	cp -fv config/gtkrc-2.0 ${FILE_GTK}
 	
@@ -96,6 +90,29 @@ geany_conf()
 	rm -rf ${APP_NAME}-themes
 	
 	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+	
+}
+
+kodi_files()
+{
+	
+	APP_NAME="kodi"
+	
+	DIR_KODI=~/.${APP_NAME}
+	
+	FILES_SET=(
+		"sources.xml"
+		"mediasources.xml"
+	)
+	
+}
+
+kodi_conf()
+{
+	
+	kodi_files
+	
+	update_files "Configure" "${DIR_KODI}/userdata" "config/${APP_NAME}"
 	
 }
 
