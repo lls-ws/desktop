@@ -56,10 +56,14 @@ intel_driver() {
   	apt -y install vainfo
 	
   	lspci -k | grep i915
+  	
+    	echo "LIBVA_DRIVER_NAME=i965" >> /etc/environment
 	
-    	export LIBVA_DRIVER_NAME=i965
+     	cat /etc/environment
 	
      	vainfo
+
+      	echo "Type: reboot"
 	
 }
 
