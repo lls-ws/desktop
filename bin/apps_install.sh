@@ -75,20 +75,9 @@ update_apps() {
 
 }
 
-install_apps() {
+install_geany() {
 	
- 	apt -y install curl apt-transport-https gdebi
-	
-	URL_DEB="https://dl.google.com/linux/direct/"
-
- 	# Version: 126.0.6478.126-1
- 	FILE_DEB="google-chrome-stable_current_amd64.deb"
-	
-  	wget ${URL_DEB}/${FILE_DEB}
-	
-   	gdebi ${FILE_DEB}
-	
-    	rm -fv ${FILE_DEB}
+ 	apt -y install geany
   	
 }
 
@@ -100,15 +89,19 @@ case "$1" in
 		intel_driver
 		;;
 	google)
-		add_google
+		install_google
+		;;
+	geany)
+		install_geany
 		;;
   	all)
 		update_apps
   		intel_driver
-  		add_google
+  		install_google
+    		install_geany
 		;;
 	*)
-		echo "Use: $0 {all|update|google|intel}"
+		echo "Use: $0 {all|update|google|intel|geany}"
 		exit 1
 		;;
 esac
