@@ -12,7 +12,7 @@ check_root "$1"
 hosts_conf()
 {
 	
-	echo "127.0.0.1			localhost" 							> /etc/hosts
+	echo "127.0.0.1			localhost" 					> /etc/hosts
 	echo "192.168.0.1		router.lls.net.br		router"		>> /etc/hosts
 	echo "192.168.0.100		dell.lls.net.br			dell" 		>> /etc/hosts
 	echo "192.168.0.200		3green.lls.net.br		3green" 	>> /etc/hosts
