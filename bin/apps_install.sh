@@ -78,6 +78,8 @@ update_apps() {
 install_geany() {
 	
  	apt -y install geany
+
+  	geany --version
   	
 }
 
