@@ -27,7 +27,7 @@ show_file() {
 	
 }
 
-add_google() {
+install_google() {
 	
 	DIR_LIST="/etc/apt/sources.list.d"
 	
