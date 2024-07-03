@@ -70,92 +70,6 @@ gtk_conf()
 	
 }
 
-streamtuner_files()
-{
-	
-	APP_NAME="streamtuner2"
-	
-	FILES_SET=(
-		"settings.json"
-		"bookmarks.json"
-	)
-	
-}
-
-streamtuner_conf()
-{
-
-	streamtuner_files
-	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
-	
-}
-
-fluxbox_files()
-{
-	
-	APP_NAME="fluxbox"
-	
-	DIR_FLUXBOX=~/.${APP_NAME}
-	
-	FILES_SET=(
-		"apps"
-		"menu"
-		"keys"
-		"init"
-		"startup"
-	)
-	
-}
-
-fluxbox_conf()
-{
-	
-	fluxbox_files
-	
-	sudo apt-get -y install ${APP_NAME} xterm
-	
-	update_files "Configure" "${DIR_FLUXBOX}" "config/${APP_NAME}"
-	
-}
-
-audacious_files_config()
-{
-	
-	APP_NAME="audacious"
-	
-	FILES_SET=(
-		"config"
-		"plugin-registry"
-		"playlist-state"
-	)
-	
-}
-
-audacious_files_playlist()
-{
-	
-	FILES_SET=(
-		"1000.audpl"
-		"1001.audpl"
-		"order"
-	)
-	
-}
-
-audacious_conf()
-{
-	
-	audacious_files_config
-	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
-	
-	audacious_files_playlist
-	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}/playlists" "config/${APP_NAME}/playlists"
-			
-}
-
 geany_files()
 {
 	
@@ -185,29 +99,6 @@ geany_conf()
 	
 }
 
-kodi_files()
-{
-	
-	APP_NAME="kodi"
-	
-	DIR_KODI=~/.${APP_NAME}
-	
-	FILES_SET=(
-		"sources.xml"
-		"mediasources.xml"
-	)
-	
-}
-
-kodi_conf()
-{
-	
-	kodi_files
-	
-	update_files "Configure" "${DIR_KODI}/userdata" "config/${APP_NAME}"
-	
-}
-
 desktop_backup()
 {
 
@@ -219,23 +110,7 @@ desktop_backup()
 	geany_files
 	
 	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	
-	audacious_files_config
-	
-	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	
-	audacious_files_playlist
-	
-	update_files "Backup" "config/${APP_NAME}/playlists" "${DIR_CONFIG}/${APP_NAME}/playlists"
-	
-	streamtuner_files
-	
-	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	
-	fluxbox_files
-	
-	update_files "Backup" "config/${APP_NAME}" "${DIR_FLUXBOX}"
-	
+ 	
 	gtk_files
 	
 	echo -e "\nBackup ${APP_NAME}..."
@@ -264,17 +139,8 @@ case "$1" in
 	geany)
 		geany_conf
 		;;
-	fluxbox)
-		fluxbox_conf
-		;;
 	aliases)
 		aliases_conf
-		;;
-	audacious)
-		audacious_conf
-		;;
-	streamtuner)
-		streamtuner_conf
 		;;
 	backup)
 		desktop_backup
@@ -283,13 +149,10 @@ case "$1" in
 		gtk_conf
 		kodi_conf
 		geany_conf
-		fluxbox_conf
 		aliases_conf
-		audacious_conf
-		streamtuner_conf
 		;;
 	*)
-		echo "Use: $0 {all|gtk|kodi|geany|fluxbox|aliases|audacious|streamtuner|backup}"
+		echo "Use: $0 {all|gtk|kodi|geany|aliases|backup}"
 		exit 1
 		;;
 esac
