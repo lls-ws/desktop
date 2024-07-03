@@ -41,15 +41,15 @@ add_google() {
 	
 	show_file
 	
- 	apt -y install google-chrome-stable
-	
 }
 
 install_apps() {
 	
 	add_google
 	
-	apt -y install geany curl
+	apt update && sudo apt upgrade
+ 	
+	apt -y install geany curl apt-transport-https gdebi google-chrome-stable
   	
 }
 
