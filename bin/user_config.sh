@@ -64,17 +64,10 @@ gtk_conf()
 	
 }
 
-geany_files()
-{
-	
-	APP_NAME="geany"
-	
-}
-
 geany_conf()
 {
 	
-	geany_files
+	APP_NAME="geany"
 	
 	git clone https://github.com/${APP_NAME}/${APP_NAME}-themes.git
 	
