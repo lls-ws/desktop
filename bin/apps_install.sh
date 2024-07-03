@@ -41,26 +41,16 @@ add_google() {
 	
 	show_file
 	
+ 	apt -y install google-chrome-stable
+	
 }
 
 install_apps() {
 	
 	add_google
-
-	apt -y install \
-		kodi-inputstream-ffmpegdirect \
-		kodi-inputstream-adaptive \
-		ubuntu-restricted-extras \
-		google-chrome-stable \
-		kodi-pvr-iptvsimple \
-		fluxbox \
-		ffmpeg \
-		xterm \
-		geany \
-		curl \
-		kodi \
-		vlc
-  
+	
+	apt -y install geany curl
+  	
 }
 
 case "$1" in
