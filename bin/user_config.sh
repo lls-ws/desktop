@@ -123,9 +123,6 @@ case "$1" in
 	gtk)
 		gtk_conf
 		;;
-	kodi)
-		kodi_conf
-		;;
 	geany)
 		geany_conf
 		;;
@@ -137,7 +134,6 @@ case "$1" in
 		;;
 	all)
 		gtk_conf
-		kodi_conf
 		geany_conf
 		aliases_conf
 		;;
