@@ -69,11 +69,6 @@ geany_files()
 	
 	APP_NAME="geany"
 	
-	FILES_SET=(
-		"${APP_NAME}.conf"
-		"keybindings.conf"
-	)
-	
 }
 
 geany_conf()
@@ -89,8 +84,6 @@ geany_conf()
 	
 	rm -rf ${APP_NAME}-themes
 	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
-	
 }
 
 desktop_backup()
@@ -100,10 +93,6 @@ desktop_backup()
 	
 	echo "Create gnome-terminal-profiles.dconf"
 	dconf dump /org/gnome/terminal/legacy/profiles:/ > config/gnome-terminal-profiles.dconf
-	
-	geany_files
-	
-	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
  	
 	gtk_files
 	
