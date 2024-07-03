@@ -1,2 +1,0 @@
-/mnt/shared 192.168.15.0/24(rw,sync,no_subtree_check,all_squash,insecure)
-/mnt/hd_ext 192.168.15.0/24(rw,sync,no_subtree_check,all_squash,insecure)
