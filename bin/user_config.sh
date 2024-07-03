@@ -123,7 +123,7 @@ case "$1" in
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|gtk|kodi|geany|aliases|backup}"
+		echo "Use: $0 {all|gtk|geany|aliases|backup}"
 		exit 1
 		;;
 esac
