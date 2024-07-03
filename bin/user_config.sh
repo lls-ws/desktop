@@ -96,10 +96,6 @@ desktop_backup()
  	
 	gtk_files
 	
-	echo -e "\nBackup ${APP_NAME}..."
-	
-	update_file "${FILE_SET}" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	
 	cp -fv ${FILE_GTK} config/gtkrc-2.0
 	
 }
