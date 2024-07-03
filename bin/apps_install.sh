@@ -51,15 +51,15 @@ add_google() {
 
 intel_driver() {
  	
- 	apt -y install vainfo
- 	
- 	vainfo
-
+	apt-get -y purge --auto-remove mesa-vulkan-drivers
+  	
+  	apt -y install vainfo
+	
   	lspci -k | grep i915
-
-   	apt-get -y purge --auto-remove mesa-vulkan-drivers
-
+	
     	export LIBVA_DRIVER_NAME=i965
+	
+     	vainfo
 	
 }
 
