@@ -45,11 +45,19 @@ add_google() {
 
 install_apps() {
 	
-	add_google
+	apt update && sudo apt -y upgrade
 	
-	apt update && sudo apt upgrade
- 	
-	apt -y install geany curl apt-transport-https gdebi google-chrome-stable
+ 	apt -y install curl apt-transport-https gdebi
+	
+	URL_DEB="https://dl.google.com/linux/direct/"
+	
+ 	FILE_DEB="google-chrome-stable_current_amd64.deb"
+	
+  	wget ${URL_DEB}/${FILE_DEB}
+	
+   	gdebi ${FILE_DEB}
+	
+    	rm -fv ${FILE_DEB}
   	
 }
 
