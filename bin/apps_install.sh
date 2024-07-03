@@ -51,6 +51,8 @@ intel_driver() {
  	
  	vainfo
 
+  	lspci -k | grep i915
+
 }
 
 update_apps() {
