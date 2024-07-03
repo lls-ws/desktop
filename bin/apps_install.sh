@@ -40,6 +40,8 @@ add_google() {
 	sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google_linux_signing_key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > '${FILE_LIST}''
 	
 	show_file
+
+ 	apt -y install google-chrome-stable
 	
 }
 
