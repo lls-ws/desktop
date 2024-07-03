@@ -61,8 +61,10 @@ intel_driver() {
 	
      	cat /etc/environment
 	
+	export LIBVA_DRIVER_NAME=i965
+ 	
      	vainfo
-
+	
       	echo "Type: reboot"
 	
 }
