@@ -12,10 +12,10 @@
 ### From Command Line
 
 ```bash
-git clone https://github.com/lls-ws/desktop.git && cd desktop
+sudo apt -y install git
 ```
 ```bash
-sudo apt -y install git
+git clone https://github.com/lls-ws/desktop.git && cd desktop
 ```
 ```bash
 sudo bash bin/apps_install.sh all
