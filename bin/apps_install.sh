@@ -64,14 +64,14 @@ install_apps() {
 }
 
 case "$1" in
-	install)
+	all)
 		install_apps
 		;;
 	google)
 		add_google
 		;;
 	*)
-		echo "Use: $0 {install|google}"
+		echo "Use: $0 {all|google}"
 		exit 1
 		;;
 esac
