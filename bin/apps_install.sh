@@ -50,7 +50,8 @@ install_apps() {
  	apt -y install curl apt-transport-https gdebi
 	
 	URL_DEB="https://dl.google.com/linux/direct/"
-	
+
+ 	# Version: 126.0.6478.126-1
  	FILE_DEB="google-chrome-stable_current_amd64.deb"
 	
   	wget ${URL_DEB}/${FILE_DEB}
