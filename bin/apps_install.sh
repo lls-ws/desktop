@@ -71,8 +71,12 @@ intel_driver() {
 
 update_apps() {
 
-	apt update && sudo apt -y upgrade
-
+	apt update
+ 	
+ 	apt -y upgrade
+  	
+  	apt -y autoremove
+	
 }
 
 install_geany() {
