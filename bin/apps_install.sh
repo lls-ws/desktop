@@ -44,6 +44,8 @@ add_google() {
  	update_apps
 	
  	apt -y install google-chrome-stable
+
+  	google-chrome --version
 	
 }
 
