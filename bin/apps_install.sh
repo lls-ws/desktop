@@ -44,8 +44,6 @@ add_google() {
 }
 
 intel_driver() {
-
-	update_apps
  	
  	apt -y install vainfo
  	
@@ -53,6 +51,10 @@ intel_driver() {
 
   	lspci -k | grep i915
 
+   	apt-get -y purge --auto-remove mesa-vulkan-drivers
+
+    	export LIBVA_DRIVER_NAME=i965
+	
 }
 
 update_apps() {
@@ -62,8 +64,6 @@ update_apps() {
 }
 
 install_apps() {
-	
-	update_apps
 	
  	apt -y install curl apt-transport-https gdebi
 	
@@ -81,9 +81,6 @@ install_apps() {
 }
 
 case "$1" in
-	all)
-		install_apps
-		;;
   	update)
 		update_apps
 		;;
@@ -92,6 +89,11 @@ case "$1" in
 		;;
 	google)
 		add_google
+		;;
+  	all)
+		update_apps
+  		intel_driver
+  		add_google
 		;;
 	*)
 		echo "Use: $0 {all|update|google|intel}"
