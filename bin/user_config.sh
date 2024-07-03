@@ -93,29 +93,6 @@ geany_conf()
 	
 }
 
-kodi_files()
-{
-	
-	APP_NAME="kodi"
-	
-	DIR_KODI=~/.${APP_NAME}
-	
-	FILES_SET=(
-		"sources.xml"
-		"mediasources.xml"
-	)
-	
-}
-
-kodi_conf()
-{
-	
-	kodi_files
-	
-	update_files "Configure" "${DIR_KODI}/userdata" "config/${APP_NAME}"
-	
-}
-
 desktop_backup()
 {
 
@@ -133,10 +110,6 @@ desktop_backup()
 	echo -e "\nBackup ${APP_NAME}..."
 	
 	update_file "${FILE_SET}" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	
-	kodi_files
-	
-	update_files "Backup" "config/${APP_NAME}" "${DIR_KODI}/userdata"
 	
 	cp -fv ${FILE_GTK} config/gtkrc-2.0
 	
