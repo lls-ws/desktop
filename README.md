@@ -15,6 +15,9 @@
 git clone https://github.com/lls-ws/desktop.git && cd desktop
 ```
 ```bash
+sudo apt -y install git
+```
+```bash
 sudo bash bin/apps_install.sh all
 ```
 ```bash
