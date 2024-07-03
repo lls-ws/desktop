@@ -43,9 +43,25 @@ add_google() {
 	
 }
 
+intel_driver() {
+
+	update_apps
+ 	
+ 	apt -y install vainfo
+ 	
+ 	vainfo
+
+}
+
+update_apps() {
+
+	apt update && sudo apt -y upgrade
+
+}
+
 install_apps() {
 	
-	apt update && sudo apt -y upgrade
+	update_apps
 	
  	apt -y install curl apt-transport-https gdebi
 	
@@ -66,11 +82,17 @@ case "$1" in
 	all)
 		install_apps
 		;;
+  	update)
+		update_apps
+		;;
+  	intel)
+		intel_driver
+		;;
 	google)
 		add_google
 		;;
 	*)
-		echo "Use: $0 {all|google}"
+		echo "Use: $0 {all|update|google|intel}"
 		exit 1
 		;;
 esac
