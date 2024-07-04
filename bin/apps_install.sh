@@ -44,10 +44,11 @@ install_google() {
  	update_apps
 	
  	apt -y install google-chrome-stable chromium-browser
-
-	snap install opera
-
- 	opera --version
+	
+	snap install opera brave
+	
+ 	brave --version
+  	opera --version
   	google-chrome --version
    	chromium-browser --version
 	
