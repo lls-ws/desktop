@@ -43,14 +43,9 @@ install_google() {
 	
  	update_apps
 	
- 	apt -y install google-chrome-stable chromium-browser
+ 	apt -y install google-chrome-stable
 	
-	snap install opera brave
-	
- 	brave --version
-  	opera --version
-  	google-chrome --version
-   	chromium-browser --version
+ 	google-chrome --version
 	
 }
 
@@ -89,7 +84,6 @@ install_geany() {
  	apt -y install geany
 	
   	geany --version
-   	chromium-browser --version
   	
 }
 
