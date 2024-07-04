@@ -59,9 +59,6 @@ gtk_conf()
 	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 	gsettings range org.gnome.desktop.interface color-scheme
 	
-	xdg-mime default thunar.desktop inode/directory
-	xdg-mime query default inode/directory
-	
 }
 
 geany_conf()
