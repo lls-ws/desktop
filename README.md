@@ -12,9 +12,6 @@
 ### From Command Line
 
 ```bash
-sudo apt -y install git
-```
-```bash
 git clone https://github.com/lls-ws/desktop.git && cd desktop
 ```
 ```bash
