@@ -40,6 +40,10 @@ aliases_conf()
 gtk_files()
 {
 	
+	APP_NAME="gtk-3.0"
+	
+	FILE_SET="settings.ini"
+	
 	FILE_GTK=~/.gtkrc-2.0
 	
 }
@@ -48,6 +52,8 @@ gtk_conf()
 {
 	
 	gtk_files
+	
+	update_file "${FILE_SET}" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 	cp -fv config/gtkrc-2.0 ${FILE_GTK}
 	
@@ -90,10 +96,15 @@ desktop_backup()
 
 	cp -fv ${FILE_BASH} config/bash_aliases
 	
-	echo "Create gnome-terminal-profiles.dconf"
-	dconf dump /org/gnome/terminal/legacy/profiles:/ > config/gnome-terminal-profiles.dconf
+	geany_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
  	
 	gtk_files
+	
+	echo -e "\nBackup ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
 	
 	cp -fv ${FILE_GTK} config/gtkrc-2.0
 	
