@@ -32,11 +32,6 @@ aliases_conf()
 		echo "fi"					>> ${FILE_ALIASES}
 		
 		cat ${FILE_ALIASES} | tail -3
-	
-	else
-	
-		echo "Load gnome-terminal profiles..."
-		dconf load /org/gnome/terminal/legacy/profiles:/ < config/gnome-terminal-profiles.dconf
 		
 	fi
 	
