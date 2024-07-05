@@ -42,6 +42,6 @@ rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeo
 
 rmdir 'Documents' 'Desktop' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
 
-rm -rf 'Área de trabalho' '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
+rm -rf 'Área de trabalho' 'Desktop' '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
 rm -f '.fehbg' 2> /dev/null
 ls

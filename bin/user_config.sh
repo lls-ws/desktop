@@ -126,6 +126,10 @@ desktop_backup()
 	
 	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
  	
+ 	fluxbox_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_FLUXBOX}"
+ 	
 	gtk_files
 	
 	echo -e "\nBackup ${APP_NAME}..."
