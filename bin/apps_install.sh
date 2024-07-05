@@ -63,23 +63,18 @@ update_apps() {
 }
 
 install_google() {
+
+	URL_DEB="https://dl.google.com/linux/direct"
 	
-	DIR_LIST="/etc/apt/sources.list.d"
+ 	FILE_DEB="google-chrome-stable_current_amd64.deb"
+ 
+	wget ${URL_DEB}/${FILE_DEB}
+
+	dpkg -i ${FILE_DEB}
+ 
+ 	apt -y install chromium
 	
-	FILE_LIST="${DIR_LIST}/google-chrome.list"
-	
-	delete_file
-	
-	echo "Add Google Chrome to sources.list.d"
-	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --yes --dearmour -o /usr/share/keyrings/google_linux_signing_key.gpg
-	sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google_linux_signing_key.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > '${FILE_LIST}''
-	
-	show_file
-	
- 	update_apps
-	
- 	apt -y install google-chrome-stable
-	
+ 	chromium --version
  	google-chrome --version
 	
 }
