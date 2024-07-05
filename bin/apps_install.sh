@@ -67,14 +67,17 @@ install_google() {
 	URL_DEB="https://dl.google.com/linux/direct"
 	
  	FILE_DEB="google-chrome-stable_current_amd64.deb"
- 
+ 	
 	wget ${URL_DEB}/${FILE_DEB}
-
+	
 	dpkg -i ${FILE_DEB}
- 
+	
+ 	rm -fv ${FILE_DEB}
+	 
  	apt -y install chromium
 	
  	chromium --version
+  	
  	google-chrome --version
 	
 }
