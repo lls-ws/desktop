@@ -61,10 +61,22 @@ gtk_conf()
 	
 }
 
-geany_conf()
+geany_files()
 {
 	
 	APP_NAME="geany"
+	
+	FILES_SET=(
+		"${APP_NAME}.conf"
+		"keybindings.conf"
+	)
+	
+}
+
+geany_conf()
+{
+	
+	geany_files
 	
 	git clone https://github.com/${APP_NAME}/${APP_NAME}-themes.git
 	
@@ -73,6 +85,8 @@ geany_conf()
 	cd ..
 	
 	rm -rf ${APP_NAME}-themes
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 }
 
