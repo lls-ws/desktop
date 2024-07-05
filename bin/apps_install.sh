@@ -70,11 +70,11 @@ install_google() {
  	
 	wget ${URL_DEB}/${FILE_DEB}
 	
+	apt -y install chromium-browser
+	
 	dpkg -i ${FILE_DEB}
 	
  	rm -fv ${FILE_DEB}
-	 
- 	apt -y install chromium-browser
 	
  	chromium --version
   	

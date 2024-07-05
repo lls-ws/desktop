@@ -1,48 +1,9 @@
 # Print my public IP
 alias myip='curl ipinfo.io/ip && echo'
 
-# Comands for Kodi
-alias kodi-start='sudo service nfs-server start && sudo service nfs-server status'
-
-# Comands for Movies List
-alias movies='clear && cat /mnt/shared/log/filmes.log'
-
-# Comands for HD_Externo
-alias hd-start='sudo mount /dev/sdb1 /mnt/hd_ext && df -h'
-alias hd-stop='sudo umount /mnt/hd_ext && df -h'
-alias hd-status='df -h'
-
-# Comands for NFS
-alias ssh-start='sudo service sshd start; sudo service sshd status'
-alias ssh-stop='sudo service sshd stop; sudo service sshd status'
-alias ssh-status='sudo service sshd status'
-
-# Comands for NFS
-alias nfs-start='sudo service nfs-server start; sudo service nfs-server status'
-alias nfs-stop='sudo service nfs-server stop; sudo service nfs-server status'
-alias nfs-status='sudo service nfs-server status'
-
-# Comands for Transmission
-alias t-start='sudo service transmission-daemon start; sudo service transmission-daemon status'
-alias t-stop='sudo service transmission-daemon stop; sudo service transmission-daemon status'
-alias t-status='sudo service transmission-daemon status'
-alias t-reload='sudo service transmission-daemon reload; sudo service transmission-daemon status'
-alias t-list='transmission-remote -n 'transmission:transmission' -l'
-alias t-basicstats='transmission-remote -n 'transmission:transmission' -st'
-alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'
-
-# Record a Stream Radio
-alias record='sudo stream_record.sh uturn'
-
-# Change Video Brightness
-alias change_brightness='sudo change_brightness.sh'
-
 # Connect into a Clound
 alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br'
 alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br'
-
-# Get Wifi Password
-alias crack='sudo crack.sh'
 
 # Open a Terminal
 alias terminal='terminal.sh gnome'
@@ -64,43 +25,18 @@ alias git_upload_lls-src='clear; cd ~/lls-src; sudo ~/cloud/bin/git_conf.sh remo
 # Backup a user profile
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
 
-# Comands for MariaDB
-alias maria-start='sudo service mariadb start; sudo service mariadb status'
-alias maria-stop='sudo service mariadb stop; sudo service mariadb status'
-alias maria-status='sudo service mariadb status'
-alias maria-restart='sudo service mariadb restart; sudo service mariadb status'
-
-# Comands for Tomcat
-alias tomcat-start='sudo service tomcat9 start; sudo service tomcat9 status'
-alias tomcat-stop='sudo service tomcat9 stop; sudo service tomcat9 status'
-alias tomcat-status='sudo service tomcat9 status'
-alias tomcat-restart='sudo service tomcat9 restart; sudo service tomcat9 status'
-
-# Comands for IpTables
-alias iptables-start='sudo service netfilter-persistent start; sudo service netfilter-persistent status'
-alias iptables-stop='sudo service netfilter-persistent stop; sudo service netfilter-persistent status'
-alias iptables-status='sudo service netfilter-persistent status'
-alias iptables-restart='sudo service netfilter-persistent restart; sudo service netfilter-persistent status'
-
-# Comands for LLS-WS
-alias lls-jquery='sudo jquery-lls.sh'
-alias lls-start='clear; maria-start; tomcat-start'
-alias lls-stop='clear; maria-stop; tomcat-stop'
-alias lls-status='clear; maria-status; tomcat-status'
-alias lls-restart='clear; maria-restart; tomcat-restart'
-
 # Comands for Disable Services
-alias disable-tomcat='sudo systemctl disable tomcat9.service'
-alias disable-maria='sudo systemctl disable mariadb.service'
 alias disable-cups='sudo systemctl disable cups.service'
 alias disable-cron='sudo systemctl disable cron.service'
 alias disable-snapd='sudo systemctl disable snapd.service'
-alias disable-nfs='sudo systemctl disable nfs-server.service'
 alias disable-cups-browsed='sudo systemctl disable cups-browsed.service'
 alias show-service='ls /etc/systemd/system/multi-user.target.wants'
 
 # Comand for Only Upgrade Packages
 alias apt-only-upgrade='sudo apt --only-upgrade -y install $1'
+
+# Comand for Upgrade Packages
+alias apt-upgrade='sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove'
 
 rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 
