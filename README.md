@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  Scripts to configure a custom Ubuntu Desktop.
+  Scripts to configure a custom Lubuntu Desktop 24.04
 </h4>
 
 
