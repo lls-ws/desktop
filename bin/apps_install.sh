@@ -74,7 +74,7 @@ install_google() {
 	
  	rm -fv ${FILE_DEB}
 	 
- 	apt -y install chromium
+ 	apt -y install chromium-browser
 	
  	chromium --version
   	
