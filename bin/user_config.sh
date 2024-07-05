@@ -91,6 +91,32 @@ geany_conf()
 	
 }
 
+fluxbox_files()
+{
+	
+	APP_NAME="fluxbox"
+	
+	DIR_FLUXBOX=~/.${APP_NAME}
+	
+	FILES_SET=(
+		"apps"
+		"menu"
+		"keys"
+		"init"
+		"startup"
+	)
+	
+}
+
+fluxbox_conf()
+{
+	
+	fluxbox_files
+	
+	update_files "Configure" "${DIR_FLUXBOX}" "config/${APP_NAME}"
+	
+}
+
 desktop_backup()
 {
 
@@ -121,6 +147,9 @@ case "$1" in
 	geany)
 		geany_conf
 		;;
+	fluxbox)
+		fluxbox_conf
+		;;
 	aliases)
 		aliases_conf
 		;;
@@ -133,7 +162,7 @@ case "$1" in
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|gtk|geany|aliases|backup}"
+		echo "Use: $0 {all|gtk|geany|fluxbox|aliases|backup}"
 		exit 1
 		;;
 esac

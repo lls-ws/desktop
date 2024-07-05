@@ -1,0 +1,7 @@
+#sudo change_brightness.sh &
+#audacious -p &
+
+nm-applet &
+chromium &
+
+exec fluxbox

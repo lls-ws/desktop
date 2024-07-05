@@ -82,11 +82,13 @@ install_google() {
 	
 }
 
-install_geany() {
+install_apps() {
 	
- 	apt -y install geany
+ 	apt -y install xterm geany fluxbox
 	
+	xterm -version
   	geany --version
+  	fluxbox --version
   	
 }
 
@@ -100,17 +102,17 @@ case "$1" in
 	google)
 		install_google
 		;;
-	geany)
-		install_geany
+	apps)
+		install_apps
 		;;
   	all)
 		update_apps
   		intel_driver
   		install_google
-    		install_geany
+    	install_apps
 		;;
 	*)
-		echo "Use: $0 {all|update|google|intel|geany}"
+		echo "Use: $0 {all|update|google|intel|apps}"
 		exit 1
 		;;
 esac

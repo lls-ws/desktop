@@ -1,0 +1,84 @@
+[begin] (Menu LLS Tecnologia)
+[encoding] {utf8}
+	
+    [exec] (Internet) 						{chromium} 					</usr/share/pixmaps/chromium.xpm>
+    [exec] (Terminal) 						{qterminal} 					</usr/share/pixmaps/mini.xterm_32x32.xpm>
+   
+[separator]
+
+[submenu] (Network) </usr/share/pixmaps/network.xpm>
+      	[exec] (Tor) 					{torbrowser-launcher} 					</usr/share/pixmaps/torbrowser.xpm>
+      	[exec] (Firefox) 				{firefox} 					        </usr/share/pixmaps/firefox.xpm>
+	[exec] (Chromium) 				{chromium} 						</usr/share/pixmaps/chromium.xpm>
+
+	[separator]
+	
+	[exec] (Teamviewer) 				{teamviewer} 						</usr/share/pixmaps/teamviewer.xpm>
+[end]
+
+[submenu] (Multimedia) </usr/share/pixmaps/multimedia.xpm>
+      	[exec] (Audacious) 					{audacious -p} 					</usr/share/pixmaps/audacious-32.xpm>
+      	[exec] (Volume) 					{pavucontrol} 					</usr/share/pixmaps/multimedia.xpm>
+      	[exec] (Radios) 					{streamtuner2} 					</usr/share/pixmaps/streamtuner2.xpm>
+      	[exec] (Kodi) 						{kodi} 								</usr/share/pixmaps/kodi.xpm>
+      	[exec] (VLC) 						{vlc} 								</usr/share/pixmaps/vlc.xpm>
+[end]
+
+[submenu] (Office) </usr/share/pixmaps/office.xpm>
+      	[exec] (Gerenciador de Arquivos)  	{thunar}   							</usr/share/pixmaps/thunar.xpm>
+      	[exec] (Visualizador de Imagens)  	{ristretto}   						</usr/share/pixmaps/ristretto.xpm>
+      	[exec] (Editor de Texto) 			{mousepad} 							</usr/share/pixmaps/mousepad.xpm>
+      	[exec] (Calculadora) 				{mate-calc} 						</usr/share/pixmaps/mate-calc.xpm>
+[end]
+
+[submenu] (Developer) </usr/share/pixmaps/developer.xpm>
+		[exec] (ireport) 	 				{ireport} 							</usr/share/pixmaps/developer.xpm>
+[end]
+
+[submenu] (Tools) </usr/share/pixmaps/tools.xpm>
+      	[exec] (Desligar o monitor) 	  	{xset -display :0.0 dpms force off}			</usr/share/pixmaps/shutdown.xpm>
+      	[exec] (Finalizar processo) 	  	{xkill} 									</usr/share/pixmaps/anonymous.xpm>
+      	[exec] (Capturar Tela) 				{print_screen.sh}							</usr/share/pixmaps/print_screen.xpm>
+      	[exec] (Brilho -) 					{sudo change_brightness.sh}					</usr/share/pixmaps/homeoffice.xpm>
+      	[exec] (Brilho +) 					{sudo change_brightness.sh 7}				</usr/share/pixmaps/homeoffice.xpm>
+[end]
+
+[submenu] (Menu) </usr/share/pixmaps/homeoffice.xpm>
+		[config] (Configuracao) 
+
+[submenu] (Estilos do Sistema) {Escolha um estilo...}
+		[stylesdir] (/usr/share/fluxbox/styles) 
+[end]
+
+[submenu] (Estilos do Utilizador) {Escolha um estilo...}
+		[stylesdir] (~/.fluxbox/styles)
+[end]
+
+		[workspaces] (Lista de Áreas de Trabalho) 
+
+		[separator]
+
+      	[exec] (Configuracoes de Inicio) 		{mousepad ~/.fluxbox/startup} 				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do Menu) 			{mousepad ~/.fluxbox/menu}				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes de Apps) 			{mousepad ~/.fluxbox/apps}				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes de Teclas) 		{mousepad ~/.fluxbox/keys}				</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do GTK-2.0) 		{mousepad ~/.gtkrc-2.0}					</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do GTK-3.0) 		{mousepad ~/.config/gtk-3.0/settings.ini}		</usr/share/pixmaps/geany.xpm>
+      	[exec] (Configuracoes do Aliases) 		{mousepad ~/.bash_aliases}				</usr/share/pixmaps/geany.xpm>
+
+		[separator]
+
+      	[exec] 	   (Executar) 					{fbrun} 
+      	[reconfig] (Recarregar configuracao)
+      	[restart]  (Reiniciar)
+      	[exec]     (Sobre) 						{(fluxbox -v; fluxbox -info | sed 1d) 2> /dev/null | xmessage -file - -center} 
+      	[separator] 
+      	[exit] (Sair) 							</usr/share/pixmaps/shutdown.xpm>
+[end]
+
+[separator] 
+
+[exit] (Sair) 							</usr/share/pixmaps/shutdown.xpm>
+
+[endencoding]
+[end]
