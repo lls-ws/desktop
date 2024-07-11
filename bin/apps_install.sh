@@ -54,11 +54,10 @@ update_apps() {
  	apt -y upgrade
   	
   	apt -y autoremove
-
-   	echo "Disable APT News"
-	sudo dpkg-divert --divert /etc/apt/apt.conf.d/20apt-esm-hook.conf.bak --rename --local /etc/apt/apt.conf.d/20apt-esm-hook.conf
 	
-	ls /etc/apt/apt.conf.d
+   	grep VERSION /etc/os-release
+        uname -v
+        uname -r
 	
 }
 
@@ -70,13 +69,9 @@ install_google() {
  	
 	wget ${URL_DEB}/${FILE_DEB}
 	
-	apt -y install chromium-browser
-	
-	dpkg -i ${FILE_DEB}
+	apt -y install libu2f-udev ./${FILE_DEB}
 	
  	rm -fv ${FILE_DEB}
-	
- 	chromium --version
   	
  	google-chrome --version
 	
@@ -84,11 +79,12 @@ install_google() {
 
 install_apps() {
 	
- 	apt -y install xterm geany fluxbox
+ 	apt -y install xterm geany fluxbox audacious
 	
 	xterm -version
   	geany --version
   	fluxbox --version
+   	audacious --version
   	
 }
 
