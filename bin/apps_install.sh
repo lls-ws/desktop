@@ -61,6 +61,27 @@ update_apps() {
 	
 }
 
+set_profile()
+{
+	
+	echo "Showing locale..."
+	locale
+	
+	echo "Setting pt_BR..."
+	dpkg-reconfigure locales
+	
+	echo "Changing profile to pt_BR..."
+	update-locale LC_ALL=pt_BR.UTF-8 LANG=pt_BR.UTF-8 LANGUAGE=pt_BR
+	
+	echo "Changing timezone..."
+	timedatectl set-timezone America/Sao_Paulo
+	
+	echo "Showing new locale and new date..."
+	cat /etc/default/locale
+	date
+	
+}
+
 install_google() {
 
 	URL_DEB="https://dl.google.com/linux/direct"
@@ -92,7 +113,10 @@ case "$1" in
   	update)
 		update_apps
 		;;
-  	intel)
+  	set_profile)
+		profile
+		;;
+   	intel)
 		intel_driver
 		;;
 	google)
@@ -108,7 +132,7 @@ case "$1" in
     	install_apps
 		;;
 	*)
-		echo "Use: $0 {all|update|google|intel|apps}"
+		echo "Use: $0 {all|update|profile|google|intel|apps}"
 		exit 1
 		;;
 esac
