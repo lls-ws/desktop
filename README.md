@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  Scripts to configure a custom Lubuntu Desktop 24.04
+  Scripts to configure a custom Kali Linux 2024.2 6.8.11-amd64 (2024-05-30)
 </h4>
 
 
