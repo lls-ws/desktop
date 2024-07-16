@@ -100,12 +100,33 @@ install_google() {
 
 install_apps() {
 	
- 	apt -y install xterm fluxbox audacious
+ 	apt -y install xterm fluxbox audacious pkg-config gtk+-3
 	
 	xterm -version
   	fluxbox --version
    	audacious --version
   	
+}
+
+install_geany()
+{
+	
+	APP_NAME="geany"
+ 
+	wget https://download.geany.org/${APP_NAME}-2.0.tar.gz
+
+ 	tar xvf ${APP_NAME}-2.0.tar.gz
+	
+	cd ${APP_NAME}
+	./configure
+ 	make
+  	make install
+	cd ..
+	
+	rm -rf ${APP_NAME}-2.0.tar.gz
+
+ 	${APP_NAME} --version
+	
 }
 
 case "$1" in
@@ -118,21 +139,25 @@ case "$1" in
    	intel)
 		intel_driver
 		;;
-	google)
-		install_google
-		;;
 	apps)
 		install_apps
+		;;
+  	google)
+		install_google
+		;;
+  	geany)
+		install_geany
 		;;
   	all)
 		update_apps
   		set_profile
   		intel_driver
-  		install_google
-    		install_apps
+  		install_apps
+    		install_google
+    		install_geany
 		;;
 	*)
-		echo "Use: $0 {all|update|profile|google|intel|apps}"
+		echo "Use: $0 {all|update|profile||intel|apps|google|geany}"
 		exit 1
 		;;
 esac
