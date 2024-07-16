@@ -100,10 +100,9 @@ install_google() {
 
 install_apps() {
 	
- 	apt -y install xterm geany fluxbox audacious
+ 	apt -y install xterm fluxbox audacious
 	
 	xterm -version
-  	geany --version
   	fluxbox --version
    	audacious --version
   	
