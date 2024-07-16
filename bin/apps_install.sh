@@ -126,9 +126,10 @@ case "$1" in
 		;;
   	all)
 		update_apps
+  		set_profile
   		intel_driver
   		install_google
-    	install_apps
+    		install_apps
 		;;
 	*)
 		echo "Use: $0 {all|update|profile|google|intel|apps}"
