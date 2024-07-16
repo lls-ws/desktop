@@ -113,8 +113,8 @@ case "$1" in
   	update)
 		update_apps
 		;;
-  	set_profile)
-		profile
+  	profile)
+		set_profile
 		;;
    	intel)
 		intel_driver
