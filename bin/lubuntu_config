@@ -11,7 +11,7 @@ check_root "$1"
 
 update_conf()
 {
-	sudo bash bin/user_config.sh update
+	bash bin/apps_install.sh update
 }
 
 apps_install() {
