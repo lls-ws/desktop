@@ -117,7 +117,7 @@ install_geany()
 
  	tar xvf ${APP_NAME}-2.0.tar.gz
 	
-	cd ${APP_NAME}
+	cd ${APP_NAME}-2.0
 	./configure
  	make
   	make install
