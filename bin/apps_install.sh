@@ -159,7 +159,7 @@ case "$1" in
     		install_geany
 		;;
 	*)
-		echo "Use: $0 {all|update|profile||intel|apps|google|geany}"
+		echo "Use: $0 {all|update|profile|intel|apps|google|geany}"
 		exit 1
 		;;
 esac
