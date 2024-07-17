@@ -16,7 +16,7 @@ git clone https://github.com/lls-ws/desktop.git &&
 cd desktop &&
 sudo bash bin/kali_config.sh all &&
 bash bin/user_config.sh geany &&
-bash bin/user_config.sh aliases &&
+bash bin/user_config.sh aliases
 ```
 
 ### To Backup User Preferences
