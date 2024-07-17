@@ -17,6 +17,9 @@ update_conf()
 apps_install() {
 	
 	apt -y install geany audacious
+
+	geany --version
+	audacious --version
 	
 }
 
@@ -29,6 +32,7 @@ user_conf()
 {
 	su lls -c "bash bin/user_config.sh geany"
 	su lls -c "bash bin/user_config.sh aliases"
+	su lls -c "bash bin/user_config.sh audacious"
 }
 
 case "$1" in
