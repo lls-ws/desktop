@@ -32,12 +32,10 @@ hosts_conf()
 grub_conf()
 {
 	
-	sudo apt-get -y install grub-customizer
+	cp -fv images/wallpaper.png /boot/grub/themes/kali/grub-4x3.png
+	cp -fv images/wallpaper.png /boot/grub/themes/kali/grub-16x9.png
 	
-	sudo cp -fv images/wallpaper.png /usr/share/grub/themes/kali/grub-4x3.png
-	sudo cp -fv images/wallpaper.png /usr/share/grub/themes/kali/grub-16x9.png
-	
-	sudo grub-customizer
+	update-grub
 	
 }
 
