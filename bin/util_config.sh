@@ -29,6 +29,18 @@ hosts_conf()
 	
 }
 
+grub_conf()
+{
+	
+	sudo apt-get -y install grub-customizer
+	
+	sudo cp -fv images/wallpaper.png /usr/share/grub/themes/kali/grub-4x3.png
+	sudo cp -fv images/wallpaper.png /usr/share/grub/themes/kali/grub-16x9.png
+	
+	sudo grub-customizer
+	
+}
+
 sudo_conf()
 {
 
@@ -72,7 +84,10 @@ case "$1" in
 	sudo)
 		sudo_conf
 		;;
-	hosts)
+	grub)
+		grub_conf
+		;;
+ 	hosts)
 		hosts_conf
 		;;
 	scripts)
@@ -84,7 +99,7 @@ case "$1" in
 		scripts_conf
 		;;
 	*)
-		echo "Use: $0 {all|sudo|hosts|scripts}"
+		echo "Use: $0 {all|sudo|grub|hosts|scripts}"
 		exit 1
 		;;
 esac
