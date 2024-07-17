@@ -125,6 +125,8 @@ install_geany()
 	
 	rm -rf ${APP_NAME}-2.0.tar.gz
 
+ 	ibus-daemon --xim -d -r
+
  	${APP_NAME} --version
 	
 }
