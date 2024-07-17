@@ -20,7 +20,8 @@ case "$1" in
 		bash bin/util_config.sh all
 		;;
 	user)
-		bash bin/user_config.sh all
+		bash bin/user_config.sh geany
+		bash bin/user_config.sh aliases
 		;;
   	all)
 		bash bin/apps_install.sh all
