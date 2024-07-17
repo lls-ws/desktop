@@ -27,8 +27,8 @@ util_conf()
 
 user_conf()
 {
-	bash bin/user_config.sh geany
-	bash bin/user_config.sh aliases
+	su lls -c "bash bin/user_config.sh geany"
+	su lls -c "bash bin/user_config.sh aliases"
 }
 
 case "$1" in
