@@ -39,7 +39,7 @@ alias apt-only-upgrade='sudo apt --only-upgrade -y install $1'
 alias update='sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove'
 alias version='uname -vr'
 
-rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
+rmdir 'Área de trabalho' 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 
 rmdir 'Documents' 'Desktop' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
 
