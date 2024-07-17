@@ -12,9 +12,8 @@
 ### From Command Line
 
 ```bash
-git clone https://github.com/lls-ws/desktop.git && cd desktop
-```
-```bash
+git clone https://github.com/lls-ws/desktop.git &&
+cd desktop &&
 sudo bash bin/kali_config.sh all
 ```
 
