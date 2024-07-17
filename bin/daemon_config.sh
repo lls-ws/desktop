@@ -9,28 +9,18 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
-lightdm_conf()
+bluetooth_conf()
 {
 	
-	APP_NAME="lightdm"
-	
-	FILE_SET="slick-greeter.conf"
-	
-	DIR_ETC="/etc/${APP_NAME}"
+	APP_NAME="bluetooth"
 	
 	echo "Configure ${APP_NAME}..."
 	
-	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
-	
-	apt -y purge gdm3 unity-greeter
-	
-	apt -y autoremove
-	
-	dpkg-reconfigure lightdm
-	
-	cat /etc/X11/default-display-manager
-	
-	cp -fv images/wallpaper.png /usr/share/backgrounds
+	systemctl enable ${APP_NAME}
+
+ 	systemctl start ${APP_NAME}
+
+  	systemctl status ${APP_NAME}
 	
 }
 
