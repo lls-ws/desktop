@@ -16,9 +16,7 @@ git clone https://github.com/lls-ws/desktop.git &&
 cd desktop
 ```
 ```bash
-sudo bash bin/apps_install.sh update &&
-sudo bash bin/apps_install.sh google &&
-sudo bash bin/apps_install.sh geany
+sudo bash bin/lubuntu_config all
 ```
 
 ### To Backup User Preferences
