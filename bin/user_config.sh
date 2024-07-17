@@ -117,6 +117,43 @@ fluxbox_conf()
 	
 }
 
+audacious_files_config()
+{
+	
+	APP_NAME="audacious"
+	
+	FILES_SET=(
+		"config"
+		"plugin-registry"
+		"playlist-state"
+	)
+	
+}
+
+audacious_files_playlist()
+{
+	
+	FILES_SET=(
+		"1000.audpl"
+		"1001.audpl"
+		"order"
+	)
+	
+}
+
+audacious_conf()
+{
+	
+	audacious_files_config
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+	
+	audacious_files_playlist
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}/playlists" "config/${APP_NAME}/playlists"
+			
+}
+
 desktop_backup()
 {
 
@@ -154,6 +191,9 @@ case "$1" in
 	fluxbox)
 		fluxbox_conf
 		;;
+  	audacious)
+		audacious_conf
+		;;
 	aliases)
 		aliases_conf
 		;;
@@ -166,7 +206,7 @@ case "$1" in
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|gtk|geany|fluxbox|aliases|backup}"
+		echo "Use: $0 {all|gtk|geany|audacious|fluxbox|aliases|backup}"
 		exit 1
 		;;
 esac
