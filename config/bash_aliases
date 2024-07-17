@@ -36,7 +36,8 @@ alias show-service='ls /etc/systemd/system/multi-user.target.wants'
 alias apt-only-upgrade='sudo apt --only-upgrade -y install $1'
 
 # Comand for Upgrade Packages
-alias apt-upgrade='sudo apt -y update && sudo apt -y upgrade && sudo apt -y autoremove'
+alias update='sudo apt update && sudo apt -y upgrade && sudo apt -y autoremove'
+alias version='uname -vr'
 
 rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 
