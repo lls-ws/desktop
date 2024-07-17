@@ -1,0 +1,57 @@
+#!/bin/sh
+# Script to install apps on Ubuntu Desktop
+#
+# Autor: Leandro Luiz
+# email: lls.homeoffice@gmail.com
+
+PATH=.:$(dirname $0):$PATH
+. lib/update.lib		|| exit 1
+
+check_root "$1"
+
+update_conf()
+{
+	bash bin/user_config.sh update
+}
+
+apps_install() {
+	
+	apt -y install geany audacious
+	
+}
+
+util_conf()
+{
+	bash bin/util_config.sh hosts
+}
+
+user_conf()
+{
+	bash bin/user_config.sh geany
+	bash bin/user_config.sh aliases
+}
+
+case "$1" in
+  	update)
+		update_conf
+		;;
+  	apps)
+		apps_install
+		;;
+  	util)
+		util_conf
+		;;
+	user)
+		user_conf
+		;;
+  	all)
+		update_conf
+		apps_install
+		util_conf
+		user_conf
+		;;
+	*)
+		echo "Use: $0 {all|apps|util|user}"
+		exit 1
+		;;
+esac
