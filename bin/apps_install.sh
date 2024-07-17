@@ -100,7 +100,7 @@ install_google() {
 
 install_apps() {
 	
- 	apt -y install xterm fluxbox audacious pkg-config gtk+-3
+ 	apt -y install xterm blueman fluxbox audacious pkg-config gtk+-3
 	
 	xterm -version
   	fluxbox --version
