@@ -13,10 +13,12 @@
 
 ```bash
 git clone https://github.com/lls-ws/desktop.git &&
-cd desktop &&
-sudo bash bin/kali_config.sh all &&
-bash bin/user_config.sh geany &&
-bash bin/user_config.sh aliases
+cd desktop
+```
+```bash
+sudo bash bin/apps_install.sh update &&
+sudo bash bin/apps_install.sh google &&
+sudo bash bin/apps_install.sh geany
 ```
 
 ### To Backup User Preferences
