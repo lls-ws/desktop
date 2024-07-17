@@ -24,6 +24,31 @@ bluetooth_conf()
 	
 }
 
+lightdm_conf()
+{
+	
+	APP_NAME="lightdm"
+	
+	FILE_SET="slick-greeter.conf"
+	
+	DIR_ETC="/etc/${APP_NAME}"
+	
+	echo "Configure ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
+	
+	apt -y purge gdm3 unity-greeter
+	
+	apt -y autoremove
+	
+	dpkg-reconfigure lightdm
+	
+	cat /etc/X11/default-display-manager
+	
+	cp -fv images/wallpaper.png /usr/share/backgrounds
+	
+}
+
 transmission_conf()
 {
 	
@@ -145,7 +170,10 @@ case "$1" in
 	nfs)
 		nfs_conf
 		;;
-	lightdm)
+	bluetooth)
+		bluetooth_conf
+		;;
+ 	lightdm)
 		lightdm_conf
 		;;
 	transmission)
@@ -157,7 +185,7 @@ case "$1" in
 		transmission_conf
 		;;
 	*)
-		echo "Use: $0 {all|nfs|lightdm|transmission}"
+		echo "Use: $0 {all|nfs|bluetooth|lightdm|transmission}"
 		exit 1
 		;;
 esac
