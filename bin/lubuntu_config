@@ -55,7 +55,7 @@ case "$1" in
 		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|apps|util|user}"
+		echo "Use: $0 {all|update|apps|util|user}"
 		exit 1
 		;;
 esac
