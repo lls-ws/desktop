@@ -24,6 +24,22 @@ bluetooth_conf()
 	
 }
 
+sddm_conf()
+{
+	git clone https://github.com/RadRussianRus/sddm-slice.git
+
+ 	cp -r sddm-slice /usr/share/sddm/themes/sddm-slice
+
+	FILE_SET="/etc/sddm.conf"
+ 
+  	echo "[Theme]" >> ${FILE_SET}
+   	echo "Current=sddm-slice" >> ${FILE_SET}
+
+    	cat ${FILE_SET}
+
+    	
+}
+
 lightdm_conf()
 {
 	
@@ -173,10 +189,13 @@ case "$1" in
 	bluetooth)
 		bluetooth_conf
 		;;
- 	lightdm)
+ 	sddm)
+		sddm_conf
+		;;
+	lightdm)
 		lightdm_conf
 		;;
-	transmission)
+ 	transmission)
 		transmission_conf
 		;;
 	all)
@@ -185,7 +204,7 @@ case "$1" in
 		transmission_conf
 		;;
 	*)
-		echo "Use: $0 {all|nfs|bluetooth|lightdm|transmission}"
+		echo "Use: $0 {all|nfs|bluetooth|sddm|lightdm|transmission}"
 		exit 1
 		;;
 esac
