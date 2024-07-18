@@ -3,7 +3,9 @@
 </h1>
 
 <h4 align="center">
-  Scripts to configure a custom Kali Linux 2024.2 6.8.11-amd64 (2024-05-30)
+  Lubuntu 24.04 LTS (Noble Numbat)
+  6.8.0-38-generic
+  noble
 </h4>
 
 
