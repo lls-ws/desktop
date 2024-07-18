@@ -27,17 +27,16 @@ bluetooth_conf()
 sddm_conf()
 {
 	git clone https://github.com/RadRussianRus/sddm-slice.git
-
- 	cp -r sddm-slice /usr/share/sddm/themes/sddm-slice
-
+	
+ 	mv -v sddm-slice /usr/share/sddm/themes/sddm-slice
+	
 	FILE_SET="/etc/sddm.conf"
- 
+ 	
   	echo "[Theme]" >> ${FILE_SET}
    	echo "Current=sddm-slice" >> ${FILE_SET}
-
+	
     	cat ${FILE_SET}
-
-    	
+	
 }
 
 lightdm_conf()
