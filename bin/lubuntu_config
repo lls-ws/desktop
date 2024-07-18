@@ -20,7 +20,9 @@ apps_install() {
 
 	geany --version
 	audacious --version
-	
+
+	bash bin/apps_install.sh google
+
 }
 
 util_conf()
