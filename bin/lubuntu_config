@@ -35,6 +35,9 @@ user_conf()
 	su lls -c "bash bin/user_config.sh geany"
 	su lls -c "bash bin/user_config.sh aliases"
 	su lls -c "bash bin/user_config.sh audacious"
+
+	bash bin/daemon_config.sh sddm
+
 }
 
 case "$1" in
