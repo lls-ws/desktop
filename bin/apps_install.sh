@@ -90,7 +90,7 @@ install_google() {
  	
 	wget ${URL_DEB}/${FILE_DEB}
 	
-	apt -y install libu2f-udev ./${FILE_DEB}
+	apt -y install ./${FILE_DEB}
 	
  	rm -fv ${FILE_DEB}
   	
