@@ -5,7 +5,6 @@
 <h4 align="center">
   Lubuntu 24.04 LTS (Noble Numbat)
   6.8.0-38-generic
-  noble
 </h4>
 
 
