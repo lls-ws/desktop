@@ -7,22 +7,12 @@
 ssh_command()
 {
 
-	echo "Connect on host: ${DNAME}"
-	
-	CMD_TERM=`cat /usr/bin/terminal.sh | grep xterm | cut -d '"' -f 2`
+	echo "Connect on cloud: ${DNAME}"
 	
 	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}"
 
-	if [ ! -z $DISPLAY ]; then
-
-		${CMD_TERM} ${COLOR} -title "Cloud ${DNAME}" -e "${CMD_SSH}" &
+ 	qterminal -e ${CMD_SSH}
 		
-	else
-		
-		${CMD_SSH}
-		
-	fi
-	
 }
 
 USER=`git config user.name`
@@ -46,21 +36,13 @@ HOSTNAME="$1"
 
 if [ -z "${HOSTNAME}" ]; then
 
-	COLOR="#FFFFFF"
+	echo "Hostname not found!"
+	echo "Use: `basename $0` [HOSTNAME]"
+	exit 1;
 	
 else
 
 	DNAME=${HOSTNAME}.${DNAME}
-	
-	if [ "${HOSTNAME}" = "app" ]; then
-	
-		COLOR="#008000"
-	
-	else
-	
-		COLOR="#0000FF"
-		
-	fi
 
 fi
 
