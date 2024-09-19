@@ -2,8 +2,8 @@
 alias myip='curl ipinfo.io/ip && echo'
 
 # Connect into a Clound
-alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br'
-alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br'
+alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br &'
+alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br &'
 
 # Open a Terminal
 alias terminal='terminal.sh gnome'
