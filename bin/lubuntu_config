@@ -28,6 +28,7 @@ apps_install() {
 util_conf()
 {
 	bash bin/util_config.sh hosts
+	bash bin/util_config.sh scripts
 }
 
 user_conf()
