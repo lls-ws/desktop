@@ -13,7 +13,7 @@
 ### From Command Line
 
 ```bash
-git clone https://github.com/lls-ws/desktop.git
+git clone https://github.com/lls-ws/desktop.git && cd desktop
 ```
 ```bash
 sudo bash bin/lubuntu_config all
