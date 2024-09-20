@@ -19,14 +19,14 @@ update_conf()
 apps_install() {
 	
 	apt -y install geany audacious streamtuner2
-
+	
 	geany --version
 	audacious --version
 	streamtuner2 -V
-
+	
 	bash bin/apps_install.sh google
 	bash bin/apps_install.sh anydesk
-
+	
 }
 
 util_conf()
