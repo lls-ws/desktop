@@ -131,6 +131,15 @@ install_geany()
 	
 }
 
+add_anydesk()
+{
+	
+	curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/anydesk.gpg
+	
+ 	echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
+	
+}
+
 case "$1" in
   	update)
 		update_apps
@@ -150,6 +159,9 @@ case "$1" in
   	geany)
 		install_geany
 		;;
+  	anydesk)
+		add_anydesk
+		;;
   	all)
 		update_apps
   		set_profile
@@ -157,9 +169,10 @@ case "$1" in
   		install_apps
     		install_google
     		install_geany
+      		install_anydesk
 		;;
 	*)
-		echo "Use: $0 {all|update|profile|intel|apps|google|geany}"
+		echo "Use: $0 {all|update|profile|intel|apps|google|geany|anydesk}"
 		exit 1
 		;;
 esac
