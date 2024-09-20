@@ -131,12 +131,16 @@ install_geany()
 	
 }
 
-add_anydesk()
+install_anydesk()
 {
 	
 	curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/anydesk.gpg
 	
  	echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
+	
+  	apt update
+	
+ 	apt -y install anydesk
 	
 }
 
@@ -160,7 +164,7 @@ case "$1" in
 		install_geany
 		;;
   	anydesk)
-		add_anydesk
+		install_anydesk
 		;;
   	all)
 		update_apps
