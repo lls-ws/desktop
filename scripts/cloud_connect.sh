@@ -11,7 +11,7 @@ ssh_command()
 	
 	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}"
 
- 	qterminal -e ${CMD_SSH}
+ 	qterminal -e ${CMD_SSH} &
 		
 }
 
