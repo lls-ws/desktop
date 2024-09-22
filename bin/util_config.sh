@@ -12,19 +12,19 @@ check_root "$1"
 hosts_conf()
 {
 	
-	echo "127.0.0.1			localhost" 					> /etc/hosts
+	echo "127.0.0.1			localhost" 							> /etc/hosts
 	echo "192.168.0.1		router.lls.net.br		router"		>> /etc/hosts
 	echo "192.168.0.100		dell.lls.net.br			dell" 		>> /etc/hosts
 	echo "192.168.0.200		3green.lls.net.br		3green" 	>> /etc/hosts
  	echo "192.168.0.7		leandro.lls.net.br		leandro"	>> /etc/hosts
  	echo "192.168.0.4		wanda.lls.net.br		wanda"		>> /etc/hosts
- 	echo "192.168.0.3		tv.lls.net.br			tv"		>> /etc/hosts
+ 	echo "192.168.0.3		tv.lls.net.br			tv"			>> /etc/hosts
  	echo "192.168.0.2		camera.lls.net.br		camera"		>> /etc/hosts
   	echo "18.231.77.9		app.lls.net.br			app"	 	>> /etc/hosts
 	echo "18.228.3.148		funchal.lls.net.br		funchal" 	>> /etc/hosts
-	echo "18.228.3.148		repository.lls.net.br		repository"	>> /etc/hosts
-	echo "208.67.222.222		opendns.lls.net.br		opendns" 	>> /etc/hosts
-	echo "208.67.220.220		opendns2.lls.net.br		opendns2" 	>> /etc/hosts
+	echo "18.228.3.148		repository.lls.net.br	repository"	>> /etc/hosts
+	echo "208.67.222.222	opendns.lls.net.br		opendns" 	>> /etc/hosts
+	echo "208.67.220.220	opendns2.lls.net.br		opendns2" 	>> /etc/hosts
 	
 	cat /etc/hosts
 	

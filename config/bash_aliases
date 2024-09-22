@@ -5,6 +5,21 @@ alias myip='curl ipinfo.io/ip && echo'
 alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br &'
 alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br &'
 
+# Tomcat
+alias tomcat-status='clear; sudo service tomcat9 status'
+alias tomcat-start='clear; sudo service tomcat9 start; tomcat-status'
+alias tomcat-stop='clear; sudo service tomcat9 stop; tomcat-status'
+
+# MariaDB
+alias maria-status='clear; sudo service mariadb status'
+alias maria-start='clear; sudo service mariadb start; maria-status'
+alias maria-stop='clear; sudo service mariadb stop; maria-status'
+
+# LLS
+alias lls-status='clear; tomcat-status; maria-status'
+alias lls-start='clear; tomcat-start; maria-start'
+alias lls-stop='clear; tomcat-stop; maria-stop'
+
 # Open a Terminal
 alias terminal='terminal.sh gnome'
 
