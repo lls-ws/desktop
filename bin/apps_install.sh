@@ -9,7 +9,8 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
-delete_file() {
+delete_file()
+{
 	
 	if [ -f ${FILE_LIST} ]; then
 
@@ -19,7 +20,8 @@ delete_file() {
 	
 }
 
-show_file() {
+show_file()
+{
 	
 	cat ${FILE_LIST}
 	
@@ -27,7 +29,8 @@ show_file() {
 	
 }
 
-intel_driver() {
+intel_driver()
+{
  	
 	apt-get -y purge --auto-remove mesa-vulkan-drivers
   	
@@ -35,54 +38,20 @@ intel_driver() {
 	
   	lspci -k | grep i915
   	
-    	echo "LIBVA_DRIVER_NAME=i965" >> /etc/environment
-	
-     	cat /etc/environment
+	echo "LIBVA_DRIVER_NAME=i965" >> /etc/environment
+
+	cat /etc/environment
 	
 	export LIBVA_DRIVER_NAME=i965
  	
-     	vainfo
-	
-      	echo "Type: reboot"
+	vainfo
+
+	echo "Type: reboot"
 	
 }
 
-update_apps() {
-
-	apt update
- 	
- 	apt -y upgrade
-  	
-  	apt -y autoremove
-	
-   	grep VERSION /etc/os-release
-        uname -v
-        uname -r
-	
-}
-
-set_profile()
+install_google()
 {
-	
-	echo "Showing locale..."
-	locale
-	
-	echo "Setting pt_BR..."
-	dpkg-reconfigure locales
-	
-	echo "Changing profile to pt_BR..."
-	update-locale LC_ALL=pt_BR.UTF-8 LANG=pt_BR.UTF-8 LANGUAGE=pt_BR
-	
-	echo "Changing timezone..."
-	timedatectl set-timezone America/Sao_Paulo
-	
-	echo "Showing new locale and new date..."
-	cat /etc/default/locale
-	date
-	
-}
-
-install_google() {
 
 	URL_DEB="https://dl.google.com/linux/direct"
 	
@@ -98,37 +67,15 @@ install_google() {
 	
 }
 
-install_apps() {
-	
- 	apt -y install xterm blueman fluxbox audacious pkg-config
-	
-	xterm -version
-  	fluxbox --version
-   	audacious --version
-  	
-}
-
-install_geany()
+install_apps()
 {
 	
-	APP_NAME="geany"
- 
-	wget https://download.geany.org/${APP_NAME}-2.0.tar.gz
-
- 	tar xvf ${APP_NAME}-2.0.tar.gz
+ 	apt -y install geany audacious streamtuner2
 	
-	cd ${APP_NAME}-2.0
-	./configure
- 	make
-  	make install
-	cd ..
-	
-	rm -rf ${APP_NAME}-2.0.tar.gz
-
- 	ibus-daemon --xim -d -r
-
- 	${APP_NAME} --version
-	
+	geany --version
+	audacious --version
+	streamtuner2 -V
+  	
 }
 
 install_anydesk()
@@ -145,12 +92,6 @@ install_anydesk()
 }
 
 case "$1" in
-  	update)
-		update_apps
-		;;
-  	profile)
-		set_profile
-		;;
    	intel)
 		intel_driver
 		;;
@@ -160,23 +101,16 @@ case "$1" in
   	google)
 		install_google
 		;;
-  	geany)
-		install_geany
-		;;
   	anydesk)
 		install_anydesk
 		;;
   	all)
-		update_apps
-  		set_profile
-  		intel_driver
   		install_apps
-    		install_google
-    		install_geany
-      		install_anydesk
+		install_google
+		install_anydesk
 		;;
 	*)
-		echo "Use: $0 {all|update|profile|intel|apps|google|geany|anydesk}"
+		echo "Use: $0 {all|intel|apps|google|anydesk}"
 		exit 1
 		;;
 esac

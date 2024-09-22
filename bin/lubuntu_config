@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to install apps on Ubuntu Desktop
+# Script to install apps on Lubuntu Desktop
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -9,21 +9,10 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
-update_conf()
+apps_install()
 {
 	
-	bash bin/apps_install.sh update
-
-}
-
-apps_install() {
-	
-	apt -y install geany audacious streamtuner2
-	
-	geany --version
-	audacious --version
-	streamtuner2 -V
-	
+	bash bin/apps_install.sh apps
 	bash bin/apps_install.sh google
 	bash bin/apps_install.sh anydesk
 	
@@ -47,9 +36,6 @@ user_conf()
 }
 
 case "$1" in
-  	update)
-		update_conf
-		;;
   	apps)
 		apps_install
 		;;
@@ -60,13 +46,12 @@ case "$1" in
 		user_conf
 		;;
   	all)
-		update_conf
 		apps_install
 		util_conf
 		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|update|apps|util|user}"
+		echo "Use: $0 {all|apps|util|user}"
 		exit 1
 		;;
 esac
