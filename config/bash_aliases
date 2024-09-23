@@ -41,6 +41,8 @@ alias git_upload_lls-src='clear; cd ~/lls-src; sudo ~/cloud/bin/git_conf.sh remo
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
 
 # Comands for Disable Services
+alias disable-tomcat='sudo systemctl disable tomcat9.service'
+alias disable-maria='sudo systemctl disable mariadb.service'
 alias disable-cups='sudo systemctl disable cups.service'
 alias disable-cron='sudo systemctl disable cron.service'
 alias disable-snapd='sudo systemctl disable snapd.service'
