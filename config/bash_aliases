@@ -9,11 +9,13 @@ alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br &'
 alias tomcat-status='clear; sudo service tomcat9 status'
 alias tomcat-start='clear; sudo service tomcat9 start; tomcat-status'
 alias tomcat-stop='clear; sudo service tomcat9 stop; tomcat-status'
+alias tomcat-restart='clear; tomcat-stop; tomcat-start'
 
 # MariaDB
 alias maria-status='clear; sudo service mariadb status'
 alias maria-start='clear; sudo service mariadb start; maria-status'
 alias maria-stop='clear; sudo service mariadb stop; maria-status'
+alias maria-restart='clear; maria-stop; maria-start'
 
 # LLS
 alias lls-status='clear; tomcat-status; maria-status'
