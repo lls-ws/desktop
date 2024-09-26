@@ -10,12 +10,14 @@ alias tomcat-status='clear; sudo service tomcat9 status'
 alias tomcat-start='clear; sudo service tomcat9 start; tomcat-status'
 alias tomcat-stop='clear; sudo service tomcat9 stop; tomcat-status'
 alias tomcat-restart='clear; tomcat-stop; tomcat-start'
+alias tomcat-log='geany /var/lib/tomcat9/logs/*.log &'
 
 # MariaDB
 alias maria-status='clear; sudo service mariadb status'
 alias maria-start='clear; sudo service mariadb start; maria-status'
 alias maria-stop='clear; sudo service mariadb stop; maria-status'
 alias maria-restart='clear; maria-stop; maria-start'
+alias maria-log='geany /var/lib/mysql/error.log &'
 
 # LLS
 alias lls-status='clear; tomcat-status; maria-status'
