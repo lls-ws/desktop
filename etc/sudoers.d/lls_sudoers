@@ -7,3 +7,6 @@ lls ALL=(ALL) NOPASSWD:/usr/sbin/service tomcat9 status
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service mariadb start
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service mariadb stop
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service mariadb status
+lls ALL=(ALL) NOPASSWD:/usr/sbin/service netfilter-persistent start
+lls ALL=(ALL) NOPASSWD:/usr/sbin/service netfilter-persistent stop
+lls ALL=(ALL) NOPASSWD:/usr/sbin/service netfilter-persistent status
