@@ -21,19 +21,25 @@ fi
 aliases_conf()
 {
 	
-	cp -fv config/bash_aliases ${FILE_BASH}
+	FILE_ALIASES=~/.bash_aliases
 	
-	FILE_ALIASES=~/.zshrc
+	FILE_NAME="bash_aliases_desktop"
 	
-	if [ -f ${FILE_ALIASES} ]; then
+	FILE_CLOUD=~/.${FILE_NAME}
 	
-		echo "if [ -f ~/.bash_aliases ]; then"		>> ${FILE_ALIASES}
-		echo "   . ~/.bash_aliases"			>> ${FILE_ALIASES}
-		echo "fi"					>> ${FILE_ALIASES}
+	rm -fv ${FILE_ALIASES}
+	
+	cp -fv util/${FILE_NAME} ${FILE_CLOUD}
+	
+	for FILE in ~/.bash_aliases_*; do
+	
+		echo ${FILE}
+	
+		echo ". ${FILE}" >> ${FILE_ALIASES}
 		
-		cat ${FILE_ALIASES} | tail -3
-		
-	fi
+	done
+	
+	cat ${FILE_CLOUD} ${FILE_ALIASES}
 	
 }
 
@@ -157,8 +163,6 @@ audacious_conf()
 desktop_backup()
 {
 
-	cp -fv ${FILE_BASH} config/bash_aliases
-	
 	geany_files
 	
 	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
@@ -178,8 +182,6 @@ desktop_backup()
 }
 
 DIR_CONFIG=~/.config
-
-FILE_BASH=~/.bash_aliases
 
 case "$1" in
 	gtk)

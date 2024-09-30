@@ -74,7 +74,7 @@ scripts_conf()
 		"jquery-lls.sh"
 	)
 	
-	update_files "Configure" "${DIR_BIN}" "scripts"
+	update_files "Configure" "${DIR_BIN}" "util"
 	
 }
 
