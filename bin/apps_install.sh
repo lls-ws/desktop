@@ -83,12 +83,8 @@ install_apps()
 install_kvantum()
 {
 	
- 	#add-apt-repository ppa:papirus/papirus
+ 	apt -y install kvantum
 	
-	#apt-get update
-	
-	apt-get -y install --install-recommends kvantum adapta-kde
- 	
 	kvantummanager --version
   	
 }
