@@ -105,7 +105,7 @@ install_anydesk()
 remove_apps()
 {
 	
-	apt-get -y remove --purge "libreoffice*"
+	apt-get -y remove --purge "libreoffice*" "firefox*"
 	
 	apt-get clean
 	
