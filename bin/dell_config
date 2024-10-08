@@ -25,13 +25,6 @@ apps_install()
 	
 }
 
-user_conf()
-{
-	
-	su wanda -c "bash bin/user_config.sh lxqt"
-
-}
-
 user_profile()
 {
 
@@ -45,6 +38,16 @@ user_profile()
 	
 	cd ~/cloud
 	
+	NAME=`git config user.name`
+
+	if [ -z "${NAME}" ]; then
+			
+		bash bin/git_conf.sh name ${USER}
+		bash bin/git_conf.sh email ${EMAIL}
+		bash bin/git_conf.sh password ${USER}
+		
+	fi
+	
 	bash bin/ubuntu_conf.sh profile
 	
 	cd ~
@@ -54,6 +57,17 @@ user_profile()
 	ls ~
 	
 }
+
+user_conf()
+{
+	
+	su ${USER} -c "bash bin/user_config.sh lxqt"
+
+}
+
+USER="wanda"
+EMAIL="wganara@gmail.com"
+PASSWORD="${USER}"
 
 case "$1" in
   	apps)
