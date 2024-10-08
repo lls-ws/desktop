@@ -56,28 +56,21 @@ aliases_conf()
 	
 }
 
-gtk_files()
+screensaver_files()
 {
 	
-	APP_NAME="gtk-3.0"
-	
-	FILE_SET="settings.ini"
-	
-	FILE_GTK=~/.gtkrc-2.0
+	FILE_SCR=~/.xscreensaver
 	
 }
 
-gtk_conf()
+screensaver_conf()
 {
 	
-	gtk_files
+	screensaver_files
 	
-	update_file "${FILE_SET}" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+	cp -fv config/xscreensaver ${FILE_SCR}
 	
-	cp -fv config/gtkrc-2.0 ${FILE_GTK}
-	
-	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-	gsettings range org.gnome.desktop.interface color-scheme
+	ls ${FILE_SCR}
 	
 }
 
@@ -107,32 +100,6 @@ geany_conf()
 	rm -rf ${APP_NAME}-themes
 	
 	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
-	
-}
-
-fluxbox_files()
-{
-	
-	APP_NAME="fluxbox"
-	
-	DIR_FLUXBOX=~/.${APP_NAME}
-	
-	FILES_SET=(
-		"apps"
-		"menu"
-		"keys"
-		"init"
-		"startup"
-	)
-	
-}
-
-fluxbox_conf()
-{
-	
-	fluxbox_files
-	
-	update_files "Configure" "${DIR_FLUXBOX}" "config/${APP_NAME}"
 	
 }
 
@@ -176,41 +143,32 @@ audacious_conf()
 desktop_backup()
 {
 
-	geany_files
+	#geany_files
 	
-	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	#update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
  	
- 	fluxbox_files
-	
-	update_files "Backup" "config/${APP_NAME}" "${DIR_FLUXBOX}"
+ 	screensaver_files
  	
-	gtk_files
+	cp -fv ${FILE_SCR} config/xscreensaver
 	
-	echo -e "\nBackup ${APP_NAME}..."
-	
-	update_file "${FILE_SET}" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
-	
-	cp -fv ${FILE_GTK} config/gtkrc-2.0
+	ls config
 	
 }
 
 DIR_CONFIG=~/.config
 
 case "$1" in
-	gtk)
-		gtk_conf
-		;;
 	lxqt)
 		lxqt_conf
 		;;
 	geany)
 		geany_conf
 		;;
-	fluxbox)
-		fluxbox_conf
-		;;
-  	audacious)
+	audacious)
 		audacious_conf
+		;;
+	screensaver)
+		screensaver_conf
 		;;
 	aliases)
 		aliases_conf
@@ -219,12 +177,14 @@ case "$1" in
 		desktop_backup
 		;;
 	all)
-		gtk_conf
+		lxqt_conf
 		geany_conf
+		audacious_conf
+		screensaver_conf
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|gtk|lxqt|geany|audacious|fluxbox|aliases|backup}"
+		echo "Use: $0 {all|lxqt|geany|audacious|screensaver|aliases|backup}"
 		exit 1
 		;;
 esac
