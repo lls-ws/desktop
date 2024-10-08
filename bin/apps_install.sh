@@ -87,7 +87,7 @@ install_kvantum()
 	
 	apt-get update
 	
-	apt-get -y install --install-recommends adapta-kde
+	apt-get -y install --install-recommends kvantum adapta-kde
  	
 	kvantummanager --version
   	
