@@ -18,6 +18,19 @@ if [ ! -d ${DIR_LLS} ]; then
 
 fi
 
+lxqt_conf()
+{
+	
+	FILE_PROFILE=~/.profile
+	
+	sed -i '/kvantum/d' ${FILE_PROFILE}
+	
+	echo "export QT_STYLE_OVERRIDE=kvantum" >> ${FILE_PROFILE}
+	
+	cat ${FILE_PROFILE}
+	
+}
+
 aliases_conf()
 {
 	
@@ -187,6 +200,9 @@ case "$1" in
 	gtk)
 		gtk_conf
 		;;
+	lxqt)
+		lxqt_conf
+		;;
 	geany)
 		geany_conf
 		;;
@@ -208,7 +224,7 @@ case "$1" in
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|gtk|geany|audacious|fluxbox|aliases|backup}"
+		echo "Use: $0 {all|gtk|lxqt|geany|audacious|fluxbox|aliases|backup}"
 		exit 1
 		;;
 esac

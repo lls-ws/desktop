@@ -70,11 +70,12 @@ install_google()
 install_apps()
 {
 	
- 	apt -y install geany audacious streamtuner2
+ 	apt -y install --install-recommends geany adapta-kde audacious streamtuner2
 	
 	geany --version
 	audacious --version
 	streamtuner2 -V
+	kvantummanager --version
   	
 }
 
