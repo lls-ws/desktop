@@ -35,7 +35,7 @@ sddm_conf()
   	echo "[Theme]" >> ${FILE_SET}
    	echo "Current=sddm-slice" >> ${FILE_SET}
 	
-    	cat ${FILE_SET}
+    cat ${FILE_SET}
 	
 }
 

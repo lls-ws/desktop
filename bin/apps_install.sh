@@ -70,11 +70,21 @@ install_google()
 install_apps()
 {
 	
- 	apt -y install --install-recommends geany adapta-kde audacious streamtuner2
+ 	apt -y install geany audacious streamtuner2 transmission-cli transmission-common transmission-daemon
 	
 	geany --version
 	audacious --version
 	streamtuner2 -V
+	transmission-cli --version
+	transmission-daemon --version
+  	
+}
+
+install_kvantum()
+{
+	
+ 	apt -y install --install-recommends adapta-kde
+	
 	kvantummanager --version
   	
 }
@@ -119,14 +129,18 @@ case "$1" in
   	anydesk)
 		install_anydesk
 		;;
+	kvantum)
+		install_kvantum
+		;;
   	all)
+  		remove_apps
   		install_apps
 		install_google
 		install_anydesk
-		remove_apps
+		install_kvantum
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|remove|google|anydesk}"
+		echo "Use: $0 {all|intel|apps|remove|google|anydesk|kvantum}"
 		exit 1
 		;;
 esac

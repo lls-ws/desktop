@@ -15,6 +15,7 @@ apps_install()
 	bash bin/apps_install.sh apps
 	bash bin/apps_install.sh google
 	bash bin/apps_install.sh anydesk
+	bash bin/apps_install.sh kvantum
 	
 }
 
@@ -33,8 +34,14 @@ user_conf()
 	su lls -c "bash bin/user_config.sh aliases"
 	su lls -c "bash bin/user_config.sh audacious"
 
-	bash bin/daemon_config.sh sddm
+}
 
+daemon_conf()
+{
+	
+	bash bin/daemon_config.sh sddm
+	bash bin/daemon_config.sh transmission
+	
 }
 
 apps_remove()
@@ -51,6 +58,9 @@ case "$1" in
 	remove)
 		apps_remove
 		;;
+	daemon)
+		daemon_conf
+		;;
   	util)
 		util_conf
 		;;
@@ -60,11 +70,12 @@ case "$1" in
   	all)
 		apps_install
 		apps_remove
+		daemon_conf
 		util_conf
 		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|apps|util|user|remove}"
+		echo "Use: $0 {all|apps|remove|daemon|util|user}"
 		exit 1
 		;;
 esac

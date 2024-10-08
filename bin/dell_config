@@ -1,0 +1,54 @@
+#!/bin/sh
+# Script to configure Lubuntu on Dell Inspiron 1428
+#
+# Connect LAN Ethernet to Install Wireless
+# Menu - Preferências - Additional Drivers - Additional Drivers
+# Broadcom BCM4312
+# Using dkms source for the Broadcom STAS Wireless driver for broadcom-sta-dkms (proprietary)
+# Apply Changes
+#
+# Autor: Leandro Luiz
+# email: lls.homeoffice@gmail.com
+
+PATH=.:$(dirname $0):$PATH
+. lib/update.lib		|| exit 1
+
+check_root "$1"
+
+echo "Script to configure Lubuntu on Dell Inspiron 1428"
+
+apps_install()
+{
+	
+	bash bin/apps_install.sh google
+	bash bin/apps_install.sh kvantum
+	
+}
+
+user_conf()
+{
+	
+	su lls -c "bash bin/user_config.sh lxqt"
+
+}
+
+case "$1" in
+  	apps)
+		apps_install
+		;;
+	user)
+		user_conf
+		;;
+	remove)
+		bash bin/apps_install.sh remove
+		;;
+  	all)
+		apps_install
+		user_conf
+		bash bin/apps_install.sh remove
+		;;
+	*)
+		echo "Use: $0 {all|apps|user|remove}"
+		exit 1
+		;;
+esac
