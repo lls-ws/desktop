@@ -91,12 +91,26 @@ install_anydesk()
 	
 }
 
+remove_apps()
+{
+	
+	apt-get -y remove --purge "libreoffice*"
+	
+	apt-get clean
+	
+	apt-get -y autoremove
+	
+}
+
 case "$1" in
    	intel)
 		intel_driver
 		;;
 	apps)
 		install_apps
+		;;
+	remove)
+		remove_apps
 		;;
   	google)
 		install_google
@@ -108,9 +122,10 @@ case "$1" in
   		install_apps
 		install_google
 		install_anydesk
+		remove_apps
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|google|anydesk}"
+		echo "Use: $0 {all|intel|apps|remove|google|anydesk}"
 		exit 1
 		;;
 esac

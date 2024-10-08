@@ -35,9 +35,19 @@ user_conf()
 
 }
 
+apps_remove()
+{
+	
+	bash bin/apps_install.sh remove
+	
+}
+
 case "$1" in
   	apps)
 		apps_install
+		;;
+	remove)
+		apps_remove
 		;;
   	util)
 		util_conf
@@ -47,11 +57,12 @@ case "$1" in
 		;;
   	all)
 		apps_install
+		apps_remove
 		util_conf
 		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|apps|util|user}"
+		echo "Use: $0 {all|apps|util|user|remove}"
 		exit 1
 		;;
 esac
