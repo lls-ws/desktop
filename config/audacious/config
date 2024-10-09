@@ -6,7 +6,6 @@ mixer-element=Master
 no_playlist_advance=TRUE
 repeat=TRUE
 show_interface=FALSE
-shuffle=TRUE
 
 [audgui]
 clear_song_fields=FALSE

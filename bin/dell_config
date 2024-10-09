@@ -61,7 +61,7 @@ user_profile()
 user_conf()
 {
 	
-	su ${USER} -c "bash bin/user_config.sh lxqt"
+	su ${USER} -c "bash bin/user_config.sh kvantum"
 	su ${USER} -c "bash bin/user_config.sh screensaver"
 
 }

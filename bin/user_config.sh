@@ -18,8 +18,48 @@ if [ ! -d ${DIR_LLS} ]; then
 
 fi
 
+lxqt_files()
+{
+	
+	APP_NAME="lxqt"
+	
+	FILES_SET=(
+		"${APP_NAME}.conf"
+		"panel.conf"
+		"session.conf"
+		"globalkeyshortcuts.conf"
+	)
+	
+}
+
 lxqt_conf()
 {
+	
+	lxqt_files
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+	
+	kvantum_conf
+	
+}
+
+kvantum_files()
+{
+	
+	APP_NAME="lxqt"
+	
+	FILES_SET=(
+		"session.conf"
+	)
+	
+}
+
+kvantum_conf()
+{
+	
+	kvantum_files
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
 	
 	FILE_PROFILE=~/.profile
 	
@@ -164,6 +204,11 @@ audacious_conf()
 desktop_backup()
 {
 
+	## Lxqt
+	lxqt_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
 	## Geany
 	geany_files
 	
@@ -198,6 +243,9 @@ case "$1" in
 	lxqt)
 		lxqt_conf
 		;;
+	kvantum)
+		kvantum_conf
+		;;
 	geany)
 		geany_conf
 		;;
@@ -224,7 +272,7 @@ case "$1" in
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|lxqt|geany|audacious|streamtuner|screensaver|aliases|backup}"
+		echo "Use: $0 {all|lxqt|kvantum|geany|audacious|streamtuner|screensaver|aliases|backup}"
 		exit 1
 		;;
 esac
