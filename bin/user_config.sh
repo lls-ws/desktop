@@ -103,6 +103,27 @@ geany_conf()
 	
 }
 
+streamtuner_files()
+{
+	
+	APP_NAME="streamtuner2"
+	
+	FILES_SET=(
+		"settings.json"
+		"bookmarks.json"
+	)
+	
+}
+
+streamtuner_conf()
+{
+
+	streamtuner_files
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+	
+}
+
 audacious_files_config()
 {
 	
@@ -143,10 +164,26 @@ audacious_conf()
 desktop_backup()
 {
 
-	#geany_files
+	## Geany
+	geany_files
 	
-	#update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
  	
+ 	## Audacious
+ 	audacious_files_config
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
+	audacious_files_playlist
+	
+	update_files "Backup" "config/${APP_NAME}/playlists" "${DIR_CONFIG}/${APP_NAME}/playlists"
+	
+	## Streamtuner
+	streamtuner_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+ 	
+ 	## Xscreensaver
  	screensaver_files
  	
 	cp -fv ${FILE_SCR} config/xscreensaver
@@ -167,6 +204,9 @@ case "$1" in
 	audacious)
 		audacious_conf
 		;;
+	streamtuner)
+		streamtuner_conf
+		;;
 	screensaver)
 		screensaver_conf
 		;;
@@ -184,7 +224,7 @@ case "$1" in
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|lxqt|geany|audacious|screensaver|aliases|backup}"
+		echo "Use: $0 {all|lxqt|geany|audacious|streamtuner|screensaver|aliases|backup}"
 		exit 1
 		;;
 esac
