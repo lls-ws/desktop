@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/opt/google/chrome/google-chrome \\"--profile-directory=Profile 3\\" --ignore-profile-directory-if-not-exists https://www.youtube.com/@CazeTV
+Hidden=true
+Name=YouTube
+OnlyShowIn=LXQt;
+Type=Application
+Version=1.0
+X-LXQt-Need-Tray=true

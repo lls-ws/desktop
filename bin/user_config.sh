@@ -18,6 +18,49 @@ if [ ! -d ${DIR_LLS} ]; then
 
 fi
 
+autostart_files()
+{
+	
+	APP_NAME="autostart"
+	
+	FILES_SET=(
+		"Som.desktop"
+		"Cursor.desktop"
+		"YouTube.desktop"
+		"Audacious.desktop"
+	)
+	
+}
+
+autostart_conf()
+{
+	
+	autostart_files
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+		
+}
+
+openbox_files()
+{
+	
+	APP_NAME="openbox"
+	
+	FILES_SET=(
+		"rc.xml"
+	)
+	
+}
+
+openbox_conf()
+{
+	
+	openbox_files
+	
+	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+		
+}
+
 lxqt_files()
 {
 	
@@ -27,7 +70,9 @@ lxqt_files()
 		"${APP_NAME}.conf"
 		"panel.conf"
 		"session.conf"
+		"notifications.conf"
 		"globalkeyshortcuts.conf"
+		"lxqt-powermanagement.conf"
 	)
 	
 }
@@ -204,6 +249,16 @@ audacious_conf()
 desktop_backup()
 {
 
+	## Autostart
+	autostart_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
+	## Openbox
+	openbox_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_CONFIG}/${APP_NAME}"
+	
 	## Lxqt
 	lxqt_files
 	
@@ -249,6 +304,12 @@ case "$1" in
 	geany)
 		geany_conf
 		;;
+	openbox)
+		openbox_conf
+		;;
+	autostart)
+		autostart_conf
+		;;
 	audacious)
 		audacious_conf
 		;;
@@ -267,12 +328,14 @@ case "$1" in
 	all)
 		lxqt_conf
 		geany_conf
+		openbox_conf
+		autostart_conf
 		audacious_conf
 		screensaver_conf
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|lxqt|kvantum|geany|audacious|streamtuner|screensaver|aliases|backup}"
+		echo "Use: $0 {all|lxqt|kvantum|geany|openbox|autostart|audacious|streamtuner|screensaver|aliases|backup}"
 		exit 1
 		;;
 esac
