@@ -75,29 +75,60 @@ transmission_conf()
 	
 	echo "Configure ${APP_NAME}..."
 	
+	echo "Stop ${APP_NAME} service..."
 	service ${APP_NAME} stop
 	
 	if [ ! -f "${DIR_ETC}/${FILE_SET}.bak" ]; then
 	
+		echo "Create backup ${FILE_SET}.bak"
 		cp -fv ${DIR_ETC}/${FILE_SET} ${DIR_ETC}/${FILE_SET}.bak
 		
 	fi
 	
 	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
 	
-	chown -v ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_ETC}/${FILE_SET}
+	echo "Changing File ${FILE_SET} owner to ${USER_TRANSMISISON}"
+	chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_ETC}/${FILE_SET}
 	
 	DIR_TRANSMISSION="/home/torrents"
 	
 	if [ ! -d "${DIR_TRANSMISSION}" ]; then
 	
+		echo "Creating Directory ${DIR_TRANSMISSION}"
 		mkdir -pv ${DIR_TRANSMISSION}/.incomplete
 	
 	fi
 	
-	chown -Rv ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_TRANSMISSION}
+	echo "Changing Directory ${DIR_TRANSMISSION} owner to ${USER_TRANSMISISON}"
+	chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_TRANSMISSION}
 	
+	USER=`git config user.name`
+	
+	echo "User: ${USER}"
+	
+	if [ ! -z "${USER}" ]; then
+	
+		echo "Add the username ${USER} to the group ${USER_TRANSMISISON}:"
+		sudo usermod -a -G ${USER_TRANSMISISON} ${USER}
+	
+		echo "Showing username ${USER} groups:"
+		groups ${USER}
+		
+	fi
+	
+	echo "Fixing bug: Type=notify"
+	
+	FILE_SERVICE="/etc/systemd/system/transmission-daemon.service"
+	
+	sed -i "s/Type=notify/Type=simple/g" ${FILE_SERVICE}
+	
+	cat ${FILE_SERVICE}
+	
+	echo "Disable startup service ${APP_NAME}"
 	systemctl disable ${APP_NAME}.service
+	
+	echo "Check your ports 51413 are open!"
+	echo "Configure Port Forward on internet router setup"
 	
 }
 
@@ -133,19 +164,11 @@ nfs_conf()
 nfs_conf_dir()
 {
 	
-	DIR_HD="/mnt/hd_ext"
-	
-	if [ ! -d ${DIR_HD} ]; then
-	
-		mkdir -pv ${DIR_HD}
-		
-	fi
-	
 	DIR_SHD="/mnt/shared"
 	
 	if [ ! -d ${DIR_SHD} ]; then
 	
-		mkdir -p ${DIR_SHD}
+		mkdir -pv ${DIR_SHD}
 		
 	fi
 	
@@ -169,9 +192,9 @@ nfs_conf_dir()
 			
 	done
 	
-	chown -R ${USER_TRANSMISISON}.${USER_TRANSMISISON} ${DIR_SHD}
+	chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
 	
-	chmod 777 ${DIR_SHD}
+	chmod -v 777 ${DIR_SHD}
 	
 	ls -al ${DIR_SHD}
 	
@@ -199,7 +222,7 @@ case "$1" in
 		;;
 	all)
 		nfs_conf
-		lightdm_conf
+		sddm_conf
 		transmission_conf
 		;;
 	*)

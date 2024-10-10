@@ -47,6 +47,7 @@ user_conf()
 daemon_conf()
 {
 	
+	bash bin/daemon_config.sh nfs
 	bash bin/daemon_config.sh sddm
 	bash bin/daemon_config.sh transmission
 	

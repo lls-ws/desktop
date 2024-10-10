@@ -28,15 +28,39 @@ alias git_upload_lls-src='clear; cd ~/lls-src; sudo ~/cloud/bin/git_conf.sh remo
 # Backup a user profile
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
 
-# Comands for Disable Services
-alias disable-tomcat='sudo systemctl disable tomcat9.service'
-alias disable-maria='sudo systemctl disable mariadb.service'
-alias disable-iptables='sudo systemctl disable netfilter-persistent.service'
-alias disable-cups='sudo systemctl disable cups.service'
-alias disable-cron='sudo systemctl disable cron.service'
-alias disable-snapd='sudo systemctl disable snapd.service'
-alias disable-cups-browsed='sudo systemctl disable cups-browsed.service'
-alias show-service='ls /etc/systemd/system/multi-user.target.wants'
+# Transmission
+alias t-status='clear; sudo service transmission-daemon status'
+alias t-start='sudo service transmission-daemon start; t-status'
+alias t-stop='sudo service transmission-daemon stop; t-status'
+alias t-restart='sudo service transmission-daemon reload; t-status'
+alias t-list='transmission-remote -n 'transmission:transmission' -l'
+alias t-basicstats='transmission-remote -n 'transmission:transmission' -st'
+alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'
+
+# NFS
+alias nfs-status='clear; sudo service nfs-server status'
+alias nfs-start='sudo service nfs-server start; nfs-status'
+alias nfs-stop='sudo service nfs-server stop; nfs-status'
+alias nfs-restart='nfs-stop; nfs-start'
+
+# Services
+alias services-show='service --status-all'
+alias services-load='systemctl -t service --state=active'
+alias services-boot='systemctl list-unit-files --state=enabled'
+alias services-list='ls /etc/systemd/system/multi-user.target.wants'
+
+# Disable Services
+alias disable-transmission='sudo systemctl disable transmission-daemon.service; services-list'
+alias disable-iptables='sudo systemctl disable netfilter-persistent.service; services-list'
+alias disable-cups-browsed='sudo systemctl disable cups-browsed.service; services-list'
+alias disable-anydesk='sudo systemctl disable anydesk.service; services-list'
+alias disable-openvpn='sudo systemctl disable openvpn.service; services-list'
+alias disable-nfs='sudo systemctl disable nfs-server.service; services-list'
+alias disable-tomcat='sudo systemctl disable tomcat9.service; services-list'
+alias disable-maria='sudo systemctl disable mariadb.service; services-list'
+alias disable-snapd='sudo systemctl disable snapd.service; services-list'
+alias disable-cups='sudo systemctl disable cups.service; services-list'
+alias disable-cron='sudo systemctl disable cron.service; services-list'
 
 rmdir 'Área de trabalho' 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 

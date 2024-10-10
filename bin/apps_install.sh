@@ -70,13 +70,23 @@ install_google()
 install_apps()
 {
 	
- 	apt -y install geany audacious streamtuner2 transmission-cli transmission-common transmission-daemon
+	apt -y install \
+		transmission-common \
+		transmission-daemon \
+		nfs-kernel-server \
+		transmission-cli \
+		streamtuner2 \
+		audacious \
+		geany \
 	
 	geany --version
 	audacious --version
-	streamtuner2 -V
 	transmission-cli --version
 	transmission-daemon --version
+  	
+  	streamtuner2 -V
+  	
+  	rpcinfo -p | grep nfs
   	
 }
 
