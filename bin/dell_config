@@ -80,17 +80,13 @@ case "$1" in
 	profile)
 		user_profile
 		;;
-	remove)
-		bash bin/apps_install.sh remove
-		;;
   	all)
 		apps_install
 		user_conf
 		user_profile
-		bash bin/apps_install.sh remove
 		;;
 	*)
-		echo "Use: $0 {all|apps|user|profile|remove}"
+		echo "Use: $0 {all|apps|user|profile}"
 		exit 1
 		;;
 esac

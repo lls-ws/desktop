@@ -114,26 +114,12 @@ install_anydesk()
 	
 }
 
-remove_apps()
-{
-	
-	apt-get -y remove --purge "libreoffice*" "firefox*"
-	
-	apt-get clean
-	
-	apt-get -y autoremove
-	
-}
-
 case "$1" in
    	intel)
 		intel_driver
 		;;
 	apps)
 		install_apps
-		;;
-	remove)
-		remove_apps
 		;;
   	google)
 		install_google
@@ -152,7 +138,7 @@ case "$1" in
 		install_kvantum
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|remove|google|anydesk|kvantum}"
+		echo "Use: $0 {all|intel|apps|google|anydesk|kvantum}"
 		exit 1
 		;;
 esac
