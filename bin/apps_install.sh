@@ -78,7 +78,9 @@ install_apps()
 		streamtuner2 \
 		audacious \
 		geany \
+		kodi
 	
+	kodi --version
 	geany --version
 	audacious --version
 	transmission-cli --version

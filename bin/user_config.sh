@@ -18,6 +18,28 @@ if [ ! -d ${DIR_LLS} ]; then
 
 fi
 
+kodi_files()
+{
+	
+	APP_NAME="kodi"
+	
+	DIR_KODI=~/.${APP_NAME}
+	
+	FILES_SET=(
+		"sources.xml"
+	)
+	
+}
+
+kodi_conf()
+{
+	
+	kodi_files
+	
+	update_files "Configure" "${DIR_KODI}/userdata" "config/${APP_NAME}"
+	
+}
+
 autostart_files()
 {
 	
@@ -288,6 +310,11 @@ desktop_backup()
  	
 	cp -fv ${FILE_SCR} config/xscreensaver
 	
+	## Kodi
+	kodi_files
+	
+	update_files "Backup" "config/${APP_NAME}" "${DIR_KODI}/userdata"
+	
 	ls config
 	
 }
@@ -295,6 +322,9 @@ desktop_backup()
 DIR_CONFIG=~/.config
 
 case "$1" in
+	kodi)
+		kodi_conf
+		;;
 	lxqt)
 		lxqt_conf
 		;;
@@ -335,7 +365,7 @@ case "$1" in
 		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|lxqt|kvantum|geany|openbox|autostart|audacious|streamtuner|screensaver|aliases|backup}"
+		echo "Use: $0 {all|kodi|lxqt|kvantum|geany|openbox|autostart|audacious|streamtuner|screensaver|aliases|backup}"
 		exit 1
 		;;
 esac
