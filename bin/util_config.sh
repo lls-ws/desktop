@@ -71,6 +71,7 @@ scripts_conf()
 	
 	FILES_SET=(
 		"cloud_connect.sh"
+		"finance-lls.sh"
 		"video_copy.sh"
 		"jquery-lls.sh"
 	)
