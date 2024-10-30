@@ -4,27 +4,55 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-get_html()
+set_fiis()
 {
 
-	NAMES=(
+	FUND_TYPE="fundos-imobiliarios"
+	
+	TICKERS=(
 		"snel11"
 		"knsc11"
 		"mxrf11"
 		"cpts11"
-		"bcff11"
+		"alzm11"
 	)
+	
+	get_html
+	
+}
 
-	for NAME in "${NAMES[@]}"
+set_fiagro()
+{
+
+	FUND_TYPE="fiagros"
+	
+	TICKERS=(
+		"snag11"
+		"iagr11"
+	)
+	
+	get_html
+	
+}
+
+get_html()
+{
+
+	FILE_FUND=~/${FUND_TYPE}.csv
+
+	for TICKER in "${TICKERS[@]}"
 	do
 		
-		FILE_HTML="/tmp/${NAME}.html"
+		FILE_HTML="/tmp/${TICKER}.html"
 		
-		echo -e "\nFUND: ${NAME}"
+		URL_TICKER=${URL_BASE}/${FUND_TYPE}/${TICKER}
+		
+		echo -e "\nTICKER: ${TICKER}"
+		echo "TYPE: ${FUND_TYPE}"
 		echo "HTML: ${FILE_HTML}"
-		echo "URL: ${URL_FUND}/${NAME}"
+		echo "URL: ${URL_TICKER}"
 		
-		wget ${URL_FUND}/${NAME} -O ${FILE_HTML} 
+		wget ${URL_TICKER} -O ${FILE_HTML}
 		
 		if [ -f ${FILE_HTML} ]; then
 		
@@ -34,14 +62,13 @@ get_html()
 			
 		fi
 		
-		
 	done
 	
 	rm -fv /tmp/*.html
 	
-	echo -e "\nShowing File: ${FILE_LLS}"
+	echo -e "\nShowing File: ${FILE_FUND}"
 	
-	cat ${FILE_LLS}
+	cat ${FILE_FUND}
 }
 
 get_yield()
@@ -49,7 +76,7 @@ get_yield()
 
 	YIELD=`cat ${FILE_HTML} | grep -B 5 'Soma total de' | head -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
 	
-	echo "Get Dividend Yield: ${YIELD}%"
+	check_value "Dividend Yield" "${YIELD}"
 	
 }
 
@@ -58,7 +85,7 @@ get_pvp()
 
 	PVP=`cat ${FILE_HTML} | grep -B 4 'Valor de mercado' | head -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
 	
-	echo "Get P/VP: ${PVP}"
+	check_value "P/VP" "${PVP}"
 	
 }
 
@@ -67,26 +94,43 @@ get_revenue()
 
 	REVENUE=`cat ${FILE_HTML} | grep -A 6 'Último rendimento' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
 	
-	echo "Get Revenue: ${REVENUE}"
+	check_value "Revenue" "${REVENUE}"
 	
-	add_value
+	add_values
 	
 }
 
-add_value()
+add_values()
 {
 
-	echo "${YIELD}%;${PVP};${REVENUE}" >> ${FILE_LLS}
+	echo -e "\nAdd values to file: ${FILE_FUND}"
+	
+	echo "${YIELD}%;${PVP};${REVENUE}" >> ${FILE_FUND}
+	
+}
+
+check_value()
+{
+	
+	TEXT="$1"
+	VALUE="$2"
+	
+	if [ -n "${VALUE}" ]; then
+	
+		echo "Get ${TEXT}: ${VALUE}%"
+	
+	else
+	
+		echo "${TEXT} not found!"
+		exit 1;
+		
+	fi
 	
 }
 
 clear
 
-URL_FUND="https://statusinvest.com.br/fundos-imobiliarios"
-
-FILE_LLS=~/`basename ${0%.*}`.csv
-
-echo "FILE: ${FILE_LLS}"
+URL_BASE="https://statusinvest.com.br"
 
 if [ -f ${FILE_LLS} ]; then
 
@@ -94,4 +138,5 @@ if [ -f ${FILE_LLS} ]; then
 
 fi
 
-get_html
+set_fiis
+set_fiagro

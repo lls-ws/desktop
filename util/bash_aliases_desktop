@@ -71,5 +71,5 @@ rmdir 'Documents' 'Desktop' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> 
 
 rm -rf 'Área de trabalho' 'Desktop' '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
 rm -f '.fehbg' 2> /dev/null
-rm -fv ~/*.csv 2> /dev/null
+rm -f ~/*.csv 2> /dev/null
 ls
