@@ -10,11 +10,16 @@ set_fiis()
 	FUND_TYPE="fundos-imobiliarios"
 	
 	TICKERS=(
-		"snel11"
+		"alzm11"
+		"arri11"
+		"cpsh11"
+		"cpts11"
 		"knsc11"
 		"mxrf11"
-		"cpts11"
-		"alzm11"
+		"snel11"
+		"vgir11"
+		"viur11"
+		"vslh11"
 	)
 	
 	get_html
@@ -39,6 +44,12 @@ get_html()
 {
 
 	FILE_FUND=~/${FUND_TYPE}.csv
+	
+	if [ -f ${FILE_FUND} ]; then
+
+		rm -fv ${FILE_FUND}
+
+	fi
 
 	for TICKER in "${TICKERS[@]}"
 	do
@@ -56,6 +67,7 @@ get_html()
 		
 		if [ -f ${FILE_HTML} ]; then
 		
+			get_price
 			get_yield
 			get_pvp
 			get_revenue
@@ -69,6 +81,15 @@ get_html()
 	echo -e "\nShowing File: ${FILE_FUND}"
 	
 	cat ${FILE_FUND}
+}
+
+get_price()
+{
+
+	PRICE=`cat ${FILE_HTML} | grep -A 3 'Valor atual do ativo' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
+	
+	check_value "Price" "${PRICE}"
+	
 }
 
 get_yield()
@@ -105,7 +126,7 @@ add_values()
 
 	echo -e "\nAdd values to file: ${FILE_FUND}"
 	
-	echo "${YIELD}%;${PVP};${REVENUE}" >> ${FILE_FUND}
+	echo "${PRICE};${YIELD}%;${PVP};${REVENUE}" >> ${FILE_FUND}
 	
 }
 
@@ -117,7 +138,7 @@ check_value()
 	
 	if [ -n "${VALUE}" ]; then
 	
-		echo "Get ${TEXT}: ${VALUE}%"
+		echo "${TEXT}: ${VALUE}"
 	
 	else
 	
@@ -132,11 +153,19 @@ clear
 
 URL_BASE="https://statusinvest.com.br"
 
-if [ -f ${FILE_LLS} ]; then
-
-	rm -fv ${FILE_LLS}
-
-fi
-
-set_fiis
-set_fiagro
+case "$1" in
+	fiis)
+		set_fiis
+		;;
+	fiagro)
+		set_fiagro
+		;;
+	all)
+		set_fiis
+		set_fiagro
+		;;
+	*)
+		echo "Use: $0 {all|fiis|fiagro}"
+		exit 1
+		;;
+esac
