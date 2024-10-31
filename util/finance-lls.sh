@@ -1,28 +1,88 @@
 #!/bin/sh
-# Script to get real estate funds values
+# Script to get Real Estate Funds Quotes
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
+
+set_edit()
+{
+	
+	geany ${DIR_LLS}/*.txt &
+	
+}
+
+check_dir()
+{
+	
+	DIR_LLS=~/.`basename ${0%.*}`
+	
+	echo "DIR_LLS: ${DIR_LLS}"
+	
+	if [ ! -d ${DIR_LLS} ]; then
+	
+		mkdir -v ${DIR_LLS}
+		
+	fi
+	
+}
+
+check_file_fiis()
+{
+	
+	set_fiis
+	
+	check_file
+	
+}
+
+check_file_fiagro()
+{
+	
+	set_fiagro
+	
+	check_file
+	
+}
+
+check_file()
+{
+	
+	FILE_TICKER=${DIR_LLS}/${FUND_TYPE}.txt
+	
+	if [ ! -f ${FILE_TICKER} ]; then
+		
+		touch ${FILE_TICKER}
+		
+	fi
+	
+	echo "Organize Data in File: ${FILE_TICKER}"
+	
+	sort -o ${FILE_TICKER} ${FILE_TICKER}
+	
+}
+
+get_fiis()
+{
+
+	check_file_fiis
+	
+	get_htmls
+	
+}
+
+get_fiagro()
+{
+
+	check_file_fiagro
+	
+	get_htmls
+	
+}
 
 set_fiis()
 {
 
 	FUND_TYPE="fundos-imobiliarios"
-	
-	TICKERS=(
-		"alzm11"
-		"arri11"
-		"cpsh11"
-		"cpts11"
-		"knsc11"
-		"mxrf11"
-		"snel11"
-		"vgir11"
-		"viur11"
-		"vslh11"
-	)
-	
-	get_html
 	
 }
 
@@ -31,16 +91,9 @@ set_fiagro()
 
 	FUND_TYPE="fiagros"
 	
-	TICKERS=(
-		"snag11"
-		"iagr11"
-	)
-	
-	get_html
-	
 }
 
-get_html()
+get_htmls()
 {
 
 	FILE_FUND=~/${FUND_TYPE}.csv
@@ -51,30 +104,14 @@ get_html()
 
 	fi
 
-	for TICKER in "${TICKERS[@]}"
+	echo "Read file: ${FILE_TICKER}"
+
+	while read TICKER
 	do
 		
-		FILE_HTML="/tmp/${TICKER}.html"
+		get_html
 		
-		URL_TICKER=${URL_BASE}/${FUND_TYPE}/${TICKER}
-		
-		echo -e "\nTICKER: ${TICKER}"
-		echo "TYPE: ${FUND_TYPE}"
-		echo "HTML: ${FILE_HTML}"
-		echo "URL: ${URL_TICKER}"
-		
-		wget ${URL_TICKER} -O ${FILE_HTML}
-		
-		if [ -f ${FILE_HTML} ]; then
-		
-			get_price
-			get_yield
-			get_pvp
-			get_revenue
-			
-		fi
-		
-	done
+	done < ${FILE_TICKER}
 	
 	rm -fv /tmp/*.html
 	
@@ -83,12 +120,53 @@ get_html()
 	cat ${FILE_FUND}
 }
 
+get_html()
+{
+
+	FILE_HTML="/tmp/${TICKER}.html"
+	
+	if [ -f ${FILE_HTML} ]; then
+
+		rm -fv ${FILE_HTML}
+
+	fi
+	
+	URL_TICKER=${URL_BASE}/${FUND_TYPE}/${TICKER}
+	
+	echo -e "\nTICKER: ${TICKER}"
+	echo "TYPE: ${FUND_TYPE}"
+	echo "HTML: ${FILE_HTML}"
+	echo "URL: ${URL_TICKER}"
+	
+	wget ${URL_TICKER} -O ${FILE_HTML}
+	
+	if [ -f ${FILE_HTML} ]; then
+	
+		get_price
+		get_vp
+		get_yield
+		get_pvp
+		get_revenue
+		
+	fi
+	
+}
+
 get_price()
 {
 
 	PRICE=`cat ${FILE_HTML} | grep -A 3 'Valor atual do ativo' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
 	
 	check_value "Price" "${PRICE}"
+	
+}
+
+get_vp()
+{
+
+	VP=`cat ${FILE_HTML} | grep -A 2 'Val. patrimonial p/cota' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
+	
+	check_value "VP" "${VP}"
 	
 }
 
@@ -126,7 +204,7 @@ add_values()
 
 	echo -e "\nAdd values to file: ${FILE_FUND}"
 	
-	echo "${PRICE};${YIELD}%;${PVP};${REVENUE}" >> ${FILE_FUND}
+	echo "${PRICE};${VP};${YIELD}%;${PVP};${REVENUE}" >> ${FILE_FUND}
 	
 }
 
@@ -153,19 +231,24 @@ clear
 
 URL_BASE="https://statusinvest.com.br"
 
+check_dir
+
 case "$1" in
 	fiis)
-		set_fiis
+		get_fiis
 		;;
 	fiagro)
-		set_fiagro
+		get_fiagro
+		;;
+	edit)
+		set_edit
 		;;
 	all)
-		set_fiis
-		set_fiagro
+		get_fiis
+		get_fiagro
 		;;
 	*)
-		echo "Use: $0 {all|fiis|fiagro}"
+		echo "Use: $0 {all|fiis|fiagro|edit}"
 		exit 1
 		;;
 esac
