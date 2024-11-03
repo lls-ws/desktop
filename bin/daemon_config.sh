@@ -176,6 +176,7 @@ nfs_conf_dir()
 		"filmes"
 		"series"
 		"musica"
+		"iso"
 		"log"
 	)
 	

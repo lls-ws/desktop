@@ -53,6 +53,8 @@ video_copy()
 	
 	audio_copy
 	
+	iso_copy
+	
 	rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
 	
 	ls ${DIR_VIDEO} >> ${FILE_LOG}
@@ -103,6 +105,28 @@ audio_copy()
 	
 }
 
+iso_copy()
+{
+	
+	COUNT=0
+	
+	find ${DIR_VIDEO} -iname "*.iso" -o -iname "*.txt" |
+	
+	while read FILE; do
+	  
+	  mv -fv "${FILE}" ${DIR_ISO} >> ${FILE_LOG}
+	  
+	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  
+	  ((COUNT++))
+	  
+	  echo -e "${COUNT}" >> ${FILE_LOG}
+	  
+	done
+	
+}
+
+
 DIR_VIDEO="/home/torrents"
 
 DIR_SHARE="/mnt/shared"
@@ -112,6 +136,8 @@ DIR_MOVIES="${DIR_SHARE}/filmes"
 DIR_SERIES="${DIR_SHARE}/series"
 
 DIR_MUSICA="${DIR_SHARE}/musica"
+
+DIR_ISO="${DIR_SHARE}/iso"
 
 DIR_LOG="${DIR_SHARE}/log"
 
