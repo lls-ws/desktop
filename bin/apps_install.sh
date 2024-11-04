@@ -89,6 +89,8 @@ install_apps()
 	transmission-daemon --version
   	
   	streamtuner2 -V
+
+   	sudo adduser lls vboxusers
   	
   	rpcinfo -p | grep nfs
   	
