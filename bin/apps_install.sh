@@ -76,6 +76,7 @@ install_apps()
 		nfs-kernel-server \
 		transmission-cli \
 		streamtuner2 \
+  		virtualbox \
 		audacious \
 		geany \
 		kodi
@@ -83,6 +84,7 @@ install_apps()
 	kodi --version
 	geany --version
 	audacious --version
+ 	virtualbox --help
 	transmission-cli --version
 	transmission-daemon --version
   	
