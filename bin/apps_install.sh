@@ -77,6 +77,7 @@ install_apps()
 		transmission-cli \
 		streamtuner2 \
   		virtualbox \
+    		virtualbox-guest-utils \
 		audacious \
 		geany \
 		kodi
