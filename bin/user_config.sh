@@ -18,6 +18,75 @@ if [ ! -d ${DIR_LLS} ]; then
 
 fi
 
+virtualbox_share()
+{
+	
+	VBoxManage sharedfolder add "Windows 11" --name Apps --hostpath ".VirtualBox/Apps/" --automount
+	
+}
+
+virtualbox_files()
+{
+	
+	FILE_APP="VBoxGuestAdditions_7.1.4.iso"
+	
+	DIR_ISO="/mnt/shared/iso"
+	
+	if [ ! -f ${DIR_ISO}/${FILE_APP} ]; then
+	
+		echo "Get ${FILE_APP}"
+		sudo wget https://download.virtualbox.org/virtualbox/7.1.4/${FILE_APP} -P ${DIR_ISO}
+		
+		sudo chown -v ${USER}:${USER}
+	
+	fi
+	
+	FILE_APP="Windows-Activator.zip"
+	
+	if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
+	
+		echo "Get ${FILE_APP}"
+		wget https://github.com/Whitecat18/Windows-Activator/archive/refs/heads/main.zip -O ${DIR_VBOX}/Windows-Activator.zip
+	
+	fi
+	
+	du -hsc ${DIR_VBOX}/* ${DIR_ISO}/*
+	
+}
+
+virtualbox_conf()
+{
+	
+	USER=`sudo git config user.name`
+	
+	echo "User: ${USER}"
+	
+	if [ -z "${USER}" ]; then
+		
+		echo "User not found!"
+		exit;
+	
+	fi	
+	
+	DIR_VBOX=~/.VirtualBox/Apps
+
+	if [ ! -d ${DIR_VBOX} ]; then
+		
+		echo "Create VirtualBox Apps directory"
+		mkdir -pv ${DIR_VBOX}
+
+	fi
+	
+	echo "Add user ${USER} to group vboxusers from USB access"
+	sudo adduser ${USER} vboxusers
+	
+	echo "Add user ${USER} to group vboxsf from Shared Folder access"
+	sudo usermod -aG vboxsf ${USER}
+	
+	virtualbox_files
+	
+}
+
 kodi_files()
 {
 	
@@ -328,14 +397,17 @@ case "$1" in
 	lxqt)
 		lxqt_conf
 		;;
-	kvantum)
-		kvantum_conf
-		;;
 	geany)
 		geany_conf
 		;;
+	kvantum)
+		kvantum_conf
+		;;
 	openbox)
 		openbox_conf
+		;;
+	aliases)
+		aliases_conf
 		;;
 	autostart)
 		autostart_conf
@@ -343,29 +415,33 @@ case "$1" in
 	audacious)
 		audacious_conf
 		;;
+	virtualbox)
+		virtualbox_conf
+		;;
 	streamtuner)
 		streamtuner_conf
 		;;
 	screensaver)
 		screensaver_conf
 		;;
-	aliases)
-		aliases_conf
-		;;
 	backup)
 		desktop_backup
 		;;
 	all)
+		kodi_conf
 		lxqt_conf
 		geany_conf
+		kvantum_conf
 		openbox_conf
+		aliases_conf
 		autostart_conf
 		audacious_conf
+		virtualbox_conf
+		streamtuner_conf
 		screensaver_conf
-		aliases_conf
 		;;
 	*)
-		echo "Use: $0 {all|kodi|lxqt|kvantum|geany|openbox|autostart|audacious|streamtuner|screensaver|aliases|backup}"
+		echo "Use: $0 {all|kodi|lxqt|geany|kvantum|openbox|aliases|autostart|audacious|virtualbox|streamtuner|screensaver|backup}"
 		exit 1
 		;;
 esac

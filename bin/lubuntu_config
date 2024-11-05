@@ -35,11 +35,8 @@ user_conf()
 	echo "User: ${USER}"
 	
 	if [ ! -z "${USER}" ]; then
-	
-		su ${USER} -c "bash bin/user_config.sh lxqt"
-		su ${USER} -c "bash bin/user_config.sh geany"
-		su ${USER} -c "bash bin/user_config.sh aliases"
-		su ${USER} -c "bash bin/user_config.sh audacious"
+		
+		su ${USER} -c "bash bin/user_config.sh all"
 		
 	fi
 

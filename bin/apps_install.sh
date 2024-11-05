@@ -121,10 +121,6 @@ install_virtualbox()
 	
 	virtualbox --help
 	
-	adduser lls vboxusers
-	
-	usermod -aG vboxsf lls
-	
 }
 
 case "$1" in
@@ -147,7 +143,6 @@ case "$1" in
 		install_virtualbox
 		;;
   	all)
-  		remove_apps
   		install_apps
 		install_google
 		install_anydesk
