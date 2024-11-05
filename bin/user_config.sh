@@ -37,7 +37,7 @@ virtualbox_files()
 		echo "Get ${FILE_APP}"
 		sudo wget https://download.virtualbox.org/virtualbox/7.1.4/${FILE_APP} -P ${DIR_ISO}
 		
-		sudo chown -v ${USER}:${USER}
+		sudo chown -v ${USER}:${USER} ${DIR_ISO}/${FILE_APP}
 	
 	fi
 	
