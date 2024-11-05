@@ -76,8 +76,6 @@ install_apps()
 		nfs-kernel-server \
 		transmission-cli \
 		streamtuner2 \
-  		virtualbox \
-    		virtualbox-guest-utils \
 		audacious \
 		geany \
 		kodi
@@ -85,14 +83,11 @@ install_apps()
 	kodi --version
 	geany --version
 	audacious --version
- 	virtualbox --help
 	transmission-cli --version
 	transmission-daemon --version
   	
   	streamtuner2 -V
-
-   	sudo adduser lls vboxusers
-  	
+	
   	rpcinfo -p | grep nfs
   	
 }
@@ -119,6 +114,19 @@ install_anydesk()
 	
 }
 
+install_virtualbox()
+{
+	
+	apt -y install virtualbox virtualbox-guest-utils
+	
+	virtualbox --help
+	
+	adduser lls vboxusers
+	
+	usermod -aG vboxsf lls
+	
+}
+
 case "$1" in
    	intel)
 		intel_driver
@@ -135,15 +143,19 @@ case "$1" in
 	kvantum)
 		install_kvantum
 		;;
+  	virtualbox)
+		install_virtualbox
+		;;
   	all)
   		remove_apps
   		install_apps
 		install_google
 		install_anydesk
 		install_kvantum
+		install_virtualbox
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|google|anydesk|kvantum}"
+		echo "Use: $0 {all|intel|apps|google|anydesk|kvantum|virtualbox}"
 		exit 1
 		;;
 esac
