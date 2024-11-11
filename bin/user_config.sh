@@ -46,10 +46,20 @@ virtualbox_files()
 	if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
 	
 		echo "Get ${FILE_APP}"
-		wget https://github.com/Whitecat18/Windows-Activator/archive/refs/heads/main.zip -O ${DIR_VBOX}/Windows-Activator.zip
+		wget https://github.com/Whitecat18/Windows-Activator/archive/refs/heads/main.zip -O ${DIR_VBOX}/${FILE_APP}
 	
 	fi
 	
+	FILE_APP="ChromeSetup.exe"
+	
+	if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
+	
+		echo "Get ${FILE_APP}"
+		wget https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BB3519AA4-D6F8-8D32-22EC-47EDC730EBBE%7D%26lang%3Den%26browser%3D5%26usagestats%3D1%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-statsdef_1%26brand%3DUEAD%26installdataindex%3Dempty/update2/installers/${FILE_APP} -P ${DIR_VBOX}
+	
+	fi
+	
+	echo "Showing files:"
 	du -hsc ${DIR_VBOX}/* ${DIR_ISO}/*
 	
 }
