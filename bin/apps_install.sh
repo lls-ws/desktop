@@ -63,6 +63,14 @@ install_google()
 	
  	rm -fv ${FILE_DEB}
   	
+  	echo "Set Google to default mailto"
+  	xdg-settings set default-url-scheme-handler mailto google-chrome.desktop
+  	xdg-settings get default-url-scheme-handler mailto
+  	
+  	echo "Set Google to default mailto"
+  	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
+  	xdg-mime query default x-scheme-handler/whatsapp
+  	
  	google-chrome --version
 	
 }
