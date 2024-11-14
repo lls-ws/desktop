@@ -146,7 +146,8 @@ get_html()
 		get_vp
 		get_yield
 		get_pvp
-		get_revenue
+		get_revenue_last
+		get_revenue_next
 		
 	fi
 	
@@ -188,12 +189,27 @@ get_pvp()
 	
 }
 
-get_revenue()
+get_revenue_last()
 {
 
-	REVENUE=`cat ${FILE_HTML} | grep -A 6 'Último rendimento' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
+	REVENUE_LAST=`cat ${FILE_HTML} | grep -A 6 'Último rendimento' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
 	
-	check_value "Revenue" "${REVENUE}"
+	check_value "Last Revenue" "${REVENUE_LAST}"
+	
+}
+
+get_revenue_next()
+{
+
+	REVENUE_NEXT=`cat ${FILE_HTML} | grep -A 6 'Próximo Rendimento' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
+	
+	check_value "Next Revenue" "${REVENUE_NEXT}"
+	
+	if [ "${REVENUE_NEXT}" == "-" ]; then
+	
+		REVENUE_NEXT=0;
+	
+	fi
 	
 	add_values
 	
@@ -204,7 +220,7 @@ add_values()
 
 	echo -e "\nAdd values to file: ${FILE_FUND}"
 	
-	echo "${PRICE};${VP};${YIELD}%;${PVP};${REVENUE}" >> ${FILE_FUND}
+	echo "${PRICE};${VP};${YIELD}%;${PVP};${REVENUE_LAST};${REVENUE_NEXT}" >> ${FILE_FUND}
 	
 }
 
@@ -214,16 +230,7 @@ check_value()
 	TEXT="$1"
 	VALUE="$2"
 	
-	if [ -n "${VALUE}" ]; then
-	
-		echo "${TEXT}: ${VALUE}"
-	
-	else
-	
-		echo "${TEXT} not found!"
-		exit 1;
-		
-	fi
+	echo "${TEXT}: ${VALUE}"
 	
 }
 
