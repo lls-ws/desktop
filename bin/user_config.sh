@@ -25,6 +25,38 @@ virtualbox_share()
 	
 }
 
+iphone_files()
+{
+	
+	FILE_APP="3uTools_v3.18.006_Setup_x86.exe"
+	
+	if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
+	
+		echo "Get ${FILE_APP}"
+		sudo wget https://dl.3u.com/update/v300/dl/3uTools_v3.18.006_Setup_x86.exe -P ${DIR_VBOX}
+		
+	fi
+	
+	#FILE_APP="Apple+Driver+Usb.rar"
+	#FILE_APP="Apple_Mobile_Device_Support_Driver_6.0.9999.66_64bit.zip"
+	
+	#if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
+	
+		#echo "Get ${FILE_APP}"
+		#wget https://cdn.driverscape.com/misc/${FILE_APP}?access_key=1731617053-vdSEqgLKB5wt8OfHGgkDtHH5Y4ImpwBfgm08WWENGIA%3D -P ${DIR_VBOX}
+		
+		#if [ -f ${DIR_VBOX}/${FILE_APP} ]; then
+	
+			#echo "Extract ${FILE_APP}"
+			#unrar x ${DIR_VBOX}/${FILE_APP} ${DIR_VBOX}
+			#unzip ${DIR_VBOX}/${FILE_APP} -d ${DIR_VBOX}
+			
+		#fi
+		
+	#fi
+	
+}
+
 virtualbox_files()
 {
 	
@@ -47,7 +79,14 @@ virtualbox_files()
 	
 		echo "Get ${FILE_APP}"
 		wget https://github.com/Whitecat18/Windows-Activator/archive/refs/heads/main.zip -O ${DIR_VBOX}/${FILE_APP}
+		
+		if [ -f ${DIR_VBOX}/${FILE_APP} ]; then
 	
+			echo "Extract ${FILE_APP}"
+			unzip ${DIR_VBOX}/${FILE_APP} -d ${DIR_VBOX}
+			
+		fi
+		
 	fi
 	
 	FILE_APP="ChromeSetup.exe"
@@ -58,9 +97,6 @@ virtualbox_files()
 		wget https://dl.google.com/tag/s/appguid%3D%7B8A69D345-D564-463C-AFF1-A69D9E530F96%7D%26iid%3D%7BB3519AA4-D6F8-8D32-22EC-47EDC730EBBE%7D%26lang%3Den%26browser%3D5%26usagestats%3D1%26appname%3DGoogle%2520Chrome%26needsadmin%3Dprefers%26ap%3Dx64-statsdef_1%26brand%3DUEAD%26installdataindex%3Dempty/update2/installers/${FILE_APP} -P ${DIR_VBOX}
 	
 	fi
-	
-	echo "Showing files:"
-	du -hsc ${DIR_VBOX}/* ${DIR_ISO}/*
 	
 }
 
@@ -94,6 +130,10 @@ virtualbox_conf()
 	sudo usermod -aG vboxsf ${USER}
 	
 	virtualbox_files
+	iphone_files
+	
+	echo "Showing files:"
+	du -hsc ${DIR_ISO}/* ${DIR_VBOX}/* 
 	
 }
 
