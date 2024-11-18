@@ -33,32 +33,48 @@ iphone_files()
 	if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
 	
 		echo "Get ${FILE_APP}"
-		sudo wget https://dl.3u.com/update/v300/dl/3uTools_v3.18.006_Setup_x86.exe -P ${DIR_VBOX}
+		sudo wget https://dl.3u.com/update/v300/dl/${FILE_APP} -P ${DIR_VBOX}
 		
 	fi
 	
-	#FILE_APP="Apple+Driver+Usb.rar"
-	#FILE_APP="Apple_Mobile_Device_Support_Driver_6.0.9999.66_64bit.zip"
+	FILE_APP="iPhone14,5_18.1_22B83_Restore.ipsw"
 	
-	#if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
+	if [ ! -f "${DIR_VBOX}/${FILE_APP}" ]; then
 	
-		#echo "Get ${FILE_APP}"
-		#wget https://cdn.driverscape.com/misc/${FILE_APP}?access_key=1731617053-vdSEqgLKB5wt8OfHGgkDtHH5Y4ImpwBfgm08WWENGIA%3D -P ${DIR_VBOX}
+		echo "Get ${FILE_APP}"
+		sudo wget "https://updates.cdn-apple.com/2024FallFCS/fullrestores/072-12507/B8C10ED2-240E-431B-940D-7F954247A17F/${FILE_APP}" -P ${DIR_VBOX}
 		
-		#if [ -f ${DIR_VBOX}/${FILE_APP} ]; then
+	fi
 	
-			#echo "Extract ${FILE_APP}"
-			#unrar x ${DIR_VBOX}/${FILE_APP} ${DIR_VBOX}
-			#unzip ${DIR_VBOX}/${FILE_APP} -d ${DIR_VBOX}
+	FILE_APP="Apple+Driver+Usb.rar"
+	
+	if [ ! -f ${DIR_VBOX}/${FILE_APP} ]; then
+	
+		echo "Get ${FILE_APP}"
+		wget https://download2279.mediafire.com/f2l6imwg06pgsemjBK_6GmPM-emy9KfmlAIE8KbrI2bd39SPrq2jtvyZMdf-G9kQB97dqh_laJqE8y0CkYydknHdNTxBxkfNnZeeWN9KeZ0ULWCSGmq2PRILTzXXdruljKp8mpCzZmlVZoXXVM0U15QP3KscDXRKPTuO-W4zcdEgGz65/ji11c4bq22nxvzz/${FILE_APP} -P ${DIR_VBOX}
+		
+		if [ -f ${DIR_VBOX}/${FILE_APP} ]; then
+	
+			echo "Extract ${FILE_APP}"
+			unrar x ${DIR_VBOX}/${FILE_APP} ${DIR_VBOX}
 			
-		#fi
+		fi
 		
-	#fi
+	fi
+	
+	echo "Showing iPhone files:"
+	du -hsc ${DIR_VBOX}/*
 	
 }
 
 virtualbox_files()
 {
+	
+	FILE_APP="Windows_11_Torrent.txt"
+	
+	echo "Windows 11 Pro English x64 BiT Activated.iso" > ${DIR_VBOX}/${FILE_APP}
+	echo -e "\nTorrent:" >> ${DIR_VBOX}/${FILE_APP}
+	echo -e '\nmagnet:?xt=urn:btih:B47FB2B675F08A14D1A8023561503C623487A57A&dn=Windows%2011%20Pro%20English%20x64%20BiT%20Activated&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.bittor.pw%3A1337%2Fannounce&tr=udp%3A%2F%2Fpublic.popcorn-tracker.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce' >> ${DIR_VBOX}/${FILE_APP}
 	
 	FILE_APP="VBoxGuestAdditions_7.1.4.iso"
 	
@@ -112,9 +128,7 @@ virtualbox_conf()
 		echo "User not found!"
 		exit;
 	
-	fi	
-	
-	DIR_VBOX=~/.VirtualBox/Apps
+	fi
 
 	if [ ! -d ${DIR_VBOX} ]; then
 		
@@ -130,7 +144,6 @@ virtualbox_conf()
 	sudo usermod -aG vboxsf ${USER}
 	
 	virtualbox_files
-	iphone_files
 	
 	echo "Showing files:"
 	du -hsc ${DIR_ISO}/* ${DIR_VBOX}/* 
@@ -439,6 +452,7 @@ desktop_backup()
 }
 
 DIR_CONFIG=~/.config
+DIR_VBOX=~/.VirtualBox/Apps
 
 case "$1" in
 	kodi)
@@ -449,6 +463,9 @@ case "$1" in
 		;;
 	geany)
 		geany_conf
+		;;
+	iphone)
+		iphone_files
 		;;
 	kvantum)
 		kvantum_conf
@@ -481,6 +498,7 @@ case "$1" in
 		kodi_conf
 		lxqt_conf
 		geany_conf
+		iphone_files
 		kvantum_conf
 		openbox_conf
 		aliases_conf
@@ -491,7 +509,7 @@ case "$1" in
 		screensaver_conf
 		;;
 	*)
-		echo "Use: $0 {all|kodi|lxqt|geany|kvantum|openbox|aliases|autostart|audacious|virtualbox|streamtuner|screensaver|backup}"
+		echo "Use: $0 {all|kodi|lxqt|geany|iphone|kvantum|openbox|aliases|autostart|audacious|virtualbox|streamtuner|screensaver|backup}"
 		exit 1
 		;;
 esac
