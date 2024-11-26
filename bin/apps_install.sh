@@ -85,11 +85,13 @@ install_apps()
 		transmission-cli \
 		streamtuner2 \
 		audacious \
+  		wavemon \
 		geany \
 		kodi
 	
 	kodi --version
 	geany --version
+        wavemon -v
 	audacious --version
 	transmission-cli --version
 	transmission-daemon --version
