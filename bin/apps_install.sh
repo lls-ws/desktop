@@ -72,7 +72,7 @@ install_google()
   	xdg-mime query default x-scheme-handler/whatsapp
 
  	echo "Install YouTube Music"
-	sudo snap install youtube-music-desktop-app
+	snap install youtube-music-desktop-app
    
  	google-chrome --version	
 	
