@@ -70,8 +70,11 @@ install_google()
   	echo "Set Google to default mailto"
   	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
   	xdg-mime query default x-scheme-handler/whatsapp
-  	
- 	google-chrome --version
+
+ 	echo "Install YouTube Music"
+	sudo snap install youtube-music-desktop-app
+   
+ 	google-chrome --version	
 	
 }
 
