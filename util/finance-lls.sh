@@ -142,7 +142,6 @@ get_html()
 	
 	if [ -f ${FILE_HTML} ]; then
 	
-		get_price
 		get_vp
 		get_yield
 		get_pvp
@@ -220,7 +219,7 @@ add_values()
 
 	echo -e "\nAdd values to file: ${FILE_FUND}"
 	
-	echo "${PRICE};${VP};${YIELD}%;${PVP};${REVENUE_LAST};${REVENUE_NEXT}" >> ${FILE_FUND}
+	echo "${VP};${YIELD}%;${PVP};${REVENUE_LAST};${REVENUE_NEXT}" >> ${FILE_FUND}
 	
 }
 
