@@ -71,10 +71,22 @@ install_google()
   	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
   	xdg-mime query default x-scheme-handler/whatsapp
 
- 	echo "Install YouTube Music"
-	snap install youtube-music-desktop-app
-   
- 	google-chrome --version	
+ 	google-chrome --version
+	
+}
+
+install_ytmusic()
+{
+
+	URL_DEB="https://github.com/ytmdesktop/ytmdesktop/releases/download/v2.0.7"
+	
+ 	FILE_DEB="youtube-music-desktop-app_2.0.7_amd64.deb"
+ 	
+	wget ${URL_DEB}/${FILE_DEB}
+	
+	apt -y install ./${FILE_DEB}
+	
+ 	rm -fv ${FILE_DEB}
 	
 }
 
@@ -146,6 +158,9 @@ case "$1" in
   	google)
 		install_google
 		;;
+	ytmusic)
+		install_ytmusic
+		;;
   	anydesk)
 		install_anydesk
 		;;
@@ -158,12 +173,13 @@ case "$1" in
   	all)
   		install_apps
 		install_google
+		install_ytmusic
 		install_anydesk
 		install_kvantum
 		install_virtualbox
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|google|anydesk|kvantum|virtualbox}"
+		echo "Use: $0 {all|intel|apps|google|ytmusic|anydesk|kvantum|virtualbox}"
 		exit 1
 		;;
 esac
