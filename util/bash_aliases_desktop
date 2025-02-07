@@ -67,9 +67,9 @@ alias disable-cron='sudo systemctl disable cron.service; services-list'
 
 rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 
-rmdir 'Documents' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
+rmdir 'Desktop' 'Documents' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
 
-rm -rf '.cache' '.dosbox' '.gnome' '.local' 2> /dev/null
+rm -rf '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
 rm -f '.fehbg' 2> /dev/null
 rm -f ~/*.csv 2> /dev/null
 ls

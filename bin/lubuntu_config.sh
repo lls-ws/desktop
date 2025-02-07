@@ -14,9 +14,11 @@ apps_install()
 	
 	bash bin/apps_install.sh apps
 	bash bin/apps_install.sh google
+	bash bin/apps_install.sh ytmusic
 	bash bin/apps_install.sh anydesk
 	bash bin/apps_install.sh kvantum
 	bash bin/apps_install.sh virtualbox
+	bash bin/apps_install.sh teamviewer
 	
 }
 

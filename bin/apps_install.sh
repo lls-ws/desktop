@@ -50,6 +50,17 @@ intel_driver()
 	
 }
 
+install_deb()
+{
+	
+	wget ${URL_DEB}/${FILE_DEB}
+	
+	sudo apt -y install ./${FILE_DEB}
+	
+ 	rm -fv ${FILE_DEB}
+	
+}
+
 install_google()
 {
 
@@ -57,12 +68,8 @@ install_google()
 	
  	FILE_DEB="google-chrome-stable_current_amd64.deb"
  	
-	wget ${URL_DEB}/${FILE_DEB}
-	
-	apt -y install ./${FILE_DEB}
-	
- 	rm -fv ${FILE_DEB}
-  	
+ 	install_deb
+ 	
   	echo "Set Google to default mailto"
   	xdg-settings set default-url-scheme-handler mailto google-chrome.desktop
   	xdg-settings get default-url-scheme-handler mailto
@@ -70,7 +77,7 @@ install_google()
   	echo "Set Google to default mailto"
   	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
   	xdg-mime query default x-scheme-handler/whatsapp
-
+	
  	google-chrome --version
 	
 }
@@ -82,11 +89,7 @@ install_ytmusic()
 	
  	FILE_DEB="youtube-music-desktop-app_2.0.7_amd64.deb"
  	
-	wget ${URL_DEB}/${FILE_DEB}
-	
-	apt -y install ./${FILE_DEB}
-	
- 	rm -fv ${FILE_DEB}
+	install_deb
 	
 }
 
@@ -106,7 +109,7 @@ install_apps()
 	
 	kodi --version
 	geany --version
-        wavemon -v
+    wavemon -v
 	audacious --version
 	transmission-cli --version
 	transmission-daemon --version
@@ -136,6 +139,19 @@ install_anydesk()
   	apt update
 	
  	apt -y install anydesk
+	
+}
+
+install_teamviewer()
+{
+	
+	URL_DEB="https://download.teamviewer.com/download/linux"
+	
+ 	FILE_DEB="teamviewer_amd64.deb"
+ 	
+	install_deb
+	
+	cat /etc/apt/sources.list.d/teamviewer.list
 	
 }
 
@@ -170,6 +186,9 @@ case "$1" in
   	virtualbox)
 		install_virtualbox
 		;;
+	teamviewer)
+		install_teamviewer
+		;;
   	all)
   		install_apps
 		install_google
@@ -177,9 +196,10 @@ case "$1" in
 		install_anydesk
 		install_kvantum
 		install_virtualbox
+		install_teamviewer
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|google|ytmusic|anydesk|kvantum|virtualbox}"
+		echo "Use: $0 {all|intel|apps|google|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
