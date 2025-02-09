@@ -29,6 +29,19 @@ show_file()
 	
 }
 
+remove_packages()
+{
+	
+	dpkg --list | grep ^rc
+	
+	PACKAGE_LIST=$(dpkg --list | grep ^rc| awk '{ print $2}')
+	
+	echo "${PACKAGE_LIST}"
+	
+	apt-get -y --purge remove ${PACKAGE_LIST}
+	
+}
+
 intel_driver()
 {
  	
@@ -190,6 +203,9 @@ case "$1" in
 	teamviewer)
 		install_teamviewer
 		;;
+	remove)
+		remove_packages
+		;;	
   	all)
   		install_apps
 		install_google
@@ -200,7 +216,7 @@ case "$1" in
 		install_teamviewer
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|google|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|remove|intel|apps|google|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
