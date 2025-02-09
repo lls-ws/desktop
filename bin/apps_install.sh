@@ -101,6 +101,7 @@ install_apps()
 		transmission-daemon \
 		nfs-kernel-server \
 		transmission-cli \
+		python3-pandas \
 		streamtuner2 \
 		audacious \
   		wavemon \
