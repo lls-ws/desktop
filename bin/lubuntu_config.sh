@@ -9,13 +9,6 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
-show_version()
-{
-	
-	lsb_release -a
-	
-}
-
 apps_install()
 {
 	
@@ -61,9 +54,6 @@ daemon_conf()
 }
 
 case "$1" in
-	version)
-		show_version
-		;;
   	apps)
 		apps_install
 		;;
@@ -83,7 +73,7 @@ case "$1" in
 		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|version|apps|daemon|util|user}"
+		echo "Use: $0 {all|apps|daemon|util|user}"
 		exit 1
 		;;
 esac
