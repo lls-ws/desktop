@@ -9,6 +9,20 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
+lubuntu_update()
+{
+	
+	FILE_RELEASE="/etc/update-manager/release-upgrades"
+	
+	sudo echo "[DEFAULT]" > ${FILE_RELEASE}
+	sudo echo "Prompt=normal" >> ${FILE_RELEASE}
+	
+	cat ${FILE_RELEASE}
+	
+	sudo do-release-upgrade -m desktop -f DistUpgradeViewKDE
+	
+}
+
 apps_install()
 {
 	
@@ -54,6 +68,9 @@ daemon_conf()
 }
 
 case "$1" in
+  	update)
+		lubuntu_update
+		;;
   	apps)
 		apps_install
 		;;
@@ -73,7 +90,7 @@ case "$1" in
 		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|apps|daemon|util|user}"
+		echo "Use: $0 {all|update|apps|daemon|util|user}"
 		exit 1
 		;;
 esac
