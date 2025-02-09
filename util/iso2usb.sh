@@ -15,7 +15,7 @@ create_usb()
 	
 	if [ -f ${PATH_ISO} ]; then
 	
-		sudo dd if=${PATH_ISO} of=/dev/sdb bs=1M status=progress
+		sudo dd if=${PATH_ISO} of=${USB_DEVICE} bs=1M status=progress
 	
 	else
 	
@@ -29,5 +29,9 @@ create_usb()
 DIR_SHARE="/mnt/shared"
 
 DIR_ISO="${DIR_SHARE}/iso"
+
+USB_DEVICE="/dev/sdb"
+
+sudo umount ${USB_DEVICE}1
 
 create_usb
