@@ -74,6 +74,7 @@ scripts_conf()
 		"finance-lls.sh"
 		"video_copy.sh"
 		"jquery-lls.sh"
+		"iso2usb.sh"
 	)
 	
 	update_files "Configure" "${DIR_BIN}" "util"
