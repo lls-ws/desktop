@@ -21,12 +21,17 @@ lubuntu_update()
 	
 	sudo do-release-upgrade -m desktop -f DistUpgradeViewKDE
 	
+	featherpad admin:///etc/default/grub
+	
+	sudo update-grub
+	
 }
 
 apps_install()
 {
 	
 	bash bin/apps_install.sh apps
+	bash bin/apps_install.sh opera
 	bash bin/apps_install.sh google
 	bash bin/apps_install.sh ytmusic
 	bash bin/apps_install.sh anydesk

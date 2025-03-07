@@ -22,6 +22,7 @@ apps_install()
 	
 	bash bin/apps_install.sh google
 	bash bin/apps_install.sh kvantum
+	bash bin/apps_install.sh teamviewer
 	
 }
 

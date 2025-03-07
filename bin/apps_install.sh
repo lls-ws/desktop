@@ -74,6 +74,23 @@ install_deb()
 	
 }
 
+install_opera()
+{
+	
+	VERSION_DEB="117.0.5408.53"
+	
+	URL_DEB="https://download3.operacdn.com/ftp/pub/opera/desktop/${VERSION_DEB}/linux"
+ 	
+ 	FILE_DEB="opera-stable_${VERSION_DEB}_amd64.deb"
+ 	
+	install_deb
+	
+	cat /etc/apt/sources.list.d/opera-stable.list
+	
+	opera --version
+	
+}
+
 install_google()
 {
 
@@ -167,6 +184,8 @@ install_teamviewer()
 	
 	cat /etc/apt/sources.list.d/teamviewer.list
 	
+	teamviewer --version
+	
 }
 
 install_virtualbox()
@@ -184,6 +203,9 @@ case "$1" in
 		;;
 	apps)
 		install_apps
+		;;
+  	opera)
+		install_opera
 		;;
   	google)
 		install_google
@@ -208,6 +230,7 @@ case "$1" in
 		;;	
   	all)
   		install_apps
+  		install_opera
 		install_google
 		install_ytmusic
 		install_anydesk
@@ -216,7 +239,7 @@ case "$1" in
 		install_teamviewer
 		;;
 	*)
-		echo "Use: $0 {all|remove|intel|apps|google|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|remove|intel|apps|opera|google|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
