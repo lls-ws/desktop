@@ -33,6 +33,7 @@ apps_install()
 	bash bin/apps_install.sh apps
 	bash bin/apps_install.sh opera
 	bash bin/apps_install.sh google
+	bash bin/apps_install.sh firefox
 	bash bin/apps_install.sh ytmusic
 	bash bin/apps_install.sh anydesk
 	bash bin/apps_install.sh kvantum

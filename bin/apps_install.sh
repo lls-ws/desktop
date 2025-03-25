@@ -112,6 +112,40 @@ install_google()
 	
 }
 
+install_firefox()
+{
+	
+	sudo snap remove firefox
+ 	
+ 	VERSION_TAR="136.0.2"
+	
+	URL_TAR="https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION_TAR}/linux-x86_64/pt-BR"
+ 	
+ 	FILE_TAR="firefox-${VERSION_TAR}.tar.xz"
+ 	
+ 	sudo wget ${URL_TAR}/${FILE_TAR} -O /opt/${FILE_TAR}
+ 	
+	sudo rm -fv /usr/local/bin/firefox
+	sudo rm -fv /usr/local/share/applications/firefox.desktop
+	
+	cd /opt
+	
+	sudo tar xfv ${FILE_TAR}
+	
+	if [ -d "/opt/firefox" ]; then
+		
+		sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+		
+		sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+		
+		sudo rm -fv ${FILE_TAR}
+		
+	fi
+ 	
+ 	cd -
+	
+}
+
 install_ytmusic()
 {
 
@@ -210,6 +244,9 @@ case "$1" in
   	google)
 		install_google
 		;;
+	firefox)
+		install_firefox
+		;;
 	ytmusic)
 		install_ytmusic
 		;;
@@ -232,6 +269,7 @@ case "$1" in
   		install_apps
   		install_opera
 		install_google
+		install_firefox
 		install_ytmusic
 		install_anydesk
 		install_kvantum
@@ -239,7 +277,7 @@ case "$1" in
 		install_teamviewer
 		;;
 	*)
-		echo "Use: $0 {all|remove|intel|apps|opera|google|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|remove|intel|apps|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
