@@ -30,6 +30,8 @@ lubuntu_update()
 apps_install()
 {
 	
+	bash bin/3green_config.sh intel
+	
 	bash bin/apps_install.sh apps
 	bash bin/apps_install.sh opera
 	bash bin/apps_install.sh google

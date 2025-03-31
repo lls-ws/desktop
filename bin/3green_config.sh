@@ -11,7 +11,26 @@ check_root "$1"
 
 clear
 
-echo "Script to configure Wifi on 3Green"
+intel_driver()
+{
+ 	
+	apt-get -y purge --auto-remove mesa-vulkan-drivers
+  	
+  	apt -y install vainfo
+	
+  	lspci -k | grep i915
+  	
+	echo "LIBVA_DRIVER_NAME=i965" >> /etc/environment
+
+	cat /etc/environment
+	
+	export LIBVA_DRIVER_NAME=i965
+ 	
+	vainfo
+
+	echo "Type: reboot"
+	
+}
 
 list_wifi()
 {
@@ -76,6 +95,9 @@ driver_wifi()
 }
 
 case "$1" in
+  	intel)
+		intel_driver
+		;;
   	driver)
 		driver_wifi
 		;;
@@ -99,7 +121,7 @@ case "$1" in
 		ping_wifi
 		;;
 	*)
-		echo "Use: $0 {all|driver|list|connect|check|ping}"
+		echo "Use: $0 {all|intel|driver|list|connect|check|ping}"
 		exit 1
 		;;
 esac

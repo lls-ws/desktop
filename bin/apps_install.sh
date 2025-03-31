@@ -42,27 +42,6 @@ remove_packages()
 	
 }
 
-intel_driver()
-{
- 	
-	apt-get -y purge --auto-remove mesa-vulkan-drivers
-  	
-  	apt -y install vainfo
-	
-  	lspci -k | grep i915
-  	
-	echo "LIBVA_DRIVER_NAME=i965" >> /etc/environment
-
-	cat /etc/environment
-	
-	export LIBVA_DRIVER_NAME=i965
- 	
-	vainfo
-
-	echo "Type: reboot"
-	
-}
-
 install_deb()
 {
 	
@@ -149,9 +128,11 @@ install_firefox()
 install_ytmusic()
 {
 
-	URL_DEB="https://github.com/ytmdesktop/ytmdesktop/releases/download/v2.0.7"
+	VERSION_DEB="2.0.8"
 	
- 	FILE_DEB="youtube-music-desktop-app_2.0.7_amd64.deb"
+	URL_DEB="https://github.com/ytmdesktop/ytmdesktop/releases/download/v${VERSION_DEB}"
+	
+ 	FILE_DEB="youtube-music-desktop-app_${VERSION_DEB}_amd64.deb"
  	
 	install_deb
 	
@@ -232,9 +213,6 @@ install_virtualbox()
 }
 
 case "$1" in
-   	intel)
-		intel_driver
-		;;
 	apps)
 		install_apps
 		;;
@@ -277,7 +255,7 @@ case "$1" in
 		install_teamviewer
 		;;
 	*)
-		echo "Use: $0 {all|remove|intel|apps|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|remove|apps|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
