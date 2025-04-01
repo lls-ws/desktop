@@ -145,8 +145,7 @@ get_html()
 		get_vp
 		get_yield
 		get_pvp
-		get_revenue_last
-		get_revenue_next
+		get_revenue
 		
 	fi
 	
@@ -188,27 +187,12 @@ get_pvp()
 	
 }
 
-get_revenue_last()
+get_revenue()
 {
 
-	REVENUE_LAST=`cat ${FILE_HTML} | grep -A 6 'Último rendimento' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
+	REVENUE=`cat ${FILE_HTML} | grep -A 4 'title="Rendimento' | head -5 | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
 	
-	check_value "Last Revenue" "${REVENUE_LAST}"
-	
-}
-
-get_revenue_next()
-{
-
-	REVENUE_NEXT=`cat ${FILE_HTML} | grep -A 6 'Próximo Rendimento' | tail -1 | cut -d '>' -f 2 | cut -d '<' -f 1`
-	
-	check_value "Next Revenue" "${REVENUE_NEXT}"
-	
-	if [ "${REVENUE_NEXT}" == "-" ]; then
-	
-		REVENUE_NEXT=0;
-	
-	fi
+	check_value "Revenue" "${REVENUE}"
 	
 	add_values
 	
@@ -219,7 +203,7 @@ add_values()
 
 	echo -e "\nAdd values to file: ${FILE_FUND}"
 	
-	echo "${VP};${YIELD}%;${PVP};${REVENUE_LAST};${REVENUE_NEXT}" >> ${FILE_FUND}
+	echo "${VP};${YIELD}%;${PVP};${REVENUE}" >> ${FILE_FUND}
 	
 }
 
