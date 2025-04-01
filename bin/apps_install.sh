@@ -87,6 +87,14 @@ install_google()
   	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
   	xdg-mime query default x-scheme-handler/whatsapp
 	
+	DIR_LIST="/etc/apt/sources.list.d"
+	
+	FILE_LIST="google-chrome.list"
+	
+	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > ${DIR_LIST}/${FILE_LIST}
+	
+	cat ${DIR_LIST}/${FILE_LIST}
+	
  	google-chrome --version
 	
 }
