@@ -56,17 +56,32 @@ install_deb()
 install_opera()
 {
 	
-	VERSION_DEB="117.0.5408.53"
+	VERSION_DEB="119.0.5497.29"
 	
 	URL_DEB="https://download3.operacdn.com/ftp/pub/opera/desktop/${VERSION_DEB}/linux"
  	
  	FILE_DEB="opera-stable_${VERSION_DEB}_amd64.deb"
  	
+	apt -y remove --purge opera-stable
+	
+	remove_list "opera-stable"
+	
 	install_deb
 	
-	cat /etc/apt/sources.list.d/opera-stable.list
+	cat ${DIR_LIST}/${FILE_LIST}.list
 	
 	opera --version
+	
+}
+
+remove_list()
+{
+	
+	FILE_LIST="$1"
+	
+	DIR_LIST=/etc/apt/sources.list.d
+	
+	rm -fv ${DIR_LIST}/${FILE_LIST}.*
 	
 }
 
@@ -76,6 +91,10 @@ install_google()
 	URL_DEB="https://dl.google.com/linux/direct"
 	
  	FILE_DEB="google-chrome-stable_current_amd64.deb"
+ 	
+ 	apt -y remove --purge google-chrome-stable
+ 	
+ 	remove_list "google-chrome"
  	
  	install_deb
  	
@@ -89,11 +108,11 @@ install_google()
 	
 	DIR_LIST="/etc/apt/sources.list.d"
 	
-	FILE_LIST="google-chrome.list"
+	FILE_LIST="google-chrome"
 	
-	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > ${DIR_LIST}/${FILE_LIST}
+	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > ${DIR_LIST}/${FILE_LIST}.list
 	
-	cat ${DIR_LIST}/${FILE_LIST}
+	cat ${DIR_LIST}/${FILE_LIST}.list
 	
  	google-chrome --version
 	
