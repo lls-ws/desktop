@@ -26,28 +26,22 @@ check_dir()
 	
 }
 
-check_file_fiis()
-{
-	
-	set_fiis
-	
-	check_file
-	
-}
-
-check_file_fiagro()
-{
-	
-	set_fiagro
-	
-	check_file
-	
-}
-
 check_file()
 {
 	
-	FILE_TICKER=${DIR_LLS}/${FUND_TYPE}.txt
+	if [ "${OPT_FIIS}" == "10" ]; then
+	
+		FILE_FUND=~/${FUND_TYPE}_${OPT_FIIS}.csv
+		
+		FILE_TICKER=${DIR_LLS}/${FUND_TYPE}_${OPT_FIIS}.txt
+	
+	else
+	
+		FILE_FUND=~/${FUND_TYPE}.csv
+		
+		FILE_TICKER=${DIR_LLS}/${FUND_TYPE}.txt
+	
+	fi
 	
 	if [ ! -f ${FILE_TICKER} ]; then
 		
@@ -61,42 +55,28 @@ check_file()
 	
 }
 
-get_fiis()
-{
-
-	check_file_fiis
-	
-	get_htmls
-	
-}
-
-get_fiagro()
-{
-
-	check_file_fiagro
-	
-	get_htmls
-	
-}
-
 set_fiis()
 {
 
-	FUND_TYPE="fundos-imobiliarios"
+	case "$1" in
+		fiis)
+			FUND_TYPE="fundos-imobiliarios"
+			;;
+		fiagro)
+			FUND_TYPE="fiagros"
+			;;
+		*)
+			FUND_TYPE="fiinfras"
+			;;
+	esac
+
+	check_file
+
+	get_htmls
 	
 }
 
-set_fiagro()
-{
-
-	FUND_TYPE="fiagros"
-	
-}
-
-get_htmls()
-{
-
-	FILE_FUND=~/${FUND_TYPE}.csv
+get_htmls() {
 	
 	if [ -f ${FILE_FUND} ]; then
 
@@ -223,22 +203,23 @@ URL_BASE="https://statusinvest.com.br"
 
 check_dir
 
+OPT_FIIS="$2"
+
 case "$1" in
 	fiis)
-		get_fiis
+		set_fiis "$1"
 		;;
 	fiagro)
-		get_fiagro
+		set_fiis "$1"
+		;;
+	fiinfras)
+		set_fiis "$1"
 		;;
 	edit)
 		set_edit
 		;;
-	all)
-		get_fiis
-		get_fiagro
-		;;
 	*)
-		echo "Use: $0 {all|fiis|fiagro|edit}"
+		echo "Use: $0 {fiis|fiagro|fiinfras|edit} [10]"
 		exit 1
 		;;
 esac
