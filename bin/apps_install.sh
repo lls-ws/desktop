@@ -40,6 +40,14 @@ remove_packages()
 	
 	apt-get -y --purge remove ${PACKAGE_LIST}
 	
+	snap list --all | awk '/disabled/{print $1, $3}' | while read snapname revision; do
+        sudo snap remove "$snapname" --revision="$revision"
+    done
+    
+    snap set system refresh.retain=2
+    
+    rm -rfv /var/lib/snapd/cache/
+	
 }
 
 install_deb()
