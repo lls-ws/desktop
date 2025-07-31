@@ -29,27 +29,6 @@ show_file()
 	
 }
 
-remove_packages()
-{
-	
-	dpkg --list | grep ^rc
-	
-	PACKAGE_LIST=$(dpkg --list | grep ^rc| awk '{ print $2}')
-	
-	echo "${PACKAGE_LIST}"
-	
-	apt-get -y --purge remove ${PACKAGE_LIST}
-	
-	snap list --all | awk '/disabled/{print $1, $3}' | while read snapname revision; do
-        sudo snap remove "$snapname" --revision="$revision"
-    done
-    
-    snap set system refresh.retain=2
-    
-    rm -rfv /var/lib/snapd/cache/
-	
-}
-
 install_deb()
 {
 	
@@ -275,9 +254,6 @@ case "$1" in
 	teamviewer)
 		install_teamviewer
 		;;
-	remove)
-		remove_packages
-		;;	
   	all)
   		install_apps
   		install_opera
@@ -290,7 +266,7 @@ case "$1" in
 		install_teamviewer
 		;;
 	*)
-		echo "Use: $0 {all|remove|apps|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|apps|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
