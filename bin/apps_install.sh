@@ -89,17 +89,24 @@ install_google()
   	xdg-settings set default-url-scheme-handler mailto google-chrome.desktop
   	xdg-settings get default-url-scheme-handler mailto
   	
-  	echo "Set Google to default mailto"
+  	echo "Set Google to default whatsapp"
   	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
   	xdg-mime query default x-scheme-handler/whatsapp
 	
-	DIR_LIST="/etc/apt/sources.list.d"
-	
-	FILE_LIST="google-chrome"
+	remove_list "google-chrome"
 	
 	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > ${DIR_LIST}/${FILE_LIST}.list
 	
 	cat ${DIR_LIST}/${FILE_LIST}.list
+	
+	DIR_CHROME="/usr/share/applications"
+	FILE_CONFIG="config/google-chrome/google-chrome.desktop"
+	
+	if [ -f ${FILE_CONFIG} ]; then
+	
+		cp -fv ${FILE_CONFIG} ${DIR_CHROME}
+	
+	fi
 	
  	google-chrome --version
 	
