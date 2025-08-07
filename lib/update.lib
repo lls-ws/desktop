@@ -71,3 +71,25 @@ check_user()
 	fi
 	
 }
+
+opera_version()
+{
+	
+	VERSION_FILE="119.0.5497.29"
+	
+}
+
+firefox_version()
+{
+	
+ 	VERSION_FILE="136.0.2"
+ 	
+}
+
+ytmusic_version()
+{
+	
+	# https://github.com/ytmdesktop/ytmdesktop/releases
+	VERSION_FILE="2.0.9"
+	
+}

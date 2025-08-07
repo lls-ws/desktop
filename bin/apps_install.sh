@@ -29,6 +29,28 @@ show_file()
 	
 }
 
+config_file()
+{
+	
+	DIR_CHROME="/usr/share/applications"
+	FILE_CONFIG="config/google-chrome/google-chrome.desktop"
+	
+	if [ -f ${FILE_CONFIG} ]; then
+	
+		cp -fv ${FILE_CONFIG} ${DIR_CHROME}
+	
+	fi
+	
+	echo "Set Google to default mailto"
+  	xdg-settings set default-url-scheme-handler mailto google-chrome.desktop
+  	xdg-settings get default-url-scheme-handler mailto
+  	
+  	echo "Set Google to default whatsapp"
+  	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
+  	xdg-mime query default x-scheme-handler/whatsapp
+  	
+}
+
 install_deb()
 {
 	
@@ -43,11 +65,11 @@ install_deb()
 install_opera()
 {
 	
-	VERSION_DEB="119.0.5497.29"
+	opera_version
 	
-	URL_DEB="https://download3.operacdn.com/ftp/pub/opera/desktop/${VERSION_DEB}/linux"
+	URL_DEB="https://download3.operacdn.com/ftp/pub/opera/desktop/${VERSION_FILE}/linux"
  	
- 	FILE_DEB="opera-stable_${VERSION_DEB}_amd64.deb"
+ 	FILE_DEB="opera-stable_${VERSION_FILE}_amd64.deb"
  	
 	apt -y remove --purge opera-stable
 	
@@ -85,28 +107,13 @@ install_google()
  	
  	install_deb
  	
-  	echo "Set Google to default mailto"
-  	xdg-settings set default-url-scheme-handler mailto google-chrome.desktop
-  	xdg-settings get default-url-scheme-handler mailto
-  	
-  	echo "Set Google to default whatsapp"
-  	xdg-mime default google-chrome.desktop x-scheme-handler/whatsapp
-  	xdg-mime query default x-scheme-handler/whatsapp
-	
 	remove_list "google-chrome"
 	
 	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > ${DIR_LIST}/${FILE_LIST}.list
 	
 	cat ${DIR_LIST}/${FILE_LIST}.list
 	
-	DIR_CHROME="/usr/share/applications"
-	FILE_CONFIG="config/google-chrome/google-chrome.desktop"
-	
-	if [ -f ${FILE_CONFIG} ]; then
-	
-		cp -fv ${FILE_CONFIG} ${DIR_CHROME}
-	
-	fi
+	config_file
 	
  	google-chrome --version
 	
@@ -115,30 +122,30 @@ install_google()
 install_firefox()
 {
 	
-	sudo snap remove firefox
+	snap remove firefox
  	
- 	VERSION_TAR="136.0.2"
+ 	firefox_version
 	
-	URL_TAR="https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION_TAR}/linux-x86_64/pt-BR"
+	URL_TAR="https://download-installer.cdn.mozilla.net/pub/firefox/releases/${VERSION_FILE}/linux-x86_64/pt-BR"
  	
- 	FILE_TAR="firefox-${VERSION_TAR}.tar.xz"
+ 	FILE_TAR="firefox-${VERSION_FILE}.tar.xz"
  	
- 	sudo wget ${URL_TAR}/${FILE_TAR} -O /opt/${FILE_TAR}
+ 	wget ${URL_TAR}/${FILE_TAR} -O /opt/${FILE_TAR}
  	
-	sudo rm -fv /usr/local/bin/firefox
-	sudo rm -fv /usr/local/share/applications/firefox.desktop
+	rm -fv /usr/local/bin/firefox
+	rm -fv /usr/local/share/applications/firefox.desktop
 	
 	cd /opt
 	
-	sudo tar xfv ${FILE_TAR}
+	tar xfv ${FILE_TAR}
 	
 	if [ -d "/opt/firefox" ]; then
 		
-		sudo ln -s /opt/firefox/firefox /usr/local/bin/firefox
+		ln -s /opt/firefox/firefox /usr/local/bin/firefox
 		
-		sudo wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
+		wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
 		
-		sudo rm -fv ${FILE_TAR}
+		rm -fv ${FILE_TAR}
 		
 	fi
  	
@@ -149,11 +156,11 @@ install_firefox()
 install_ytmusic()
 {
 
-	VERSION_DEB="2.0.8"
+	ytmusic_version
 	
-	URL_DEB="https://github.com/ytmdesktop/ytmdesktop/releases/download/v${VERSION_DEB}"
+	URL_DEB="https://github.com/ytmdesktop/ytmdesktop/releases/download/v${VERSION_FILE}"
 	
- 	FILE_DEB="youtube-music-desktop-app_${VERSION_DEB}_amd64.deb"
+ 	FILE_DEB="youtube-music-desktop-app_${VERSION_FILE}_amd64.deb"
  	
 	install_deb
 	
@@ -237,6 +244,9 @@ case "$1" in
 	apps)
 		install_apps
 		;;
+	config)
+		config_file
+		;;
   	opera)
 		install_opera
 		;;
@@ -271,9 +281,10 @@ case "$1" in
 		install_kvantum
 		install_virtualbox
 		install_teamviewer
+		config_file
 		;;
 	*)
-		echo "Use: $0 {all|apps|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|apps|config|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
