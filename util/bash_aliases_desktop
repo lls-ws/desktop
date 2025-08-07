@@ -4,6 +4,7 @@ alias finance-lls='bash finance-lls.sh'
 # Connect into a Clound
 alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa.old lls@funchal.lls.net.br &'
 alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br &'
+alias connect_dell='qterminal -e ssh -i ~/.ssh/id_rsa wanda@dell.lls.net.br &'
 
 # WEB Server Log
 alias tomcat-log='geany /var/lib/tomcat9/logs/*.log &'
@@ -65,11 +66,16 @@ alias disable-snapd='sudo systemctl disable snapd.service; services-list'
 alias disable-cups='sudo systemctl disable cups.service; services-list'
 alias disable-cron='sudo systemctl disable cron.service; services-list'
 
-rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
+if [ "$USER" = "lls" ]; then
+	
+	rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 
-rmdir 'Desktop' 'Documents' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
+	rmdir 'Desktop' 'Documents' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
 
-rm -rf '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
-rm -f '.fehbg' 2> /dev/null
-rm -f ~/*.csv 2> /dev/null
+	rm -rf '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
+	rm -f '.fehbg' 2> /dev/null
+	rm -f ~/*.csv 2> /dev/null
+	
+fi
+
 ls
