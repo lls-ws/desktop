@@ -240,6 +240,19 @@ install_virtualbox()
 	
 }
 
+install_openssh()
+{
+	
+ 	apt -y install openssh-server
+	
+	systemctl enable ssh
+	
+	systemctl status ssh
+	
+	openssh-server --version
+  	
+}
+
 case "$1" in
 	apps)
 		install_apps
@@ -262,6 +275,9 @@ case "$1" in
   	anydesk)
 		install_anydesk
 		;;
+	openssh)
+		install_openssh
+		;;
 	kvantum)
 		install_kvantum
 		;;
@@ -278,13 +294,14 @@ case "$1" in
 		install_firefox
 		install_ytmusic
 		install_anydesk
+		install_openssh
 		install_kvantum
 		install_virtualbox
 		install_teamviewer
 		config_file
 		;;
 	*)
-		echo "Use: $0 {all|apps|config|opera|google|firefox|ytmusic|anydesk|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|apps|config|opera|google|firefox|ytmusic|anydesk|openssh|kvantum|virtualbox|teamviewer}"
 		exit 1
 		;;
 esac
