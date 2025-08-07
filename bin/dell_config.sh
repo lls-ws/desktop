@@ -17,6 +17,13 @@ check_root "$1"
 
 echo "Script to configure Lubuntu on Dell Inspiron 1428"
 
+driver_intel()
+{
+ 	
+	bash bin/3green_config.sh intel
+	
+}
+
 apps_install()
 {
 	
@@ -72,6 +79,9 @@ EMAIL="wganara@gmail.com"
 PASSWORD="${USER}"
 
 case "$1" in
+  	intel)
+		driver_intel
+		;;
   	apps)
 		apps_install
 		;;
@@ -82,12 +92,13 @@ case "$1" in
 		user_profile
 		;;
   	all)
+		driver_intel
 		apps_install
 		user_conf
 		user_profile
 		;;
 	*)
-		echo "Use: $0 {all|apps|user|profile}"
+		echo "Use: $0 {all|intel|apps|user|profile}"
 		exit 1
 		;;
 esac
