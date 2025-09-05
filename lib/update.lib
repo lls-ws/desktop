@@ -90,6 +90,6 @@ ytmusic_version()
 {
 	
 	# https://github.com/ytmdesktop/ytmdesktop/releases
-	VERSION_FILE="2.0.9"
+	VERSION_FILE="2.0.10"
 	
 }
