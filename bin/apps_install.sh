@@ -234,7 +234,7 @@ install_teamviewer()
 install_virtualbox()
 {
 	
-	apt -y install virtualbox virtualbox-guest-utils
+	apt -y install virtualbox virtualbox-source virtualbox-guest-utils
 	
 	virtualbox --help
 	
