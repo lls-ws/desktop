@@ -150,6 +150,8 @@ install_firefox()
 	fi
  	
  	cd -
+ 	
+ 	firefox --version
 	
 }
 
@@ -166,14 +168,29 @@ install_ytmusic()
 	
 }
 
+install_transmission()
+{
+	
+	apt -y install transmission-common transmission-daemon transmission-cli
+	
+	transmission-cli --version
+	transmission-daemon --version
+	
+}
+
+install_nfs()
+{
+	
+	apt -y install nfs-kernel-server
+	
+	cat /proc/fs/nfsd/versions
+	
+}
+
 install_apps()
 {
 	
 	apt -y install \
-		transmission-common \
-		transmission-daemon \
-		nfs-kernel-server \
-		transmission-cli \
 		python3-pandas \
 		streamtuner2 \
 		audacious \
@@ -185,21 +202,9 @@ install_apps()
 	geany --version
     wavemon -v
 	audacious --version
-	transmission-cli --version
-	transmission-daemon --version
-  	
   	streamtuner2 -V
 	
   	rpcinfo -p | grep nfs
-  	
-}
-
-install_kvantum()
-{
-	
- 	apt -y install kvantum
-	
-	kvantummanager --version
   	
 }
 
@@ -260,6 +265,9 @@ case "$1" in
 	config)
 		config_file
 		;;
+  	nfs)
+		install_nfs
+		;;
   	opera)
 		install_opera
 		;;
@@ -278,17 +286,18 @@ case "$1" in
 	openssh)
 		install_openssh
 		;;
-	kvantum)
-		install_kvantum
-		;;
   	virtualbox)
 		install_virtualbox
 		;;
 	teamviewer)
 		install_teamviewer
 		;;
+	transmission)
+		install_transmission
+		;;
   	all)
   		install_apps
+  		install_nfs
   		install_opera
 		install_google
 		install_firefox
@@ -298,10 +307,11 @@ case "$1" in
 		install_kvantum
 		install_virtualbox
 		install_teamviewer
+		install_transmission
 		config_file
 		;;
 	*)
-		echo "Use: $0 {all|apps|config|opera|google|firefox|ytmusic|anydesk|openssh|kvantum|virtualbox|teamviewer}"
+		echo "Use: $0 {all|apps|config|nfs|opera|google|firefox|ytmusic|anydesk|openssh|virtualbox|teamviewer|transmission}"
 		exit 1
 		;;
 esac

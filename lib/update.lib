@@ -75,14 +75,16 @@ check_user()
 opera_version()
 {
 	
-	VERSION_FILE="119.0.5497.29"
+	# https://download3.operacdn.com/ftp/pub/opera/desktop/
+	VERSION_FILE="122.0.5643.92"
 	
 }
 
 firefox_version()
 {
 	
- 	VERSION_FILE="136.0.2"
+	# https://download-installer.cdn.mozilla.net/pub/firefox/releases/
+ 	VERSION_FILE="143.0"
  	
 }
 
