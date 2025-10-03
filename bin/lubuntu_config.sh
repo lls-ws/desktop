@@ -19,7 +19,7 @@ lubuntu_update()
 	
 	cat ${FILE_RELEASE}
 	
-	sudo do-release-upgrade -m desktop -f DistUpgradeViewKDE
+	sudo do-release-upgrade desktop -f DistUpgradeViewKDE
 	
 	featherpad admin:///etc/default/grub
 	
@@ -31,15 +31,11 @@ apps_install()
 {
 	
 	bash bin/3green_config.sh intel
-	
-	bash bin/apps_install.sh apps
-	bash bin/apps_install.sh opera
 	bash bin/apps_install.sh google
 	bash bin/apps_install.sh firefox
 	bash bin/apps_install.sh ytmusic
 	bash bin/apps_install.sh anydesk
 	bash bin/apps_install.sh kvantum
-	bash bin/apps_install.sh virtualbox
 	bash bin/apps_install.sh teamviewer
 	
 }
@@ -69,9 +65,7 @@ user_conf()
 daemon_conf()
 {
 	
-	bash bin/daemon_config.sh nfs
 	bash bin/daemon_config.sh sddm
-	bash bin/daemon_config.sh transmission
 	
 }
 
