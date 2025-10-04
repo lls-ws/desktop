@@ -47,6 +47,12 @@ alias nfs-start='sudo service nfs-server start; nfs-status'
 alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
 
+# Minidlna
+alias minidlna-status='clear; sudo service minidlna status'
+alias minidlna-start='sudo service minidlna start; minidlna-status'
+alias minidlna-stop='sudo service minidlna stop; minidlna-status'
+alias minidlna-restart='minidlna-stop; minidlna-start'
+
 # Services
 alias services-show='service --status-all'
 alias services-load='systemctl -t service --state=active'
@@ -58,6 +64,7 @@ alias disable-transmission='sudo systemctl disable transmission-daemon.service; 
 alias disable-iptables='sudo systemctl disable netfilter-persistent.service; services-list'
 alias disable-cups-browsed='sudo systemctl disable cups-browsed.service; services-list'
 alias disable-anydesk='sudo systemctl disable anydesk.service; services-list'
+alias disable-teamviewerd='sudo systemctl disable teamviewerd.service; services-list'
 alias disable-openvpn='sudo systemctl disable openvpn.service; services-list'
 alias disable-nfs='sudo systemctl disable nfs-server.service; services-list'
 alias disable-tomcat='sudo systemctl disable tomcat9.service; services-list'

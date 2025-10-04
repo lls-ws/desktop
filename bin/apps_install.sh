@@ -178,6 +178,15 @@ install_transmission()
 	
 }
 
+install_minidlna()
+{
+	
+	apt -y install minidlna
+	
+	minidlnad -V
+	
+}
+
 install_nfs()
 {
 	
@@ -259,17 +268,14 @@ install_openssh()
 }
 
 case "$1" in
-	apps)
-		install_apps
+	nfs)
+		install_nfs
+		;;
+	opera)
+		install_opera
 		;;
 	config)
 		config_file
-		;;
-  	nfs)
-		install_nfs
-		;;
-  	opera)
-		install_opera
 		;;
   	google)
 		install_google
@@ -286,6 +292,9 @@ case "$1" in
 	openssh)
 		install_openssh
 		;;
+  	minidlna)
+		install_minidlna
+		;;
   	virtualbox)
 		install_virtualbox
 		;;
@@ -296,7 +305,6 @@ case "$1" in
 		install_transmission
 		;;
   	all)
-  		install_apps
   		install_nfs
   		install_opera
 		install_google
@@ -304,14 +312,14 @@ case "$1" in
 		install_ytmusic
 		install_anydesk
 		install_openssh
-		install_kvantum
+		install_minidlna
 		install_virtualbox
 		install_teamviewer
 		install_transmission
 		config_file
 		;;
 	*)
-		echo "Use: $0 {all|apps|config|nfs|opera|google|firefox|ytmusic|anydesk|openssh|virtualbox|teamviewer|transmission}"
+		echo "Use: $0 {all|config|nfs|opera|google|firefox|ytmusic|anydesk|openssh|minidlna|virtualbox|teamviewer|transmission}"
 		exit 1
 		;;
 esac

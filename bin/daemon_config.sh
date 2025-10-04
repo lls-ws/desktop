@@ -149,7 +149,9 @@ nfs_conf()
 
 	systemctl status ${APP_NAME}
 
-	nfs_conf_dir
+	shared_dir
+	
+	exportfs -a
 	
 	cat ${DIR_ETC}/${FILE_SET}
 	
@@ -160,8 +162,31 @@ nfs_conf()
 	systemctl disable ${APP_NAME}.service
 
 }
+
+minidlna_conf()
+{
 	
-nfs_conf_dir()
+	APP_NAME="minidlna"
+	
+	FILE_SET="minidlna.conf"
+	
+	DIR_ETC="/etc"
+	
+	echo "Configure ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
+
+	shared_dir
+	
+	cat ${DIR_ETC}/${FILE_SET}
+	
+	service ${APP_NAME} stop
+	
+	systemctl disable ${APP_NAME}.service
+
+}
+
+shared_dir()
 {
 	
 	DIR_SHD="/mnt/shared"
@@ -199,8 +224,6 @@ nfs_conf_dir()
 	
 	ls -al ${DIR_SHD}
 	
-	exportfs -a
-	
 }
 
 USER_TRANSMISISON="debian-transmission"
@@ -209,14 +232,17 @@ case "$1" in
 	nfs)
 		nfs_conf
 		;;
-	bluetooth)
-		bluetooth_conf
-		;;
- 	sddm)
+	sddm)
 		sddm_conf
 		;;
 	lightdm)
 		lightdm_conf
+		;;
+	minidlna)
+		minidlna_conf
+		;;
+	bluetooth)
+		bluetooth_conf
 		;;
  	transmission)
 		transmission_conf
@@ -227,7 +253,7 @@ case "$1" in
 		transmission_conf
 		;;
 	*)
-		echo "Use: $0 {all|nfs|bluetooth|sddm|lightdm|transmission}"
+		echo "Use: $0 {all|nfs|sddm|lightdm|minidlna|bluetooth|transmission}"
 		exit 1
 		;;
 esac
