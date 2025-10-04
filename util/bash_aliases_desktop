@@ -48,10 +48,11 @@ alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
 
 # Minidlna
-alias minidlna-status='clear; sudo service minidlna status'
-alias minidlna-start='sudo service minidlna start; minidlna-status'
-alias minidlna-stop='sudo service minidlna stop; minidlna-status'
-alias minidlna-restart='minidlna-stop; minidlna-start'
+alias dlna-status='clear; sudo service minidlna status'
+alias dlna-start='sudo service minidlna start; dlna-status'
+alias dlna-stop='sudo service minidlna stop; dlna-status'
+alias dlna-restart='dlna-stop; dlna-start'
+alias dlna-reload='sudo service minidlna force-reload'
 
 # Services
 alias services-show='service --status-all'

@@ -180,7 +180,15 @@ minidlna_conf()
 	
 	cat ${DIR_ETC}/${FILE_SET}
 	
-	service ${APP_NAME} stop
+	echo 'DAEMON_OPTS="-R"' > ${DIR_ETC}/default/${APP_NAME}
+	
+	cat ${DIR_ETC}/default/${APP_NAME}
+	
+	chown -Rv ${APP_NAME}:${APP_NAME} /var/cache/${APP_NAME}
+	
+	chmod -Rv 775 /var/cache/${APP_NAME}
+	
+	service ${APP_NAME} force-reload
 	
 	systemctl disable ${APP_NAME}.service
 

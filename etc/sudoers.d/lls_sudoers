@@ -16,3 +16,4 @@ lls ALL=(ALL) NOPASSWD:/usr/sbin/service transmission-daemon status
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service minidlna start
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service minidlna stop
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service minidlna status
+lls ALL=(ALL) NOPASSWD:/usr/sbin/service minidlna force-reload
