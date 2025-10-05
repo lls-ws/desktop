@@ -228,7 +228,7 @@ shared_dir()
 	
 	chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
 	
-	chmod -v 777 ${DIR_SHD}
+	chmod -Rv 777 ${DIR_SHD}
 	
 	ls -al ${DIR_SHD}
 	
@@ -258,6 +258,9 @@ case "$1" in
 	all)
 		nfs_conf
 		sddm_conf
+		lightdm_conf
+		minidlna_conf
+		bluetooth_conf
 		transmission_conf
 		;;
 	*)
