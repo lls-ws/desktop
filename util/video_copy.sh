@@ -7,14 +7,14 @@
 video_total()
 {
 	
-	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | wc -l >> ${FILE_LOG}
+	find ${DIR_VIDEO} ${VIDEO_EXT} | wc -l >> ${FILE_LOG}
 	
 }
 
 video_show()
 {
 	
-	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | awk -F/ '{print $NF}' > ${FILE_LOG}
+	find ${DIR_VIDEO} ${VIDEO_EXT} | awk -F/ '{print $NF}' > ${FILE_LOG}
 	
 	video_total
 	
@@ -37,7 +37,7 @@ video_copy()
 	
 	COUNT=0
 	
-	find ${DIR_VIDEO} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" |
+	find ${DIR_VIDEO} ${VIDEO_EXT} |
 	
 	while read FILE; do
 	  
@@ -76,7 +76,7 @@ video_log()
 	
 	fi
 	
-	find ${DIR_MOVIES} -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" | awk -F/ '{print $NF}' | sort > ${FILE_LOG}
+	find ${DIR_MOVIES} ${VIDEO_EXT} | awk -F/ '{print $NF}' | sort > ${FILE_LOG}
 	
 	chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
@@ -126,7 +126,6 @@ iso_copy()
 	
 }
 
-
 DIR_VIDEO="/home/torrents"
 
 DIR_SHARE="/mnt/shared"
@@ -144,6 +143,8 @@ DIR_LOG="${DIR_SHARE}/log"
 VIDEO_LOG="${DIR_LOG}/video.log"
 
 FILE_LOG="${DIR_LOG}/copy-`date +"%Y_%m_%d-%H_%M_%S"`.log"
+
+VIDEO_EXT="-iname *.wmv -o -iname *.mp4 -o -iname *.avi -o -iname *.mkv"
 
 USER_TRANSMISISON="debian-transmission"
 
