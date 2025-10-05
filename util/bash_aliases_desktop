@@ -52,7 +52,7 @@ alias dlna-status='clear; sudo service minidlna status'
 alias dlna-start='sudo service minidlna start; dlna-status'
 alias dlna-stop='sudo service minidlna stop; dlna-status'
 alias dlna-restart='dlna-stop; dlna-start'
-alias dlna-reload='sudo service minidlna force-reload'
+alias dlna-reload='sudo service minidlna force-reload; ls -al /var/cache/minidlna/'
 
 # Services
 alias services-show='service --status-all'
