@@ -196,6 +196,15 @@ install_nfs()
 	
 }
 
+install_samba()
+{
+	
+	apt -y install samba
+	
+	smbd -V
+	
+}
+
 install_apps()
 {
 	
@@ -263,13 +272,16 @@ install_openssh()
 	
 	systemctl status ssh
 	
-	openssh-server --version
+	sshd -V
   	
 }
 
 case "$1" in
 	nfs)
 		install_nfs
+		;;
+	samba)
+		install_samba
 		;;
 	opera)
 		install_opera
@@ -306,6 +318,7 @@ case "$1" in
 		;;
   	all)
   		install_nfs
+  		install_samba
   		install_opera
 		install_google
 		install_firefox
@@ -319,7 +332,7 @@ case "$1" in
 		config_file
 		;;
 	*)
-		echo "Use: $0 {all|config|nfs|opera|google|firefox|ytmusic|anydesk|openssh|minidlna|virtualbox|teamviewer|transmission}"
+		echo "Use: $0 {all|config|nfs|samba|opera|google|firefox|ytmusic|anydesk|openssh|minidlna|virtualbox|teamviewer|transmission}"
 		exit 1
 		;;
 esac

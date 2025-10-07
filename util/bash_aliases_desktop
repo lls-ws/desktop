@@ -41,11 +41,23 @@ alias t-list='transmission-remote -n 'transmission:transmission' -l'
 alias t-basicstats='transmission-remote -n 'transmission:transmission' -st'
 alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'
 
+# SSH
+alias ssh-status='clear; sudo service ssh status'
+alias ssh-start='sudo service ssh start; ssh-status'
+alias ssh-stop='sudo service ssh stop; ssh-status'
+alias ssh-restart='ssh-stop; ssh-start'
+
 # NFS
 alias nfs-status='clear; sudo service nfs-server status'
 alias nfs-start='sudo service nfs-server start; nfs-status'
 alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
+
+# Samba
+alias samba-status='clear; sudo service smbd status'
+alias samba-start='sudo service smbd start; samba-status'
+alias samba-stop='sudo service smbd stop; samba-status'
+alias samba-restart='samba-stop; samba-start'
 
 # Minidlna
 alias dlna-status='clear; sudo service minidlna status'
@@ -73,6 +85,7 @@ alias disable-maria='sudo systemctl disable mariadb.service; services-list'
 alias disable-snapd='sudo systemctl disable snapd.service; services-list'
 alias disable-cups='sudo systemctl disable cups.service; services-list'
 alias disable-cron='sudo systemctl disable cron.service; services-list'
+alias disable-ssh='sudo systemctl disable ssh.service; services-list'
 
 if [ "$USER" = "lls" ]; then
 	

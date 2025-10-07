@@ -194,6 +194,29 @@ minidlna_conf()
 
 }
 
+samba_conf()
+{
+	
+	APP_NAME="samba"
+	
+	FILE_SET="smb.conf"
+	
+	DIR_ETC="/etc/${APP_NAME}"
+	
+	echo "Configure ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
+	
+	shared_dir
+	
+	cat ${DIR_ETC}/${FILE_SET}
+	
+	systemctl disable smbd.service
+	
+	systemctl stop smbd.service
+	
+}
+
 shared_dir()
 {
 	
@@ -226,9 +249,9 @@ shared_dir()
 			
 	done
 	
-	chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
+	chown -R ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
 	
-	chmod -Rv 777 ${DIR_SHD}
+	chmod -R 777 ${DIR_SHD}
 	
 	ls -al ${DIR_SHD}
 	
@@ -242,6 +265,9 @@ case "$1" in
 		;;
 	sddm)
 		sddm_conf
+		;;
+	samba)
+		samba_conf
 		;;
 	lightdm)
 		lightdm_conf
@@ -264,7 +290,7 @@ case "$1" in
 		transmission_conf
 		;;
 	*)
-		echo "Use: $0 {all|nfs|sddm|lightdm|minidlna|bluetooth|transmission}"
+		echo "Use: $0 {all|nfs|sddm|samba|lightdm|minidlna|bluetooth|transmission}"
 		exit 1
 		;;
 esac
