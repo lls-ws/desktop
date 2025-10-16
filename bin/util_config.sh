@@ -20,7 +20,7 @@ hosts_conf()
  	echo "192.168.0.4		wanda.lls.net.br		wanda"		>> /etc/hosts
  	echo "192.168.0.3		tv.lls.net.br			tv"			>> /etc/hosts
  	echo "192.168.0.2		camera.lls.net.br		camera"		>> /etc/hosts
-  	echo "18.231.77.9		app.lls.net.br			app"	 	>> /etc/hosts
+  	echo "54.233.46.50		app.lls.net.br			app"	 	>> /etc/hosts
 	echo "18.231.77.9		funchal.lls.net.br		funchal" 	>> /etc/hosts
 	echo "18.231.77.9		repository.lls.net.br	repository"	>> /etc/hosts
 	echo "208.67.222.222	opendns.lls.net.br		opendns" 	>> /etc/hosts
