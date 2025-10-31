@@ -32,65 +32,50 @@ intel_driver()
 	
 }
 
-list_wifi()
+apps_install()
 {
 	
-	echo "Check WiFi interface:"
-	nmcli d
+	bash bin/3green_config.sh intel
 	
-	echo "Make sure the WiFi radio is on:"
-	nmcli r wifi on
-	
-	echo "List the available WiFi networks:"
-	nmcli d wifi list
+	bash bin/apps_install.sh nfs
+	bash bin/apps_install.sh opera
+	bash bin/apps_install.sh google
+	bash bin/apps_install.sh firefox
+	bash bin/apps_install.sh ytmusic
+	bash bin/apps_install.sh anydesk
+	bash bin/apps_install.sh teamviewer
+	bash bin/apps_install.sh transmission
 	
 }
 
-connect_wifi()
+util_conf()
 {
-	
-	echo "Connect to the access point:"
-	nmcli d wifi connect Apto104 password Finotti104
-	
-	ping_wifi
-	
+	bash bin/util_config.sh sudo
+	bash bin/util_config.sh hosts
+	bash bin/util_config.sh scripts
 }
 
-check_wifi()
+user_conf()
 {
 	
-	echo "Check Wifi connection:"
-	wavemon
+	USER=`git config user.name`
 	
-	ping_wifi
+	echo "User: ${USER}"
 	
+	if [ ! -z "${USER}" ]; then
+		
+		su ${USER} -c "bash bin/user_config.sh all"
+		
+	fi
+
 }
 
-ping_wifi()
+daemon_conf()
 {
 	
-	echo "Check Connection:"
-	ping -W 3 -c 10 -4 router
-	
-}
-
-driver_wifi()
-{
-	
-	DEVICE="02:00.0"
-	
-	echo "Check WiFi driver:"
-	lspci -k | grep -i wireless
-	
-	#lspci -vv -s ${DEVICE}
-	
-	#modinfo iwlwifi
-	
-	ls /lib/firmware | grep 7265
-	
-	#cd /lib/firmware
-	#sudo cp -fv iwlwifi-7265D-13.ucode iwlwifi-3165-9.ucode
-	#sudo cp -fv iwlwifi-7265-13.ucode  iwlwifi-3165-13.ucode
+	bash bin/daemon_config.sh nfs
+	bash bin/daemon_config.sh sddm
+	bash bin/daemon_config.sh transmission
 	
 }
 
@@ -98,30 +83,27 @@ case "$1" in
   	intel)
 		intel_driver
 		;;
-  	driver)
-		driver_wifi
+  	apps)
+		apps_install
 		;;
-  	list)
-		list_wifi
+	daemon)
+		daemon_conf
 		;;
-  	connect)
-		connect_wifi
+  	util)
+		util_conf
 		;;
-  	check)
-		check_wifi
-		;;
-	ping)
-		ping_wifi
+	user)
+		user_conf
 		;;
   	all)
-		driver_wifi
-		list_wifi
-		connect_wifi
-		check_wifi
-		ping_wifi
+		intel_driver
+		apps_install
+		daemon_conf
+		util_conf
+		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|intel|driver|list|connect|check|ping}"
+		echo "Use: $0 {all|intel|apps|daemon|util|user}"
 		exit 1
 		;;
 esac

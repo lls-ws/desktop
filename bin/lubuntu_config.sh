@@ -9,7 +9,7 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
-lubuntu_update()
+lubuntu_upgrade()
 {
 	
 	FILE_RELEASE="/etc/update-manager/release-upgrades"
@@ -27,77 +27,15 @@ lubuntu_update()
 	
 }
 
-apps_install()
-{
-	
-	bash bin/3green_config.sh intel
-	
-	bash bin/apps_install.sh nfs
-	bash bin/apps_install.sh opera
-	bash bin/apps_install.sh google
-	bash bin/apps_install.sh firefox
-	bash bin/apps_install.sh ytmusic
-	bash bin/apps_install.sh anydesk
-	bash bin/apps_install.sh teamviewer
-	bash bin/apps_install.sh transmission
-	
-}
-
-util_conf()
-{
-	bash bin/util_config.sh sudo
-	bash bin/util_config.sh hosts
-	bash bin/util_config.sh scripts
-}
-
-user_conf()
-{
-	
-	USER=`git config user.name`
-	
-	echo "User: ${USER}"
-	
-	if [ ! -z "${USER}" ]; then
-		
-		su ${USER} -c "bash bin/user_config.sh all"
-		
-	fi
-
-}
-
-daemon_conf()
-{
-	
-	bash bin/daemon_config.sh nfs
-	bash bin/daemon_config.sh sddm
-	bash bin/daemon_config.sh transmission
-	
-}
-
 case "$1" in
-  	update)
-		lubuntu_update
-		;;
-  	apps)
-		apps_install
-		;;
-	daemon)
-		daemon_conf
-		;;
-  	util)
-		util_conf
-		;;
-	user)
-		user_conf
+  	upgrade)
+		lubuntu_upgrade
 		;;
   	all)
-		apps_install
-		daemon_conf
-		util_conf
-		user_conf
+		lubuntu_upgrade
 		;;
 	*)
-		echo "Use: $0 {all|update|apps|daemon|util|user}"
+		echo "Use: $0 {all|upgrade}"
 		exit 1
 		;;
 esac
