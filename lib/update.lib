@@ -72,13 +72,29 @@ check_user()
 	
 }
 
-opera_version()
+remove_list()
 {
 	
-	# https://download3.operacdn.com/ftp/pub/opera/desktop/
-	VERSION_FILE="122.0.5643.92"
+	FILE_LIST="$1"
+	
+	DIR_LIST="/etc/apt/sources.list.d"
+	
+	rm -fv ${DIR_LIST}/${FILE_LIST}.*
 	
 }
+
+install_deb()
+{
+	
+	wget ${URL_DEB}/${FILE_DEB}
+	
+	sudo apt -y install ./${FILE_DEB}
+	
+ 	rm -fv ${FILE_DEB}
+	
+}
+
+
 
 firefox_version()
 {

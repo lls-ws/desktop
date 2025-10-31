@@ -20,31 +20,32 @@ intel_driver()
 	
   	lspci -k | grep i915
   	
-	echo "LIBVA_DRIVER_NAME=i965" >> /etc/environment
+  	FILE_ENV="/etc/environment"
+  	
+  	sed -i '/^$/d' ${FILE_ENV}
+  	sed -i '/LIBVA_DRIVER_NAME=i965/d' ${FILE_ENV}
+	sed -i '/XDG_RUNTIME_DIR=/d' ${FILE_ENV}
+  	
+	echo "LIBVA_DRIVER_NAME=i965" >> ${FILE_ENV}
+	echo "XDG_RUNTIME_DIR=/run/user/1000" >> ${FILE_ENV}
 
-	cat /etc/environment
+	cat ${FILE_ENV}
 	
 	export LIBVA_DRIVER_NAME=i965
+	export XDG_RUNTIME_DIR=/run/user/$(id -u)
  	
 	vainfo
-
+	
 	echo "Type: reboot"
 	
 }
 
-apps_install()
+install_app()
 {
 	
-	bash bin/3green_config.sh intel
+	APP_NAME="$1"
 	
-	bash bin/apps_install.sh nfs
-	bash bin/apps_install.sh opera
-	bash bin/apps_install.sh google
-	bash bin/apps_install.sh firefox
-	bash bin/apps_install.sh ytmusic
-	bash bin/apps_install.sh anydesk
-	bash bin/apps_install.sh teamviewer
-	bash bin/apps_install.sh transmission
+	bash util/${APP_NAME}.sh install
 	
 }
 
@@ -83,27 +84,19 @@ case "$1" in
   	intel)
 		intel_driver
 		;;
-  	apps)
-		apps_install
+  	google)
+		install_app "$1"
 		;;
-	daemon)
-		daemon_conf
-		;;
-  	util)
-		util_conf
-		;;
-	user)
-		user_conf
+  	opera)
+		install_app "$1"
 		;;
   	all)
 		intel_driver
-		apps_install
-		daemon_conf
-		util_conf
-		user_conf
+		install_app google
+		install_app opera
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|daemon|util|user}"
+		echo "Use: $0 {all|intel|google|opera}"
 		exit 1
 		;;
 esac
