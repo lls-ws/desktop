@@ -293,6 +293,10 @@ aliases_conf()
 	
 	cat ${FILE_CLOUD} ${FILE_ALIASES}
 	
+	echo "Pressione uma tecla para fechar!"
+	read -t 3 -p "Aguardando..."
+	killall qterminal
+	
 }
 
 screensaver_files()
