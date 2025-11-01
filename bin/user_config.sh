@@ -215,33 +215,6 @@ openbox_conf()
 		
 }
 
-lxqt_files()
-{
-	
-	APP_NAME="lxqt"
-	
-	FILES_SET=(
-		"${APP_NAME}.conf"
-		"panel.conf"
-		"session.conf"
-		"notifications.conf"
-		"globalkeyshortcuts.conf"
-		"lxqt-powermanagement.conf"
-	)
-	
-}
-
-lxqt_conf()
-{
-	
-	lxqt_files
-	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
-	
-	kvantum_conf
-	
-}
-
 kvantum_files()
 {
 	

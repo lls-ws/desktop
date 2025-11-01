@@ -1,0 +1,79 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+
+	<Name>Applications</Name>
+	<Directory>lxqt-menu-applications.directory</Directory>
+
+	<!-- Read standard .directory and .desktop file locations -->
+	<DefaultAppDirs/>
+	<DefaultDirectoryDirs/>
+
+	<!-- Read in overrides and child menus from applications-merged/ -->
+	<DefaultMergeDirs/>
+
+	<!-- LXQt-About -->
+	<Menu>
+		<Name>LXQt-About</Name>
+		<Include>
+			<Filename>google-chrome.desktop</Filename>
+			<Filename>pcmanfm-qt.desktop</Filename>
+			<Filename>qterminal.desktop</Filename>
+		</Include>
+	</Menu> <!-- End LXQt-About -->
+
+	<!-- Office -->
+	<Menu>
+		<Name>Office</Name>
+		<Include>
+			<Filename>io.github.Qalculate.qalculate-qt.desktop</Filename>
+			<Filename>geany.desktop</Filename>
+			<Filename>screengrab.desktop</Filename>
+		</Include>
+	</Menu> <!-- End Office -->
+	
+	<!-- Multimedia -->
+	<Menu>
+		<Name>Multimedia</Name>
+		<Include>
+			<Filename>kodi.desktop</Filename>
+			<Filename>pavucontrol-qt.desktop</Filename>
+			<Filename>youtube-music-desktop-app.desktop</Filename>
+		</Include>
+	</Menu> <!-- End Multimedia -->
+
+	<!-- Internet -->
+	<Menu>
+		<Name>Internet</Name>
+		<Include>
+			<Filename>firefox.desktop</Filename>
+			<Filename>opera.desktop</Filename>
+		</Include>
+	</Menu> <!-- End Internet -->
+
+	<!-- Leave -->
+	<Menu>
+		<Name>Leave</Name>
+		<Directory>lxqt-leave.directory</Directory>
+		<Include>
+			<Filename>lxqt-shutdown.desktop</Filename>
+		</Include>
+	</Menu>	 <!-- End Leave -->
+
+	<Layout>
+		<Menuname show_empty="false" inline="true">LXQt-About</Menuname>
+		<Separator/>
+		<Merge type="files"/>
+		<Merge type="menus"/>
+		<Separator/>
+		<Menuname show_empty="false" inline="true">Office</Menuname>
+		<Separator/>
+		<Menuname show_empty="false" inline="true">Multimedia</Menuname>
+		<Separator/>
+		<Menuname show_empty="false" inline="true">Internet</Menuname>
+		<Separator/>
+		<Menuname show_empty="false">Leave</Menuname>
+	</Layout>
+
+</Menu> <!-- End Applications -->
