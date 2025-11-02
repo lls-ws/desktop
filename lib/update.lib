@@ -4,6 +4,21 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
+list_dir()
+{
+	
+	DIR_LIST="$1"
+	
+	for FILE in ${DIR_LIST}/*; do
+		
+		echo "$(basename "${FILE}")"
+		
+		update_file $(basename "${FILE}") /${DIR_LIST} ${DIR_LIST}
+		
+	done
+	
+}
+
 update_file()
 {
 
@@ -94,20 +109,44 @@ install_deb()
 	
 }
 
-
-
-firefox_version()
+shared_dir()
 {
 	
-	# https://download-installer.cdn.mozilla.net/pub/firefox/releases/
- 	VERSION_FILE="143.0"
- 	
+	DIR_SHD="/mnt/shared"
+	
+	if [ ! -d ${DIR_SHD} ]; then
+	
+		mkdir -pv ${DIR_SHD}
+		
+	fi
+	
+	DIRS_SET=(
+		"filmes"
+		"series"
+		"musica"
+		"iso"
+		"log"
+	)
+	
+	for DIR_SET in "${DIRS_SET[@]}"
+	do
+		
+		DIR_SET=${DIR_SHD}/${DIR_SET}
+		
+		if [ ! -d ${DIR_SET} ]; then
+	
+			mkdir -v ${DIR_SET}
+			
+		fi
+			
+	done
+	
+	chown -R ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
+	
+	chmod -R 777 ${DIR_SHD}
+	
+	ls -al ${DIR_SHD}
+	
 }
 
-ytmusic_version()
-{
-	
-	# https://github.com/ytmdesktop/ytmdesktop/releases
-	VERSION_FILE="2.0.10"
-	
-}
+USER_TRANSMISISON="debian-transmission"

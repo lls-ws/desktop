@@ -64,74 +64,6 @@ lightdm_conf()
 	
 }
 
-transmission_conf()
-{
-	
-	APP_NAME="transmission-daemon"
-	
-	FILE_SET="settings.json"
-	
-	DIR_ETC="/etc/${APP_NAME}"
-	
-	echo "Configure ${APP_NAME}..."
-	
-	echo "Stop ${APP_NAME} service..."
-	service ${APP_NAME} stop
-	
-	if [ ! -f "${DIR_ETC}/${FILE_SET}.bak" ]; then
-	
-		echo "Create backup ${FILE_SET}.bak"
-		cp -fv ${DIR_ETC}/${FILE_SET} ${DIR_ETC}/${FILE_SET}.bak
-		
-	fi
-	
-	update_file "${FILE_SET}" "${DIR_ETC}" "etc/${APP_NAME}"
-	
-	echo "Changing File ${FILE_SET} owner to ${USER_TRANSMISISON}"
-	chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_ETC}/${FILE_SET}
-	
-	DIR_TRANSMISSION="/home/torrents"
-	
-	if [ ! -d "${DIR_TRANSMISSION}" ]; then
-	
-		echo "Creating Directory ${DIR_TRANSMISSION}"
-		mkdir -pv ${DIR_TRANSMISSION}/.incomplete
-	
-	fi
-	
-	echo "Changing Directory ${DIR_TRANSMISSION} owner to ${USER_TRANSMISISON}"
-	chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_TRANSMISSION}
-	
-	USER=`git config user.name`
-	
-	echo "User: ${USER}"
-	
-	if [ ! -z "${USER}" ]; then
-	
-		echo "Add the username ${USER} to the group ${USER_TRANSMISISON}:"
-		sudo usermod -a -G ${USER_TRANSMISISON} ${USER}
-	
-		echo "Showing username ${USER} groups:"
-		groups ${USER}
-		
-	fi
-	
-	echo "Fixing bug: Type=notify"
-	
-	FILE_SERVICE="/etc/systemd/system/transmission-daemon.service"
-	
-	sed -i "s/Type=notify/Type=simple/g" ${FILE_SERVICE}
-	
-	cat ${FILE_SERVICE}
-	
-	echo "Disable startup service ${APP_NAME}"
-	systemctl disable ${APP_NAME}.service
-	
-	echo "Check your ports 51413 are open!"
-	echo "Configure Port Forward on internet router setup"
-	
-}
-
 nfs_conf()
 {
 	
@@ -163,37 +95,6 @@ nfs_conf()
 
 }
 
-minidlna_conf()
-{
-	
-	APP_NAME="minidlna"
-	
-	FILE_SET="minidlna.conf"
-	
-	DIR_ETC="/etc"
-	
-	echo "Configure ${APP_NAME}..."
-	
-	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
-
-	shared_dir
-	
-	cat ${DIR_ETC}/${FILE_SET}
-	
-	echo 'DAEMON_OPTS="-R"' > ${DIR_ETC}/default/${APP_NAME}
-	
-	cat ${DIR_ETC}/default/${APP_NAME}
-	
-	chown -Rv ${APP_NAME}:${APP_NAME} /var/cache/${APP_NAME}
-	
-	chmod -Rv 775 /var/cache/${APP_NAME}
-	
-	service ${APP_NAME} force-reload
-	
-	systemctl disable ${APP_NAME}.service
-
-}
-
 samba_conf()
 {
 	
@@ -217,48 +118,6 @@ samba_conf()
 	
 }
 
-shared_dir()
-{
-	
-	DIR_SHD="/mnt/shared"
-	
-	if [ ! -d ${DIR_SHD} ]; then
-	
-		mkdir -pv ${DIR_SHD}
-		
-	fi
-	
-	DIRS_SET=(
-		"filmes"
-		"series"
-		"musica"
-		"iso"
-		"log"
-	)
-	
-	for DIR_SET in "${DIRS_SET[@]}"
-	do
-		
-		DIR_SET=${DIR_SHD}/${DIR_SET}
-		
-		if [ ! -d ${DIR_SET} ]; then
-	
-			mkdir -v ${DIR_SET}
-			
-		fi
-			
-	done
-	
-	chown -R ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
-	
-	chmod -R 777 ${DIR_SHD}
-	
-	ls -al ${DIR_SHD}
-	
-}
-
-USER_TRANSMISISON="debian-transmission"
-
 case "$1" in
 	nfs)
 		nfs_conf
@@ -272,25 +131,18 @@ case "$1" in
 	lightdm)
 		lightdm_conf
 		;;
-	minidlna)
-		minidlna_conf
-		;;
 	bluetooth)
 		bluetooth_conf
 		;;
- 	transmission)
-		transmission_conf
-		;;
-	all)
+ 	all)
 		nfs_conf
 		sddm_conf
+		samba_conf
 		lightdm_conf
-		minidlna_conf
 		bluetooth_conf
-		transmission_conf
 		;;
 	*)
-		echo "Use: $0 {all|nfs|sddm|samba|lightdm|minidlna|bluetooth|transmission}"
+		echo "Use: $0 {all|nfs|sddm|samba|lightdm|bluetooth}"
 		exit 1
 		;;
 esac

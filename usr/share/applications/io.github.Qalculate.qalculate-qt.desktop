@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Name=Qalculate! (Qt)
+Name[pt_BR]=Calculadora
+GenericName=Calculator
+GenericName[pt_BR]=Calculadora
+Comment=Powerful and easy to use calculator
+Comment[pt_BR]=Calculadora potente e fácil de usar
+TryExec=qalculate-qt
+Exec=qalculate-qt
+Icon=qalculate-qt
+Terminal=false
+Type=Application
+StartupNotify=true
+StartupWMClass=qalculate-qt
+Categories=Qt;Utility;Calculator;Education;Science;Math;
+Keywords=calculation;arithmetic;scientific;financial;
+Keywords[pt_BR]=calculadora;aritmética;científica;financeira;

@@ -47,15 +47,33 @@ lxqt_menu()
 	
 }
 
+lxqt_desktop()
+{
+	
+	DIR_DESKTOP="usr/share/applications"
+	
+	list_dir ${DIR_DESKTOP}
+	
+	echo "Update the desktop database"
+  	update-desktop-database ${DIR_DESKTOP}
+  	
+  	rm -fv ${DIR_DESKTOP}/*.cache
+	
+}
+
 case "$1" in
 	menu)
 		lxqt_menu
 		;;
+	desktop)
+		lxqt_desktop
+		;;
 	all)
   		lxqt_menu
+  		lxqt_desktop
   		;;
 	*)
-		echo "Use: $0 {all|menu}"
+		echo "Use: $0 {all|menu|desktop}"
 		exit 1
 		;;
 esac

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to Install and Configure Opera on Ubuntu Desktop
+# Script to Install and Configure Opera on Lubuntu Desktop
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com

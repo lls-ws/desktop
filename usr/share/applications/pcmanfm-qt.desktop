@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Exec=pcmanfm-qt %U
+MimeType=inode/directory;
+Icon=pcmanfm-qt
+Categories=FileManager;Utility;Core;Qt;
+StartupNotify=true
+Name=PCManFM-Qt File Manager
+GenericName=File Manager
+Comment=Browse the file system and manage the files
+Name[pt_BR]=Gerenciador de Arquivos
+GenericName[pt_BR]=Gerenciador de Arquivos
+Comment[pt_BR]=Navegue pelo sistema de arquivos e gerencie arquivos e pastas

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to configure Lubuntu on 3Green
+# Script to configure Lubuntu Desktop on 3Green
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -11,41 +11,25 @@ check_root "$1"
 
 clear
 
-intel_driver()
-{
- 	
-	apt-get -y purge --auto-remove mesa-vulkan-drivers
-  	
-  	apt -y install vainfo
-	
-  	lspci -k | grep i915
-  	
-  	FILE_ENV="/etc/environment"
-  	
-  	sed -i '/^$/d' ${FILE_ENV}
-  	sed -i '/LIBVA_DRIVER_NAME=i965/d' ${FILE_ENV}
-	sed -i '/XDG_RUNTIME_DIR=/d' ${FILE_ENV}
-  	
-	echo "LIBVA_DRIVER_NAME=i965" >> ${FILE_ENV}
-	echo "XDG_RUNTIME_DIR=/run/user/1000" >> ${FILE_ENV}
-
-	cat ${FILE_ENV}
-	
-	export LIBVA_DRIVER_NAME=i965
-	export XDG_RUNTIME_DIR=/run/user/$(id -u)
- 	
-	vainfo
-	
-	echo "Type: reboot"
-	
-}
-
-install_app()
+install_apps()
 {
 	
-	APP_NAME="$1"
+	APPS_NAME=(
+		"intel"
+		"google"
+		"opera"
+		"firefox"
+		"ytmusic"
+		"transmission"
+		"dlna"
+	)
 	
-	bash util/${APP_NAME}.sh install
+	for APP_NAME in "${APPS_NAME[@]}"
+	do
+		
+		bash util/${APP_NAME}.sh install
+			
+	done
 	
 }
 
@@ -71,32 +55,15 @@ user_conf()
 
 }
 
-daemon_conf()
-{
-	
-	bash bin/daemon_config.sh nfs
-	bash bin/daemon_config.sh sddm
-	bash bin/daemon_config.sh transmission
-	
-}
-
 case "$1" in
-  	intel)
-		intel_driver
-		;;
-  	google)
-		install_app "$1"
-		;;
-  	opera)
-		install_app "$1"
+  	apps)
+		install_apps
 		;;
   	all)
-		intel_driver
-		install_app google
-		install_app opera
+		install_apps
 		;;
 	*)
-		echo "Use: $0 {all|intel|google|opera}"
+		echo "Use: $0 {all|apps}"
 		exit 1
 		;;
 esac

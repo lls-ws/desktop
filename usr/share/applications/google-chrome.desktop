@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
-Name=Google Chrome
+Name=Google
+Name[pt_BR]=Google
 GenericName=Web Browser
 GenericName[pt_BR]=Navegador da Internet
-# Gnome and KDE 3 uses Comment.
 Comment=Access the Internet
 Comment[pt_BR]=Acessar a internet
 Exec=/usr/bin/google-chrome-stable --password-store=basic %U

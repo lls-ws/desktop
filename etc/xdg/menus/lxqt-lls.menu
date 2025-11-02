@@ -4,7 +4,7 @@
 <Menu>
 
 	<Name>Applications</Name>
-	<Directory>lxqt-menu-applications.directory</Directory>
+	
 
 	<!-- Read standard .directory and .desktop file locations -->
 	<DefaultAppDirs/>
@@ -13,22 +13,32 @@
 	<!-- Read in overrides and child menus from applications-merged/ -->
 	<DefaultMergeDirs/>
 
-	<!-- LXQt-About -->
+	<!-- LLS -->
 	<Menu>
-		<Name>LXQt-About</Name>
+		<Name>LLS</Name>
 		<Include>
 			<Filename>google-chrome.desktop</Filename>
-			<Filename>pcmanfm-qt.desktop</Filename>
 			<Filename>qterminal.desktop</Filename>
 		</Include>
-	</Menu> <!-- End LXQt-About -->
+	</Menu> <!-- End LLS -->
+
+	<!-- Development Tools -->
+	<Menu>
+		<Name>Development</Name>
+		<Directory>lxqt-development.directory</Directory>
+		<Include>
+			<Filename>geany.desktop</Filename>
+			<Filename>pcmanfm-qt.desktop</Filename>
+		</Include>
+	</Menu>
+	<!-- End Development Tools -->
 
 	<!-- Office -->
 	<Menu>
 		<Name>Office</Name>
+		<Directory>lxqt-office.directory</Directory>
 		<Include>
 			<Filename>io.github.Qalculate.qalculate-qt.desktop</Filename>
-			<Filename>geany.desktop</Filename>
 			<Filename>screengrab.desktop</Filename>
 		</Include>
 	</Menu> <!-- End Office -->
@@ -36,6 +46,7 @@
 	<!-- Multimedia -->
 	<Menu>
 		<Name>Multimedia</Name>
+		<Directory>lxqt-audio-video.directory</Directory>
 		<Include>
 			<Filename>kodi.desktop</Filename>
 			<Filename>pavucontrol-qt.desktop</Filename>
@@ -46,6 +57,7 @@
 	<!-- Internet -->
 	<Menu>
 		<Name>Internet</Name>
+		<Directory>lxqt-network.directory</Directory>
 		<Include>
 			<Filename>firefox.desktop</Filename>
 			<Filename>opera.desktop</Filename>
@@ -62,16 +74,12 @@
 	</Menu>	 <!-- End Leave -->
 
 	<Layout>
-		<Menuname show_empty="false" inline="true">LXQt-About</Menuname>
+		<Menuname show_empty="false" inline="true">LLS</Menuname>
+		<Separator/>
+		<Menuname show_empty="false" inline="true">Development</Menuname>
 		<Separator/>
 		<Merge type="files"/>
 		<Merge type="menus"/>
-		<Separator/>
-		<Menuname show_empty="false" inline="true">Office</Menuname>
-		<Separator/>
-		<Menuname show_empty="false" inline="true">Multimedia</Menuname>
-		<Separator/>
-		<Menuname show_empty="false" inline="true">Internet</Menuname>
 		<Separator/>
 		<Menuname show_empty="false">Leave</Menuname>
 	</Layout>

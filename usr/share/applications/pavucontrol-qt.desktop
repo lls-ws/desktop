@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Exec=pavucontrol-qt
+Icon=multimedia-volume-control
+StartupNotify=true
+Type=Application
+Categories=Qt;AudioVideo;Audio;Settings;DesktopSettings;
+Name=PulseAudio Volume Control
+GenericName=Qt GUI for Controlling PulseAudio Volume
+Comment=Adjust volume levels and select audio devices
+Name[pt_BR]=Controle de Volume
+GenericName[pt_BR]=Ajustar o volume
+Comment[pt_BR]=Ajustar os níveis de volume e selecionar dispositivos de áudio

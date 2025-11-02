@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to Install and Configure Google Chrome on Ubuntu Desktop
+# Script to Install and Configure Google Chrome on Lubuntu Desktop
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -36,15 +36,6 @@ google_install()
 
 google_config()
 {
-	
-	DIR_CHROME="/usr/share/applications"
-	FILE_CONFIG="config/${NAME_APP}/${NAME_APP}.desktop"
-	
-	if [ -f ${FILE_CONFIG} ]; then
-	
-		cp -fv ${FILE_CONFIG} ${DIR_CHROME}
-	
-	fi
 	
 	echo "Set ${NAME_APP} to default mailto"
   	xdg-settings set default-url-scheme-handler mailto ${NAME_APP}.desktop
