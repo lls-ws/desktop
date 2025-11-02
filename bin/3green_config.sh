@@ -11,35 +11,6 @@ check_root "$1"
 
 clear
 
-install_apps()
-{
-	
-	APPS_NAME=(
-		"intel"
-		"google"
-		"opera"
-		"firefox"
-		"ytmusic"
-		"transmission"
-		"dlna"
-	)
-	
-	for APP_NAME in "${APPS_NAME[@]}"
-	do
-		
-		bash util/${APP_NAME}.sh install
-			
-	done
-	
-}
-
-util_conf()
-{
-	bash bin/util_config.sh sudo
-	bash bin/util_config.sh hosts
-	bash bin/util_config.sh scripts
-}
-
 user_conf()
 {
 	
@@ -49,21 +20,33 @@ user_conf()
 	
 	if [ ! -z "${USER}" ]; then
 		
-		su ${USER} -c "bash bin/user_config.sh all"
+		su ${USER} -c "bash util/user/aliases.sh conf"
 		
 	fi
 
 }
 
 case "$1" in
-  	apps)
-		install_apps
+  	install)
+		run_scripts "install"
+		;;
+  	conf)
+		run_scripts "conf"
+		;;
+  	user)
+		user_conf
+		;;
+  	bin)
+		list_dir "usr/bin"
 		;;
   	all)
-		install_apps
+		run_scripts "install"
+		run_scripts "conf"
+		list_dir "usr/bin"
+		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|apps}"
+		echo "Use: $0 {all|install|conf|user|bin}"
 		exit 1
 		;;
 esac

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to install apps on Lubuntu Desktop
+# Script to Upgrade Lubuntu Desktop
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com

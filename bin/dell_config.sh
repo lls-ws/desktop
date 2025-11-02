@@ -17,20 +17,12 @@ check_root "$1"
 
 echo "Script to configure Lubuntu on Dell Inspiron 1428"
 
-driver_intel()
-{
- 	
-	bash bin/3green_config.sh intel
-	
-}
-
 apps_install()
 {
 	
-	bash bin/apps_install.sh google
-	bash bin/apps_install.sh kvantum
-	bash bin/apps_install.sh openssh
-	bash bin/apps_install.sh teamviewer
+	bash util/install/intel.sh install
+	bash util/install/google.sh install
+	bash util/install/firefox.sh install
 	
 }
 
@@ -70,7 +62,6 @@ user_profile()
 user_conf()
 {
 	
-	su ${USER} -c "bash bin/user_config.sh kvantum"
 	su ${USER} -c "bash bin/user_config.sh screensaver"
 
 }
@@ -80,9 +71,6 @@ EMAIL="wganara@gmail.com"
 PASSWORD="${USER}"
 
 case "$1" in
-  	intel)
-		driver_intel
-		;;
   	apps)
 		apps_install
 		;;
@@ -93,13 +81,12 @@ case "$1" in
 		user_profile
 		;;
   	all)
-		driver_intel
 		apps_install
 		user_conf
 		user_profile
 		;;
 	*)
-		echo "Use: $0 {all|intel|apps|user|profile}"
+		echo "Use: $0 {all|apps|user|profile}"
 		exit 1
 		;;
 esac

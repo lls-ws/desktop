@@ -1,5 +1,5 @@
 #!/bin/sh
-# Library to scripts on Ubuntu Desktop
+# Library to scripts on Lubuntu Desktop
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -146,6 +146,32 @@ shared_dir()
 	chmod -R 777 ${DIR_SHD}
 	
 	ls -al ${DIR_SHD}
+	
+}
+
+run_scripts()
+{
+
+	DIR_SCRIPT="$1"
+	
+	SCRIPT_OPT="$2"
+	
+	for SH_FILE in ${DIR_SCRIPT}/*; do
+		
+		echo -e "\nRun Script: $(basename "${SH_FILE}")"
+		
+		bash util/${SCRIPT_OPT}/${SH_FILE} ${SCRIPT_OPT}
+		
+	done
+	
+}
+
+util_show()
+{
+	
+	echo "Showing File: /${DIR_ETC}/${FILE_SET}"
+	
+	cat /${DIR_ETC}/${FILE_SET}
 	
 }
 
