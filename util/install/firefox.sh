@@ -79,13 +79,8 @@ case "$1" in
 	release)
 		firefox_release
 		;;
-  	all)
-  		firefox_install
-  		firefox_version
-  		firefox_release
-  		;;
 	*)
-		echo "Use: $0 {all|install|release|version}"
+		echo "Use: $0 {install|release|version}"
 		exit 1
 		;;
 esac

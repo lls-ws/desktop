@@ -68,13 +68,8 @@ case "$1" in
   	version)
 		google_version
 		;;
-  	all)
-  		google_install
-  		google_config
-  		google_version
-  		;;
 	*)
-		echo "Use: $0 {all|install|config|version}"
+		echo "Use: $0 {install|config|version}"
 		exit 1
 		;;
 esac

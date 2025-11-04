@@ -18,6 +18,8 @@ hosts_conf()
 	
 	util_show
 	
+	hosts_ping
+	
 }
 
 hosts_ping()
@@ -50,12 +52,8 @@ case "$1" in
  	ping)
 		hosts_ping "$2"
 		;;
- 	all)
-		hosts_conf
-		hosts_ping
-		;;
 	*)
-		echo "Use: $0 {all|conf|show|ping}"
+		echo "Use: $0 {conf|show|ping}"
 		exit 1
 		;;
 esac

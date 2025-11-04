@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/opt/google/chrome/google-chrome \\"--profile-directory=Profile 3\\" --ignore-profile-directory-if-not-exists https://www.youtube.com/@CazeTV
+Exec=/usr/bin/google-chrome-stable --password-store=basic \\"--profile-directory=Profile 3\\" --ignore-profile-directory-if-not-exists https://www.youtube.com/
 Hidden=true
 Name=YouTube
 OnlyShowIn=LXQt;

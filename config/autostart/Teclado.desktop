@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=onboard
+Hidden=true
+Name=Teclado
+OnlyShowIn=LXQt;
+Type=Application
+Version=1.0
+X-LXQt-Need-Tray=true
+X-LXQt-X11-Only=true

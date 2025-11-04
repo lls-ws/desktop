@@ -12,9 +12,13 @@ check_user "$1"
 aliases_conf()
 {
 
-	rm -fv ${FILE_ALIASES}
+	copy_home
 	
-	cp -fv config/${FILE_NAME} ${FILE_CLOUD}
+	if [ -f ${FILE_ALIASES} ]; then
+	
+		rm -fv ${FILE_ALIASES} 
+	
+	fi
 	
 	for FILE in ~/.bash_aliases_*; do
 	
@@ -26,28 +30,27 @@ aliases_conf()
 	
 	aliases_show
 	
-	echo "Pressione uma tecla para fechar!"
-	read -t 3 -p "Aguardando..."
-	killall qterminal
-	
 }
 
 aliases_show()
 {
 	
-	cat ${FILE_CLOUD} ${FILE_ALIASES}
+	cat ${FILE_ALIASES}
 	
 }
 
 FILE_ALIASES=~/.bash_aliases
-	
+
 FILE_NAME="bash_aliases_desktop"
-	
-FILE_CLOUD=~/.${FILE_NAME}
+FILE_SOURCE="config/${FILE_NAME}"
+FILE_UPDATE=~/.${FILE_NAME}
 
 case "$1" in
 	conf)
 		aliases_conf
+		echo "Update File: ${FILE_ALIASES}"
+		read -t 3 -p "Waiting for close terminal..."
+		killall qterminal
 		;;
 	show)
 		aliases_show

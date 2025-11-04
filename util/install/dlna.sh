@@ -21,6 +21,8 @@ dlna_install()
 dlna_conf()
 {
 	
+	dlna_version
+	
 	FILE_SET="${NAME_APP}.conf"
 	
 	DIR_ETC="etc"
@@ -82,13 +84,8 @@ case "$1" in
 	uninstall)
 		dlna_uninstall
 		;;
-  	all)
-  		dlna_install
-  		dlna_version
-  		dlna_conf
-  		;;
 	*)
-		echo "Use: $0 {all|install|version|conf|uninstall}"
+		echo "Use: $0 {install|version|conf|uninstall}"
 		exit 1
 		;;
 esac

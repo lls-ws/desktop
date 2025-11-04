@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=sudo /usr/sbin/service minidlna start
+Hidden=true
+Name=Mini DLNA
+OnlyShowIn=LXQt;
+Type=Application
+Version=1.0
+X-LXQt-Need-Tray=true

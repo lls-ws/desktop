@@ -70,6 +70,8 @@
 		<Directory>lxqt-leave.directory</Directory>
 		<Include>
 			<Filename>lxqt-shutdown.desktop</Filename>
+			<Filename>lxqt-reboot.desktop</Filename>
+			<Filename>lxqt-logout.desktop</Filename>
 		</Include>
 	</Menu>	 <!-- End Leave -->
 

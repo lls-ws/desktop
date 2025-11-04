@@ -7,73 +7,37 @@
 PATH=.:$(dirname $0):$PATH
 . lib/update.lib	|| exit 1
 
-check_root "$1"
-
-clear
-
-lxqt_files()
-{
-	
-	APP_NAME="lxqt"
-	
-	FILES_SET=(
-		"${APP_NAME}.conf"
-		"panel.conf"
-		"session.conf"
-		"notifications.conf"
-		"globalkeyshortcuts.conf"
-		"lxqt-powermanagement.conf"
-	)
-	
-}
+check_user "$1"
 
 lxqt_conf()
 {
 	
-	lxqt_files
+	set_app "${APP_NAME}"
 	
-	update_files "Configure" "${DIR_CONFIG}/${APP_NAME}" "config/${APP_NAME}"
+	update_files_dir
 	
-}
-
-lxqt_menu()
-{
+	apps_show "${APP_NAME}"
 	
-	MENU_FILE="lxqt-lls.menu"
-	
-	DIR_MENU="etc/xdg/menus"
-	
-	update_file "${MENU_FILE}" "/${DIR_MENU}" "${DIR_MENU}"
+	echo "Restart LXQT Panel"
+  	lxqt-panel restart &
 	
 }
 
-lxqt_desktop()
-{
-	
-	DIR_DESKTOP="usr/share/applications"
-	
-	list_dir ${DIR_DESKTOP}
-	
-	echo "Update the desktop database"
-  	update-desktop-database ${DIR_DESKTOP}
-  	
-  	rm -fv ${DIR_DESKTOP}/*.cache
-	
-}
+APP_NAME="lxqt"
 
 case "$1" in
-	menu)
-		lxqt_menu
+	conf)
+		lxqt_conf
+		lxqt-leave --logout
 		;;
-	desktop)
-		lxqt_desktop
+	show)
+		apps_show "${APP_NAME}"
 		;;
 	all)
-  		lxqt_menu
-  		lxqt_desktop
+		lxqt_conf
   		;;
 	*)
-		echo "Use: $0 {all|menu|desktop}"
+		echo "Use: $0 {all|conf|show}"
 		exit 1
 		;;
 esac

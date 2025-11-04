@@ -66,13 +66,8 @@ case "$1" in
 	release)
 		opera_release
 		;;
-  	all)
-  		opera_install
-  		opera_version
-  		opera_release
-  		;;
 	*)
-		echo "Use: $0 {all|install|release|version}"
+		echo "Use: $0 {install|release|version}"
 		exit 1
 		;;
 esac

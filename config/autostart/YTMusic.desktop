@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=audacious -p
-Name=Audacious
+Exec=youtube-music-desktop-app
+Name=YouTube Music
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0

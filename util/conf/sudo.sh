@@ -21,6 +21,7 @@ sudo_conf()
 	ls -al /${DIR_ETC}/${FILE_SET}
 	
 	util_show
+	
 }
 
 FILE_SET="lls_sudoers"
@@ -33,11 +34,8 @@ case "$1" in
 	show)
 		util_show
 		;;
- 	all)
-		sudo_conf
-		;;
 	*)
-		echo "Use: $0 {all|conf|show}"
+		echo "Use: $0 {conf|show}"
 		exit 1
 		;;
 esac

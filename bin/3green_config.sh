@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to configure Lubuntu Desktop on 3Green
+# Script to configure Lubuntu Desktop on 3Green AllInOne
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -20,7 +20,10 @@ user_conf()
 	
 	if [ ! -z "${USER}" ]; then
 		
-		su ${USER} -c "bash util/user/aliases.sh conf"
+		su ${USER} -c "bash util/user/config.sh all"
+		su ${USER} -c "bash util/user/aliases.sh all"
+		su ${USER} -c "bash util/user/screensaver.sh conf"
+		su ${USER} -c "bash util/user/lxqt.sh all"
 		
 	fi
 

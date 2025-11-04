@@ -46,12 +46,8 @@ case "$1" in
 	release)
 		ytmusic_release
 		;;
-  	all)
-  		ytmusic_install
-  		ytmusic_release
-  		;;
 	*)
-		echo "Use: $0 {all|install|release}"
+		echo "Use: $0 {install|release}"
 		exit 1
 		;;
 esac

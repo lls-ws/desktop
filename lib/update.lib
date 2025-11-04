@@ -19,6 +19,19 @@ list_dir()
 	
 }
 
+update_files_dir()
+{
+
+	echo -e "${APP_NAME}..."
+	
+	for FILE in ${DIR_SOURCE}/*; do
+		
+		update_file $(basename "${FILE}") "${DIR_UPDATE}" "${DIR_SOURCE}"
+		
+	done
+	
+}
+
 update_file()
 {
 
@@ -152,15 +165,17 @@ shared_dir()
 run_scripts()
 {
 
-	DIR_SCRIPT="$1"
+	SCRIPT_OPT="$1"
 	
-	SCRIPT_OPT="$2"
+	DIR_SCRIPT="util/${SCRIPT_OPT}"
 	
 	for SH_FILE in ${DIR_SCRIPT}/*; do
 		
-		echo -e "\nRun Script: $(basename "${SH_FILE}")"
+		SH_FILE=$(basename "${SH_FILE}")
 		
-		bash util/${SCRIPT_OPT}/${SH_FILE} ${SCRIPT_OPT}
+		echo -e "\nRun Script: ${SH_FILE}"
+		
+		bash ${DIR_SCRIPT}/${SH_FILE} ${SCRIPT_OPT}
 		
 	done
 	
@@ -172,6 +187,33 @@ util_show()
 	echo "Showing File: /${DIR_ETC}/${FILE_SET}"
 	
 	cat /${DIR_ETC}/${FILE_SET}
+	
+}
+
+copy_home()
+{
+	
+	rm -fv ${FILE_UPDATE}
+	
+	cp -fv ${FILE_SOURCE} ${FILE_UPDATE}
+	
+}
+
+set_app()
+{
+
+	APP_NAME="$1"
+	DIR_SOURCE="config/${APP_NAME}"
+	DIR_UPDATE=~/.${DIR_SOURCE}
+
+}
+
+apps_show()
+{
+	
+	set_app "${1}"
+	
+	ls -al ${DIR_UPDATE}
 	
 }
 

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=amixer -c 0 set Headphone playback 120% unmute && amixer -c 0 set Master playback 90% unmute
+Exec=pactl set-sink-volume 0 100%
 Name=Som
 OnlyShowIn=LXQt;
 Type=Application

@@ -52,12 +52,8 @@ case "$1" in
   	show)
 		intel_show
 		;;
-  	all)
-		intel_install
-		intel_show
-		;;
 	*)
-		echo "Use: $0 {all|install|show}"
+		echo "Use: $0 {install|show}"
 		exit 1
 		;;
 esac
