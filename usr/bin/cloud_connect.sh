@@ -11,8 +11,23 @@ ssh_command()
 	
 	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}"
 
- 	qterminal -e ${CMD_SSH} &
+ 	qterminal -e "${CMD_SSH}" &
 		
+}
+
+ssh_clear()
+{
+	
+	echo "Cleanning known_hosts: ${DNAME}"
+	
+	FILE_HOSTS=~/.ssh/known_hosts
+			
+	ssh-keygen -f ${FILE_HOSTS} -R ${DNAME}
+			
+	chown -v ${USER}:${USER} ${FILE_HOSTS}
+	
+	ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}
+	
 }
 
 USER=`git config user.name`
@@ -63,5 +78,13 @@ if [ ! -f "${SSH_KEY}" ]; then
 fi
 
 chmod -v 400 ${SSH_KEY}
+chown -v lls:lls ${SSH_KEY}
 
-ssh_command
+case "$2" in
+	clear)
+		ssh_clear
+		;;
+	*)
+		ssh_command
+		;;
+esac
