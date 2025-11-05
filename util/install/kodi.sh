@@ -12,16 +12,19 @@ check_root "$1"
 kodi_install()
 {
 	
-	apt -y install --install-recommends --install-suggests ${NAME_APP}
+	apt -y install --install-recommends --install-suggests \
+		${NAME_APP} \
+		${NAME_APP}-inputstream-adaptive \
+		${NAME_APP}-pvr-iptvsimple
 	
-	kodi_conf
+	${NAME_APP}_conf
 	
 }
 
 kodi_conf()
 {
 	
-	kodi_version
+	${NAME_APP}_version
 	
 }
 
@@ -37,7 +40,10 @@ kodi_uninstall()
 
 	clear
 	
-	apt -y remove --purge --auto-remove ${NAME_APP}
+	apt -y remove --purge --auto-remove \
+		${NAME_APP} \
+		${NAME_APP}-inputstream-adaptive \
+		${NAME_APP}-pvr-iptvsimple
 	
 }
 
