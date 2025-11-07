@@ -53,12 +53,6 @@ alias nfs-start='sudo service nfs-server start; nfs-status'
 alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
 
-# Samba
-alias samba-status='clear; sudo service smbd status'
-alias samba-start='sudo service smbd start; samba-status'
-alias samba-stop='sudo service smbd stop; samba-status'
-alias samba-restart='samba-stop; samba-start'
-
 # Minidlna
 alias dlna-status='clear; sudo service minidlna status'
 alias dlna-start='sudo service minidlna start; dlna-status'
@@ -71,21 +65,6 @@ alias services-show='service --status-all'
 alias services-load='systemctl -t service --state=active'
 alias services-boot='systemctl list-unit-files --state=enabled'
 alias services-list='ls /etc/systemd/system/multi-user.target.wants'
-
-# Disable Services
-alias disable-transmission='sudo systemctl disable transmission-daemon.service; services-list'
-alias disable-iptables='sudo systemctl disable netfilter-persistent.service; services-list'
-alias disable-cups-browsed='sudo systemctl disable cups-browsed.service; services-list'
-alias disable-anydesk='sudo systemctl disable anydesk.service; services-list'
-alias disable-teamviewerd='sudo systemctl disable teamviewerd.service; services-list'
-alias disable-openvpn='sudo systemctl disable openvpn.service; services-list'
-alias disable-nfs='sudo systemctl disable nfs-server.service; services-list'
-alias disable-tomcat='sudo systemctl disable tomcat9.service; services-list'
-alias disable-maria='sudo systemctl disable mariadb.service; services-list'
-alias disable-snapd='sudo systemctl disable snapd.service; services-list'
-alias disable-cups='sudo systemctl disable cups.service; services-list'
-alias disable-cron='sudo systemctl disable cron.service; services-list'
-alias disable-ssh='sudo systemctl disable ssh.service; services-list'
 
 if [ "$USER" = "lls" ]; then
 	

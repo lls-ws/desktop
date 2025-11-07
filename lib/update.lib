@@ -26,7 +26,11 @@ update_files_dir()
 	
 	for FILE in ${DIR_SOURCE}/*; do
 		
-		update_file $(basename "${FILE}") "${DIR_UPDATE}" "${DIR_SOURCE}"
+		if [ -f ${FILE} ]; then
+		
+			update_file $(basename "${FILE}") "${DIR_UPDATE}" "${DIR_SOURCE}"
+			
+		fi
 		
 	done
 	
@@ -41,17 +45,21 @@ update_file()
 	
 	DIR_GIT="$3"
 	
-	if [ ! -d ${DIR_APP} ]; then
+	if [ ! -d "${DIR_APP}" ]; then
 	
-		mkdir -pv ${DIR_APP}
+		mkdir -pv "${DIR_APP}"
 	
 	fi
 	
 	echo "Copy ${FILE_CONF} configuration..."
 	
-	rm -fv ${DIR_APP}/${FILE_CONF}
+	if [ -f ${DIR_GIT}/${FILE_CONF} ]; then
 	
-	cp -fv ${DIR_GIT}/${FILE_CONF} ${DIR_APP}
+		rm -fv ${DIR_APP}/${FILE_CONF}
+	
+		cp -fv ${DIR_GIT}/${FILE_CONF} ${DIR_APP}
+		
+	fi
 	
 }
 

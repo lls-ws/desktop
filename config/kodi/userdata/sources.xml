@@ -9,6 +9,11 @@
             <path pathversion="1">/mnt/shared/filmes/</path>
             <allowsharing>true</allowsharing>
         </source>
+        <source>
+            <name>series</name>
+            <path pathversion="1">/mnt/shared/series/</path>
+            <allowsharing>true</allowsharing>
+        </source>
     </video>
     <music>
         <default pathversion="1"></default>
@@ -21,6 +26,16 @@
         <source>
             <name>SlyGuy</name>
             <path pathversion="1">https://slyguy.uk/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Brazuca</name>
+            <path pathversion="1">https://skyrisk.github.io/brazucaplay/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Vikings</name>
+            <path pathversion="1">https://vkodi.net/repo/</path>
             <allowsharing>true</allowsharing>
         </source>
     </files>

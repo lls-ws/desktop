@@ -48,6 +48,7 @@
 		<Name>Multimedia</Name>
 		<Directory>lxqt-audio-video.directory</Directory>
 		<Include>
+			<Filename>vlc.desktop</Filename>
 			<Filename>kodi.desktop</Filename>
 			<Filename>pavucontrol-qt.desktop</Filename>
 			<Filename>youtube-music-desktop-app.desktop</Filename>
