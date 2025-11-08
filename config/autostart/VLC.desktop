@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/usr/bin/vlc ~/Downloads/playlist.m3u8
+Exec=/usr/bin/vlc "https://lls-ws.github.io/iptv/LLS_TV_br.m3u"
 Name=VLC
 OnlyShowIn=LXQt;
 Type=Application
