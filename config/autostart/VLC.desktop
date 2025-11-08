@@ -1,8 +1,7 @@
 [Desktop Entry]
-Exec=youtube-music-desktop-app
-Name=YouTube Music
+Exec=/usr/bin/vlc ~/Downloads/playlist.m3u8
+Name=VLC
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
 X-LXQt-Autostart-disabled=true
-X-LXQt-Need-Tray=true

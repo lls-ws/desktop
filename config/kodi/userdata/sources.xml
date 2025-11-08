@@ -38,6 +38,11 @@
             <path pathversion="1">https://vkodi.net/repo/</path>
             <allowsharing>true</allowsharing>
         </source>
+        <source>
+            <name>Cineroom</name>
+            <path pathversion="1">https://cineroom1.github.io/</path>
+            <allowsharing>true</allowsharing>
+        </source>
     </files>
     <games>
         <default pathversion="1"></default>

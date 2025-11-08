@@ -49,4 +49,6 @@ cp -fv ~/.${FILE_SET} ${DIR_UPDATE}
 
 ls -al ${DIR_UPDATE}
 
+bash util/user/kodi.sh backup
+
 echo -e "\nBackup done!"

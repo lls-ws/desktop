@@ -16,10 +16,6 @@ kodi_install()
 		${APP_NAME} \
 		${APP_NAME}-pvr-iptvsimple \
 		mplayer mpv x264
-		
-		#nodejs npm
-	
-	${APP_NAME}_conf
 	
 	${APP_NAME}_version
 	
@@ -58,8 +54,6 @@ kodi_conf()
 kodi_backup()
 {
 	
-	clear
-
 	echo "Creating Backup ${APP_NAME} Files..."
 
 	for DIR_NAME in "${DIR_NAMES[@]}"
@@ -96,9 +90,6 @@ kodi_version()
 	mpv --version
 	x264 --version
 	
-	#echo "Node version: " `node -v`
-    #echo "npm version: " `npm -v`
-	
 }
 
 kodi_uninstall()
@@ -119,80 +110,7 @@ kodi_log()
 	
 	clear
 	
-	cat ~/.${APP_NAME}/temp/${APP_NAME}.log | grep error
-	
-}
-
-playlist_pluto()
-{
-	
-	FILE_OPT="Filmes"
-	
-	FILE_FAV="pluto-favorites"
-	
-	FILE_LIST="playlist.m3u8"
-	
-	echo "Get ${FILE_LIST}"
-	npx pluto-iptv
-	
-	echo "# Filmes" > ${FILE_FAV}
-	
-	echo "Get ${FILE_OPT} channels"
-	cat ${FILE_LIST} | grep ${FILE_OPT} | cut -d '"' -f 2 >> ${FILE_FAV}
-	
-	rm -fv ${FILE_LIST}
-	
-	playlist_fav
-	
-}
-
-playlist_fav()
-{
-	
-	cat ${FILE_FAV}
-	
-	echo "Create ${FILE_LIST}"
-	npx pluto-iptv
-	
-	FILE_EPG="epg.xml"
-	
-	sed -i 's/#EXTM3U/#EXTM3U x-tvg-url="'${FILE_EPG}'"/g' ${FILE_LIST}
-	
-	DIR_LIST="config/${APP_NAME}/userdata/playlists/video"
-	
-	rm -fv cache.json
-	
-	mv -fv ${FILE_FAV} ${FILE_EPG} ${FILE_LIST} ${DIR_LIST}
-	
-	ls -al ${DIR_LIST}
-	
-}
-
-flatpak_install()
-{
-	
-	sudo apt install flatpak
-	
-	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-	
-	flatpak install flathub com.stremio.Stremio
-	
-	flatpak run com.stremio.Stremio
-	
-	flatpak uninstall --delete-data stremio
-	
-	flatpak uninstall --unused
-	
-	flatpak update
-	
-}
-
-iptvnator_install()
-{
-	
-	sudo snap install iptvnator
-	
-	sudo snap remove iptvnator
+	cat ~/.${APP_NAME}/temp/${APP_NAME}.log
 	
 }
 
@@ -213,7 +131,6 @@ case "$1" in
 		kodi_version
 		;;
 	conf)
-		clear
 		kodi_conf
 		;;
 	backup)
@@ -222,14 +139,15 @@ case "$1" in
 	log)
 		kodi_log
 		;;
-	playlist)
-		playlist_pluto
-		;;
 	uninstall)
 		kodi_uninstall
 		;;
+	all)
+		kodi_install
+		kodi_conf
+		;;
 	*)
-		echo "Use: $0 {install|version|conf|backup|log|playlist|uninstall}"
+		echo "Use: $0 {all|install|version|conf|backup|log|uninstall}"
 		exit 1
 		;;
 esac

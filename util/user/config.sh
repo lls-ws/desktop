@@ -21,8 +21,10 @@ config_update()
 }
 
 APPS_CONF=(
+	"vlc"
 	"geany"
 	"openbox"
+	"kvantum"
 	"autostart"
 )
 

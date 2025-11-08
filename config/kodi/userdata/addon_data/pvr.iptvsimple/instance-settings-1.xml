@@ -1,9 +1,9 @@
 <settings version="2">
-    <setting id="kodi_addon_instance_name">LLS</setting>
+    <setting id="kodi_addon_instance_name">LLS_TV</setting>
     <setting id="kodi_addon_instance_enabled" default="true">true</setting>
-    <setting id="m3uPathType">0</setting>
-    <setting id="m3uPath">/home/lls/desktop/config/kodi/userdata/playlists/video/playlist.m3u8</setting>
-    <setting id="m3uUrl" default="true" />
+    <setting id="m3uPathType" default="true">1</setting>
+    <setting id="m3uPath" default="true" />
+    <setting id="m3uUrl">https://lls-ws.github.io/iptv/LLS_TV.m3u</setting>
     <setting id="m3uCache" default="true">true</setting>
     <setting id="startNum" default="true">1</setting>
     <setting id="numberByOrder" default="true">false</setting>
@@ -33,10 +33,10 @@
     <setting id="fiveRadioGroup" default="true" />
     <setting id="customRadioGroupsFile" default="true">special://userdata/addon_data/pvr.iptvsimple/channelGroups/customRadioGroups-example.xml</setting>
     <setting id="radioChannelGroupsOnly" default="true">false</setting>
-    <setting id="epgPathType">0</setting>
+    <setting id="epgPathType" default="true">1</setting>
     <setting id="epgPath" default="true" />
     <setting id="epgUrl" default="true" />
-    <setting id="epgCache" default="true">false</setting>
+    <setting id="epgCache">false</setting>
     <setting id="epgTimeShift" default="true">0</setting>
     <setting id="epgTSOverride" default="true">false</setting>
     <setting id="epgIgnoreCaseForChannelIds" default="true">true</setting>

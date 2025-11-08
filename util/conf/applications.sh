@@ -17,6 +17,8 @@ applications_conf()
 	echo "Update the desktop database"
   	update-desktop-database ${DIR_LIST}
 	
+	rm -fv ${DIR_LIST}/*.cache
+	
 	applications_show
 	
 	echo "Restart LXQT Panel"

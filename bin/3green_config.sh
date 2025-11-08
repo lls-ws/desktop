@@ -24,7 +24,7 @@ user_conf()
 		su ${USER} -c "bash util/user/aliases.sh all"
 		su ${USER} -c "bash util/user/screensaver.sh conf"
 		su ${USER} -c "bash util/user/lxqt.sh all"
-		su ${USER} -c "bash util/user/kodi.sh install"
+		su ${USER} -c "bash util/user/kodi.sh all"
 		
 	fi
 
