@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Exec=lxqt-config-session
+Icon=preferences-system-session-services
+Categories=Settings;DesktopSettings;Qt;LXQt;
+OnlyShowIn=LXQt;
+
+Name=Session Settings
+GenericName=Configure LXQt session
+Comment=Select window manager, modules, autostart applications, screensaver and else
+Comment[pt_BR]=Selecionar gerenciador de janela, módulos, inicialização automática de aplicativos, protetor de tela e mais
+GenericName[pt_BR]=Configurações de sessão do LXQt
+Name[pt_BR]=Configurações de Sessão

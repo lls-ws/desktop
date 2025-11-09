@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=sudo /usr/sbin/service minidlna start
+Exec=sudo /usr/sbin/service minidlna restart && /usr/sbin/service minidlna force-reload
 Name=Mini DLNA
 OnlyShowIn=LXQt;
 Type=Application
