@@ -3,8 +3,8 @@
 </h1>
 
 <h4 align="center">
-  Lubuntu 24.04 LTS (Noble Numbat)
-  6.8.0-38-generic
+  Lubuntu 25.10 LTS (Noble Numbat)
+  6.17.0-6-generic
 </h4>
 
 
