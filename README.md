@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  Lubuntu 25.10 LTS (Noble Numbat)
+  Lubuntu 25.10 (Questing Quokka)
   6.17.0-6-generic
 </h4>
 
