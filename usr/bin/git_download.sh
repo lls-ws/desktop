@@ -9,8 +9,6 @@ PATH=.:$(dirname $0):$PATH
 git_clone()
 {
 	
-	clear
-	
 	echo "Downloading repository ${REPOSITORY_NAME}"
 	
 	(cd ${USER_DIR};git clone ${URL}/${REPOSITORY_NAME}.git; cd -)

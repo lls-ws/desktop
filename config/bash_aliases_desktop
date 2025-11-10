@@ -18,18 +18,18 @@ lls-log() {
 }
 
 # Get GitHub Repository
-alias git_clone_iptv='sudo git_download.sh iptv; cd ~/iptv; ls'
-alias git_clone_cloud='sudo git_download.sh cloud; cd ~/cloud; ls'
-alias git_clone_desktop='sudo git_download.sh desktop; cd ~/desktop; ls'
-alias git_clone_lls-src='sudo git_download.sh lls-src; cd ~/lls-src; ls'
-alias git_clone_lls-ws='sudo git_download.sh lls-ws.github.io; cd ~/lls-ws.github.io; ls'
+alias git_clone_iptv='clear; sudo git_download.sh iptv; cd ~/iptv; ls'
+alias git_clone_cloud='clear; sudo git_download.sh cloud; cd ~/cloud; ls'
+alias git_clone_desktop='clear; sudo git_download.sh desktop; cd ~/desktop; ls'
+alias git_clone_lls-src='clear; sudo git_download.sh lls-src; cd ~/lls-src; ls'
+alias git_clone_lls-ws='clear; sudo git_download.sh lls-ws.github.io; cd ~/lls-ws.github.io; ls'
 
 # Update GitHub Repository
-alias git_upload_iptv='sudo git_remote.sh iptv'
-alias git_upload_cloud='sudo git_remote.sh cloud'
-alias git_upload_desktop='sudo git_remote.sh desktop'
-alias git_upload_lls-src='sudo git_remote.sh lls-src'
-alias git_upload_lls-ws='sudo git_remote.sh lls-ws.github.io'
+alias git_upload_iptv='clear; sudo git_remote.sh iptv'
+alias git_upload_cloud='clear; sudo git_remote.sh cloud'
+alias git_upload_desktop='clear; sudo git_remote.sh desktop'
+alias git_upload_lls-src='clear; sudo git_remote.sh lls-src'
+alias git_upload_lls-ws='clear; sudo git_remote.sh lls-ws.github.io'
 
 # Backup a user profile
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/util/user/backup.sh; cd ~'

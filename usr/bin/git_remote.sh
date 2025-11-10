@@ -9,8 +9,6 @@ PATH=.:$(dirname $0):$PATH
 git_upload()
 {
 	
-	clear
-	
 	TOKEN=`git config user.token`
 	
 	if [ -z "${TOKEN}" ]; then
