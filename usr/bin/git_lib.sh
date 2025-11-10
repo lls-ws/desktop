@@ -16,7 +16,15 @@ git_error_dir()
 {
 	
 	echo "Repository ${REPOSITORY_DIR} not found!"
-	echo "Type: git_clone.sh ${REPOSITORY_NAME}"
+	echo "Type: sudo git_download.sh ${REPOSITORY_NAME}"
+	exit 1
+	
+}
+
+git_error_find_dir()
+{
+	
+	echo "Repository ${REPOSITORY_DIR} found!"
 	exit 1
 	
 }
@@ -28,9 +36,15 @@ git_check()
 	
 	if [[ " ${REPOSITORIES[*]} " =~ " ${REPOSITORY_NAME} " ]]; then
 
-		if [ ! -d ${REPOSITORY_DIR} ]; then
+		if [[ ! -d ${REPOSITORY_DIR} && "${OPTION}" != "clone" ]]; then
 		
 			git_error_dir
+			
+		fi
+		
+		if [[ -d ${REPOSITORY_DIR} && "${OPTION}" == "clone" ]]; then
+		
+			git_error_find_dir
 		
 		fi
 		

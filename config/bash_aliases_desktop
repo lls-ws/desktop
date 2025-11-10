@@ -17,21 +17,19 @@ lls-log() {
 	iptables-log
 }
 
-# Get Zip GitHub Repository
-alias git_zip_lls-src='cd ~; curl -L https://github.com/lls-ws/lls-src/archive/master.zip --output ~/.lls-src/lls-src-$(date +%F).zip; ls -al ~/.lls-src/lls-src-$(date +%F).zip'
-
 # Get GitHub Repository
-alias git_clone_desktop='cd ~; git clone https://github.com/lls-ws/desktop.git; cd ~/desktop; ls'
-alias git_clone_lls-src='cd ~; git clone https://github.com/lls-ws/lls-src.git; git_zip_lls-src; cd ~/lls-src; ls'
-alias git_clone_lls-ws='cd ~; git clone https://github.com/lls-ws/lls-ws.github.io.git; cd ~/lls-ws; ls'
-alias git_clone_iptv='cd ~; git clone https://github.com/lls-ws/iptv.git; cd ~/iptv; ls'
+alias git_clone_iptv='sudo git_download.sh iptv; cd ~/iptv; ls'
+alias git_clone_cloud='sudo git_download.sh cloud; cd ~/cloud; ls'
+alias git_clone_desktop='sudo git_download.sh desktop; cd ~/desktop; ls'
+alias git_clone_lls-src='sudo git_download.sh lls-src; cd ~/lls-src; ls'
+alias git_clone_lls-ws='sudo git_download.sh lls-ws.github.io; cd ~/lls-ws.github.io; ls'
 
 # Update GitHub Repository
+alias git_upload_iptv='sudo git_remote.sh iptv'
 alias git_upload_cloud='sudo git_remote.sh cloud'
 alias git_upload_desktop='sudo git_remote.sh desktop'
 alias git_upload_lls-src='sudo git_remote.sh lls-src'
 alias git_upload_lls-ws='sudo git_remote.sh lls-ws.github.io'
-alias git_upload_iptv='sudo git_remote.sh iptv'
 
 # Backup a user profile
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/util/user/backup.sh; cd ~'
