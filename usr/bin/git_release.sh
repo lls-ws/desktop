@@ -1,31 +1,23 @@
 #!/bin/bash
-# Script to Create a Compress File Release
+# Script to Create Release Compress File
 #
 # email: lls.homeoffice@gmail.com
 
-if [ "$EUID" -ne 0 ]; then
-	
-	echo "Run script with sudo command!"
-	echo "Use: sudo `basename $0`"
-	exit 1
-  
-fi
+PATH=.:$(dirname $0):$PATH
+. /usr/bin/git_lib.sh	|| exit 1
 
-USER=`git config user.name`
-USER_DIR="/home/${USER}"
-REPOSITORY_NAME="$1"
-REPOSITORY_DIR="${USER_DIR}/${REPOSITORY_NAME}"
 RELESEASE="$2"
-
-REPOSITORIES=(
-	"iptv"
-	"cloud"
-	"desktop"
-	"lls-src"
-)
 
 git_create()
 {
+	
+	if [ -z "${RELESEASE}" ]; then
+	
+		echo "Release not found!"
+		echo "Type: sudo $(basename $0) ${REPOSITORY_NAME} [RELESEASE]"
+		exit 1
+	
+	fi
 	
 	clear
 	
@@ -52,30 +44,4 @@ git_create()
 	
 }
 
-if [[ " ${REPOSITORIES[*]} " =~ " ${REPOSITORY_NAME} " ]]; then
-
-	if [ ! -d ${REPOSITORY_DIR} ]; then
-	
-		echo "Repository ${REPOSITORY_DIR} not found!"
-		echo "Type: git_clone_${REPOSITORY_NAME}"
-		exit 1
-	
-	fi
-	
-	if [ -z "${RELESEASE}" ]; then
-	
-		echo "Release not found!"
-		echo "Type: sudo $(basename $0) ${REPOSITORY_NAME} [RELESEASE]"
-		exit 1
-	
-	fi
-	
-	git_create
-
-else
-
-	echo "Repository not found!"
-	echo "Type: sudo $(basename $0) [${REPOSITORIES[@]}] [RELESEASE]"
-	exit 1
-
-fi
+git_check "create"

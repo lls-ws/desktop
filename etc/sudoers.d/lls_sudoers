@@ -1,5 +1,7 @@
 lls ALL=(ALL) NOPASSWD:/usr/bin/cloud_connect.sh
 lls ALL=(ALL) NOPASSWD:/usr/bin/jquery-lls.sh
+lls ALL=(ALL) NOPASSWD:/usr/bin/git_remote.sh
+lls ALL=(ALL) NOPASSWD:/usr/bin/git_release.sh
 lls ALL=(ALL) NOPASSWD:/home/lls/cloud/bin/git_conf.sh
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service tomcat9 start
 lls ALL=(ALL) NOPASSWD:/usr/sbin/service tomcat9 stop

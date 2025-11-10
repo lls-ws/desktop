@@ -3,6 +3,47 @@
 #
 # email: lls.homeoffice@gmail.com
 
+git_error()
+{
+	
+	echo "Repository not found!"
+	echo "Type: sudo $(basename $0) [${REPOSITORIES[@]}]"
+	exit 1
+	
+}
+
+git_error_dir()
+{
+	
+	echo "Repository ${REPOSITORY_DIR} not found!"
+	echo "Type: git_clone.sh ${REPOSITORY_NAME}"
+	exit 1
+	
+}
+
+git_check()
+{
+	
+	OPTION="$1"
+	
+	if [[ " ${REPOSITORIES[*]} " =~ " ${REPOSITORY_NAME} " ]]; then
+
+		if [ ! -d ${REPOSITORY_DIR} ]; then
+		
+			git_error_dir
+		
+		fi
+		
+		git_${OPTION}
+
+	else
+
+		git_error
+
+	fi
+	
+}
+
 if [ "$EUID" -ne 0 ]; then
 	
 	echo "Run script with sudo command!"
@@ -12,8 +53,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 URL="https://github.com/lls-ws"
+
 USER=`git config user.name`
 USER_DIR="/home/${USER}"
+
 REPOSITORY_NAME="$1"
 REPOSITORY_DIR="${USER_DIR}/${REPOSITORY_NAME}"
 
@@ -22,4 +65,5 @@ REPOSITORIES=(
 	"cloud"
 	"desktop"
 	"lls-src"
+	"lls-ws.github.io"
 )

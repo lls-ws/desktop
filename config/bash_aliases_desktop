@@ -1,7 +1,7 @@
 # Get Finance
 alias finance-lls='bash finance-lls.sh'
 
-# Connect into a Clound
+# Connect to Clound
 alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br &'
 alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br &'
 alias connect_dell='qterminal -e ssh -i ~/.ssh/id_rsa wanda@dell.lls.net.br &'
@@ -17,21 +17,21 @@ lls-log() {
 	iptables-log
 }
 
-# Get a Zip GitHub Repository
+# Get Zip GitHub Repository
 alias git_zip_lls-src='cd ~; curl -L https://github.com/lls-ws/lls-src/archive/master.zip --output ~/.lls-src/lls-src-$(date +%F).zip; ls -al ~/.lls-src/lls-src-$(date +%F).zip'
 
-# Get a GitHub Repository
+# Get GitHub Repository
 alias git_clone_desktop='cd ~; git clone https://github.com/lls-ws/desktop.git; cd ~/desktop; ls'
 alias git_clone_lls-src='cd ~; git clone https://github.com/lls-ws/lls-src.git; git_zip_lls-src; cd ~/lls-src; ls'
 alias git_clone_lls-ws='cd ~; git clone https://github.com/lls-ws/lls-ws.github.io.git; cd ~/lls-ws; ls'
 alias git_clone_iptv='cd ~; git clone https://github.com/lls-ws/iptv.git; cd ~/iptv; ls'
 
-# Update a GitHub Repository
-alias git_upload_desktop='clear; cd ~/desktop; sudo ~/cloud/bin/git_conf.sh remote desktop; cd ~; ls'
-alias git_upload_cloud='clear; cd ~/cloud; sudo ~/cloud/bin/git_conf.sh remote cloud; cd ~; ls'
-alias git_upload_lls-src='clear; cd ~/lls-src; sudo ~/cloud/bin/git_conf.sh remote lls-src; cd ~; ls'
-alias git_upload_lls-ws='clear; cd ~/lls-ws.github.io; sudo ~/cloud/bin/git_conf.sh remote lls-ws.github.io; cd ~; ls'
-alias git_upload_iptv='clear; cd ~/iptv; sudo ~/cloud/bin/git_conf.sh remote iptv; cd ~; ls'
+# Update GitHub Repository
+alias git_upload_cloud='sudo git_remote.sh cloud'
+alias git_upload_desktop='sudo git_remote.sh desktop'
+alias git_upload_lls-src='sudo git_remote.sh lls-src'
+alias git_upload_lls-ws='sudo git_remote.sh lls-ws.github.io'
+alias git_upload_iptv='sudo git_remote.sh iptv'
 
 # Backup a user profile
 alias backup_user='clear; cd ~/desktop; bash ~/desktop/util/user/backup.sh; cd ~'
