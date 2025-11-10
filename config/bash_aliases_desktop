@@ -34,7 +34,7 @@ alias git_upload_lls-ws='clear; cd ~/lls-ws.github.io; sudo ~/cloud/bin/git_conf
 alias git_upload_iptv='clear; cd ~/iptv; sudo ~/cloud/bin/git_conf.sh remote iptv; cd ~; ls'
 
 # Backup a user profile
-alias backup_user='clear; cd ~/desktop; bash ~/desktop/bin/user_config.sh backup; cd ~'
+alias backup_user='clear; cd ~/desktop; bash ~/desktop/util/user/backup.sh; cd ~'
 
 # Transmission
 alias t-status='clear; sudo service transmission-daemon status'
