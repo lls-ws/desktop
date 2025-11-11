@@ -4,4 +4,5 @@ Name=VLC
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
+X-LXQt-Autostart-disabled=true
 X-LXQt-Need-Tray=true

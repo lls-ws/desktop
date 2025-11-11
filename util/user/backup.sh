@@ -12,9 +12,12 @@ check_user "$1"
 clear
 
 FILES_SET=(
+	"vlc"
+	"mpv"
 	"lxqt"
 	"geany"
 	"openbox"
+	"kvantum"
 	"autostart"
 )
 

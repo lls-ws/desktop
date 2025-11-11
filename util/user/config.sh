@@ -22,6 +22,7 @@ config_update()
 
 APPS_CONF=(
 	"vlc"
+	"mpv"
 	"geany"
 	"openbox"
 	"kvantum"
