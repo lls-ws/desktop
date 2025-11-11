@@ -18,16 +18,11 @@ config_update()
 	
 	apps_show "${1}"
 	
+	echo -e "Configure ${1} done!\n"
+	
 }
 
-APPS_CONF=(
-	"vlc"
-	"mpv"
-	"geany"
-	"openbox"
-	"kvantum"
-	"autostart"
-)
+apps_array
 
 if [[ " ${APPS_CONF[*]} " =~ " ${1} " ]]; then
 

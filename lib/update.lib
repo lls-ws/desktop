@@ -225,4 +225,18 @@ apps_show()
 	
 }
 
+apps_array()
+{
+	
+	APPS_CONF=(
+		"vlc"
+		"mpv"
+		"geany"
+		"openbox"
+		"kvantum"
+		"autostart"
+	)
+	
+}
+
 USER_TRANSMISISON="debian-transmission"

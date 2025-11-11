@@ -11,24 +11,18 @@ check_user "$1"
 
 clear
 
-FILES_SET=(
-	"vlc"
-	"mpv"
-	"lxqt"
-	"geany"
-	"openbox"
-	"kvantum"
-	"autostart"
-)
+apps_array
+
+APPS_CONF+=("lxqt")
 
 echo "Creating Backup Apps File..."
 
-for FILE_SET in "${FILES_SET[@]}"
+for NAME_APP in "${APPS_CONF[@]}"
 do
 	
-	echo -e "\nBackup: ${FILE_SET}"
+	echo -e "\nBackup: ${NAME_APP}"
 	
-	DIR_UPDATE=config/${FILE_SET}
+	DIR_UPDATE=config/${NAME_APP}
 	
 	for FILE in ${DIR_UPDATE}/*; do
 	
@@ -42,13 +36,13 @@ do
 		
 done
 
-FILE_SET="xscreensaver"
+NAME_APP="xscreensaver"
 
-DIR_UPDATE=config/${FILE_SET}
+DIR_UPDATE=config/${NAME_APP}
 
-echo -e "\nBackup: ${FILE_SET}"
+echo -e "\nBackup: ${NAME_APP}"
 
-cp -fv ~/.${FILE_SET} ${DIR_UPDATE}
+cp -fv ~/.${NAME_APP} ${DIR_UPDATE}
 
 ls -al ${DIR_UPDATE}
 
