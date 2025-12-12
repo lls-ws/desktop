@@ -2529,7 +2529,7 @@ freetype-outline-thickness=6
 equalizer-preset=fullbasstreble
 
 # Bands gain (string)
-equalizer-bands=7.2 5.6 0 -7.2 -4.8 1.6000000 8 11.2 12 12
+equalizer-bands=7.2 5.6000000 0.0000000 -7.2 -4.18446744073701551616 1.6 8.0000000 11.2 12 12
 
 # Two pass (boolean)
 #equalizer-2pass=0
@@ -3847,7 +3847,7 @@ aout=any
 #role=video
 
 # Audio filters (string)
-audio-filter=equalizer:compressor
+audio-filter=compressor:equalizer
 
 # Audio visualizations (string)
 #audio-visual=none
@@ -3991,10 +3991,10 @@ vout=any
 #spu=1
 
 # On Screen Display (boolean)
-#osd=1
+osd=0
 
 # Text rendering module (string)
-#text-renderer=
+text-renderer=any
 
 # Use subtitle file (string)
 #sub-file=

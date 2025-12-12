@@ -3,9 +3,10 @@ Version=1.0
 Name=Opera
 Name[pt_BR]=Opera
 GenericName=Web browser
+GenericName[pt_BR]=Navegador de Internet
 Comment=Fast and secure web browser
 TryExec=opera
-Exec=opera --start-maximized %U
+Exec=opera --password-store=basic --start-maximized %U
 Terminal=false
 Icon=opera
 Type=Application
