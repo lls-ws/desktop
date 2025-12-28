@@ -1017,7 +1017,7 @@ qt-video-autoresize=0
 #qt-name-in-title=1
 
 # Show a controller in fullscreen mode (boolean)
-qt-fs-controller=0
+#qt-fs-controller=1
 
 # Save the recently played items in the menu (boolean)
 #qt-recentplay=1
@@ -4033,7 +4033,7 @@ text-renderer=any
 #audio-language=
 
 # Subtitle language (string)
-#sub-language=
+sub-language=pt_BR
 
 # Menu language (string)
 #menu-language=

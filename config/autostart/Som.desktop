@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=pactl set-sink-volume 0 61%
+Exec=pactl set-sink-volume 0 68%
 Name=Som
 OnlyShowIn=LXQt;
 Type=Application

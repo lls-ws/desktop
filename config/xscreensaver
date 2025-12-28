@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.08 for lls on Tue Jul 23 21:06:18 2024.
+# Written by xscreensaver-settings 6.08 for lls on Tue Dec 23 07:16:53 2025.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
@@ -37,7 +37,7 @@ textFile:	/usr/share/doc/xserver-common/copyright
 textProgram:	fortune
 textURL:	http://www.bbc.co.uk/portuguese/index.xml
 dialogTheme:	borderlessblack
-settingsGeom:	0,0 1139,113
+settingsGeom:	4,0 1139,113
 
 programs:								      \
 				maze --root				    \n\
