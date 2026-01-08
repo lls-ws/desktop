@@ -743,10 +743,10 @@
 #sout-x264-stats=x264_2pass.log
 
 # Default preset setting used (string)
-sout-x264-preset=ultrafast
+#sout-x264-preset=
 
 # Default tune setting used (string)
-sout-x264-tune=film
+#sout-x264-tune=
 
 # x264 advanced options (string)
 #sout-x264-options=
@@ -996,10 +996,10 @@ qt-minimal-view=1
 #qt-system-tray=1
 
 # Show notification popup on track change (integer)
-#qt-notification=1
+qt-notification=0
 
 # Start VLC with only a systray icon (boolean)
-#qt-start-minimized=0
+qt-start-minimized=1
 
 # Pause the video playback when minimized (boolean)
 #qt-pause-minimized=0
@@ -1011,7 +1011,7 @@ qt-minimal-view=1
 #qt-fs-opacity=0.800000
 
 # Resize interface to the native video size (boolean)
-qt-video-autoresize=0
+#qt-video-autoresize=1
 
 # Show playing item name in window title (boolean)
 #qt-name-in-title=1
@@ -1026,10 +1026,10 @@ qt-video-autoresize=0
 #qt-recentplay-filter=
 
 # Continue playback? (integer)
-qt-continue=2
+#qt-continue=1
 
 # Applies a dark palette to the style. (boolean)
-qt-dark-palette=1
+#qt-dark-palette=0
 
 # Embed the file browser in open dialog (boolean)
 #qt-embedded-open=0
@@ -1068,7 +1068,7 @@ qt-privacy-ask=0
 #qt-fs-sensitivity=3
 
 # When to raise the interface (integer)
-qt-auto-raise=0
+#qt-auto-raise=1
 
 [afile] # File audio output
 
@@ -1098,7 +1098,7 @@ qt-auto-raise=0
 [alsa] # ALSA audio output
 
 # Audio output device (string)
-#alsa-audio-device=default
+alsa-audio-device=null
 
 # Audio output channels (integer)
 #alsa-audio-channels=6
@@ -2278,7 +2278,7 @@ qt-auto-raise=0
 #lua-config=
 
 # Password (string)
-http-password=1234
+http-password=Lls#739200
 
 # Source directory (string)
 #http-src=
@@ -2329,19 +2329,19 @@ freetype-font=Noto Sans
 #freetype-fontsize=0
 
 # Relative font size (integer)
-freetype-rel-fontsize=12
+#freetype-rel-fontsize=0
 
 # Text opacity (integer)
 #freetype-opacity=255
 
 # Text default color (integer)
-freetype-color=16755200
+#freetype-color=16777215
 
 # Force bold (boolean)
 #freetype-bold=0
 
 # Background opacity (integer)
-freetype-background-opacity=128
+#freetype-background-opacity=0
 
 # Background color (integer)
 #freetype-background-color=0
@@ -2353,7 +2353,7 @@ freetype-background-opacity=128
 #freetype-outline-color=0
 
 # Outline thickness (integer)
-freetype-outline-thickness=6
+#freetype-outline-thickness=4
 
 # Shadow opacity (integer)
 #freetype-shadow-opacity=128
@@ -2372,11 +2372,6 @@ freetype-outline-thickness=6
 
 # Text direction (integer)
 #freetype-text-direction=0
-
-[svg] # svg
-
-# SVG template file (string)
-#svg-template-file=
 
 [compressor] # Dynamic range compressor
 
@@ -2526,10 +2521,10 @@ freetype-outline-thickness=6
 [equalizer] # Equalizer with 10 bands
 
 # Equalizer preset (string)
-equalizer-preset=fullbasstreble
+#equalizer-preset=flat
 
 # Bands gain (string)
-equalizer-bands=7.2 5.6000000 0.0000000 -7.2 -4.18446744073701551616 1.6 8.0000000 11.2 12 12
+#equalizer-bands=
 
 # Two pass (boolean)
 #equalizer-2pass=0
@@ -2538,7 +2533,7 @@ equalizer-bands=7.2 5.6000000 0.0000000 -7.2 -4.18446744073701551616 1.6 8.00000
 #equalizer-vlcfreqs=1
 
 # Global gain (float)
-equalizer-preamp=4.000000
+#equalizer-preamp=12.000000
 
 [normvol] # Volume normalizer
 
@@ -3826,7 +3821,7 @@ equalizer-preamp=4.000000
 #audio-desync=0
 
 # Replay gain mode (string)
-audio-replay-gain-mode=album
+#audio-replay-gain-mode=none
 
 # Replay preamp (float)
 #audio-replay-gain-preamp=0.000000
@@ -3847,7 +3842,7 @@ aout=any
 #role=video
 
 # Audio filters (string)
-audio-filter=compressor:equalizer
+#audio-filter=
 
 # Audio visualizations (string)
 #audio-visual=none
@@ -3895,7 +3890,7 @@ fullscreen=1
 #disable-screensaver=1
 
 # Show media title on video (boolean)
-#video-title-show=1
+video-title-show=0
 
 # Show video title for x milliseconds (integer)
 #video-title-timeout=5000
@@ -3991,10 +3986,10 @@ vout=any
 #spu=1
 
 # On Screen Display (boolean)
-osd=0
+#osd=1
 
 # Text rendering module (string)
-text-renderer=any
+#text-renderer=
 
 # Use subtitle file (string)
 #sub-file=
@@ -4033,7 +4028,7 @@ text-renderer=any
 #audio-language=
 
 # Subtitle language (string)
-sub-language=pt_BR
+#sub-language=
 
 # Menu language (string)
 #menu-language=

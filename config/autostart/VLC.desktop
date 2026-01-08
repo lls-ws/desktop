@@ -1,8 +1,7 @@
 [Desktop Entry]
-Exec=/usr/bin/vlc \\"https://lls-ws.github.io/iptv/LLS_PlutoTV_br.m3u\\"
+Exec=/usr/bin/vlc \\"https://lls-ws.github.io/iptv/LLS_TV_br.m3u\\"
 Name=VLC PlutoTV
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
-X-LXQt-Autostart-disabled=true
 X-LXQt-Need-Tray=true
