@@ -19,6 +19,7 @@ lls-log() {
 
 # LLS WS
 alias lls-jquery='sudo jquery-lls.sh'
+alias lls-jquery-all='lls-jquery; lls-jquery milho; lls-jquery cafe; lls-jquery balanca'
 
 # Get GitHub Repository
 alias git_clone_iptv='clear; sudo git_download.sh iptv; cd ~/iptv; ls'
