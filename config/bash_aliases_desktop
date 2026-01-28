@@ -72,6 +72,10 @@ alias services-load='systemctl -t service --state=active'
 alias services-boot='systemctl list-unit-files --state=enabled'
 alias services-list='ls /etc/systemd/system/multi-user.target.wants'
 
+# Browsers
+alias update_opera="sudo sed -i '/^Exec/ s/opera/opera --password-store=basic/' /usr/share/applications/opera.desktop"
+alias update_google="sudo sed -i '/^Exec/ s/google-chrome-stable/google-chrome-stable --password-store=basic/' /usr/share/applications/google-chrome.desktop"
+
 if [ "$USER" = "lls" ]; then
 	
 	rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
