@@ -18,6 +18,8 @@ git_upload()
 		
 	fi
 	
+	git_clean
+	
 	echo "Updating repository ${REPOSITORY_NAME}"
 	
 	(cd ${REPOSITORY_DIR};
@@ -26,6 +28,21 @@ git_upload()
 	 git remote set-url origin ${URL:0:6}//${TOKEN}@${URL:8:17}/${REPOSITORY_NAME}.git;
 	 git push -u origin main;
 	 cd -)
+	
+}
+
+git_clean()
+{
+	
+	if [ "${REPOSITORY_NAME}" = "lls-src" ]; then
+	
+		echo "Cleanning ${REPOSITORY_DIR}"
+		
+		(cd ${REPOSITORY_DIR};
+		su ${USER} -c "bash bin/maven_conf.sh modules web clean";
+		cd -)
+		
+	fi
 	
 }
 
