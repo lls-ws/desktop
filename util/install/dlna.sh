@@ -24,11 +24,13 @@ nfs_conf()
 	
 	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
 
-	sudo chmod -v 644 /etc/exports
+	sudo chmod -v 644 ${DIR_ETC}/${FILE_SET}
 
 	systemctl is-enabled ${APP_NAME}
 
 	systemctl status ${APP_NAME}
+
+	ls -alh ${DIR_ETC}/${FILE_SET}
 
 	cat ${DIR_ETC}/${FILE_SET}
 	
