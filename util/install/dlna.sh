@@ -9,6 +9,15 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
+dlna_edit()
+{
+	
+	apt -y install ${NAME_APP}
+	
+	dlna_conf
+	
+}
+
 dlna_install()
 {
 	
@@ -81,11 +90,14 @@ case "$1" in
 	conf)
 		dlna_conf
 		;;
+	edit)
+		dlna_edit
+		;;
 	uninstall)
 		dlna_uninstall
 		;;
 	*)
-		echo "Use: $0 {install|version|conf|uninstall}"
+		echo "Use: $0 {install|version|conf|uninstall|edit}"
 		exit 1
 		;;
 esac
