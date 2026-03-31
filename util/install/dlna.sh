@@ -12,7 +12,7 @@ check_root "$1"
 dlna_edit()
 {
 	
-	apt -y install ${NAME_APP}
+	sudo nano /etc/minidlna.conf
 	
 	dlna_conf
 	
