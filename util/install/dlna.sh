@@ -9,6 +9,35 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
+nfs_conf()
+{
+
+	apt -y install nfs-kernel-server
+	
+	APP_NAME="nfs-server"
+	
+	FILE_SET="exports"
+	
+	DIR_ETC="/etc"
+	
+	echo "Configure ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
+
+	systemctl is-enabled ${APP_NAME}
+
+	systemctl status ${APP_NAME}
+
+	cat ${DIR_ETC}/${FILE_SET}
+	
+	exportfs -rav
+	
+	service ${APP_NAME} stop
+	
+	systemctl disable ${APP_NAME}.service
+
+}
+
 dlna_edit()
 {
 	
@@ -93,11 +122,14 @@ case "$1" in
 	edit)
 		dlna_edit
 		;;
+	nfs)
+		nfs_conf
+		;;
 	uninstall)
 		dlna_uninstall
 		;;
 	*)
-		echo "Use: $0 {install|version|conf|uninstall|edit}"
+		echo "Use: $0 {install|version|conf|uninstall|edit|nfs}"
 		exit 1
 		;;
 esac
