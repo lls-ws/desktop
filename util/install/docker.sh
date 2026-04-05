@@ -58,7 +58,7 @@ jellyfin_conf()
 	
 	FILE_SET="${NAME_APP}-compose.yml"
 	
-	DIR_ETC=~/"jellyfin"
+	DIR_ETC="/home/wanda/jellyfin"
 	
 	echo "Configure ${NAME_APP}..."
 	
