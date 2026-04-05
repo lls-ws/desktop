@@ -58,7 +58,7 @@ jellyfin_conf()
 	
 	FILE_SET="${NAME_APP}-compose.yml"
 	
-	DIR_ETC="/home/wanda/jellyfin"
+	DIR_ETC="/home/$USER/jellyfin"
 	
 	echo "Configure ${NAME_APP}..."
 	
@@ -74,12 +74,18 @@ jellyfin_conf()
 	# Inicie o servidor
 	(cd ${DIR_ETC}; sudo docker compose up -d)
 	
+	sudo chown -R $USER:$USER "${DIR_ETC}"
+	
 }
 
 docker_version()
 {
 
 	${NAME_APP} -v
+	
+	sudo ${NAME_APP} ps -a
+	
+	sudo ${NAME_APP} logs jellyfin
 	
 }
 
