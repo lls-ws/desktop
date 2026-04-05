@@ -100,6 +100,13 @@ docker_uninstall()
 	
 }
 
+tizen_install()
+{
+	
+	sudo docker run --rm ghcr.io/georift/install-jellyfin-tizen 192.168.0.2
+	
+}
+
 NAME_APP="docker"
 
 case "$1" in
@@ -118,11 +125,11 @@ case "$1" in
 	nfs)
 		nfs_conf
 		;;
-	uninstall)
-		docker_uninstall
+	tizen)
+		tizen_install
 		;;
 	*)
-		echo "Use: $0 {install|version|conf|uninstall|edit|nfs}"
+		echo "Use: $0 {install|version|conf|tizen|edit|nfs}"
 		exit 1
 		;;
 esac
