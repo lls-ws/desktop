@@ -12,9 +12,7 @@ check_root "$1"
 docker_edit()
 {
 	
-	sudo nano /etc/minidocker.conf
-	
-	docker_conf
+	sudo nano ~/jellyfin/docker-compose.yml
 	
 }
 
@@ -49,47 +47,39 @@ docker_install()
 	# Executar sem sudo
 	sudo usermod -aG docker $USER
 	
-	#docker_conf
+	docker_version
+	
+	jellyfin_conf
 	
 }
 
-docker_conf()
+jellyfin_conf()
 {
 	
-	docker_version
+	FILE_SET="${NAME_APP}-compose.yml"
 	
-	FILE_SET="${NAME_APP}.conf"
-	
-	DIR_ETC="etc"
+	DIR_ETC=~/"jellyfin"
 	
 	echo "Configure ${NAME_APP}..."
 	
-	update_file "${FILE_SET}" "/${DIR_ETC}" "${DIR_ETC}"
-
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
+	
 	shared_dir
 	
-	cat /${DIR_ETC}/${FILE_SET}
+	cat ${DIR_ETC}/${FILE_SET}
 	
-	echo 'DAEMON_OPTS="-R"' > /${DIR_ETC}/default/${NAME_APP}
+	# Prepare as pastas de dados
+	mkdir -p ${DIR_ETC}/{config,cache,media}
 	
-	cat /${DIR_ETC}/default/${NAME_APP}
-	
-	chown -Rv ${NAME_APP}:${NAME_APP} /var/cache/${NAME_APP}
-	
-	chmod -Rv 775 /var/cache/${NAME_APP}
-	
-	systemctl disable ${NAME_APP}.service
-	
-	service ${NAME_APP} force-reload
-	
-	service ${NAME_APP} status
+	# Inicie o servidor
+	(cd ${DIR_ETC}; sudo docker compose up -d)
 	
 }
 
 docker_version()
 {
 
-	${NAME_APP}d -V
+	${NAME_APP} -v
 	
 }
 
@@ -114,7 +104,7 @@ case "$1" in
 		docker_version
 		;;
 	conf)
-		docker_conf
+		jellyfin_conf
 		;;
 	edit)
 		docker_edit

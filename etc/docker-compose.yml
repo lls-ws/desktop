@@ -1,0 +1,11 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    user: 1000:1000 # Use o comando 'id' para confirmar seu UID/GID
+    network_mode: host
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - /mnt/shared:/media # Ajuste para o caminho real da sua mídia
+    restart: unless-stopped
