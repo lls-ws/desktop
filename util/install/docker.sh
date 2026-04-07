@@ -69,7 +69,7 @@ jellyfin_conf()
 	cat ${DIR_ETC}/${FILE_SET}
 	
 	# Prepare as pastas de dados
-	mkdir -p ${DIR_ETC}/{config,cache,media}
+	mkdir -pv ${DIR_ETC}/{config,cache,media}
 	
 	# Inicie o servidor
 	(cd ${DIR_ETC}; sudo docker compose up -d)
