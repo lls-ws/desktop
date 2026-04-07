@@ -103,7 +103,7 @@ docker_uninstall()
 tizen_install()
 {
 	
-	sudo docker run --rm ghcr.io/georift/install-jellyfin-tizen 192.168.0.2
+	sudo docker run --rm ghcr.io/georift/install-jellyfin-tizen 192.168.0.170
 	
 }
 
