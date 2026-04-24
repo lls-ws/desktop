@@ -1,11 +1,5 @@
 #!/bin/sh
-# Script to configure Lubuntu on Dell Inspiron 1428
-#
-# Connect LAN Ethernet to Install Wireless
-# Menu - Preferências - Additional Drivers - Additional Drivers
-# Broadcom BCM4312
-# Using dkms source for the Broadcom STAS Wireless driver for broadcom-sta-dkms (proprietary)
-# Apply Changes
+# Script to configure Ubuntu Server on Dell Inspiron
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -15,78 +9,69 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
-echo "Script to configure Lubuntu on Dell Inspiron 1428"
-
-apps_install()
-{
-	
-	bash util/install/intel.sh install
-	bash util/install/google.sh install
-	bash util/install/firefox.sh install
-	
-}
-
-user_profile()
-{
-
-	cd ~
-
-	if [ ! -d ~/cloud ]; then
-	
-		git clone https://github.com/lls-ws/cloud.git
-		
-	fi
-	
-	cd ~/cloud
-	
-	NAME=`git config user.name`
-
-	if [ -z "${NAME}" ]; then
-			
-		bash bin/git_conf.sh name ${USER}
-		bash bin/git_conf.sh email ${EMAIL}
-		bash bin/git_conf.sh password ${USER}
-		
-	fi
-	
-	bash bin/ubuntu_conf.sh profile
-	
-	cd ~
-	
-	rm -rf ~/cloud
-	
-	ls ~
-	
-}
+clear
 
 user_conf()
 {
 	
-	su ${USER} -c "bash bin/user_config.sh screensaver"
+	USER=`git config user.name`
+	
+	echo "User: ${USER}"
+	
+	if [ ! -z "${USER}" ]; then
+		
+		su ${USER} -c "bash util/user/aliases.sh all"
+		
+		
+	fi
 
 }
 
-USER="wanda"
-EMAIL="wganara@gmail.com"
-PASSWORD="${USER}"
+server_install()
+{
+	
+	SCRIPT_OPT="$1"
+	
+	DIR_SCRIPT="util/${SCRIPT_OPT}"
+	
+	bash "${DIR_SCRIPT}/transmission.sh" ${SCRIPT_OPT}
+	#bash "${DIR_SCRIPT}/dlna.sh" ${SCRIPT_OPT}
+	#bash "${DIR_SCRIPT}/docker.sh" ${SCRIPT_OPT}
+	
+}
+
+server_conf()
+{
+	
+	SCRIPT_OPT="$1"
+	
+	DIR_SCRIPT="util/${SCRIPT_OPT}"
+	
+	bash "${DIR_SCRIPT}/sudo.sh" ${SCRIPT_OPT}
+	
+}
 
 case "$1" in
-  	apps)
-		apps_install
+  	install)
+		server_install "install"
 		;;
-	user)
+  	conf)
+		server_conf "conf"
+		;;
+  	user)
 		user_conf
 		;;
-	profile)
-		user_profile
+  	bin)
+		list_dir "usr/bin"
 		;;
   	all)
-		apps_install
+		server_install "install"
+		server_conf "conf"
+		list_dir "usr/bin"
 		user_conf
-		user_profile
 		;;
 	*)
-		echo "Use: $0 {all|apps|user|profile}"
+		echo "Use: $0 {all|install|conf|user|bin}"
 		exit 1
 		;;
 esac
