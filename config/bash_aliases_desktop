@@ -4,7 +4,7 @@ alias finance-lls='bash finance-lls.sh'
 # Connect to Clound
 alias connect_funchal='qterminal -e ssh -i ~/.ssh/id_rsa lls@funchal.lls.net.br &'
 alias connect_app='qterminal -e ssh -i ~/.ssh/id_rsa lls@app.lls.net.br &'
-alias connect_dell='qterminal -e ssh -i ~/.ssh/id_rsa wanda@dell.lls.net.br &'
+alias connect_dell='qterminal -e ssh -i ~/.ssh/id_rsa lls@dell.lls.net.br &'
 
 # WEB Server Log
 alias tomcat-log='geany /var/lib/tomcat9/logs/*.log &'
