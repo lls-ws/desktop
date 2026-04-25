@@ -163,7 +163,7 @@ ssh_remote()
 	
 	sudo bin/git_conf.sh name lls
 	
-	su lls -c "bash bin/user_conf.sh ssh-remote lls"
+	su lls -c "bash bin/user_conf.sh ssh-remote lls lls lls"
 	
 	cd ${DIR_LLS}/desktop
 	
