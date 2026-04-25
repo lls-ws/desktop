@@ -39,7 +39,7 @@ sudo bash bin/dell_config.sh conf
 ```bash
 sudo bash bin/dell_config.sh key
 ```
-### On Ubuntu Server
+#### On Ubuntu Server
 ```bash
 sudo bash bin/dell_config.sh remote
 ```
