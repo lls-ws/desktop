@@ -11,6 +11,40 @@ check_root "$1"
 
 clear
 
+net_conf()
+{
+	
+	echo "Verificar interfaces: state UP"
+	ip addr
+	
+	echo "Verificar a conexão física: Link detected yes"
+	sudo ethtool enp8s0
+	
+	echo "Retorna 1 para conectado:"
+	cat /sys/class/net/enp8s0/carrier
+	
+	echo "Subir a interface:"
+	sudo ip link set enp8s0 up
+	
+	echo "Definir o IP:"
+	sudo ip addr add 192.168.0.2/24 dev enp8s0
+	
+	FILE_SET="00-installer-config.yaml"
+	DIR_ETC="etc/netplan"
+	
+	echo "Configure ${FILE_SET}..."
+	
+	update_file "${FILE_SET}" "/${DIR_ETC}" "${DIR_ETC}"
+	
+	ls -al /${DIR_ETC}/${FILE_SET}
+	
+	util_show
+	
+	echo "Aplique as mudanças:"
+	sudo netplan apply
+	
+}
+
 user_conf()
 {
 	
