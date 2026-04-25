@@ -165,6 +165,8 @@ ssh_remote()
 	
 	su lls -c "bash bin/user_conf.sh ssh-remote lls lls lls"
 	
+	su lls -c "bash bin/user_conf.sh aliases"
+	
 	cd ${DIR_LLS}/desktop
 	
 }
