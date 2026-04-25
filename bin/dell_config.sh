@@ -56,6 +56,7 @@ net_conf()
 	
 	resolvectl status
 	
+	echo "Install Ping:"
 	sudo apt -y install inetutils-ping
 	
 	ping -c 3 google.com
@@ -66,7 +67,7 @@ ssh_install()
 {
 	
 	echo "Install SSH:"
-	sudo apt -y install nano openssh-server
+	sudo apt -y install nano openssh-server git
 	
 	sudo systemctl status ssh
 	sudo systemctl start ssh
@@ -123,10 +124,10 @@ server_conf()
 	DIR_SCRIPT="util/${SCRIPT_OPT}"
 	bash "${DIR_SCRIPT}/sudo.sh" ${SCRIPT_OPT}
 	
-	echo "Configure Hosts:"
-	file_update "hosts" "etc/"
+	echo -e "\nConfigure Hosts:"
+	file_update "hosts" "etc"
 	
-	echo "Configure Aliases:"
+	echo -e "\nConfigure Aliases:"
 	su lls -c "bash util/user/aliases.sh all"
 	
 	### SSH_KEY ###
