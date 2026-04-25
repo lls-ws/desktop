@@ -11,26 +11,11 @@ check_root "$1"
 
 clear
 
-net_conf()
+file_update()
 {
 	
-	echo "Verificar interfaces: state UP"
-	ip addr
-	
-	echo "Verificar a conexão física: Link detected yes"
-	sudo ethtool enp8s0
-	
-	echo "Retorna 1 para conectado:"
-	cat /sys/class/net/enp8s0/carrier
-	
-	echo "Subir a interface:"
-	sudo ip link set enp8s0 up
-	
-	echo "Definir o IP:"
-	sudo ip addr add 192.168.0.2/24 dev enp8s0
-	
-	FILE_SET="00-installer-config.yaml"
-	DIR_ETC="etc/netplan"
+	FILE_SET="$1"
+	DIR_ETC="$2"
 	
 	echo "Configure ${FILE_SET}..."
 	
@@ -40,28 +25,83 @@ net_conf()
 	
 	util_show
 	
+}
+
+net_conf()
+{
+	
+	INTERFACE="enp8s0"
+	
+	echo "Verificar interfaces: state UP"
+	ip addr
+	
+	echo "Verificar a conexão física: Link detected yes"
+	sudo ethtool ${INTERFACE}
+	
+	echo "Retorna 1 para conectado:"
+	cat /sys/class/net/${INTERFACE}/carrier
+	
+	echo "Subir a interface:"
+	sudo ip link set ${INTERFACE} up
+	
+	echo "Definir o IP:"
+	sudo ip addr add 192.168.0.2/24 dev ${INTERFACE}
+	
+	file_update "00-installer-config.yaml" "etc/netplan"
+	
 	echo "Aplique as mudanças:"
 	sudo netplan apply
 	
+	ip addr show
+	
+	resolvectl status
+	
+	sudo apt -y install inetutils-ping
+	
+	ping -c 3 google.com
+	
 }
 
-user_conf()
+ssh_install()
 {
 	
-	USER=`git config user.name`
+	echo "Install SSH:"
+	sudo apt -y install nano openssh-server
 	
-	echo "User: ${USER}"
+	sudo systemctl status ssh
+	sudo systemctl start ssh
+	sudo systemctl status ssh
+	sudo systemctl enable ssh
 	
-	if [ ! -z "${USER}" ]; then
-		
-		su ${USER} -c "bash util/user/aliases.sh all"
-		
-		
-	fi
-
+	ss -tuln | grep :22
+	
 }
 
-server_install()
+grub_conf()
+{
+	
+	echo "Configure Grub:"
+	
+	file_update "grub" "etc/default"
+	
+	logind_conf
+	
+	sudo update-grub
+	
+}
+
+logind_conf()
+{
+	
+	echo "Configure Logind:"
+	
+	file_update "logind.conf" "etc/systemd"
+	
+	sudo systemctl restart systemd-logind
+	
+}
+
+apps_install()
 {
 	
 	SCRIPT_OPT="$1"
@@ -77,35 +117,49 @@ server_install()
 server_conf()
 {
 	
+	echo "Configure Sudo:"
+	
 	SCRIPT_OPT="$1"
-	
 	DIR_SCRIPT="util/${SCRIPT_OPT}"
-	
 	bash "${DIR_SCRIPT}/sudo.sh" ${SCRIPT_OPT}
+	
+	echo "Configure Hosts:"
+	file_update "hosts" "etc/"
+	
+	echo "Configure Aliases:"
+	su lls -c "bash util/user/aliases.sh all"
+	
+	### SSH_KEY ###
 	
 }
 
 case "$1" in
-  	install)
-		server_install "install"
+  	net)
+		net_conf
+		;;
+  	ssh)
+		ssh_install
+		;;
+  	grub)
+		grub_conf
 		;;
   	conf)
 		server_conf "conf"
 		;;
-  	user)
-		user_conf
+  	install)
+		apps_install "install"
 		;;
   	bin)
 		list_dir "usr/bin"
 		;;
   	all)
-		server_install "install"
-		server_conf "conf"
-		list_dir "usr/bin"
-		user_conf
+		net_conf
+		ssh_install
+		grub_conf
+		server_conf
 		;;
 	*)
-		echo "Use: $0 {all|install|conf|user|bin}"
+		echo "Use: $0 {all|net|ssh|grub|conf}"
 		exit 1
 		;;
 esac

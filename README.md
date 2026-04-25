@@ -15,15 +15,31 @@
 ```bash
 git clone https://github.com/lls-ws/desktop.git && cd desktop
 ```
+
+### For Lubuntu Desktop
 ```bash
 sudo bash bin/lubuntu_config.sh all
+```
+
+### For Ubuntu Server
+
+```bash
+sudo bash bin/dell_config.sh net
+```
+```bash
+sudo bash bin/dell_config.sh ssh
+```
+```bash
+sudo bash bin/dell_config.sh grub
+```
+```bash
+sudo bash bin/dell_config.sh conf
 ```
 
 ### To Backup User Preferences
 
 ```bash
 backup_user
-
 ```
 
 ## License
