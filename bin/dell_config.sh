@@ -127,10 +127,13 @@ server_conf()
 	echo -e "\nConfigure Hosts:"
 	file_update "hosts" "etc"
 	
+	ping -c 3 dell.lls.net.br
+	
 	echo -e "\nConfigure Aliases:"
 	su lls -c "bash util/user/aliases.sh all"
 	
 	### SSH_KEY ###
+	
 	
 }
 
