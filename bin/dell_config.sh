@@ -119,10 +119,7 @@ server_conf()
 {
 	
 	echo "Configure Sudo:"
-	
-	SCRIPT_OPT="$1"
-	DIR_SCRIPT="util/${SCRIPT_OPT}"
-	bash "${DIR_SCRIPT}/sudo.sh" ${SCRIPT_OPT}
+	sudo bash util/conf/sudo.sh conf
 	
 	echo -e "\nConfigure Hosts:"
 	sudo bash util/conf/hosts.sh conf
@@ -130,8 +127,43 @@ server_conf()
 	echo -e "\nConfigure Aliases:"
 	su lls -c "bash util/user/aliases.sh all"
 	
-	### SSH_KEY ###
+}
 	
+check_cloud()
+{
+	
+	DIR_LLS="/home/lls"
+	DIR_CLOUD="${DIR_LLS}/cloud"
+	
+	if [ ! -d ${DIR_CLOUD} ]; then
+	
+		(cd ${DIR_LLS}; git clone https://github.com/lls-ws/cloud.git)
+	
+	fi
+	
+	cd ${DIR_CLOUD}
+	
+}
+
+ssh_local()
+{
+	
+	check_cloud
+	
+	su lls -c "bash bin/user_conf.sh ssh-local dell dell lls"
+	
+	cd ${DIR_LLS}/desktop
+	
+}
+
+ssh_remote()
+{
+	
+	check_cloud
+	
+	su lls -c "bash bin/user_conf.sh ssh-remote lls"
+	
+	cd ${DIR_LLS}/desktop
 	
 }
 
@@ -146,7 +178,13 @@ case "$1" in
 		grub_conf
 		;;
   	conf)
-		server_conf "conf"
+		server_conf
+		;;
+	key)
+		ssh_local
+		;;
+	remote)
+		ssh_remote
 		;;
   	install)
 		apps_install "install"
@@ -161,7 +199,7 @@ case "$1" in
 		server_conf
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|conf}"
+		echo "Use: $0 {all|net|ssh|grub|conf|key|remote}"
 		exit 1
 		;;
 esac

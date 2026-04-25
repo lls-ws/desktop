@@ -35,6 +35,14 @@ sudo bash bin/dell_config.sh grub
 ```bash
 sudo bash bin/dell_config.sh conf
 ```
+#### On Local PC
+```bash
+sudo bash bin/dell_config.sh key
+```
+### On Ubuntu Server
+```bash
+sudo bash bin/dell_config.sh remote
+```
 
 ### To Backup User Preferences
 
