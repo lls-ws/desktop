@@ -23,19 +23,19 @@ dlna_conf()
 	
 	dlna_version
 	
-	DIR_ETC="/etc"
+	DIR_ETC="etc"
 	
 	echo "Configure ${NAME_APP}..."
 	
-	update_file "${FILE_CONF}" "${DIR_ETC}" "${DIR_ETC}"
+	update_file "${FILE_CONF}" "/${DIR_ETC}" "${DIR_ETC}"
 
 	shared_dir
 	
-	cat ${DIR_ETC}/${FILE_CONF}
+	cat /${DIR_ETC}/${FILE_CONF}
 	
-	echo 'DAEMON_OPTS="-R"' > ${DIR_ETC}/default/${NAME_APP}
+	echo 'DAEMON_OPTS="-R"' > /${DIR_ETC}/default/${NAME_APP}
 	
-	cat ${DIR_ETC}/default/${NAME_APP}
+	cat /${DIR_ETC}/default/${NAME_APP}
 	
 	chown -Rv ${NAME_APP}:${NAME_APP} /var/cache/${NAME_APP}
 	
