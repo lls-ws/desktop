@@ -27,12 +27,12 @@ transmission_conf()
 	transmission_copy "settings.json" "etc/${NAME_APP}"
 	
 	FILE_APPARMOR="transmission"
-	DIR_APPARMOR="etc/apparmor.d"
+	DIR_APPARMOR="etc/apparmor.d/local"
 	
 	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
 	
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
-	apparmor_parser -r /${DIR_APPARMOR}
+	systemctl reload apparmor
 	
 	transmission_dir
 	

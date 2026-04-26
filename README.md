@@ -21,7 +21,7 @@ git clone https://github.com/lls-ws/desktop.git && cd desktop
 sudo bash bin/lubuntu_config.sh all
 ```
 
-### For Ubuntu Server
+### For Ubuntu Server 26.04 LTS
 
 ```bash
 sudo bash bin/dell_config.sh net

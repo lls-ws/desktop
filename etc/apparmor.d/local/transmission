@@ -1,0 +1,2 @@
+owner /home/torrents/ rw,
+owner /home/torrents/** rw,
