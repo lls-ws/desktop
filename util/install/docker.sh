@@ -38,7 +38,8 @@ docker_install()
 	  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 	
 	# Instalar o Docker Engine
-	sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker.io
+	sudo apt update
+	sudo apt-get -y install docker.io docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 	
 	# Verificar a instalação
 	sudo docker run hello-world
