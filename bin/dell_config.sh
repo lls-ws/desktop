@@ -167,7 +167,7 @@ app_install()
 	
 	DIR_SCRIPT="util/${SCRIPT_OPT}"
 	
-	sudo bash "${DIR_SCRIPT}/${APP_NAME}.sh install"
+	sudo bash "${DIR_SCRIPT}/${APP_NAME}.sh" ${SCRIPT_OPT}
 	
 	df -h /
 	
