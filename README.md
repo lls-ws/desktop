@@ -43,6 +43,9 @@ sudo bash bin/dell_config.sh key
 ```bash
 sudo bash bin/dell_config.sh remote
 ```
+```bash
+sudo bash bin/dell_config.sh transmission
+```
 
 ### To Backup User Preferences
 
