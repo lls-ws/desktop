@@ -38,8 +38,7 @@ docker_install()
 	  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 	
 	# Instalar o Docker Engine
-	sudo apt-get update
-	sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+	sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker.io
 	
 	# Verificar a instalação
 	sudo docker run hello-world
@@ -74,7 +73,7 @@ jellyfin_conf()
 	# Inicie o servidor
 	(cd ${DIR_ETC}; sudo docker compose up -d)
 	
-	sudo chown -R $USER:$USER "${DIR_ETC}"
+	sudo chown -R ${USER}:${USER} "${DIR_ETC}"
 	
 }
 
@@ -122,14 +121,11 @@ case "$1" in
 	edit)
 		docker_edit
 		;;
-	nfs)
-		nfs_conf
-		;;
 	tizen)
 		tizen_install
 		;;
 	*)
-		echo "Use: $0 {install|version|conf|tizen|edit|nfs}"
+		echo "Use: $0 {install|version|conf|tizen|edit}"
 		exit 1
 		;;
 esac

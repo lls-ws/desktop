@@ -56,6 +56,10 @@ sudo bash util/install/nfs.sh install
 ```bash
 sudo bash util/install/nfs.sh local
 ```
+#### On Ubuntu Server
+```bash
+sudo bash util/install/docker.sh install
+```
 
 ### To Backup User Preferences
 

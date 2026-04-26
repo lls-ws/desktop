@@ -211,6 +211,7 @@ shared_dir()
 	fi
 	
 	DIRS_SET=(
+		"imagens"
 		"filmes"
 		"series"
 		"videos"

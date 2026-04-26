@@ -85,7 +85,9 @@ nfs_local()
 	
 	sudo apt -y install nfs-common
 	
-	sudo mount -t nfs 192.168.0.2:${DIR_SHARED} ${DIR_SHARED}
+	showmount -e dell
+	
+	sudo mount -t nfs dell:${DIR_SHARED} ${DIR_SHARED}
 	
 	ls -alh ${DIR_SHARED}
 	
