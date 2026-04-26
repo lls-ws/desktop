@@ -85,7 +85,7 @@ nfs_local()
 	
 	ls -alh ${DIR_SHARED}
 	
-	sudo apt install nfs-common
+	sudo apt -y install nfs-common
 	
 	sudo mount -t nfs 192.168.0.2:${DIR_SHARED} ${DIR_SHARED}
 	
