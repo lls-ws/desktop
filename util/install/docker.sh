@@ -38,7 +38,7 @@ jellyfin_conf()
 	
 	FILE_SET="${NAME_APP}-compose.yml"
 	
-	DIR_ETC="/home/$USER/jellyfin"
+	DIR_ETC="/home/$USER/.jellyfin"
 	
 	echo "Configure ${NAME_APP}..."
 	
