@@ -72,6 +72,23 @@ nfs_uninstall()
 	
 }
 
+nfs_local()
+{
+	
+	DIR_SHARED="/home/shared"
+	
+	sudo mkdir -p ${DIR_SHARED}
+	
+	sudo chown nobody:nogroup ${DIR_SHARED}
+	
+	sudo chmod 777 ${DIR_SHARED}
+	
+	ls -alh ${DIR_SHARED}
+	
+	sudo mount -t nfs 192.168.0.2:${DIR_SHARED} ${DIR_SHARED}
+	
+}
+
 NAME_APP="nfs-server"
 FILE_CONF="exports"
 
@@ -88,11 +105,14 @@ case "$1" in
 	edit)
 		nfs_edit
 		;;
+	local)
+		nfs_local
+		;;
 	uninstall)
 		nfs_uninstall
 		;;
 	*)
-		echo "Use: $0 {install|version|conf|uninstall|edit}"
+		echo "Use: $0 {install|version|conf|uninstall|edit|local}"
 		exit 1
 		;;
 esac
