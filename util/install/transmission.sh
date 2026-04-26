@@ -75,8 +75,6 @@ transmission_copy()
 transmission_dir()
 {	
 	
-	DIR_TRANSMISSION="/home/torrents"
-	
 	if [ ! -d "${DIR_TRANSMISSION}" ]; then
 	
 		echo "Creating Directory ${DIR_TRANSMISSION}"
@@ -130,6 +128,8 @@ transmission_uninstall()
 }
 
 NAME_APP="transmission-daemon"
+
+DIR_TRANSMISSION="/home/torrents"
 
 case "$1" in
 	install)

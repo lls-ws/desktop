@@ -102,19 +102,6 @@ logind_conf()
 	
 }
 
-apps_install()
-{
-	
-	SCRIPT_OPT="$1"
-	
-	DIR_SCRIPT="util/${SCRIPT_OPT}"
-	
-	bash "${DIR_SCRIPT}/transmission.sh" ${SCRIPT_OPT}
-	#bash "${DIR_SCRIPT}/dlna.sh" ${SCRIPT_OPT}
-	#bash "${DIR_SCRIPT}/docker.sh" ${SCRIPT_OPT}
-	
-}
-
 server_conf()
 {
 	
@@ -168,6 +155,19 @@ ssh_remote()
 	su lls -c "bash bin/user_conf.sh aliases"
 	
 	cd ${DIR_LLS}/desktop
+	
+}
+
+apps_install()
+{
+	
+	SCRIPT_OPT="$1"
+	
+	DIR_SCRIPT="util/${SCRIPT_OPT}"
+	
+	bash "${DIR_SCRIPT}/transmission.sh" ${SCRIPT_OPT}
+	#bash "${DIR_SCRIPT}/dlna.sh" ${SCRIPT_OPT}
+	#bash "${DIR_SCRIPT}/docker.sh" ${SCRIPT_OPT}
 	
 }
 
