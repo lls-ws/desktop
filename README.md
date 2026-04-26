@@ -50,15 +50,14 @@ sudo bash util/install/transmission.sh install
 sudo bash util/install/dlna.sh install
 ```
 ```bash
+sudo bash util/install/docker.sh install
+```
+```bash
 sudo bash util/install/nfs.sh install
 ```
 #### On Local PC
 ```bash
 sudo bash util/install/nfs.sh local
-```
-#### On Ubuntu Server
-```bash
-sudo bash util/install/docker.sh install
 ```
 
 ### To Backup User Preferences
