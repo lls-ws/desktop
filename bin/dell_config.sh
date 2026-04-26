@@ -49,6 +49,8 @@ net_conf()
 	
 	file_update "00-installer-config.yaml" "etc/netplan"
 	
+	sudo chmod 600 /etc/netplan/00-installer-config.yaml
+	
 	echo "Aplique as mudanças:"
 	sudo netplan apply
 	
