@@ -39,9 +39,9 @@ nfs_conf()
 	
 	exportfs -rav
 	
-	service ${NAME_APP} stop
-	
 	systemctl enable ${NAME_APP}.service
+	
+	sudo systemctl restart nfs-kernel-server
 
 }
 
