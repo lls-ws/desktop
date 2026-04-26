@@ -165,9 +165,12 @@ apps_install()
 	
 	DIR_SCRIPT="util/${SCRIPT_OPT}"
 	
-	bash "${DIR_SCRIPT}/transmission.sh" ${SCRIPT_OPT}
+	sudo bash "${DIR_SCRIPT}/transmission.sh" ${SCRIPT_OPT}
+	
 	#bash "${DIR_SCRIPT}/dlna.sh" ${SCRIPT_OPT}
 	#bash "${DIR_SCRIPT}/docker.sh" ${SCRIPT_OPT}
+	
+	df -h / /home
 	
 }
 
