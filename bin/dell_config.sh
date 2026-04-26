@@ -44,12 +44,12 @@ net_conf()
 	echo "Subir a interface:"
 	sudo ip link set ${INTERFACE} up
 	
-	echo "Definir o IP:"
-	sudo ip addr add 192.168.0.2/24 dev ${INTERFACE}
+	FILE_YAML="01-netcfg.yaml"
+	DIR_NETPLAN="etc/netplan"
 	
-	file_update "00-installer-config.yaml" "etc/netplan"
+	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
 	
-	sudo chmod 600 /etc/netplan/00-installer-config.yaml
+	sudo chmod 600 /${DIR_NETPLAN}/${FILE_YAML}
 	
 	echo "Aplique as mudanças:"
 	sudo netplan apply
