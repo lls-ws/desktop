@@ -128,6 +128,13 @@ transmission_uninstall()
 	
 }
 
+transmission_log()
+{
+
+	sudo journalctl -u transmission-daemon ${NAME_APP}
+	
+}
+
 NAME_APP="transmission-daemon"
 
 DIR_TRANSMISSION="/home/torrents"
@@ -142,6 +149,9 @@ case "$1" in
 	conf)
 		transmission_conf
 		;;
+	log)
+		transmission_log
+		;;
 	uninstall)
 		transmission_uninstall
 		;;
@@ -151,7 +161,7 @@ case "$1" in
   		transmission_conf
   		;;
 	*)
-		echo "Use: $0 {all|install|version|conf|uninstall}"
+		echo "Use: $0 {all|install|version|conf|log|uninstall}"
 		exit 1
 		;;
 esac
