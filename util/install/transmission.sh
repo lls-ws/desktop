@@ -131,7 +131,7 @@ transmission_uninstall()
 transmission_log()
 {
 
-	sudo journalctl -u transmission-daemon ${NAME_APP}
+	sudo journalctl -u ${NAME_APP}
 	
 }
 
