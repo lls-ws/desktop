@@ -158,17 +158,16 @@ ssh_remote()
 	
 }
 
-install_transmission()
+app_install()
 {
 	
 	SCRIPT_OPT="$1"
 	
+	APP_NAME="$2"
+	
 	DIR_SCRIPT="util/${SCRIPT_OPT}"
 	
-	sudo bash "${DIR_SCRIPT}/transmission.sh install"
-	
-	#bash "${DIR_SCRIPT}/dlna.sh" ${SCRIPT_OPT}
-	#bash "${DIR_SCRIPT}/docker.sh" ${SCRIPT_OPT}
+	sudo bash "${DIR_SCRIPT}/${APP_NAME}.sh install"
 	
 	df -h /
 	
@@ -194,7 +193,13 @@ case "$1" in
 		ssh_remote
 		;;
   	transmission)
-		install_transmission
+		app_install "install" "transmission"
+		;;
+  	dlna)
+		app_install "install" "dlna"
+		;;
+  	docker)
+		app_install "install" "docker"
 		;;
   	bin)
 		list_dir "usr/bin"
@@ -206,7 +211,7 @@ case "$1" in
 		server_conf
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|transmission}"
+		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|transmission|dlna|docker}"
 		exit 1
 		;;
 esac
