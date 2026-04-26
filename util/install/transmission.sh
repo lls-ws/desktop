@@ -36,8 +36,8 @@ transmission_conf()
 	
 	transmission_dir
 	
-	echo "Disable startup service ${NAME_APP}"
-	systemctl disable ${NAME_APP}.service
+	echo "Enable startup service ${NAME_APP}"
+	systemctl enable ${NAME_APP}.service
 	
 	echo "Start ${NAME_APP} service..."
 	service ${NAME_APP} start
@@ -99,13 +99,13 @@ transmission_dir()
 		
 	fi
 	
-	echo "Fixing bug: Type=notify"
+	#echo "Fixing bug: Type=notify"
 	
-	FILE_SERVICE="/etc/systemd/system/${NAME_APP}.service"
+	#FILE_SERVICE="/etc/systemd/system/${NAME_APP}.service"
 	
-	sed -i "s/Type=notify/Type=simple/g" ${FILE_SERVICE}
+	#sed -i "s/Type=notify/Type=simple/g" ${FILE_SERVICE}
 	
-	cat ${FILE_SERVICE}
+	#cat ${FILE_SERVICE}
 	
 }
 
