@@ -4,17 +4,14 @@ network:
   ethernets:
     enp8s0:
       dhcp4: no
-      dhcp6: no
+      dhcp6: yes
+      accept-ra: yes
       addresses:
-        - 192.168.0.2/24             # Seu IPv4 estático
-        - "2001:db8:1::10/64"        # Seu IPv6 estático (substitua pelo seu)
-      nameservers:
-        addresses:
-          - 8.8.8.8                  # DNS IPv4
-          - 1.1.1.1
-          - "2001:4860:4860::8888"   # DNS IPv6
+        - 192.168.0.2/24
       routes:
         - to: default
-          via: 192.168.0.1           # Gateway IPv4 (ajuste se necessário)
-        - to: default
-          via: "2001:db8:1::1"       # Gateway IPv6 (ajuste se necessário)
+          via: 192.168.0.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 1.1.1.1
