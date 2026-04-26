@@ -59,9 +59,11 @@ net_conf()
 	resolvectl status
 	
 	echo "Install Ping:"
-	sudo apt -y install inetutils-ping net-tools
+	sudo apt -y install inetutils-ping
 	
 	ping -c 3 google.com
+	
+	ping6 -c 3 google.com
 	
 }
 
