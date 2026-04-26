@@ -9,15 +9,6 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
-dlna_edit()
-{
-	
-	sudo nano /etc/minidlna.conf
-	
-	dlna_conf
-	
-}
-
 dlna_install()
 {
 	
@@ -32,21 +23,19 @@ dlna_conf()
 	
 	dlna_version
 	
-	FILE_SET="${NAME_APP}.conf"
-	
-	DIR_ETC="etc"
+	DIR_ETC="/etc"
 	
 	echo "Configure ${NAME_APP}..."
 	
-	update_file "${FILE_SET}" "/${DIR_ETC}" "${DIR_ETC}"
+	update_file "${FILE_CONF}" "${DIR_ETC}" "${DIR_ETC}"
 
 	shared_dir
 	
-	cat /${DIR_ETC}/${FILE_SET}
+	cat ${DIR_ETC}/${FILE_CONF}
 	
-	echo 'DAEMON_OPTS="-R"' > /${DIR_ETC}/default/${NAME_APP}
+	echo 'DAEMON_OPTS="-R"' > ${DIR_ETC}/default/${NAME_APP}
 	
-	cat /${DIR_ETC}/default/${NAME_APP}
+	cat ${DIR_ETC}/default/${NAME_APP}
 	
 	chown -Rv ${NAME_APP}:${NAME_APP} /var/cache/${NAME_APP}
 	
@@ -57,6 +46,15 @@ dlna_conf()
 	service ${NAME_APP} force-reload
 	
 	service ${NAME_APP} status
+	
+}
+
+dlna_edit()
+{
+	
+	sudo nano ${FILE_CONF}
+	
+	dlna_conf
 	
 }
 
@@ -79,6 +77,7 @@ dlna_uninstall()
 }
 
 NAME_APP="minidlna"
+FILE_CONF="${NAME_APP}.conf"
 
 case "$1" in
 	install)
