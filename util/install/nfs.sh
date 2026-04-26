@@ -9,6 +9,39 @@ PATH=.:$(dirname $0):$PATH
 
 check_root "$1"
 
+nfs_conf()
+{
+
+	apt -y install nfs-kernel-server nfs-common
+	
+	APP_NAME="nfs-server"
+	
+	FILE_SET="exports"
+	
+	DIR_ETC="/etc"
+	
+	echo "Configure ${APP_NAME}..."
+	
+	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
+
+	sudo chmod -v 644 ${DIR_ETC}/${FILE_SET}
+
+	systemctl is-enabled ${APP_NAME}
+
+	systemctl status ${APP_NAME}
+
+	ls -alh ${DIR_ETC}/${FILE_SET}
+
+	cat ${DIR_ETC}/${FILE_SET}
+	
+	exportfs -rav
+	
+	service ${APP_NAME} stop
+	
+	systemctl disable ${APP_NAME}.service
+
+}
+
 dlna_edit()
 {
 	
