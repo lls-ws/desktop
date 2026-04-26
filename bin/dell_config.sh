@@ -165,7 +165,7 @@ apps_install()
 	
 	DIR_SCRIPT="util/${SCRIPT_OPT}"
 	
-	sudo bash "${DIR_SCRIPT}/transmission.sh" ${SCRIPT_OPT}
+	sudo bash "${DIR_SCRIPT}/transmission.sh install"
 	
 	#bash "${DIR_SCRIPT}/dlna.sh" ${SCRIPT_OPT}
 	#bash "${DIR_SCRIPT}/docker.sh" ${SCRIPT_OPT}
@@ -193,8 +193,8 @@ case "$1" in
 	remote)
 		ssh_remote
 		;;
-  	install)
-		apps_install "install"
+  	apps)
+		apps_install
 		;;
   	bin)
 		list_dir "usr/bin"
@@ -206,7 +206,7 @@ case "$1" in
 		server_conf
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|conf|key|remote}"
+		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|apps}"
 		exit 1
 		;;
 esac
