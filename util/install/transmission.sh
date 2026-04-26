@@ -84,6 +84,7 @@ transmission_dir()
 	
 	echo "Changing Directory ${DIR_TRANSMISSION} owner to ${USER_TRANSMISISON}"
 	chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_TRANSMISSION}
+	chmod -Rv 775 ${DIR_TRANSMISSION}
 	
 	USER=`git config user.name`
 	
