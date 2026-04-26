@@ -169,8 +169,6 @@ app_install()
 	
 	sudo bash "${DIR_SCRIPT}/${APP_NAME}.sh" ${SCRIPT_OPT}
 	
-	df -h /
-	
 }
 
 case "$1" in

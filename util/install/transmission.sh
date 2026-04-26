@@ -100,14 +100,6 @@ transmission_dir()
 		
 	fi
 	
-	#echo "Fixing bug: Type=notify"
-	
-	#FILE_SERVICE="/etc/systemd/system/${NAME_APP}.service"
-	
-	#sed -i "s/Type=notify/Type=simple/g" ${FILE_SERVICE}
-	
-	#cat ${FILE_SERVICE}
-	
 }
 
 transmission_version()
