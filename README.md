@@ -49,6 +49,9 @@ sudo bash bin/dell_config.sh transmission
 ```bash
 sudo bash bin/dell_config.sh dlna
 ```
+```bash
+sudo bash bin/dell_config.sh nfs
+```
 
 ### To Backup User Preferences
 

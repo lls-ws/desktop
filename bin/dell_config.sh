@@ -200,6 +200,9 @@ case "$1" in
   	dlna)
 		app_install "install" "dlna"
 		;;
+  	nfs)
+		app_install "install" "nfs"
+		;;
   	docker)
 		app_install "install" "docker"
 		;;
@@ -213,7 +216,7 @@ case "$1" in
 		server_conf
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|transmission|dlna|docker}"
+		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|transmission|dlna|nfs|docker}"
 		exit 1
 		;;
 esac
