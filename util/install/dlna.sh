@@ -41,7 +41,7 @@ dlna_conf()
 	
 	chmod -Rv 775 /var/cache/${NAME_APP}
 	
-	systemctl disable ${NAME_APP}.service
+	systemctl enable ${NAME_APP}.service
 	
 	service ${NAME_APP} force-reload
 	

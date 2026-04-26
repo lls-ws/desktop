@@ -130,47 +130,6 @@ install_deb()
 	
 }
 
-shared_dir()
-{
-	
-	DIR_SHD="/mnt/shared"
-	
-	if [ ! -d ${DIR_SHD} ]; then
-	
-		mkdir -pv ${DIR_SHD}
-		
-	fi
-	
-	DIRS_SET=(
-		"filmes"
-		"series"
-		"videos"
-		"musica"
-		"iso"
-		"log"
-	)
-	
-	for DIR_SET in "${DIRS_SET[@]}"
-	do
-		
-		DIR_SET=${DIR_SHD}/${DIR_SET}
-		
-		if [ ! -d ${DIR_SET} ]; then
-	
-			mkdir -v ${DIR_SET}
-			
-		fi
-			
-	done
-	
-	chown -R ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
-	
-	chmod -R 777 ${DIR_SHD}
-	
-	ls -al ${DIR_SHD}
-	
-}
-
 run_scripts()
 {
 
@@ -237,6 +196,47 @@ apps_array()
 		"kvantum"
 		"autostart"
 	)
+	
+}
+
+shared_dir()
+{
+	
+	DIR_SHD="/home/shared"
+	
+	if [ ! -d ${DIR_SHD} ]; then
+	
+		mkdir -pv ${DIR_SHD}
+		
+	fi
+	
+	DIRS_SET=(
+		"filmes"
+		"series"
+		"videos"
+		"musica"
+		"iso"
+		"log"
+	)
+	
+	for DIR_SET in "${DIRS_SET[@]}"
+	do
+		
+		DIR_SET=${DIR_SHD}/${DIR_SET}
+		
+		if [ ! -d ${DIR_SET} ]; then
+	
+			mkdir -v ${DIR_SET}
+			
+		fi
+			
+	done
+	
+	chown -R ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHD}
+	
+	chmod -R 777 ${DIR_SHD}
+	
+	ls -al ${DIR_SHD}
 	
 }
 
