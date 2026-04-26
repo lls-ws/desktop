@@ -44,13 +44,17 @@ sudo bash bin/dell_config.sh key
 sudo bash bin/dell_config.sh remote
 ```
 ```bash
-sudo bash bin/dell_config.sh transmission
+sudo bash util/install/transmission.sh install
 ```
 ```bash
-sudo bash bin/dell_config.sh dlna
+sudo bash util/install/dlna.sh install
 ```
 ```bash
-sudo bash bin/dell_config.sh nfs
+sudo bash util/install/nfs.sh install
+```
+#### On Local PC
+```bash
+sudo bash util/install/nfs.sh local
 ```
 
 ### To Backup User Preferences

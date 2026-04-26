@@ -162,19 +162,6 @@ ssh_remote()
 	
 }
 
-app_install()
-{
-	
-	SCRIPT_OPT="$1"
-	
-	APP_NAME="$2"
-	
-	DIR_SCRIPT="util/${SCRIPT_OPT}"
-	
-	sudo bash "${DIR_SCRIPT}/${APP_NAME}.sh" ${SCRIPT_OPT}
-	
-}
-
 case "$1" in
   	net)
 		net_conf
@@ -193,18 +180,6 @@ case "$1" in
 		;;
 	remote)
 		ssh_remote
-		;;
-  	transmission)
-		app_install "install" "transmission"
-		;;
-  	dlna)
-		app_install "install" "dlna"
-		;;
-  	nfs)
-		app_install "install" "nfs"
-		;;
-  	docker)
-		app_install "install" "docker"
 		;;
   	bin)
 		list_dir "usr/bin"
