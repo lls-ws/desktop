@@ -193,6 +193,7 @@ case "$1" in
 		sudo bash util/install/dlna.sh install
 		sudo bash util/install/docker.sh install
 		sudo bash util/install/nfs.sh install
+		file_update "video_copy.sh" "usr/bin"
 		;;
 	*)
 		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|script}"
