@@ -128,7 +128,7 @@ iso_copy()
 
 DIR_VIDEO="/home/torrents"
 
-DIR_SHARE="/mnt/shared"
+DIR_SHARE="/home/shared"
 
 DIR_MOVIES="${DIR_SHARE}/filmes"
 
