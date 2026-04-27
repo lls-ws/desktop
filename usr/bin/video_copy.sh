@@ -31,7 +31,7 @@ video_copy()
 	
 	if [ -f ${VIDEO_LOG} ]; then
 	
-		chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${VIDEO_LOG}
+		sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${VIDEO_LOG}
 	
 	fi
 	
