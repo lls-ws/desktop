@@ -80,7 +80,7 @@ video_log()
 	
 	sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
-	cat ${FILE_LOG}
+	cat -n ${FILE_LOG}
 	
 }
 
