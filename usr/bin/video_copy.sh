@@ -41,7 +41,7 @@ video_copy()
 	
 	while read FILE; do
 	  
-	  mv -fv "${FILE}" ${DIR_MOVIES} >> ${FILE_LOG}
+	  sudo mv -fv "${FILE}" ${DIR_MOVIES} >> ${FILE_LOG}
 	  
 	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
@@ -78,7 +78,7 @@ video_log()
 	
 	find ${DIR_MOVIES} ${VIDEO_EXT} | awk -F/ '{print $NF}' | sort > ${FILE_LOG}
 	
-	chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
+	sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
 	cat ${FILE_LOG}
 	
@@ -93,7 +93,7 @@ audio_copy()
 	
 	while read FILE; do
 	  
-	  mv -fv "${FILE}" ${DIR_MUSICA} >> ${FILE_LOG}
+	  sudo mv -fv "${FILE}" ${DIR_MUSICA} >> ${FILE_LOG}
 	  
 	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
@@ -114,7 +114,7 @@ iso_copy()
 	
 	while read FILE; do
 	  
-	  mv -fv "${FILE}" ${DIR_ISO} >> ${FILE_LOG}
+	  sudo mv -fv "${FILE}" ${DIR_ISO} >> ${FILE_LOG}
 	  
 	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
