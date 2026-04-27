@@ -55,7 +55,7 @@ video_copy()
 	
 	iso_copy
 	
-	rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
+	sudo rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
 	
 	ls ${DIR_VIDEO} >> ${FILE_LOG}
 	
@@ -72,7 +72,7 @@ video_log()
 	
 	if [ -f ${FILE_LOG} ]; then
 	
-		rm -f ${FILE_LOG}
+		sudo rm -f ${FILE_LOG}
 	
 	fi
 	
