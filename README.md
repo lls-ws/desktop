@@ -55,6 +55,9 @@ sudo bash util/install/docker.sh install
 ```bash
 sudo bash util/install/nfs.sh install
 ```
+```bash
+sudo bash bin/dell_config.sh script
+```
 #### On Local PC
 ```bash
 sudo bash util/install/nfs.sh local
