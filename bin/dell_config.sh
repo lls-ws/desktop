@@ -181,17 +181,21 @@ case "$1" in
 	remote)
 		ssh_remote
 		;;
-  	bin)
-		list_dir "usr/bin"
+  	script)
+		file_update "video_copy.sh" "usr/bin"
 		;;
   	all)
 		net_conf
 		ssh_install
 		grub_conf
 		server_conf
+		sudo bash util/install/transmission.sh install
+		sudo bash util/install/dlna.sh install
+		sudo bash util/install/docker.sh install
+		sudo bash util/install/nfs.sh install
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|transmission|dlna|nfs|docker}"
+		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|script}"
 		exit 1
 		;;
 esac
