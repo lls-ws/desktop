@@ -43,11 +43,11 @@ video_copy()
 	  
 	  sudo mv -fv "${FILE}" ${DIR_MOVIES} >> ${FILE_LOG}
 	  
-	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  sudo echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
 	  ((COUNT++))
 	  
-	  echo -e "${COUNT}" >> ${FILE_LOG}
+	  sudo echo -e "${COUNT}" >> ${FILE_LOG}
 	  
 	done
 	
@@ -95,11 +95,11 @@ audio_copy()
 	  
 	  sudo mv -fv "${FILE}" ${DIR_MUSICA} >> ${FILE_LOG}
 	  
-	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  sudo echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
 	  ((COUNT++))
 	  
-	  echo -e "${COUNT}" >> ${FILE_LOG}
+	  sudo echo -e "${COUNT}" >> ${FILE_LOG}
 	  
 	done
 	
@@ -116,11 +116,11 @@ iso_copy()
 	  
 	  sudo mv -fv "${FILE}" ${DIR_ISO} >> ${FILE_LOG}
 	  
-	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  sudo echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
 	  ((COUNT++))
 	  
-	  echo -e "${COUNT}" >> ${FILE_LOG}
+	  sudo echo -e "${COUNT}" >> ${FILE_LOG}
 	  
 	done
 	
