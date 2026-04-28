@@ -23,6 +23,9 @@ transmission_install()
 apparmor_conf()
 {
 	
+	echo "Stop ${NAME_APP} service..."
+	service ${NAME_APP} stop
+	
 	FILE_APPARMOR="transmission"
 	DIR_APPARMOR="etc/apparmor.d/local"
 	
@@ -39,6 +42,9 @@ apparmor_conf()
 	#sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
 	#sudo systemctl reload apparmor
+	
+	#echo "Stop ${NAME_APP} service..."
+	#service ${NAME_APP} start
 	
 }
 
