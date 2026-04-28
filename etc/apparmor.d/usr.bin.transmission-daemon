@@ -1,1 +1,8 @@
-/var/lib/transmission-daemon/scripts/* rx,
+#include <tunables/global>
+
+/usr/bin/transmission-daemon {
+  #include <abstractions/base>
+
+  /var/lib/transmission-daemon/scripts/* rx,
+  /etc/transmission-daemon/* r,
+}
