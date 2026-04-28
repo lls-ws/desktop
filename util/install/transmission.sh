@@ -34,7 +34,10 @@ apparmor_conf()
 	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
 	
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
+	sudo apparmor_parser -vn /${DIR_APPARMOR}/${FILE_APPARMOR}
+	
 	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
+	
 	sudo systemctl reload apparmor
 	
 }
