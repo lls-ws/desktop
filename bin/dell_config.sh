@@ -152,7 +152,9 @@ ssh_remote()
 	
 	check_cloud
 	
-	sudo bin/git_conf.sh name lls
+	sudo bin/git_conf.sh name "lls"
+	sudo bin/git_conf.sh email "lls.home.office@gmail.com"
+	sudo bin/git_conf.sh password "123456"
 	
 	su lls -c "bash bin/user_conf.sh ssh-remote lls lls lls"
 	

@@ -35,6 +35,9 @@ sudo bash bin/dell_config.sh grub
 ```bash
 sudo bash bin/dell_config.sh conf
 ```
+```bash
+sudo bash bin/dell_config.sh profile
+```
 #### On Local PC
 ```bash
 sudo bash bin/dell_config.sh key
