@@ -41,7 +41,7 @@ apparmor_conf()
 	
 	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
-	#sudo systemctl reload apparmor
+	sudo systemctl reload apparmor
 	
 	#echo "Stop ${NAME_APP} service..."
 	#service ${NAME_APP} start
