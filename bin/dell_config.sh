@@ -162,6 +162,18 @@ ssh_remote()
 	
 }
 
+set_profile()
+{
+	
+	check_cloud
+	
+	echo "Configure Locale:"
+	sudo bash bin/ubuntu_conf.sh profile
+	
+	cd ${DIR_LLS}/desktop
+	
+}
+
 case "$1" in
   	net)
 		net_conf
@@ -181,6 +193,9 @@ case "$1" in
 	remote)
 		ssh_remote
 		;;
+  	profile)
+		set_profile
+		;;
   	script)
 		file_update "video_copy.sh" "usr/bin"
 		;;
@@ -196,7 +211,7 @@ case "$1" in
 		file_update "video_copy.sh" "usr/bin"
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|script}"
+		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|script|profile}"
 		exit 1
 		;;
 esac
