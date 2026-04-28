@@ -136,7 +136,7 @@ dir_copy()
 	# Transmission passes environment variables
 	if [ "$TR_TORRENT_DIR" != "" ] && [ "$TR_TORRENT_NAME" != "" ]; then
 		echo "Processing $TR_TORRENT_NAME..." >> /var/lib/transmission-daemon/scripts/video_copy.log
-		cp -r "$TR_TORRENT_DIR/$TR_TORRENT_NAME" "$DESTINATION"
+		cp -rv "$TR_TORRENT_DIR/$TR_TORRENT_NAME" "$DESTINATION"
 	fi
 	
 }
@@ -179,6 +179,6 @@ case "$1" in
 		video_log
 		;;
 	*)
-		dir_copy
+		video_copy
 		;;
 esac
