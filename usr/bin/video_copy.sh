@@ -4,8 +4,6 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-echo "Torrent $TR_TORRENT_NAME finalizado em $(date)" >> /tmp/transmission_script.log
-
 video_total()
 {
 	
@@ -151,6 +149,8 @@ FILE_LOG="${DIR_LOG}/copy-`date +"%Y_%m_%d-%H_%M_%S"`.log"
 VIDEO_EXT="-iname *.wmv -o -iname *.mp4 -o -iname *.avi -o -iname *.mkv"
 
 USER_TRANSMISISON="debian-transmission"
+
+echo "Torrent $TR_TORRENT_NAME finalizado em $(date)" >> /${DIR_LOG}/transmission_script.log
 
 case "$1" in
 	show)
