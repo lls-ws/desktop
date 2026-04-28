@@ -184,7 +184,7 @@ script_conf()
 	
 	file_update "${FILE_SH}" "${DIR_SH}"
 	
-	sudo chmod +xv /${DIR_SH}/${FILE_SH}
+	sudo chmod +x /${DIR_SH}/${FILE_SH}
 	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_SH}
 	
 	ls -alh /${DIR_SH}/${FILE_SH}

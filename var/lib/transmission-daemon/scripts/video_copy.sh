@@ -135,7 +135,7 @@ dir_copy()
 
 	# Transmission passes environment variables
 	if [ "$TR_TORRENT_DIR" != "" ] && [ "$TR_TORRENT_NAME" != "" ]; then
-		echo "Processing $TR_TORRENT_NAME..." >> /var/lib/transmission-daemon/video_copy.log
+		echo "Processing $TR_TORRENT_NAME..." >> /var/lib/transmission-daemon/scripts/video_copy.log
 		cp -r "$TR_TORRENT_DIR/$TR_TORRENT_NAME" "$DESTINATION"
 	fi
 	
@@ -163,7 +163,7 @@ VIDEO_EXT="-iname *.wmv -o -iname *.mp4 -o -iname *.avi -o -iname *.mkv"
 
 USER_TRANSMISISON="debian-transmission"
 
-echo "Torrent $TR_TORRENT_NAME finalizado em $(date)" >> ${DIR_LOG}/transmission_script.log
+echo "Torrent $TR_TORRENT_NAME finalizado em $(date)" >> /var/lib/transmission-daemon/scripts/video_copy.log
 
 case "$1" in
 	show)
