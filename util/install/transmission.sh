@@ -7,6 +7,8 @@
 PATH=.:$(dirname $0):$PATH
 . lib/update.lib	|| exit 1
 
+clear
+
 check_root "$1"
 
 transmission_install()
