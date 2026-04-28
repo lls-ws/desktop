@@ -180,15 +180,17 @@ script_conf()
 {
 	
 	FILE_SH="video_copy.sh"
-	DIR_SH="var/lib/transmission-daemon"
+	DIR_SH="var/lib/transmission-daemon/scripts"
 	
 	file_update "${FILE_SH}" "${DIR_SH}"
 	
-	sudo chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_SH}/${FILE_SH}
-	sudo chmod -v 755 /${DIR_SH}/${FILE_SH}
+	sudo chmod +xv /${DIR_SH}/${FILE_SH}
+	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_SH}
 	
 	ls -alh /${DIR_SH}/${FILE_SH}
 	
+	sudo bash util/install/transmission.sh conf
+
 }
 
 case "$1" in
