@@ -36,9 +36,9 @@ apparmor_conf()
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
 	sudo apparmor_parser -vn /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
-	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
+	#sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
-	sudo systemctl reload apparmor
+	#sudo systemctl reload apparmor
 	
 }
 
