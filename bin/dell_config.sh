@@ -179,13 +179,15 @@ set_profile()
 script_conf()
 {
 	
-	file_update "video_copy.sh" "usr/bin"
+	FILE_SH="video_copy.sh"
+	DIR_SH="var/lib/transmission-daemon"
 	
-	sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} /usr/bin/video_copy.sh
+	file_update "${FILE_SH}" "${DIR_SH}"
 	
-	sudo chmod +x /usr/bin/video_copy.sh
+	sudo chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_SH}/${FILE_SH}
+	sudo chmod -v 755 /${DIR_SH}/${FILE_SH}
 	
-	ls -al /usr/bin/video_copy.sh
+	ls -alh /${DIR_SH}/${FILE_SH}
 	
 }
 
