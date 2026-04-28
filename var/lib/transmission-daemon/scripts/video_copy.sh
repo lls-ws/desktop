@@ -84,6 +84,9 @@ video_log()
 	
 	cat -n ${FILE_LOG}
 	
+	echo "Escanear biblioteca jellyfin..."
+	curl -X POST "http://192.168.0.2:8096/Library/Refresh?api_key=e9d9816976e145bc9f8217b8a75a3aa2"
+	
 }
 
 audio_copy()
@@ -182,6 +185,3 @@ case "$1" in
 		video_copy
 		;;
 esac
-
-echo "Escanear biblioteca..."
-curl -X POST "http://192.168.0.2:8096/Library/Refresh?api_key=e9d9816976e145bc9f8217b8a75a3aa2"
