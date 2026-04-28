@@ -176,6 +176,19 @@ set_profile()
 	
 }
 
+script_conf()
+{
+	
+	file_update "video_copy.sh" "usr/bin"
+	
+	sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} /usr/bin/video_copy.sh
+	
+	sudo chmod +x /usr/bin/video_copy.sh
+	
+	ls -al /usr/bin/video_copy.sh
+	
+}
+
 case "$1" in
   	net)
 		net_conf
@@ -199,7 +212,7 @@ case "$1" in
 		set_profile
 		;;
   	script)
-		file_update "video_copy.sh" "usr/bin"
+		script_conf
 		;;
   	all)
 		net_conf
@@ -210,7 +223,7 @@ case "$1" in
 		sudo bash util/install/dlna.sh install
 		sudo bash util/install/docker.sh install
 		sudo bash util/install/nfs.sh install
-		file_update "video_copy.sh" "usr/bin"
+		script_conf
 		;;
 	*)
 		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|script|profile}"

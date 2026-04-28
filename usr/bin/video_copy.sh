@@ -4,6 +4,8 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
+echo "Torrent $TR_TORRENT_NAME finalizado em $(date)" >> /tmp/transmission_script.log
+
 video_total()
 {
 	
