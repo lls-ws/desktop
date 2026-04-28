@@ -150,7 +150,7 @@ VIDEO_EXT="-iname *.wmv -o -iname *.mp4 -o -iname *.avi -o -iname *.mkv"
 
 USER_TRANSMISISON="debian-transmission"
 
-echo "Torrent $TR_TORRENT_NAME finalizado em $(date)" >> /${DIR_LOG}/transmission_script.log
+echo "Torrent $TR_TORRENT_NAME finalizado em $(date)" >> ${DIR_LOG}/transmission_script.log
 
 case "$1" in
 	show)
