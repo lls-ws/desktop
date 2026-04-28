@@ -128,6 +128,19 @@ iso_copy()
 	
 }
 
+dir_copy()
+{
+	
+	DESTINATION="/home/shared/filmes/"
+
+	# Transmission passes environment variables
+	if [ "$TR_TORRENT_DIR" != "" ] && [ "$TR_TORRENT_NAME" != "" ]; then
+		echo "Processing $TR_TORRENT_NAME..." >> /var/lib/transmission-daemon/video_copy.log
+		cp -r "$TR_TORRENT_DIR/$TR_TORRENT_NAME" "$DESTINATION"
+	fi
+	
+}
+
 DIR_VIDEO="/home/torrents"
 
 DIR_SHARE="/home/shared"
@@ -166,6 +179,6 @@ case "$1" in
 		video_log
 		;;
 	*)
-		video_copy
+		dir_copy
 		;;
 esac
