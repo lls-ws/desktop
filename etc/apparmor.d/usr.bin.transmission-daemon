@@ -1,1 +1,1 @@
-owner /var/lib/transmission-daemon/scripts/* rx,
+/var/lib/transmission-daemon/scripts/* rx,

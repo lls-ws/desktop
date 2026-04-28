@@ -157,6 +157,9 @@ case "$1" in
 	log)
 		transmission_log
 		;;
+	apparmor)
+		apparmor_conf
+		;;
 	uninstall)
 		transmission_uninstall
 		;;
@@ -166,7 +169,7 @@ case "$1" in
   		transmission_conf
   		;;
 	*)
-		echo "Use: $0 {all|install|version|conf|log|uninstall}"
+		echo "Use: $0 {all|install|version|conf|log|apparmor|uninstall}"
 		exit 1
 		;;
 esac
