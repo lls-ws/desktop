@@ -42,7 +42,7 @@ apparmor_conf()
 	echo "Reload AppArmor..."
 	sudo systemctl reload apparmor
 	
-	echo "Stop ${NAME_APP} service..."
+	echo "Start ${NAME_APP} service..."
 	service ${NAME_APP} start
 	
 }
