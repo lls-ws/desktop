@@ -18,6 +18,25 @@ transmission_install()
 	
 }
 
+apparmor_conf()
+{
+	
+	FILE_APPARMOR="transmission"
+	DIR_APPARMOR="etc/apparmor.d/local"
+	
+	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
+	
+	FILE_APPARMOR="usr.bin.transmission-daemon"
+	DIR_APPARMOR="etc/apparmor.d"
+	
+	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
+	
+	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
+	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
+	sudo systemctl reload apparmor
+	
+}
+
 transmission_conf()
 {
 	
@@ -26,13 +45,7 @@ transmission_conf()
 	
 	transmission_copy "settings.json" "etc/${NAME_APP}"
 	
-	FILE_APPARMOR="transmission"
-	DIR_APPARMOR="etc/apparmor.d/local"
-	
-	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
-	
-	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
-	systemctl reload apparmor
+	apparmor_conf
 	
 	transmission_dir
 	
