@@ -14,7 +14,9 @@ video_total()
 video_show()
 {
 	
-	find ${DIR_VIDEO} ${VIDEO_EXT} | awk -F/ '{print $NF}' > ${FILE_LOG}
+	sudo find ${DIR_VIDEO} ${VIDEO_EXT} | sudo awk -F/ '{print $NF}' > ${FILE_LOG}
+	
+	sudo chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
 	video_total
 	
@@ -31,7 +33,7 @@ video_copy()
 	
 	if [ -f ${VIDEO_LOG} ]; then
 	
-		sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${VIDEO_LOG}
+		sudo chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${VIDEO_LOG}
 	
 	fi
 	
