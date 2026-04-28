@@ -3,6 +3,6 @@
 /usr/bin/transmission-daemon {
   #include <abstractions/base>
 
-  /var/lib/transmission-daemon/scripts/* rx,
+  /var/lib/transmission-daemon/scripts/* rix,
   /etc/transmission-daemon/* r,
 }
