@@ -14,9 +14,9 @@ video_total()
 video_show()
 {
 	
-	sudo find ${DIR_VIDEO} ${VIDEO_EXT} | sudo awk -F/ '{print $NF}' > ${FILE_LOG}
+	find ${DIR_VIDEO} ${VIDEO_EXT} | awk -F/ '{print $NF}' > ${FILE_LOG}
 	
-	sudo chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
+	chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
 	video_total
 	
@@ -33,7 +33,7 @@ video_copy()
 	
 	if [ -f ${VIDEO_LOG} ]; then
 	
-		sudo chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${VIDEO_LOG}
+		chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${VIDEO_LOG}
 	
 	fi
 	
@@ -43,13 +43,13 @@ video_copy()
 	
 	while read FILE; do
 	  
-	  sudo mv -fv "${FILE}" ${DIR_MOVIES} >> ${FILE_LOG}
+	  mv -fv "${FILE}" ${DIR_MOVIES} >> ${FILE_LOG}
 	  
-	  sudo echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
 	  ((COUNT++))
 	  
-	  sudo echo -e "${COUNT}" >> ${FILE_LOG}
+	  echo -e "${COUNT}" >> ${FILE_LOG}
 	  
 	done
 	
@@ -57,7 +57,7 @@ video_copy()
 	
 	iso_copy
 	
-	sudo rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
+	rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
 	
 	ls ${DIR_VIDEO} >> ${FILE_LOG}
 	
@@ -74,13 +74,13 @@ video_log()
 	
 	if [ -f ${FILE_LOG} ]; then
 	
-		sudo rm -f ${FILE_LOG}
+		rm -f ${FILE_LOG}
 	
 	fi
 	
-	sudo find ${DIR_MOVIES} ${VIDEO_EXT} | sudo awk -F/ '{print $NF}' | sudo sort > ${FILE_LOG}
+	find ${DIR_MOVIES} ${VIDEO_EXT} | awk -F/ '{print $NF}' | sort > ${FILE_LOG}
 	
-	sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
+	chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
 	cat -n ${FILE_LOG}
 	
@@ -95,13 +95,13 @@ audio_copy()
 	
 	while read FILE; do
 	  
-	  sudo mv -fv "${FILE}" ${DIR_MUSICA} >> ${FILE_LOG}
+	  mv -fv "${FILE}" ${DIR_MUSICA} >> ${FILE_LOG}
 	  
-	  sudo echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
 	  ((COUNT++))
 	  
-	  sudo echo -e "${COUNT}" >> ${FILE_LOG}
+	  echo -e "${COUNT}" >> ${FILE_LOG}
 	  
 	done
 	
@@ -116,13 +116,13 @@ iso_copy()
 	
 	while read FILE; do
 	  
-	  sudo mv -fv "${FILE}" ${DIR_ISO} >> ${FILE_LOG}
+	  mv -fv "${FILE}" ${DIR_ISO} >> ${FILE_LOG}
 	  
-	  sudo echo $(basename "${FILE}") >> ${VIDEO_LOG}
+	  echo $(basename "${FILE}") >> ${VIDEO_LOG}
 	  
 	  ((COUNT++))
 	  
-	  sudo echo -e "${COUNT}" >> ${FILE_LOG}
+	  echo -e "${COUNT}" >> ${FILE_LOG}
 	  
 	done
 	
