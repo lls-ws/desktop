@@ -78,7 +78,7 @@ video_log()
 	
 	fi
 	
-	find ${DIR_MOVIES} ${VIDEO_EXT} | awk -F/ '{print $NF}' | sort > ${FILE_LOG}
+	sudo find ${DIR_MOVIES} ${VIDEO_EXT} | sudo awk -F/ '{print $NF}' | sudo sort > ${FILE_LOG}
 	
 	sudo chown ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
