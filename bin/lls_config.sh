@@ -91,9 +91,6 @@ case "$1" in
 	apps)
 		apps_install
 		;;
-  	aliases)
-		aliases_config
-		;;
 	git)
 		git_config
 		;;
@@ -104,7 +101,6 @@ case "$1" in
 		wifi_config
 		cloud_config
 		apps_install
-		aliases_config
 		desktop_config
 		git_config
 		;;
