@@ -85,7 +85,10 @@ case "$1" in
   	wifi)
 		wifi_config
 		;;
-  	apps)
+  	cloud)
+		cloud_config
+		;;
+	apps)
 		apps_install
 		;;
   	aliases)
@@ -106,7 +109,7 @@ case "$1" in
 		git_config
 		;;
 	*)
-		echo "Use: $0 {all|wifi|apps|aliases|git|desktop}"
+		echo "Use: $0 {all|wifi|cloud|apps|aliases|git|desktop}"
 		exit 1
 		;;
 esac
