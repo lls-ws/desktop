@@ -9,7 +9,7 @@ clear
 wifi_config()
 {
 	
-	sudo apt -y purge broadcom-sta-dkms bcmwl-kernel-source
+	sudo apt -y purge broadcom-sta-dkms
 	sudo rm -fv /etc/modprobe.d/broadcom-sta-dkms.conf
 	sudo apt update
 	sudo apt -y install firmware-b43-installer
@@ -38,8 +38,6 @@ git_config()
 	sudo bin/git_conf.sh password 
 	sudo bin/git_conf.sh token 
 	echo -e "\nRun this command above to configure GitHub!"
-	
-	bash bin/user_conf.sh hostname dell
 	
 }
 
