@@ -55,9 +55,6 @@ cloud_config()
 desktop_config()
 {	
 	
-	cd ~
-	git clone https://github.com/lls-ws/desktop.git && cd desktop
-
 	bash util/user/xscreensaver.sh conf
 	bash util/user/aliases.sh all
 	
