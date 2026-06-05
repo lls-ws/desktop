@@ -25,6 +25,11 @@ apps_install()
 	
 	sudo apt -y install geany
 	
+	sudo bash util/install/google.sh install
+	sudo bash util/install/firefox.sh install
+	sudo bash util/install/opera.sh install
+	sudo bash util/install/ytmusic.sh install
+	
 }
 
 git_config()
@@ -63,18 +68,15 @@ desktop_config()
 	bash util/user/config.sh openbox
 	bash util/user/config.sh autostart
 
+	bash util/user/lxqt.sh all
+
+	sudo bash bin/3green_config.sh bin
+
 	sudo bash util/conf/sudo.sh conf
 	sudo bash util/conf/hosts.sh conf
 	
 	sudo bash bin/dell_config.sh grub
-	sudo bash bin/3green_config.sh bin
 	
-	sudo bash util/install/google.sh install
-	sudo bash util/install/firefox.sh install
-	#sudo bash util/install/opera.sh install
-	sudo bash util/install/ytmusic.sh install
-	
-	bash util/user/config.sh lxqt
 	
 }
 
@@ -97,9 +99,9 @@ case "$1" in
 	all)
 		wifi_config
 		cloud_config
+		git_config
 		apps_install
 		desktop_config
-		git_config
 		;;
 	*)
 		echo "Use: $0 {all|wifi|cloud|apps|aliases|git|desktop}"

@@ -89,7 +89,7 @@ grub_conf()
 	
 	file_update "grub" "etc/default"
 	
-	logind_conf
+	#logind_conf
 	
 	sudo update-grub
 	

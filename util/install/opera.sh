@@ -16,7 +16,7 @@ opera_release()
 	
 	wget -O ${NAME_APP}.html ${URL_RELEASE}
 	
-	VERSION_FILE=`cat ${NAME_APP}.html | grep 2025 | sort | tail -1 | cut -d '"' -f 2 | cut -d '/' -f 1`
+	VERSION_FILE=`cat ${NAME_APP}.html | grep 2026 | sort | tail -1 | cut -d '"' -f 2 | cut -d '/' -f 1`
 	
 	rm -fv ${NAME_APP}.html
 	
