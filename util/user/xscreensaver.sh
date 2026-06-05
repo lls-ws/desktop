@@ -12,7 +12,19 @@ check_user "$1"
 xscreensaver_conf()
 {
 
+	FILE_NAME="xscreensaver"
+	FILE_SOURCE="config/${FILE_NAME}"
+	FILE_UPDATE=~/.${FILE_NAME}
+
 	copy_home
+	
+	FILE_NAME="Xdefaults"
+	FILE_SOURCE="config/${FILE_NAME}"
+	FILE_UPDATE=~/.${FILE_NAME}
+
+	copy_home
+	
+	xrdb ~/.${FILE_NAME}
 	
 	xscreensaver_show
 	
@@ -25,9 +37,7 @@ xscreensaver_show()
 	
 }
 
-FILE_NAME="xscreensaver"
-FILE_SOURCE="config/${FILE_NAME}"
-FILE_UPDATE=~/.${FILE_NAME}
+
 
 case "$1" in
 	conf)

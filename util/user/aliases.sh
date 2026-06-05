@@ -28,6 +28,9 @@ aliases_conf()
 		
 	done
 	
+	cp -fv ~/.bash_aliases ~/.bashrc
+	source ~/.bashrc
+	
 	aliases_show
 	
 }

@@ -3,8 +3,8 @@
 </h1>
 
 <h4 align="center">
-  Lubuntu 25.10 (Questing Quokka)
-  6.17.0-6-generic
+  Lubuntu 26.04 (Resolute Raccoon)
+  7.0.0-22-generic
 </h4>
 
 
@@ -18,10 +18,16 @@ git clone https://github.com/lls-ws/desktop.git && cd desktop
 
 ### For Lubuntu Desktop
 ```bash
-sudo bash bin/lubuntu_config.sh all
+sudo bash bin/lls_config.sh all
 ```
 
-### For Ubuntu Server 26.04 LTS
+### To Backup User Preferences
+
+```bash
+backup_user
+```
+
+### For Ubuntu Server
 
 ```bash
 sudo bash bin/dell_config.sh net
@@ -64,12 +70,6 @@ sudo bash bin/dell_config.sh script
 #### On Local PC
 ```bash
 sudo bash util/install/nfs.sh local
-```
-
-### To Backup User Preferences
-
-```bash
-backup_user
 ```
 
 ## License
