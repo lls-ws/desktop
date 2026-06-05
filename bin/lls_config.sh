@@ -23,7 +23,7 @@ wifi_config()
 apps_install()
 {
 	
-	sudo apt -y install firefox geany
+	sudo apt -y install geany
 	
 }
 
@@ -74,9 +74,12 @@ desktop_config()
 	sudo bash bin/dell_config.sh grub
 	sudo bash bin/3green_config.sh bin
 	
-	bash util/user/config.sh lxqt
+	sudo bash util/install/google.sh install
+	sudo bash util/install/firefox.sh install
+	#sudo bash util/install/opera.sh install
+	sudo bash util/install/ytmusic.sh install
 	
-	#bash util/install/google.sh install
+	bash util/user/config.sh lxqt
 	
 }
 
