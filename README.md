@@ -18,7 +18,7 @@ git clone https://github.com/lls-ws/desktop.git && cd desktop
 
 ### For Lubuntu Desktop
 ```bash
-sudo bash bin/lls_config.sh all
+bash bin/lls_config.sh all
 ```
 
 ### To Backup User Preferences
