@@ -63,7 +63,7 @@ desktop_config()
 	bash util/user/xscreensaver.sh conf
 	bash util/user/aliases.sh all
 	
-	bash util/user/config.sh kvantum
+	bash util/user/config.sh Kvantum
 	bash util/user/config.sh geany
 	bash util/user/config.sh openbox
 	bash util/user/config.sh autostart
@@ -74,9 +74,9 @@ desktop_config()
 
 	sudo bash util/conf/sudo.sh conf
 	sudo bash util/conf/hosts.sh conf
+	sudo bash util/conf/sddm.sh conf
 	
 	sudo bash bin/dell_config.sh grub
-	
 	
 }
 

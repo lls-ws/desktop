@@ -193,8 +193,10 @@ apps_array()
 		"mpv"
 		"geany"
 		"openbox"
-		"kvantum"
+		"gtk-3.0"
+		"Kvantum"
 		"autostart"
+		"featherpad"
 	)
 	
 }
