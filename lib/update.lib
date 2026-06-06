@@ -197,6 +197,8 @@ apps_array()
 		"Kvantum"
 		"autostart"
 		"featherpad"
+		"pcmanfm-qt/lxqt"
+		"qterminal.org"
 	)
 	
 }

@@ -72,6 +72,8 @@ desktop_config()
 
 	sudo bash bin/3green_config.sh bin
 
+	sudo bash util/conf/applications.sh conf
+	
 	sudo bash util/conf/sudo.sh conf
 	sudo bash util/conf/hosts.sh conf
 	sudo bash util/conf/sddm.sh conf
