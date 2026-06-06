@@ -54,6 +54,7 @@ cloud_config()
 	
 	sudo bin/ubuntu_conf.sh upgrade
 	sudo bin/ubuntu_conf.sh fonts
+	bash bin/user_conf.sh aliases
 	
 }
 	
