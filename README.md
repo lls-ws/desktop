@@ -18,7 +18,7 @@ git clone https://github.com/lls-ws/desktop.git && cd desktop
 
 ### For Lubuntu Desktop
 ```bash
-bash bin/lls_config.sh all
+bash bin/desktop_config.sh all
 ```
 
 ### To Backup User Preferences
@@ -30,27 +30,27 @@ backup_user
 ### For Ubuntu Server
 
 ```bash
-sudo bash bin/dell_config.sh net
+sudo bash bin/server_config.sh net
 ```
 ```bash
-sudo bash bin/dell_config.sh ssh
+sudo bash bin/server_config.sh ssh
 ```
 ```bash
-sudo bash bin/dell_config.sh grub
+sudo bash bin/server_config.sh grub
 ```
 ```bash
-sudo bash bin/dell_config.sh conf
+sudo bash bin/server_config.sh conf
 ```
 ```bash
-sudo bash bin/dell_config.sh profile
+sudo bash bin/server_config.sh profile
 ```
 #### On Local PC
 ```bash
-sudo bash bin/dell_config.sh key
+sudo bash bin/server_config.sh key
 ```
 #### On Ubuntu Server
 ```bash
-sudo bash bin/dell_config.sh remote
+sudo bash bin/server_config.sh remote
 ```
 ```bash
 sudo bash util/install/transmission.sh install
@@ -65,7 +65,7 @@ sudo bash util/install/docker.sh install
 sudo bash util/install/nfs.sh install
 ```
 ```bash
-sudo bash bin/dell_config.sh script
+sudo bash bin/server_config.sh script
 ```
 #### On Local PC
 ```bash

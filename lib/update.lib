@@ -195,10 +195,11 @@ apps_array()
 		"openbox"
 		"gtk-3.0"
 		"Kvantum"
+		"audacious"
+		"audacious/playlists"
 		"autostart"
 		"featherpad"
 		"pcmanfm-qt/lxqt"
-		"qterminal.org"
 	)
 	
 }

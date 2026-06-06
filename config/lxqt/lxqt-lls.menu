@@ -17,7 +17,7 @@
 	<Menu>
 		<Name>LLS</Name>
 		<Include>
-			<Filename>google-chrome.desktop</Filename>
+			<Filename>firefox.desktop</Filename>
 			<Filename>qterminal.desktop</Filename>
 		</Include>
 	</Menu> <!-- End LLS -->
@@ -49,9 +49,7 @@
 		<Name>Multimedia</Name>
 		<Directory>lxqt-audio-video.directory</Directory>
 		<Include>
-			<Filename>vlc.desktop</Filename>
-			<Filename>kodi.desktop</Filename>
-			<!-- <Filename>pavucontrol-qt.desktop</Filename> -->
+			<Filename>audacious.desktop</Filename>
 			<Filename>youtube-music-desktop-app.desktop</Filename>
 		</Include>
 	</Menu> <!-- End Multimedia -->
@@ -61,6 +59,7 @@
 		<Name>Internet</Name>
 		<Directory>lxqt-network.directory</Directory>
 		<Include>
+			<Filename>google-chrome.desktop</Filename>
 			<Filename>firefox.desktop</Filename>
 			<Filename>opera.desktop</Filename>
 		</Include>

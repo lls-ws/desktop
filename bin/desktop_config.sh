@@ -1,92 +1,105 @@
 #!/bin/sh
-# Script to configure Lubuntu on Dell Inspiron 1428
-#
-# Connect LAN Ethernet to Install Wireless
-# Menu - Preferências - Additional Drivers - Additional Drivers
-# Broadcom BCM4312
-# Using dkms source for the Broadcom STAS Wireless driver for broadcom-sta-dkms (proprietary)
-# Apply Changes
+# Script to configure LLS Profile on Dell Inspiron
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-PATH=.:$(dirname $0):$PATH
-. lib/update.lib		|| exit 1
+clear
 
-check_root "$1"
-
-echo "Script to configure Lubuntu on Dell Inspiron 1428"
+wifi_config()
+{
+	
+	sudo apt -y purge broadcom-sta-dkms
+	sudo rm -fv /etc/modprobe.d/broadcom-sta-dkms.conf
+	sudo apt update
+	sudo apt -y install firmware-b43-installer
+	sudo modprobe -r b43 ssb
+	sudo modprobe b43
+	lspci -nnk | grep -iA3 net
+	ping -c 3 google.com
+	
+}
 
 apps_install()
 {
 	
-	bash util/install/intel.sh install
-	bash util/install/google.sh install
-	bash util/install/firefox.sh install
+	sudo apt -y install geany audacious
+	
+	sudo bash util/install/google.sh install
+	sudo bash util/install/firefox.sh install
+	sudo bash util/install/opera.sh install
+	sudo bash util/install/ytmusic.sh install
 	
 }
 
-user_profile()
+git_config()
 {
-
-	cd ~
-
-	if [ ! -d ~/cloud ]; then
-	
-		git clone https://github.com/lls-ws/cloud.git
-		
-	fi
 	
 	cd ~/cloud
 	
-	NAME=`git config user.name`
-
-	if [ -z "${NAME}" ]; then
-			
-		bash bin/git_conf.sh name ${USER}
-		bash bin/git_conf.sh email ${EMAIL}
-		bash bin/git_conf.sh password ${USER}
-		
-	fi
+	sudo bin/git_conf.sh name lls
+	sudo bin/git_conf.sh email lls.homeoffice@gmail.com
 	
-	bash bin/ubuntu_conf.sh profile
-	
-	cd ~
-	
-	rm -rf ~/cloud
-	
-	ls ~
+	sudo bin/git_conf.sh password 
+	sudo bin/git_conf.sh token 
+	echo -e "\nRun this command above to configure GitHub!"
 	
 }
 
-user_conf()
+cloud_config()
 {
 	
-	su ${USER} -c "bash bin/user_config.sh screensaver"
+	cd ~
+	git clone https://github.com/lls-ws/cloud.git && cd cloud
+	
+	sudo bin/ubuntu_conf.sh upgrade
+	sudo bin/ubuntu_conf.sh fonts
+	
+}
+	
+desktop_config()
+{	
+	
+	bash util/user/xscreensaver.sh conf
+	bash util/user/aliases.sh all
+	bash util/user/config.sh all
+	bash util/user/lxqt.sh all
 
+	sudo bash util/conf/applications.sh conf
+	sudo bash util/conf/sudo.sh conf
+	sudo bash util/conf/hosts.sh conf
+	sudo bash util/conf/sddm.sh conf
+	
+	sudo bash bin/3green_config.sh bin
+	sudo bash bin/dell_config.sh grub
+	
 }
 
-USER="wanda"
-EMAIL="wganara@gmail.com"
-PASSWORD="${USER}"
-
 case "$1" in
-  	apps)
+  	wifi)
+		wifi_config
+		;;
+  	cloud)
+		cloud_config
+		;;
+	apps)
 		apps_install
 		;;
-	user)
-		user_conf
+	git)
+		git_config
 		;;
-	profile)
-		user_profile
+	desktop)
+		desktop_config
 		;;
-  	all)
+	all)
+		wifi_config
+		cloud_config
+		git_config
 		apps_install
-		user_conf
-		user_profile
+		desktop_config
 		;;
 	*)
-		echo "Use: $0 {all|apps|user|profile}"
+		echo "Use: $0 {all|wifi|cloud|apps|aliases|git|desktop}"
 		exit 1
 		;;
 esac
