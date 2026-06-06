@@ -60,7 +60,6 @@
 		<Directory>lxqt-network.directory</Directory>
 		<Include>
 			<Filename>google-chrome.desktop</Filename>
-			<Filename>firefox.desktop</Filename>
 			<Filename>opera.desktop</Filename>
 		</Include>
 	</Menu> <!-- End Internet -->
