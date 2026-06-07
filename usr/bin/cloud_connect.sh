@@ -30,12 +30,12 @@ ssh_clear()
 	
 }
 
-USER=`git config user.name`
+USER=`sudo git config user.name`
 
 if [ -z "${USER}" ]; then
 		
 	echo "Not found a user name!"
-	echo "Use: git_conf.sh name {NAME}"
+	echo "Use: sudo git_conf.sh name {NAME}"
 	exit 1
 	
 fi
