@@ -23,7 +23,7 @@ wifi_config()
 apps_install()
 {
 	
-	sudo apt -y install geany audacious
+	sudo apt -y install geany audacious qalc
 	
 	sudo bash util/install/google.sh install
 	sudo bash util/install/firefox.sh install
