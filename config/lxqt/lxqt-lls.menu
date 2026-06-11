@@ -17,7 +17,7 @@
 	<Menu>
 		<Name>LLS</Name>
 		<Include>
-			<Filename>firefox.desktop</Filename>
+			<Filename>google-chrome.desktop</Filename>
 			<Filename>qterminal.desktop</Filename>
 		</Include>
 	</Menu> <!-- End LLS -->
@@ -59,7 +59,7 @@
 		<Name>Internet</Name>
 		<Directory>lxqt-network.directory</Directory>
 		<Include>
-			<Filename>google-chrome.desktop</Filename>
+			<Filename>firefox.desktop</Filename>
 			<Filename>opera.desktop</Filename>
 		</Include>
 	</Menu> <!-- End Internet -->
