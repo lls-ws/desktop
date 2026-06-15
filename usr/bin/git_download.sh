@@ -15,15 +15,23 @@ git_clone()
 	
 	chown -R ${USER}:${USER} ${REPOSITORY_DIR}
 	
-	ls -al ${REPOSITORY_DIR}
+	ls -alh ${REPOSITORY_DIR}
 	
 	if [ "${REPOSITORY_NAME}" = "lls-src" ]; then
 	
+		if [ ! -d ${USER_DIR}/.${REPOSITORY_NAME} ]; then
+		
+			mkdir -v ${USER_DIR}/.${REPOSITORY_NAME}
+		
+		fi
+		
+		chown -R ${USER}:${USER} ${USER_DIR}/.${REPOSITORY_NAME}
+		
 		(cd ${USER_DIR};
 		 curl -L ${URL}/${REPOSITORY_NAME}/archive/master.zip \
 			--output ${USER_DIR}/.${REPOSITORY_NAME}/${REPOSITORY_NAME}-$(date +%F).zip;
 		 chown -v ${USER}:${USER} ${USER_DIR}/.${REPOSITORY_NAME}/${REPOSITORY_NAME}-$(date +%F).zip;
-		 ls -al ${USER_DIR}/.${REPOSITORY_NAME}/${REPOSITORY_NAME}-$(date +%F).zip;
+		 ls -alh ${USER_DIR}/.${REPOSITORY_NAME}/${REPOSITORY_NAME}-$(date +%F).zip;
 		 cd -)
 	
 	fi
