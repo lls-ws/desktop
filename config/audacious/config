@@ -1,5 +1,6 @@
 
 [audacious]
+repeat=TRUE
 show_interface=FALSE
 
 [audgui]
@@ -7,7 +8,7 @@ filebrowser_win=224,146,828,480
 url_opener_win=340,283,596,205
 
 [gtkui]
-column_widths=10,799,341,10,175,175,10,100,50,10,275,275,275,10,275,175,75,10
+column_widths=10,799,341,10,175,175,10,100,52,10,275,275,275,10,275,175,75,10
 player_x=64
 player_y=0
 
