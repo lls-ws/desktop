@@ -27,6 +27,7 @@
 		<Name>Development</Name>
 		<Directory>lxqt-development.directory</Directory>
 		<Include>
+			<Filename>dell.desktop</Filename>
 			<Filename>geany.desktop</Filename>
 			<Filename>pcmanfm-qt.desktop</Filename>
 		</Include>

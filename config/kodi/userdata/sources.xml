@@ -6,12 +6,18 @@
         <default pathversion="1"></default>
         <source>
             <name>filmes</name>
-            <path pathversion="1">/mnt/shared/filmes/</path>
+            <path pathversion="1">/mnt/shared/dell/filmes/</path>
             <allowsharing>true</allowsharing>
         </source>
         <source>
             <name>series</name>
-            <path pathversion="1">/mnt/shared/series/</path>
+            <path pathversion="1">/mnt/shared/dell/series/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>videos</name>
+            <path pathversion="1">/mnt/shared/dell/videos/</path>
+            <path pathversion="1">/mnt/shared/dell/imagens/</path>
             <allowsharing>true</allowsharing>
         </source>
     </video>

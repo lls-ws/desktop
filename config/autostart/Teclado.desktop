@@ -1,6 +1,5 @@
 [Desktop Entry]
 Exec=onboard
-Hidden=true
 Name=Teclado
 OnlyShowIn=LXQt;
 Type=Application

@@ -1,7 +1,9 @@
 [Desktop Entry]
-Exec=/usr/bin/google-chrome-stable --password-store=basic \\\\\\\\"
-Name=Google
+Exec=/usr/bin/google-chrome-stable --password-store=basic https://www.youtube.com/@CazeTV
+Name=CazeTV
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
+X-LXQt-Autostart-disabled=true
 X-LXQt-Need-Tray=true
+X-LXQt-X11-Only=true

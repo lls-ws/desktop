@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Icon=utilities-terminal
+Exec=qterminal -e "ssh -i ~/.ssh/id_rsa lls@dell"
+Terminal=false
+Categories=Qt;System;TerminalEmulator;
+Actions=Dropdown;
+
+Name=Dell
+GenericName=Terminal Dell
+Comment=Terminal Dell
+Name[pt_BR]=Dell
+GenericName[pt_BR]=Emulador de terminal Dell
+Comment[pt_BR]=Emulador de terminal Dell
+
+[Desktop Action Dropdown]
+Exec=qterminal --drop
+Icon=utilities-terminal
+
+Name=Drop-down Terminal
+Name[pt_BR]=Terminal suspenso
