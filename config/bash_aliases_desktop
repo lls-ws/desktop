@@ -81,6 +81,12 @@ alias jellyfin-stop='cd ~/.jellyfin; sudo docker compose down; cd ~'
 alias jellyfin-status='cd ~/.jellyfin; sudo docker compose ps; cd ~'
 alias jellyfin='docker-start; jellyfin-start'
 
+# Pendrive
+alias ventoy-stop='sudo umount /run/media/lls/Ventoy'
+alias pendrive-list='ls -alh /home/shared'
+alias pendrive-start='sudo mount -o uid=1000,gid=1000 /dev/sdb1 /home/shared; pendrive-list'
+alias pendrive-stop='sudo umount /home/shared; pendrive-list'
+
 # Services
 alias services-show='service --status-all'
 alias services-load='systemctl -t service --state=active'
