@@ -61,14 +61,11 @@ alias nfs-start='sudo service nfs-server start; nfs-status'
 alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
 
-# Minidlna
-alias dlna-status='clear; sudo service minidlna status'
-alias dlna-start='sudo service minidlna start; dlna-status'
-alias dlna-stop='sudo service minidlna stop; dlna-status'
-alias dlna-restart='dlna-stop; dlna-start'
-alias dlna-reload='sudo service minidlna force-reload; ls -al /var/cache/minidlna/'
-alias dlna-enable='sudo systemctl enable minidlna.service'
-alias dlna-disable='sudo systemctl disable minidlna.service'
+# Pendrive
+alias ventoy-stop='sudo umount /run/media/lls/Ventoy'
+alias pendrive-list='ls -alh /home/shared'
+alias pendrive-start='sudo mount -o umask=000 /dev/sdb1 /home/shared; pendrive-list'
+alias pendrive-stop='sudo umount /home/shared; pendrive-list'
 
 # Docker
 alias docker-status='sudo systemctl status docker'
@@ -81,13 +78,20 @@ alias docker-disable='sudo systemctl disable --now docker.service docker.socket'
 alias jellyfin-start='cd ~/.jellyfin; sudo docker compose up -d; cd ~'
 alias jellyfin-stop='cd ~/.jellyfin; sudo docker compose down; cd ~'
 alias jellyfin-status='cd ~/.jellyfin; sudo docker compose ps; cd ~'
-alias jellyfin='docker-start; jellyfin-start'
+alias jellyfin='pendrive-start; docker-start; jellyfin-start'
 
-# Pendrive
-alias ventoy-stop='sudo umount /run/media/lls/Ventoy'
-alias pendrive-list='ls -alh /home/shared'
-alias pendrive-start='sudo mount -o umask=000 /dev/sdb1 /home/shared; pendrive-list'
-alias pendrive-stop='sudo umount /home/shared; pendrive-list'
+# Minidlna
+alias dlna-status='clear; sudo service minidlna status'
+alias dlna-start='sudo service minidlna start; dlna-status'
+alias dlna-stop='sudo service minidlna stop; dlna-status'
+alias dlna-restart='dlna-stop; dlna-start'
+alias dlna-reload='sudo service minidlna force-reload; ls -al /var/cache/minidlna/'
+alias dlna-enable='sudo systemctl enable minidlna.service'
+alias dlna-disable='sudo systemctl disable minidlna.service'
+
+# Stream
+alias stream-start='jellyfin; dlna-start'
+alias stream-stop='jellyfin-stop; docker-stop; dlna-stop'
 
 # Services
 alias services-show='service --status-all'
