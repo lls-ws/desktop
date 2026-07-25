@@ -75,7 +75,7 @@ alias docker-status='sudo systemctl status docker'
 alias docker-start='sudo systemctl start docker; docker-status'
 alias docker-stop='sudo systemctl stop docker.socket; sudo systemctl stop docker; docker-status'
 alias docker-enable='sudo systemctl enable docker.service'
-alias docker-disable='sudo systemctl disable docker.service'
+alias docker-disable='sudo systemctl disable --now docker.service docker.socket'
 
 # Jellyfin
 alias jellyfin-start='cd ~/.jellyfin; sudo docker compose up -d; cd ~'
