@@ -80,7 +80,7 @@ alias docker-disable='sudo systemctl disable --now docker.service docker.socket'
 alias jellyfin-start='cd ~/.jellyfin; sudo docker compose up -d; cd ~'
 alias jellyfin-stop='cd ~/.jellyfin; sudo docker compose down; cd ~'
 alias jellyfin-status='cd ~/.jellyfin; sudo docker compose ps; cd ~'
-alias jellyfin='pendrive-start; docker-start; jellyfin-start'
+alias jellyfin='pendrive-start; nfs-start; docker-start; jellyfin-start'
 
 # Minidlna
 alias dlna-status='clear; sudo service minidlna status'
