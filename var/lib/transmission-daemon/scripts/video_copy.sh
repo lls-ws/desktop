@@ -85,7 +85,7 @@ video_log()
 	cat -n ${FILE_LOG}
 	
 	echo "Escanear biblioteca jellyfin..."
-	curl -X POST "http://192.168.0.2:8096/Library/Refresh?api_key=e9d9816976e145bc9f8217b8a75a3aa2"
+	curl -X POST "http://192.168.0.2:8096/Library/Refresh?api_key=1a64f8a02afa412cab44010393415f7d"
 	
 }
 
