@@ -19,7 +19,8 @@ docker_edit()
 docker_install()
 {
 	
-	sudo apt install docker.io docker-compose -y
+	sudo apt update
+	sudo apt install docker.io docker-compose-plugin -y
 	
 	# Verificar a instalação
 	sudo docker run hello-world

@@ -46,6 +46,8 @@ alias t-restart='sudo service transmission-daemon reload; t-status'
 alias t-list='transmission-remote -n 'transmission:transmission' -l'
 alias t-basicstats='transmission-remote -n 'transmission:transmission' -st'
 alias t-fullstats='transmission-remote -n 'transmission:transmission' -si'
+alias t-enable='sudo systemctl enable transmission-daemon.service'
+alias t-disable='sudo systemctl disable transmission-daemon.service'
 
 # SSH
 alias ssh-status='clear; sudo service ssh status'
@@ -65,6 +67,19 @@ alias dlna-start='sudo service minidlna start; dlna-status'
 alias dlna-stop='sudo service minidlna stop; dlna-status'
 alias dlna-restart='dlna-stop; dlna-start'
 alias dlna-reload='sudo service minidlna force-reload; ls -al /var/cache/minidlna/'
+alias dlna-enable='sudo systemctl enable minidlna.service'
+alias dlna-disable='sudo systemctl disable minidlna.service'
+
+# Docker
+alias docker-status='sudo systemctl status docker'
+alias docker-start='sudo systemctl start docker; docker-status'
+alias docker-stop='sudo systemctl stop docker.socket; sudo systemctl stop docker; docker-status'
+
+# Jellyfin
+alias jellyfin-start='cd ~/.jellyfin; sudo docker compose up -d; cd ~'
+alias jellyfin-stop='cd ~/.jellyfin; sudo docker compose down; cd ~'
+alias jellyfin-status='cd ~/.jellyfin; sudo docker compose ps; cd ~'
+alias jellyfin='docker-start; jellyfin-start'
 
 # Services
 alias services-show='service --status-all'
