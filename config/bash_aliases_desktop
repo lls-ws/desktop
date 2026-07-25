@@ -60,6 +60,8 @@ alias nfs-status='clear; sudo service nfs-server status'
 alias nfs-start='sudo service nfs-server start; nfs-status'
 alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
+alias nfs-enable='sudo systemctl enable nfs-server.service'
+alias nfs-disable='sudo systemctl disable nfs-server.service'
 
 # Pendrive
 alias ventoy-stop='sudo umount /run/media/lls/Ventoy'
