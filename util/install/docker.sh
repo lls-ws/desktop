@@ -39,7 +39,7 @@ docker_install()
 
 	sudo apt-get update
 	
-	sudo apt-get install -y docker-compose-plugin
+	sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 	
 	# Verificar a instalação
 	sudo docker run hello-world
