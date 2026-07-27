@@ -55,13 +55,15 @@ alias ssh-start='sudo service ssh start; ssh-status'
 alias ssh-stop='sudo service ssh stop; ssh-status'
 alias ssh-restart='ssh-stop; ssh-start'
 
-# NFS
+# NFS Server
 alias nfs-status='clear; sudo service nfs-server status'
 alias nfs-start='sudo service nfs-server start; nfs-status'
 alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
 alias nfs-enable='sudo systemctl enable nfs-server.service'
 alias nfs-disable='sudo systemctl disable nfs-server.service'
+
+# NFS Terminal
 alias nfs-mount='sudo mount -t nfs dell:/home/shared /home/shared/dell'
 alias nfs-umount='sudo umount /home/shared/dell'
 
