@@ -67,9 +67,9 @@ alias nfs-umount='sudo umount /home/shared'
 
 # Pendrive
 alias ventoy-stop='sudo umount /run/media/lls/Ventoy'
-alias pendrive-list='sudo chown -R debian-transmission:debian-transmission /home/shared; sudo chmod -R 777 /home/shared; ls -alh /home/shared'
-alias pendrive-start='sudo mount /dev/sdb1 /home/shared; pendrive-list'
-alias pendrive-stop='sudo umount /home/shared; pendrive-list'
+alias pendrive-list='ls -alh /home/shared/pendrive'
+alias pendrive-start='sudo mount /dev/sdb1 /home/shared/pendrive; pendrive-list'
+alias pendrive-stop='sudo umount /home/shared/pendrive; pendrive-list'
 
 # Docker
 alias docker-status='sudo systemctl status docker'
