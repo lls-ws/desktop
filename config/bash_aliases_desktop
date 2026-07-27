@@ -97,6 +97,9 @@ alias dlna-disable='sudo systemctl disable minidlna.service'
 alias stream-start='jellyfin; dlna-start'
 alias stream-stop='jellyfin-stop; docker-stop; dlna-stop'
 
+# Screen
+alias screen-off='sudo su wanda -c "DISPLAY=:0 xset dpms force off"'
+
 # Services
 alias services-show='service --status-all'
 alias services-load='systemctl -t service --state=active'
