@@ -62,8 +62,8 @@ alias nfs-stop='sudo service nfs-server stop; nfs-status'
 alias nfs-restart='nfs-stop; nfs-start'
 alias nfs-enable='sudo systemctl enable nfs-server.service'
 alias nfs-disable='sudo systemctl disable nfs-server.service'
-alias nfs-mount='sudo mount -t nfs dell:/home/shared /home/shared'
-alias nfs-umount='sudo umount /home/shared'
+alias nfs-mount='sudo mount -t nfs dell:/home/shared /home/shared/dell'
+alias nfs-umount='sudo umount /home/shared/dell'
 
 # Pendrive
 alias ventoy-stop='sudo umount /run/media/lls/Ventoy'
