@@ -1,1 +1,2 @@
 /home/shared *(rw,sync,no_subtree_check,all_squash,insecure)
+/home/shared/pendrive *(rw,sync,no_subtree_check,all_squash,insecure)
