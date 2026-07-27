@@ -216,6 +216,7 @@ shared_dir()
 	fi
 	
 	DIRS_SET=(
+		"pendrive"
 		"imagens"
 		"filmes"
 		"series"
