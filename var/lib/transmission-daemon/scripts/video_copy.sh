@@ -60,6 +60,10 @@ video_copy()
 	rm -rf ${DIR_VIDEO}/* >> ${FILE_LOG}
 	
 	ls ${DIR_VIDEO} >> ${FILE_LOG}
+
+	chmod -R 777 ${DIR_SHARE} >> ${FILE_LOG}
+
+	chown -R debian-transmission:debian-transmission ${DIR_SHARE} >> ${FILE_LOG}
 	
 	du -hsc ${DIR_MOVIES} | head -1 >> ${FILE_LOG}
 	
