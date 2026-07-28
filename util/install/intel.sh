@@ -14,7 +14,7 @@ intel_install()
  	
 	apt-get -y purge --auto-remove mesa-vulkan-drivers
   	
-  	apt -y install vainfo
+  	apt -y install vainfo i965-va-driver libva2 intel-media-va-driver-non-free
 	
   	lspci -k | grep i915
   	
