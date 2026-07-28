@@ -63,7 +63,7 @@ video_copy()
 
 	chmod -R 777 ${DIR_SHARE} >> ${FILE_LOG}
 
-	chown -R debian-transmission:debian-transmission ${DIR_SHARE} >> ${FILE_LOG}
+	chown -R ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHARE} >> ${FILE_LOG}
 	
 	du -hsc ${DIR_MOVIES} | head -1 >> ${FILE_LOG}
 	
