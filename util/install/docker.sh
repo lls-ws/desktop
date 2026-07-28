@@ -74,12 +74,7 @@ jellyfin_conf()
 	mkdir -pv ${DIR_ETC}/{config,cache,media}
 	
 	# Inicie o servidor
-	(cd ${DIR_ETC};
-	 sudo docker compose up -d;
-	 sudo docker exec -it -u 0 jellyfin apt-get update;
-	 sudo docker exec -it -u 0 jellyfin apt-get install -y va-driver-all vainfo;
-	 sudo docker exec -it jellyfin vainfo
-	)
+	(cd ${DIR_ETC}; sudo docker compose up -d)
 	
 	sudo chown -R ${USER}:${USER} "${DIR_ETC}"
 	
