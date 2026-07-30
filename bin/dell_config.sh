@@ -23,12 +23,9 @@ wifi_config()
 apps_install()
 {
 	
-	sudo apt -y install geany audacious qalculate-qt qpdfview
+	sudo apt -y install qalculate-qt qpdfview
 	
 	sudo bash util/install/google.sh install
-	sudo bash util/install/firefox.sh install
-	sudo bash util/install/opera.sh install
-	sudo bash util/install/ytmusic.sh install
 	
 }
 
