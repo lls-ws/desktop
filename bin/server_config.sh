@@ -48,6 +48,7 @@ net_conf()
 	sudo nmcli -g UUID connection show | xargs -r -I {} sudo nmcli connection delete uuid {}
 
 	FILE_YAML="01-netcfg.yaml"
+	DIR_NETPLAN="etc/netplan"
 	
 	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
 	
@@ -90,11 +91,12 @@ net_conf2()
 	echo "Cria a nova conexão limpa atrelada à sua placa física:"
 	sudo nmcli connection add type ethernet ifname ${INTERFACE} con-name ${INTERFACE}
 
-	echo "Configura o IPv4 estático manual e o gateway:"
-	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24,192.168.0.1
+	echo "Configura o IPv4 estático manual e IPv6 para modo automático:"
+	#sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24,192.168.0.1
+	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24,192.168.0.1 ipv6.method auto
 	
-	echo "Configura o IPv6 para modo automático (DHCPv6/SLAAC):"
-	sudo nmcli connection modify ${INTERFACE} ipv6.method auto
+	#echo "Configura o IPv6 para modo automático (DHCPv6/SLAAC):"
+	#sudo nmcli connection modify ${INTERFACE} ipv6.method auto
 
 	echo "Ativa a nova conexão imediatamente:"
 	sudo nmcli connection up ${INTERFACE}
