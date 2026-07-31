@@ -35,6 +35,8 @@ ytmusic_install()
  	
 	install_deb
 	
+	sudo apt -y install playerctl
+	
 }
 
 NAME_APP="ytmusic"
