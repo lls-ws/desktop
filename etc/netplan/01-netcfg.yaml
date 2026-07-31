@@ -3,9 +3,7 @@ network:
   renderer: NetworkManager
   ethernets:
     enp8s0:
-      dhcp4: no
-      dhcp6: yes
-      accept-ra: yes
+      dhcp4: false
       addresses:
         - 192.168.0.2/24
       routes:
