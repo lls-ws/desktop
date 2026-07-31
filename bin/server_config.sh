@@ -40,6 +40,9 @@ net_conf()
 	
 	echo "Retorna 1 para conectado:"
 	cat /sys/class/net/${INTERFACE}/carrier
+
+	echo "Desligando a interface:"
+	sudo ip link set ${INTERFACE} down
 	
 	echo "Subir a interface:"
 	sudo ip link set ${INTERFACE} up
