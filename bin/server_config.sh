@@ -66,6 +66,9 @@ net_conf()
 	echo "Install Ping:"
 	sudo apt -y install inetutils-ping
 	
+	echo "Waiting for LAN..."
+	sleep 3
+	
 	ping -c 3 google.com
 	
 	ping6 -c 3 google.com
