@@ -27,7 +27,7 @@ file_update()
 	
 }
 
-net_conf2()
+net_conf()
 {
 	
 	INTERFACE="enp8s0"
@@ -44,11 +44,8 @@ net_conf2()
 	echo "Subir a interface:"
 	sudo ip link set ${INTERFACE} up
 	
-	DIR_NETPLAN="etc/netplan"
-	FILE_YAML="50-cloud-init.yaml"
-
-	echo "Removing others netplan conf:"
-	sudo rm -fv /${DIR_NETPLAN}/${FILE_YAML}
+	echo "Remove todas as conexões existentes de uma só vez:"
+	sudo nmcli -g UUID connection show | xargs -r -I {} sudo nmcli connection delete uuid {}
 
 	FILE_YAML="01-netcfg.yaml"
 	
@@ -75,14 +72,13 @@ net_conf2()
 	
 }
 
-net_conf()
+net_conf2()
 {
 	
 	INTERFACE="enp8s0"
 	DIR_NETPLAN="etc/netplan"
 	
 	echo "Remove todas as conexões existentes de uma só vez:"
-	#sudo nmcli --fields UUID connection show | tail -n +2 | xargs -I {} sudo nmcli connection delete uuid {}
 	sudo nmcli -g UUID connection show | xargs -r -I {} sudo nmcli connection delete uuid {}
 
 	echo "Remove todos os arquivos YAML:"
@@ -95,7 +91,6 @@ net_conf()
 	sudo nmcli connection add type ethernet ifname ${INTERFACE} con-name ${INTERFACE}
 
 	echo "Configura o IPv4 estático manual e o gateway:"
-	#sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24 ipv4.gateway 192.168.0.1
 	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24,192.168.0.1
 	
 	echo "Configura o IPv6 para modo automático (DHCPv6/SLAAC):"
