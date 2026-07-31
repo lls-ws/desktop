@@ -46,7 +46,8 @@ net_conf()
 	
 	DIR_NETPLAN="etc/netplan"
 	FILE_YAML="50-cloud-init.yaml"
-	
+
+	echo "Removing others netplan conf:"
 	sudo rm -fv /${DIR_NETPLAN}/${FILE_YAML}
 
 	FILE_YAML="01-netcfg.yaml"
