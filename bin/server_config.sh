@@ -82,7 +82,8 @@ net_conf()
 	DIR_NETPLAN="etc/netplan"
 	
 	echo "Remove todas as conexões existentes de uma só vez:"
-	sudo nmcli --fields UUID connection show | tail -n +2 | xargs -I {} sudo nmcli connection delete uuid {}
+	#sudo nmcli --fields UUID connection show | tail -n +2 | xargs -I {} sudo nmcli connection delete uuid {}
+	sudo nmcli -g UUID connection show | xargs -r -I {} sudo nmcli connection delete uuid {}
 
 	echo "Remove todos os arquivos YAML:"
 	sudo rm -fv /${DIR_NETPLAN}/*.yaml
@@ -99,10 +100,14 @@ net_conf()
 	echo "Configura o IPv6 para modo automático (DHCPv6/SLAAC):"
 	sudo nmcli connection modify ${INTERFACE} ipv6.method auto
 
-	echo "Ativa a nova conexão imediatamente"
+	echo "Ativa a nova conexão imediatamente:"
 	sudo nmcli connection up ${INTERFACE}
 	
-	ip addr show
+	echo "Sincronizando com o Netplan:"
+	sudo netplan apply
+	
+	echo "Mostrando o IP:"
+	ip addr show ${INTERFACE}
 	
 	resolvectl status
 	
