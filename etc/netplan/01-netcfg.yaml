@@ -4,6 +4,8 @@ network:
   ethernets:
     enp8s0:
       dhcp4: false
+      dhcp6: true
+      link-local: [ ]
       addresses:
         - 192.168.0.2/24
       routes:
@@ -12,4 +14,3 @@ network:
       nameservers:
         addresses:
           - 8.8.8.8
-          - 1.1.1.1
