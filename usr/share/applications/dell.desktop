@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Icon=utilities-terminal
-Exec=qterminal -e "ssh -i ~/.ssh/id_rsa lls@dell"
+Exec=qterminal -e "ssh -i ~/.ssh/id_rsa lls@dell.lls.net.br"
 Terminal=false
 Categories=Qt;System;TerminalEmulator;
 Actions=Dropdown;

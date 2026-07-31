@@ -11,6 +11,16 @@ ssh_command()
 	
 	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}"
 
+	COLOR_SCHEME="WhiteOnBlack"
+
+ 	if [ "${HOSTNAME}" = "dell" ]; then
+ 	
+		COLOR_SCHEME="GreenOnBlack"
+		
+	fi
+ 	
+ 	sed -i 's/^colorScheme=.*/colorScheme='${COLOR_SCHEME}'/' ~/.config/qterminal.org/qterminal.ini
+ 	
  	qterminal -e "${CMD_SSH}" &
 		
 }
