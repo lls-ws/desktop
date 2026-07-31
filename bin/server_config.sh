@@ -47,6 +47,9 @@ net_conf()
 	echo "Remove todas as conexões existentes de uma só vez:"
 	sudo nmcli -g UUID connection show | xargs -r -I {} sudo nmcli connection delete uuid {}
 
+	echo "Remove todos os arquivos YAML:"
+	sudo rm -fv /${DIR_NETPLAN}/*.yaml
+
 	FILE_YAML="01-netcfg.yaml"
 	DIR_NETPLAN="etc/netplan"
 	
