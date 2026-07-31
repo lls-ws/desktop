@@ -116,7 +116,7 @@ alias update_google="sudo sed -i '/^Exec/ s/google-chrome-stable/google-chrome-s
 # Clean and Remove Packages
 alias clean-packages='sudo lls_update.sh remove'
 
-if [ "$USER" = "lls" ]; then
+if [ `hostname` = "3green" ]; then
 	
 	rmdir 'Imagens' 'Downloads' 'Documentos' 'Modelos' 'Músicas' 'Público' 'Vídeos' 2> /dev/null
 
@@ -126,6 +126,6 @@ if [ "$USER" = "lls" ]; then
 	rm -f '.fehbg' 2> /dev/null
 	rm -f ~/*.csv 2> /dev/null
 	
+	ls
+	
 fi
-
-ls
