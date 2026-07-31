@@ -141,6 +141,8 @@ ssh_local()
 	
 	check_cloud
 	
+	su lls -c "ssh-keygen -f '/home/lls/.ssh/known_hosts' -R 'dell.lls.net.br'"
+	
 	su lls -c "bash bin/user_conf.sh ssh-local dell dell lls"
 	
 	cd ${DIR_LLS}/desktop
