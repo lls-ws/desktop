@@ -94,9 +94,37 @@ grub_conf()
 	
 	file_update "grub" "etc/default"
 	
-	#logind_conf
-	
 	sudo update-grub
+	
+}
+
+sddm_conf()
+{
+	
+	TYPE_SDDM="$1"
+	
+	echo "Configure SDDM:"
+	
+	if [ -z "${TYPE_SDDM}" ]; then
+			
+		echo "Disable the automatic startup of SDDM:"
+		sudo systemctl disable sddm
+		
+		echo "Change the default system target to text mode (multi-user):"
+		sudo systemctl set-default multi-user.target
+	
+	else
+	
+		echo "Set the graphical interface as the default:"
+		sudo systemctl set-default graphical.target
+		
+		echo "Reactivate the SDDM service:"
+		sudo systemctl enable sddm
+	
+	fi
+	
+	echo "Restart the system:"
+	sudo reboot
 	
 }
 
@@ -210,6 +238,12 @@ case "$1" in
   	grub)
 		grub_conf
 		;;
+	sddm)
+		sddm_conf "$2"
+		;;
+	logind)
+		logind_conf
+		;;
   	conf)
 		server_conf
 		;;
@@ -230,6 +264,8 @@ case "$1" in
 		ssh_install
 		grub_conf
 		server_conf
+		grub_conf
+		sddm_conf
 		sudo bash util/install/transmission.sh install
 		sudo bash util/install/dlna.sh install
 		sudo bash util/install/docker.sh install
@@ -237,7 +273,7 @@ case "$1" in
 		script_conf
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|conf|key|remote|script|profile}"
+		echo "Use: $0 {all|net|ssh|grub|sddm|logind|conf|key|remote|script|profile}"
 		exit 1
 		;;
 esac

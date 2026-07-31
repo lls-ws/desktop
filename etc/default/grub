@@ -8,7 +8,11 @@ GRUB_TIMEOUT_STYLE=hidden
 GRUB_TIMEOUT=0
 GRUB_RECORDFAIL_TIMEOUT=0
 GRUB_DISTRIBUTOR=`( . /etc/os-release && echo ${NAME} )`
+
+# Text Terminal
 GRUB_CMDLINE_LINUX="text"
+# Graphical Terminal
+#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 
 # If your computer has multiple operating systems installed, then you
 # probably want to run os-prober. However, if your computer is a host
