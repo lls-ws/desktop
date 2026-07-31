@@ -79,9 +79,13 @@ net_conf()
 {
 	
 	INTERFACE="enp8s0"
+	DIR_NETPLAN="etc/netplan"
 	
 	echo "Remove todas as conexões existentes de uma só vez:"
 	sudo nmcli --fields UUID connection show | tail -n +2 | xargs -I {} sudo nmcli connection delete uuid {}
+
+	echo "Remove todos os arquivos YAML:"
+	sudo rm -fv /${DIR_NETPLAN}/*.yaml
 
 	echo "Reinicia o serviço para aplicar a limpeza:"
 	sudo systemctl restart NetworkManager
