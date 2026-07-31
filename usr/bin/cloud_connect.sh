@@ -10,6 +10,8 @@ ssh_command()
 	echo "Connect on cloud: ${DNAME}"
 	
 	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}"
+	
+	echo "Command: ${CMD_SSH}"
 
 	COLOR_SCHEME="WhiteOnBlack"
 
