@@ -46,6 +46,8 @@ net_conf()
 	
 	FILE_YAML="01-netcfg.yaml"
 	DIR_NETPLAN="etc/netplan"
+
+	sudo rm -fv "${DIR_NETPLAN}/50-*.yaml"
 	
 	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
 	
