@@ -95,8 +95,9 @@ net_conf()
 	sudo nmcli connection add type ethernet ifname ${INTERFACE} con-name ${INTERFACE}
 
 	echo "Configura o IPv4 estático manual e o gateway:"
-	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24 ipv4.gateway 192.168.0.1
-
+	#sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24 ipv4.gateway 192.168.0.1
+	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24,192.168.0.1
+	
 	echo "Configura o IPv6 para modo automático (DHCPv6/SLAAC):"
 	sudo nmcli connection modify ${INTERFACE} ipv6.method auto
 
