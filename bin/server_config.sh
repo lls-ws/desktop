@@ -44,10 +44,12 @@ net_conf()
 	echo "Subir a interface:"
 	sudo ip link set ${INTERFACE} up
 	
-	FILE_YAML="01-netcfg.yaml"
 	DIR_NETPLAN="etc/netplan"
+	FILE_YAML="50-cloud-init.yaml"
+	
+	sudo rm -fv /${DIR_NETPLAN}/${FILE_YAML}
 
-	sudo rm -fv /${DIR_NETPLAN}/"50-*.yaml"
+	FILE_YAML="01-netcfg.yaml"
 	
 	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
 	
