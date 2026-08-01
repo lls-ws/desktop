@@ -43,6 +43,7 @@ net_conf()
 	echo "Aplique as mudanças:"
 	sudo netplan apply
 	
+	sudo systemctl start ssh
 	sudo systemctl enable ssh
 	
 	sudo reboot
