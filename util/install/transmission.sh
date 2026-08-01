@@ -141,6 +141,10 @@ transmission_log()
 apparmor_conf()
 {
 
+	echo "Forçar a desativação criando um link simbólico na pasta de perfis desativados do AppArmor"
+	sudo ln -s /etc/apparmor.d/usr.bin.transmission-daemon /etc/apparmor.d/disable/
+	sudo apparmor_parser -R /etc/apparmor.d/usr.bin.transmission-daemon
+	
 	echo "Mude o perfil do Transmission para o modo complain"
 	echo "(apenas registrar avisos no log, sem bloquear ações):"
 	sudo aa-complain /usr/bin/transmission-daemon
