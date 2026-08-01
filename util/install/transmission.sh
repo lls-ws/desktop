@@ -138,26 +138,24 @@ transmission_log()
 	
 }
 
-apparmor_conf()
+apparmor_conf2()
 {
 
-	apparmor_conf2
-
-	echo "Mude o perfil do Transmission para o modo complain"
-	echo "(apenas registrar avisos no log, sem bloquear ações):"
-	sudo aa-complain /usr/bin/transmission-daemon
+	#echo "Mude o perfil do Transmission para o modo complain"
+	#echo "(apenas registrar avisos no log, sem bloquear ações):"
+	#sudo aa-complain /usr/bin/transmission-daemon
 	
-	echo "Alterar o tipo de inicialização para simple"
-	sudo sed -i 's/Type=notify/Type=simple/' /lib/systemd/system/transmission-daemon.service
+	#echo "Alterar o tipo de inicialização para simple"
+	#sudo sed -i 's/Type=notify/Type=simple/' /lib/systemd/system/transmission-daemon.service
 	
-	sudo cat /lib/systemd/system/transmission-daemon.service
+	#sudo cat /lib/systemd/system/transmission-daemon.service
 	
-	echo "Recarregar o Systemd:"
-	sudo systemctl daemon-reload
+	#echo "Recarregar o Systemd:"
+	#sudo systemctl daemon-reload
 	
 }
 
-apparmor_conf2()
+apparmor_conf()
 {
 	
 	#echo "Stop ${NAME_APP} service..."
@@ -173,8 +171,8 @@ apparmor_conf2()
 	
 	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
 	
-	echo "Forçar a desativação criando um link simbólico na pasta de perfis desativados do AppArmor"
-	sudo ln -s /${DIR_APPARMOR}/${FILE_APPARMOR} /etc/apparmor.d/disable/
+	#echo "Forçar a desativação criando um link simbólico na pasta de perfis desativados do AppArmor"
+	#sudo ln -s /${DIR_APPARMOR}/${FILE_APPARMOR} /etc/apparmor.d/disable/
 	
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
 	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}

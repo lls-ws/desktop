@@ -1,8 +1,40 @@
+# Profile para o transmission-daemon
 #include <tunables/global>
 
 /usr/bin/transmission-daemon {
   #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/user-download>
 
-  /var/lib/transmission-daemon/scripts/* rix,
-  /etc/transmission-daemon/* r,
+  # Permissões de rede
+  network inet stream,
+  network inet6 stream,
+  network inet dgram,
+  network inet6 dgram,
+
+  # Executável e bibliotecas
+  /usr/bin/transmission-daemon mr,
+
+  # Arquivos de configuração e logs do sistema
+  /etc/transmission-daemon/ r,
+  /etc/transmission-daemon/** r,
+  /var/log/transmission/ r,
+  /var/log/transmission/** rw,
+
+  # Diretório padrão de dados e downloads do sistema
+  /var/lib/transmission-daemon/ r,
+  /var/lib/transmission-daemon/** rwk,
+  
+  # Permissões para a nova pasta de downloads customizada
+  /home/torrents/ r,
+  /home/torrents/** rwk,
+
+  # Acesso à interface web (HTML/JS)
+  /usr/share/transmission/ r,
+  /usr/share/transmission/** r,
+
+  # Permissões para ler configurações locais e temporários
+  /run/transmission-daemon.pid rwk,
+  owner @{HOME}/.config/transmission-daemon/ r,
+  owner @{HOME}/.config/transmission-daemon/** rwk,
 }
