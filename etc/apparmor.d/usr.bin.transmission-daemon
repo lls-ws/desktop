@@ -1,7 +1,7 @@
 # Profile para o transmission-daemon
 #include <tunables/global>
 
-/usr/bin/transmission-daemon {
+/usr/bin/transmission-daemon flags=(attach_disconnected) {
   #include <abstractions/base>
   #include <abstractions/nameservice>
   #include <abstractions/user-download>
@@ -28,6 +28,9 @@
   # Permissões para a nova pasta de downloads customizada
   /home/torrents/ r,
   /home/torrents/** rwk,
+  
+  # Permissão para o systemd notify
+  /run/systemd/notify w,
 
   # Acesso à interface web (HTML/JS)
   /usr/share/transmission/ r,
