@@ -62,13 +62,14 @@ net_conf()
 	
 	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
 	
-	sudo chmod +x /${DIR_NETPLAN}/${FILE_YAML}
+	sudo chown root:root /${DIR_NETPLAN}/${FILE_YAML}
+	sudo chmod 755 /${DIR_NETPLAN}/${FILE_YAML}
 		
 	echo "Aplique as mudanças:"
 	sudo netplan apply
 	
-	#echo "Restart the system:"
-	#sudo reboot
+	echo "Restart the system:"
+	sudo reboot
 	
 }
 
