@@ -50,7 +50,7 @@ net_conf()
 	echo "Remove todos os arquivos YAML:"
 	sudo rm -fv /${DIR_NETPLAN}/*.yaml
 
-	FILE_YAML="01-netcfg.yaml"
+	FILE_YAML="90-NM-0d2ffb26-1abf-4d8b-9cd5-9102e1d8d645.yaml"
 	DIR_NETPLAN="etc/netplan"
 	
 	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
