@@ -7,7 +7,7 @@ exec tail -n +3 $0
 menuentry "Lubuntu (Desktop)" --class lubuntu --class os {
     insmod part_msdos
     insmod ext2
-    search --no-floppy --fs-uuid --set=root COPIE_O_UUID_AQUI
-    linux /vmlinuz root=UUID=COPIE_O_UUID_AQUI ro quiet splash
+    search --no-floppy --fs-uuid --set=root 9c804a77-aa7b-4df3-b110-1482947d87a4
+    linux /vmlinuz root=9c804a77-aa7b-4df3-b110-1482947d87a4 ro quiet splash
     initrd /initrd.img
 }
