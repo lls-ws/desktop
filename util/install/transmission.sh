@@ -167,8 +167,11 @@ apparmor_off()
 	echo "Remove o isolamento da memória agora:"
 	sudo apparmor_parser -R /etc/apparmor.d/usr.bin.transmission-daemon
 
-	echo "Reinicie o serviço:"
-	sudo systemctl restart transmission-daemon
+	#echo "Reinicie o serviço:"
+	#sudo systemctl restart transmission-daemon
+	
+	echo "Start ${NAME_APP} service..."
+	service ${NAME_APP} start
 	
 }
 
