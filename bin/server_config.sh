@@ -157,9 +157,6 @@ case "$1" in
   	grub)
 		grub_conf
 		;;
-	sddm)
-		sddm_conf "$2"
-		;;
 	logind)
 		logind_conf
 		;;
@@ -181,13 +178,13 @@ case "$1" in
 		server_conf
 		grub_conf
 		logind_conf
-		sudo bash util/install/transmission.sh install
+		set_profile
 		sudo bash util/install/dlna.sh install
 		sudo bash util/install/docker.sh install
 		sudo bash util/install/nfs.sh install
 		;;
 	*)
-		echo "Use: $0 {all|net|grub|logind|conf|key|remote|script|profile}"
+		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile}"
 		exit 1
 		;;
 esac
