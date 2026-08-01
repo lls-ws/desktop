@@ -165,9 +165,6 @@ case "$1" in
   	net)
 		net_conf
 		;;
-  	ssh)
-		ssh_install
-		;;
   	grub)
 		grub_conf
 		;;
@@ -194,11 +191,9 @@ case "$1" in
 		;;
   	all)
 		net_conf
-		ssh_install
 		grub_conf
 		server_conf
 		grub_conf
-		sddm_conf
 		sudo bash util/install/transmission.sh install
 		sudo bash util/install/dlna.sh install
 		sudo bash util/install/docker.sh install
@@ -206,7 +201,7 @@ case "$1" in
 		script_conf
 		;;
 	*)
-		echo "Use: $0 {all|net|ssh|grub|sddm|logind|conf|key|remote|script|profile}"
+		echo "Use: $0 {all|net|grub|logind|conf|key|remote|script|profile}"
 		exit 1
 		;;
 esac
