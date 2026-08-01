@@ -57,6 +57,8 @@ grub_conf()
 	
 	file_update "grub" "etc/default"
 	
+	file_update "40_custom" "etc/grub.d"
+	
 	sudo update-grub
 	
 }
