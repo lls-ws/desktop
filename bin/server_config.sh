@@ -57,11 +57,18 @@ net_conf()
 	
 	sudo chmod 600 /${DIR_NETPLAN}/${FILE_YAML}
 	
+	FILE_YAML="99-disable-wifi-on-lan.sh"
+	DIR_NETPLAN="etc/NetworkManager/dispatcher.d"
+	
+	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
+	
+	sudo chmod +x /${DIR_NETPLAN}/${FILE_YAML}
+		
 	echo "Aplique as mudanças:"
 	sudo netplan apply
 	
-	echo "Restart the system:"
-	sudo reboot
+	#echo "Restart the system:"
+	#sudo reboot
 	
 }
 
