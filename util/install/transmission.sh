@@ -148,7 +148,7 @@ apparmor_conf2()
 	#echo "Alterar o tipo de inicialização para simple"
 	#sudo sed -i 's/Type=notify/Type=simple/' /lib/systemd/system/transmission-daemon.service
 	
-	#sudo cat /lib/systemd/system/transmission-daemon.service
+	sudo cat /lib/systemd/system/transmission-daemon.service
 	
 	#echo "Recarregar o Systemd:"
 	#sudo systemctl daemon-reload
