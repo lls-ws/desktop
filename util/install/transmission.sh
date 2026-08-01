@@ -59,6 +59,8 @@ transmission_conf()
 	
 	transmission_dir
 	
+	transmission_script
+	
 	echo "Enable startup service ${NAME_APP}"
 	systemctl enable ${NAME_APP}.service
 	
@@ -70,6 +72,23 @@ transmission_conf()
 	echo "Check your ports 51413 are open!"
 	echo "Configure Port Forward on Router Setup"
 	
+}
+
+transmission_script()
+{
+	
+	FILE_SH="video_copy.sh"
+	DIR_SH="var/lib/transmission-daemon/scripts"
+	
+	file_update "${FILE_SH}" "${DIR_SH}"
+	
+	sudo chmod +x /${DIR_SH}/${FILE_SH}
+	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_SH}
+	
+	ls -alh /${DIR_SH}/${FILE_SH}
+	
+	sudo bash util/install/transmission.sh conf
+
 }
 
 transmission_copy()

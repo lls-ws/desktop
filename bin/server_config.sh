@@ -150,23 +150,6 @@ set_profile()
 	
 }
 
-script_conf()
-{
-	
-	FILE_SH="video_copy.sh"
-	DIR_SH="var/lib/transmission-daemon/scripts"
-	
-	file_update "${FILE_SH}" "${DIR_SH}"
-	
-	sudo chmod +x /${DIR_SH}/${FILE_SH}
-	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_SH}
-	
-	ls -alh /${DIR_SH}/${FILE_SH}
-	
-	sudo bash util/install/transmission.sh conf
-
-}
-
 case "$1" in
   	net)
 		net_conf
@@ -192,9 +175,6 @@ case "$1" in
   	profile)
 		set_profile
 		;;
-  	script)
-		script_conf
-		;;
   	all)
 		net_conf
 		grub_conf
@@ -205,7 +185,6 @@ case "$1" in
 		sudo bash util/install/dlna.sh install
 		sudo bash util/install/docker.sh install
 		sudo bash util/install/nfs.sh install
-		script_conf
 		;;
 	*)
 		echo "Use: $0 {all|net|grub|logind|conf|key|remote|script|profile}"
