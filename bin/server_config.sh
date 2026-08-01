@@ -32,105 +32,17 @@ net_conf()
 	
 	INTERFACE="enp8s0"
 	
-	echo "Verificar interfaces: state UP"
-	ip addr
-	
-	echo "Verificar a conexão física: Link detected yes"
-	sudo ethtool ${INTERFACE}
-	
-	echo "Retorna 1 para conectado:"
-	cat /sys/class/net/${INTERFACE}/carrier
-	
-	echo "Subir a interface:"
-	sudo ip link set ${INTERFACE} up
-	
-	echo "Remove todas as conexões existentes de uma só vez:"
-	sudo nmcli -g UUID connection show | xargs -r -I {} sudo nmcli connection delete uuid {}
-
-	echo "Remove todos os arquivos YAML:"
-	sudo rm -fv /${DIR_NETPLAN}/*.yaml
-
 	# LAN
-	FILE_YAML="90-NM-0d2ffb26-1abf-4d8b-9cd5-9102e1d8d645.yaml"
+	FILE_YAML="50-cloud-init.yaml"
 	DIR_NETPLAN="etc/netplan"
 	
 	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
 	
 	sudo chmod 600 /${DIR_NETPLAN}/${FILE_YAML}
-	
-	# WIFI
-	FILE_YAML="90-NM-4fad11d7-12cc-43b4-848b-411c6e852f2b.yaml"
-	DIR_NETPLAN="etc/netplan"
-	
-	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
-	
-	sudo chmod 600 /${DIR_NETPLAN}/${FILE_YAML}
-	
-	wifi_conf
-		
-}
-
-wifi_conf()
-{
-
-	echo "Disable WIFI on LAN"
-	
-	FILE_YAML="99-disable-wifi-on-lan.sh"
-	DIR_NETPLAN="etc/NetworkManager/dispatcher.d"
-	
-	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
-	
-	sudo chown root:root /${DIR_NETPLAN}/${FILE_YAML}
-	sudo chmod 755 /${DIR_NETPLAN}/${FILE_YAML}
 	
 	echo "Aplique as mudanças:"
 	sudo netplan apply
-	
-	echo "Reiniciando NetworkManager:"
-	sudo systemctl restart NetworkManager
-	
-	echo "Restart the system:"
-	sudo reboot
-	
-}
-
-net_conf2()
-{
-	
-	INTERFACE="enp8s0"
-	DIR_NETPLAN="etc/netplan"
-	
-	echo "Remove todas as conexões existentes de uma só vez:"
-	sudo nmcli -g UUID connection show | xargs -r -I {} sudo nmcli connection delete uuid {}
-
-	echo "Remove todos os arquivos YAML:"
-	sudo rm -fv /${DIR_NETPLAN}/*.yaml
-
-	echo "Reinicia o serviço para aplicar a limpeza:"
-	sudo systemctl restart NetworkManager
-
-	echo "Cria a nova conexão limpa atrelada à sua placa física:"
-	sudo nmcli connection add type ethernet ifname ${INTERFACE} con-name ${INTERFACE}
-
-	echo "Configura o IPv4 estático manual e IPv6 para modo automático:"
-	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24 gw4 192.168.0.1 ipv6.method auto
-	
-	echo "Ativa a nova conexão imediatamente:"
-	sudo nmcli connection up ${INTERFACE}
-	
-	echo "Sincronizando com o Netplan:"
-	sudo netplan apply
-	
-	wifi_conf
-	
-	echo "Reiniciando NetworkManager:"
-	sudo systemctl restart NetworkManager
-	
-	echo "Mostrando o IP:"
-	ip addr show ${INTERFACE}
-	
-	resolvectl status
-	
+		
 }
 
 ssh_install()
@@ -158,36 +70,6 @@ grub_conf()
 	file_update "grub" "etc/default"
 	
 	sudo update-grub
-	
-}
-
-sddm_conf()
-{
-	
-	TYPE_SDDM="$1"
-	
-	echo "Configure SDDM:"
-	
-	if [ -z "${TYPE_SDDM}" ]; then
-			
-		echo "Disable the automatic startup of SDDM:"
-		sudo systemctl disable sddm
-		
-		echo "Change the default system target to text mode (multi-user):"
-		sudo systemctl set-default multi-user.target
-	
-	else
-	
-		echo "Set the graphical interface as the default:"
-		sudo systemctl set-default graphical.target
-		
-		echo "Reactivate the SDDM service:"
-		sudo systemctl enable sddm
-	
-	fi
-	
-	echo "Restart the system:"
-	sudo reboot
 	
 }
 
