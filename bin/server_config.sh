@@ -50,23 +50,6 @@ net_conf()
 		
 }
 
-ssh_install()
-{
-	
-	echo "Install SSH:"
-	sudo apt -y install nano openssh-server git
-	
-	file_update "sshd_config" "etc/ssh"
-	
-	sudo systemctl status ssh
-	sudo systemctl start ssh
-	sudo systemctl status ssh
-	sudo systemctl enable ssh
-	
-	ss -tuln | grep :22
-	
-}
-
 grub_conf()
 {
 	
