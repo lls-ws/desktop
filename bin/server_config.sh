@@ -68,8 +68,8 @@ net_conf()
 	echo "Aplique as mudanças:"
 	sudo netplan apply
 	
-	echo "Restart the system:"
-	sudo reboot
+	echo "ATENÇÃO:"
+	echo "Desplug e Plug o Cabo novamente!"
 	
 }
 
