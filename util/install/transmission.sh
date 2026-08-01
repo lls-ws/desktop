@@ -30,6 +30,8 @@ transmission_conf()
 	
 	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /var/lib/transmission-daemon
 	
+	shared_dir
+	
 	apparmor_conf
 	
 	transmission_dir
@@ -138,50 +140,19 @@ transmission_log()
 	
 }
 
-apparmor_conf2()
-{
-
-	#echo "Mude o perfil do Transmission para o modo complain"
-	#echo "(apenas registrar avisos no log, sem bloquear ações):"
-	#sudo aa-complain /usr/bin/transmission-daemon
-	
-	#echo "Alterar o tipo de inicialização para simple"
-	#sudo sed -i 's/Type=notify/Type=simple/' /lib/systemd/system/transmission-daemon.service
-	
-	sudo cat /lib/systemd/system/transmission-daemon.service
-	
-	#echo "Recarregar o Systemd:"
-	#sudo systemctl daemon-reload
-	
-}
-
 apparmor_conf()
 {
-	
-	#echo "Stop ${NAME_APP} service..."
-	#service ${NAME_APP} stop
-	
-	#FILE_APPARMOR="transmission"
-	#DIR_APPARMOR="etc/apparmor.d/local"
-	
-	#transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
 	
 	FILE_APPARMOR="usr.bin.transmission-daemon"
 	DIR_APPARMOR="etc/apparmor.d"
 	
 	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
 	
-	#echo "Forçar a desativação criando um link simbólico na pasta de perfis desativados do AppArmor"
-	#sudo ln -s /${DIR_APPARMOR}/${FILE_APPARMOR} /etc/apparmor.d/disable/
-	
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
 	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
 	echo "Reload AppArmor..."
 	sudo systemctl reload apparmor
-	
-	#echo "Start ${NAME_APP} service..."
-	#service ${NAME_APP} start
 	
 }
 
@@ -205,6 +176,9 @@ case "$1" in
 	apparmor)
 		apparmor_conf
 		;;
+	shared)
+		shared_dir
+		;;
 	uninstall)
 		transmission_uninstall
 		;;
@@ -214,7 +188,7 @@ case "$1" in
   		apparmor_conf
   		;;
 	*)
-		echo "Use: $0 {all|install|version|conf|log|apparmor|uninstall}"
+		echo "Use: $0 {all|install|version|conf|log|apparmor|shared|uninstall}"
 		exit 1
 		;;
 esac
