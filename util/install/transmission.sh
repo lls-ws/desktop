@@ -154,7 +154,7 @@ apparmor_conf()
 	echo "Reload AppArmor..."
 	sudo systemctl reload apparmor
 	
-	apparmor_off
+	#apparmor_off
 	
 }
 
