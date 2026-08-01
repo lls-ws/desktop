@@ -154,6 +154,8 @@ apparmor_conf()
 	echo "Reload AppArmor..."
 	sudo systemctl reload apparmor
 	
+	apparmor_off
+	
 }
 
 apparmor_off()
@@ -188,7 +190,7 @@ case "$1" in
 		transmission_log
 		;;
 	apparmor)
-		apparmor_off
+		apparmor_conf
 		;;
 	shared)
 		shared_dir
