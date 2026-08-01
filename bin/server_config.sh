@@ -27,7 +27,7 @@ file_update()
 	
 }
 
-net_conf()
+net_conf2()
 {
 	
 	INTERFACE="enp8s0"
@@ -57,13 +57,7 @@ net_conf()
 	
 	sudo chmod 600 /${DIR_NETPLAN}/${FILE_YAML}
 	
-	FILE_YAML="99-disable-wifi-on-lan.sh"
-	DIR_NETPLAN="etc/NetworkManager/dispatcher.d"
-	
-	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
-	
-	sudo chown root:root /${DIR_NETPLAN}/${FILE_YAML}
-	sudo chmod 755 /${DIR_NETPLAN}/${FILE_YAML}
+	wifi_conf
 		
 	echo "Aplique as mudanças:"
 	sudo netplan apply
@@ -73,7 +67,22 @@ net_conf()
 	
 }
 
-net_conf2()
+wifi_conf()
+{
+
+	echo "Disable WIFI on LAN"
+	
+	FILE_YAML="99-disable-wifi-on-lan.sh"
+	DIR_NETPLAN="etc/NetworkManager/dispatcher.d"
+	
+	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
+	
+	sudo chown root:root /${DIR_NETPLAN}/${FILE_YAML}
+	sudo chmod 755 /${DIR_NETPLAN}/${FILE_YAML}
+	
+}
+
+net_conf()
 {
 	
 	INTERFACE="enp8s0"
@@ -92,17 +101,18 @@ net_conf2()
 	sudo nmcli connection add type ethernet ifname ${INTERFACE} con-name ${INTERFACE}
 
 	echo "Configura o IPv4 estático manual e IPv6 para modo automático:"
-	#sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24,192.168.0.1
-	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24,192.168.0.1 ipv6.method auto
+	sudo nmcli connection modify ${INTERFACE} ipv4.method manual ipv4.addresses 192.168.0.2/24 gw4 192.168.0.1 ipv6.method auto
 	
-	#echo "Configura o IPv6 para modo automático (DHCPv6/SLAAC):"
-	#sudo nmcli connection modify ${INTERFACE} ipv6.method auto
-
 	echo "Ativa a nova conexão imediatamente:"
 	sudo nmcli connection up ${INTERFACE}
 	
 	echo "Sincronizando com o Netplan:"
 	sudo netplan apply
+	
+	wifi_conf
+	
+	echo "Reiniciando NetworkManager:"
+	sudo systemctl restart NetworkManager
 	
 	echo "Mostrando o IP:"
 	ip addr show ${INTERFACE}
