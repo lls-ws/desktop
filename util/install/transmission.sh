@@ -186,8 +186,8 @@ case "$1" in
 		;;
   	all)
   		transmission_install
-  		transmission_version
   		transmission_conf
+  		apparmor_conf
   		;;
 	*)
 		echo "Use: $0 {all|install|version|conf|log|apparmor|uninstall}"
