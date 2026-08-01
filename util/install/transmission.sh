@@ -20,6 +20,35 @@ transmission_install()
 	
 }
 
+transmission_conf()
+{
+	
+	echo "Stop ${NAME_APP} service..."
+	service ${NAME_APP} stop
+	
+	transmission_copy "settings.json" "etc/${NAME_APP}"
+	
+	apparmor_conf
+	
+	exit 1;
+	
+	transmission_dir
+	
+	transmission_script
+	
+	echo "Enable startup service ${NAME_APP}"
+	systemctl enable ${NAME_APP}.service
+	
+	echo "Start ${NAME_APP} service..."
+	service ${NAME_APP} start
+	
+	service ${NAME_APP} status
+	
+	echo "Check your ports 51413 are open!"
+	echo "Configure Port Forward on Router Setup"
+	
+}
+
 apparmor_conf()
 {
 	
@@ -44,33 +73,6 @@ apparmor_conf()
 	
 	echo "Start ${NAME_APP} service..."
 	service ${NAME_APP} start
-	
-}
-
-transmission_conf()
-{
-	
-	echo "Stop ${NAME_APP} service..."
-	service ${NAME_APP} stop
-	
-	transmission_copy "settings.json" "etc/${NAME_APP}"
-	
-	apparmor_conf
-	
-	transmission_dir
-	
-	transmission_script
-	
-	echo "Enable startup service ${NAME_APP}"
-	systemctl enable ${NAME_APP}.service
-	
-	echo "Start ${NAME_APP} service..."
-	service ${NAME_APP} start
-	
-	service ${NAME_APP} status
-	
-	echo "Check your ports 51413 are open!"
-	echo "Configure Port Forward on Router Setup"
 	
 }
 
