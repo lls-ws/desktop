@@ -156,6 +156,20 @@ apparmor_conf()
 	
 }
 
+apparmor_off()
+{
+	
+	echo "Força a desativação do perfil na inicialização:"
+	sudo ln -sf /etc/apparmor.d/usr.bin.transmission-daemon /etc/apparmor.d/disable/
+
+	echo "Remove o isolamento da memória agora:"
+	sudo apparmor_parser -R /etc/apparmor.d/usr.bin.transmission-daemon
+
+	echo "Reinicie o serviço:"
+	sudo systemctl restart transmission-daemon
+	
+}
+
 NAME_APP="transmission-daemon"
 
 DIR_TRANSMISSION="/home/torrents"
@@ -174,7 +188,7 @@ case "$1" in
 		transmission_log
 		;;
 	apparmor)
-		apparmor_conf
+		apparmor_off
 		;;
 	shared)
 		shared_dir
