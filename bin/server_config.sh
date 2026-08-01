@@ -68,12 +68,6 @@ net_conf()
 	
 	wifi_conf
 		
-	echo "Aplique as mudanças:"
-	sudo netplan apply
-	
-	echo "ATENÇÃO:"
-	echo "Desplug e Plug o Cabo novamente!"
-	
 }
 
 wifi_conf()
@@ -88,6 +82,15 @@ wifi_conf()
 	
 	sudo chown root:root /${DIR_NETPLAN}/${FILE_YAML}
 	sudo chmod 755 /${DIR_NETPLAN}/${FILE_YAML}
+	
+	echo "Aplique as mudanças:"
+	sudo netplan apply
+	
+	echo "Reiniciando NetworkManager:"
+	sudo systemctl restart NetworkManager
+	
+	echo "Restart the system:"
+	sudo reboot
 	
 }
 
