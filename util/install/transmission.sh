@@ -14,7 +14,7 @@ check_root "$1"
 transmission_install()
 {
 	
-	apt -y install ${NAME_APP}
+	apt -y install ${NAME_APP} apparmor-utils
 	
 	transmission_conf
 	
@@ -29,6 +29,8 @@ transmission_conf()
 	transmission_copy "settings.json" "etc/${NAME_APP}"
 	
 	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /var/lib/transmission-daemon
+	
+	apparmor_conf
 	
 	transmission_dir
 	
@@ -137,6 +139,15 @@ transmission_log()
 }
 
 apparmor_conf()
+{
+
+	echo "Mude o perfil do Transmission para o modo '"'complain'"'"
+	echo "(apenas registrar avisos no log, sem bloquear ações):"
+	sudo aa-complain /usr/bin/transmission-daemon
+
+}
+
+apparmor_conf2()
 {
 	
 	echo "Stop ${NAME_APP} service..."
