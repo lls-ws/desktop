@@ -68,7 +68,11 @@ logind_conf()
 	
 	file_update "logind.conf" "etc/systemd"
 	
+	echo "Reiniciar o serviço de login:"
 	sudo systemctl restart systemd-logind
+	
+	echo "Desativar completamente os alvos de suspensão (Garante o Boot):"
+	sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 	
 }
 
@@ -194,6 +198,7 @@ case "$1" in
 		grub_conf
 		server_conf
 		grub_conf
+		logind_conf
 		sudo bash util/install/transmission.sh install
 		sudo bash util/install/dlna.sh install
 		sudo bash util/install/docker.sh install
