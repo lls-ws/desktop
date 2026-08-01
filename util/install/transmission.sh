@@ -28,6 +28,8 @@ transmission_conf()
 	
 	transmission_copy "settings.json" "etc/${NAME_APP}"
 	
+	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /var/lib/transmission-daemon
+	
 	transmission_dir
 	
 	transmission_script
