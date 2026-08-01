@@ -4,10 +4,11 @@ exec tail -n +3 $0
 # menu entries you want to add after this comment.  Be careful not to change
 # the 'exec tail' line above.
 
-menuentry "Lubuntu (Desktop)" --class lubuntu --class os {
-    insmod part_msdos
+# UUID=9c804a77-aa7b-4df3-b110-1482947d87a4
+menuentry "Lubuntu (no /dev/sda2)" --class lubuntu --class os {
+    insmod part_gpt
     insmod ext2
     search --no-floppy --fs-uuid --set=root 9c804a77-aa7b-4df3-b110-1482947d87a4
-    linux /vmlinuz root=9c804a77-aa7b-4df3-b110-1482947d87a4 ro quiet splash
-    initrd /initrd.img
+    linux /boot/vmlinuz root=9c804a77-aa7b-4df3-b110-1482947d87a4 ro quiet splash
+    initrd /boot/initrd.img
 }
