@@ -27,7 +27,7 @@ file_update()
 	
 }
 
-net_conf2()
+net_conf()
 {
 	
 	INTERFACE="enp8s0"
@@ -50,7 +50,16 @@ net_conf2()
 	echo "Remove todos os arquivos YAML:"
 	sudo rm -fv /${DIR_NETPLAN}/*.yaml
 
+	# LAN
 	FILE_YAML="90-NM-0d2ffb26-1abf-4d8b-9cd5-9102e1d8d645.yaml"
+	DIR_NETPLAN="etc/netplan"
+	
+	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
+	
+	sudo chmod 600 /${DIR_NETPLAN}/${FILE_YAML}
+	
+	# WIFI
+	FILE_YAML="90-NM-4fad11d7-12cc-43b4-848b-411c6e852f2b.yaml"
 	DIR_NETPLAN="etc/netplan"
 	
 	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
@@ -82,7 +91,7 @@ wifi_conf()
 	
 }
 
-net_conf()
+net_conf2()
 {
 	
 	INTERFACE="enp8s0"
