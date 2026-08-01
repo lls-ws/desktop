@@ -177,8 +177,8 @@ apparmor_conf()
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
 	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
-	echo "Reload AppArmor..."
-	sudo systemctl reload apparmor
+	#echo "Reload AppArmor..."
+	#sudo systemctl reload apparmor
 	
 	#echo "Start ${NAME_APP} service..."
 	#service ${NAME_APP} start
