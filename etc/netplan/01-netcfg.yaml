@@ -18,7 +18,7 @@ network:
       wakeonlan: true
       networkmanager:
         uuid: "0d2ffb26-1abf-4d8b-9cd5-9102e1d8d645"
-        name: "Ethernet connection 1"
+        name: "Ethernet"
         passthrough:
           connection.timestamp: "1785542109"
           ipv6.ip6-privacy: "-1"

@@ -60,19 +60,8 @@ net_conf()
 	echo "Aplique as mudanças:"
 	sudo netplan apply
 	
-	ip addr show
-	
-	resolvectl status
-	
-	echo "Install Ping:"
-	sudo apt -y install inetutils-ping
-	
-	echo "Waiting for LAN..."
-	sleep 7
-	
-	ping -c 3 google.com
-	
-	ping6 -c 3 google.com
+	echo "Restart the system:"
+	sudo reboot
 	
 }
 
