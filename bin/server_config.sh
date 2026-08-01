@@ -42,6 +42,8 @@ net_conf()
 	
 	echo "Aplique as mudanças:"
 	sudo netplan apply
+	
+	sudo reboot
 		
 }
 
