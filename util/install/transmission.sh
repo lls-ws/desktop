@@ -141,10 +141,18 @@ transmission_log()
 apparmor_conf()
 {
 
-	echo "Mude o perfil do Transmission para o modo '"'complain'"'"
+	echo "Mude o perfil do Transmission para o modo complain"
 	echo "(apenas registrar avisos no log, sem bloquear ações):"
 	sudo aa-complain /usr/bin/transmission-daemon
-
+	
+	echo "Alterar o tipo de inicialização para simple"
+	sudo sed -i 's/Type=notify/Type=simple/' /lib/systemd/system/transmission-daemon.service
+	
+	sudo cat /lib/systemd/system/transmission-daemon.service
+	
+	echo "Recarregar o Systemd:"
+	sudo systemctl daemon-reload
+	
 }
 
 apparmor_conf2()
