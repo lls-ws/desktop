@@ -28,10 +28,6 @@ transmission_conf()
 	
 	transmission_copy "settings.json" "etc/${NAME_APP}"
 	
-	apparmor_conf
-	
-	exit 1;
-	
 	transmission_dir
 	
 	transmission_script
@@ -49,48 +45,15 @@ transmission_conf()
 	
 }
 
-apparmor_conf()
-{
-	
-	echo "Stop ${NAME_APP} service..."
-	service ${NAME_APP} stop
-	
-	FILE_APPARMOR="transmission"
-	DIR_APPARMOR="etc/apparmor.d/local"
-	
-	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
-	
-	FILE_APPARMOR="usr.bin.transmission-daemon"
-	DIR_APPARMOR="etc/apparmor.d"
-	
-	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
-	
-	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
-	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
-	
-	echo "Reload AppArmor..."
-	sudo systemctl reload apparmor
-	
-	echo "Start ${NAME_APP} service..."
-	service ${NAME_APP} start
-	
-}
-
 transmission_script()
 {
 	
-	FILE_SH="video_copy.sh"
-	DIR_SH="var/lib/transmission-daemon/scripts"
+	transmission_copy "video_copy.sh" "var/lib/transmission-daemon/scripts"
 	
-	file_update "${FILE_SH}" "${DIR_SH}"
+	sudo chmod +x /${DIR_ETC}/${FILE_SET}
 	
-	sudo chmod +x /${DIR_SH}/${FILE_SH}
-	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_SH}
+	ls -alh /${DIR_ETC}/${FILE_SET}
 	
-	ls -alh /${DIR_SH}/${FILE_SH}
-	
-	sudo bash util/install/transmission.sh conf
-
 }
 
 transmission_copy()
@@ -168,6 +131,33 @@ transmission_log()
 {
 
 	sudo journalctl -u ${NAME_APP}
+	
+}
+
+apparmor_conf()
+{
+	
+	echo "Stop ${NAME_APP} service..."
+	service ${NAME_APP} stop
+	
+	FILE_APPARMOR="transmission"
+	DIR_APPARMOR="etc/apparmor.d/local"
+	
+	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
+	
+	FILE_APPARMOR="usr.bin.transmission-daemon"
+	DIR_APPARMOR="etc/apparmor.d"
+	
+	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
+	
+	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
+	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
+	
+	echo "Reload AppArmor..."
+	sudo systemctl reload apparmor
+	
+	echo "Start ${NAME_APP} service..."
+	service ${NAME_APP} start
 	
 }
 
