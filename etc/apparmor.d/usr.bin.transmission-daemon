@@ -41,9 +41,10 @@
   /var/lib/transmission-daemon/scripts/ r,
   /var/lib/transmission-daemon/scripts/* ix,
   
-  # Permissão para o systemd notify
-  /run/systemd/notify w,
-
+  # Garante a compatibilidade com a variável HOME do daemon
+  owner @{HOME}/.config/ r,
+  owner @{HOME}/.config/** rwk,
+  
   # Acesso à interface web (HTML/JS)
   /usr/share/transmission/ r,
   /usr/share/transmission/** r,
@@ -51,12 +52,6 @@
   # Permissões para ler configurações locais e temporários
   /run/transmission-daemon.pid rwk,
   
-  # Permite leitura, escrita e criação na pasta de configurações do sistema
-  /var/lib/transmission-daemon/.config/ r,
-  /var/lib/transmission-daemon/.config/** rwk,
-
-  # Garante a compatibilidade com a variável HOME do daemon
-  owner @{HOME}/.config/ r,
-  owner @{HOME}/.config/** rwk,
+  
   
 }

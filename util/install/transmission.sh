@@ -143,14 +143,7 @@ transmission_log()
 apparmor_conf()
 {
 	
-	FILE_APPARMOR="transmission-daemon"
-	DIR_APPARMOR="etc/apparmor.d/local"
-	
-	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
-	
-	sudo rm -fv /${DIR_APPARMOR}/${FILE_APPARMOR}.bak
-	
-	FILE_APPARMOR="usr.bin.transmission-daemon"
+	FILE_APPARMOR="transmission"
 	DIR_APPARMOR="etc/apparmor.d"
 	
 	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
