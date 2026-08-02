@@ -25,6 +25,10 @@
   /var/lib/transmission-daemon/ rw,
   /var/lib/transmission-daemon/** rwk,
   
+  # Permissão para o Transmission ler e executar scripts desta pasta
+  /var/lib/transmission-daemon/scripts/ rw,
+  /var/lib/transmission-daemon/scripts/** rwkix,
+  
   # Permissões para a nova pasta de downloads customizada
   /home/torrents/ rw,
   /home/torrents/** rwk,
