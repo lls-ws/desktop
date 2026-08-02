@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Script to copy video files
 #
 # Autor: Leandro Luiz
