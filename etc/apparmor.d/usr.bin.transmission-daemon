@@ -37,7 +37,6 @@
   /run/systemd/notify w,
   
   # Permite executar comandos comuns do sistema dentro de scripts
-  #include <abstractions/base>
   #include <abstractions/bash>
   /bin/date ix,
   /usr/bin/date ix,
