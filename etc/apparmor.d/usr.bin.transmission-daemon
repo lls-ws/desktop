@@ -33,6 +33,12 @@
   /home/torrents/ r,
   /home/torrents/** rwk,
   
+  # Permissões para ler e listar a pasta compartilhada de filmes
+  /home/shared/filmes/ rw,
+  /home/shared/filmes/** rwk,
+  /home/shared/log/ rw,
+  /home/shared/log/** rwk,
+  
   # Permissão para o systemd notify
   /run/systemd/notify w,
   
