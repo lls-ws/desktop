@@ -143,7 +143,7 @@ transmission_log()
 apparmor_conf()
 {
 	
-	transmission_copy "transmission" "etc/apparmor.d/local"
+	#transmission_copy "transmission" "etc/apparmor.d/local"
 	
 	FILE_APPARMOR="usr.bin.transmission-daemon"
 	DIR_APPARMOR="etc/apparmor.d"
