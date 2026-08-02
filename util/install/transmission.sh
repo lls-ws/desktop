@@ -129,6 +129,8 @@ transmission_uninstall()
 	
 	apt -y autoremove
 	
+	sudo rm -rfv /var/lib/transmission-daemon/
+	
 }
 
 transmission_log()
