@@ -14,7 +14,7 @@ video_total()
 video_show()
 {
 	
-	find ${DIR_VIDEO} ${VIDEO_EXT} | /usr/bin/awk -F/ '{print $NF}' > ${FILE_LOG}
+	find ${DIR_VIDEO} ${VIDEO_EXT} | awk -F/ '{print $NF}' > ${FILE_LOG}
 	
 	chown -v ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${FILE_LOG}
 	
