@@ -1,5 +1,1 @@
-owner /home/torrents/ rw,
-owner /home/torrents/** rw,
 /usr/bin/awk Ix,
-/var/lib/transmission-daemon/.config/ rw,
-/var/lib/transmission-daemon/.config/** rw,
