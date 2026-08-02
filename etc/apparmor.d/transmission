@@ -17,7 +17,10 @@ profile transmission-daemon /usr/bin/transmission-daemon flags=(complain,attach_
   network inet  stream,
   network inet6 stream,
 
-  owner @{PROC}/@{pid}/mounts r,
+  # Permite ler as partições e discos montados pelo próprio processo
+  #owner @{PROC}/@{pid}/mounts r,
+  @{PROC}/@{pid}/mounts r,
+
   @{PROC}/sys/kernel/random/uuid r,
 
   @{run}/systemd/notify w,
