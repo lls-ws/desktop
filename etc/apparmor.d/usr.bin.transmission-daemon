@@ -22,22 +22,24 @@
   /var/log/transmission/** rw,
 
   # Diretório padrão de dados e downloads do sistema
-  /var/lib/transmission-daemon/ rw,
+  /var/lib/transmission-daemon/ r,
   /var/lib/transmission-daemon/** rwk,
   
-  # Permissão para o Transmission ler e executar scripts desta pasta
-  /var/lib/transmission-daemon/scripts/ rw,
-  /var/lib/transmission-daemon/scripts/** rwk,
-  
-  # Permissões para a nova pasta de downloads customizada
-  /home/torrents/ rw,
+  # Permite ler, gravar e criar arquivos na pasta e subpastas de downloads
+  /home/torrents/ r,
   /home/torrents/** rwk,
   
-  # Permissões para ler e listar a pasta compartilhada de filmes
-  /home/shared/filmes/ rw,
+  # Permite ler, listar, gravar e criar arquivos na pasta de filmes
+  /home/shared/filmes/ r,
   /home/shared/filmes/** rwk,
-  /home/shared/log/ rw,
+  
+  # Permite ler, listar, gravar e criar arquivos na pasta de log
+  /home/shared/log/ r,
   /home/shared/log/** rwk,
+
+  # Permite ler a pasta e ler/executar qualquer script dentro da pasta scripts
+  /var/lib/transmission-daemon/scripts/ r,
+  /var/lib/transmission-daemon/scripts/* ix,
   
   # Permissão para o systemd notify
   /run/systemd/notify w,
@@ -48,23 +50,8 @@
 
   # Permissões para ler configurações locais e temporários
   /run/transmission-daemon.pid rwk,
-  owner @{HOME}/.config/transmission-daemon/ rw,
-  owner @{HOME}/.config/transmission-daemon/** rwk,
   
-  /var/lib/transmission-daemon/scripts/video_copy.sh cx -> video_script,
-
-  # Permissão de execução irrestrita para o script específico
-  #/var/lib/transmission-daemon/scripts/video_copy.sh uxr,
-  #/bin/bash ixr,
-  #/bin/sh ixr,
-  #/bin/dash ixr,
-
-  profile video_script flags=(attach_disconnected) {
-    file,
-    capability,
-    network,
-    /usr/bin/** rmix,
-    /bin/** rmix,
-  }
+  # Permite acesso de leitura, escrita e criação se o Transmission for o dono dos arquivos
+  owner @{HOME}/.config/transmission-daemon/** rwk,
   
 }

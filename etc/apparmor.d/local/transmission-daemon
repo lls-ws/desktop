@@ -1,0 +1,6 @@
+# Permite ler e executar o seu script personalizado
+/var/lib/transmission-daemon/scripts/video_copy.sh ix,
+
+# Permite o uso dos apps exigidos pelo script video_copy.sh
+# Permite executar o binário herdando as mesmas restrições
+/usr/bin/awk Ix,
