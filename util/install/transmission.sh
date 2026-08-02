@@ -14,7 +14,7 @@ check_root "$1"
 transmission_install()
 {
 	
-	apt -y install ${NAME_APP} apparmor-utils
+	apt -y install ${NAME_APP}
 	
 }
 
@@ -150,6 +150,9 @@ case "$1" in
 	conf)
 		transmission_conf
 		;;
+	script)
+		transmission_script
+		;;
 	log)
 		transmission_log
 		;;
@@ -164,7 +167,7 @@ case "$1" in
   		transmission_conf
   		;;
 	*)
-		echo "Use: $0 {all|install|version|conf|log|shared|uninstall}"
+		echo "Use: $0 {all|install|version|conf|script|log|shared|uninstall}"
 		exit 1
 		;;
 esac
