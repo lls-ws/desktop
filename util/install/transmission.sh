@@ -150,6 +150,8 @@ apparmor_conf()
 	
 	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
 	
+	sudo rm -fv /${DIR_APPARMOR}/${FILE_APPARMOR}.bak
+	
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
 	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
