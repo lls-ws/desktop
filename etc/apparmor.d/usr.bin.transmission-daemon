@@ -22,7 +22,7 @@
   /var/log/transmission/** rw,
 
   # Diretório padrão de dados e downloads do sistema
-  /var/lib/transmission-daemon/ rw,
+  /var/lib/transmission-daemon/ r,
   /var/lib/transmission-daemon/** rwk,
   
   # Permissão para o Transmission ler e executar scripts desta pasta
@@ -43,7 +43,7 @@
   /run/systemd/notify w,
   
   # Liberar o script
-  /var/lib/transmission-daemon/scripts/video_copy.sh Uxr,
+  /var/lib/transmission-daemon/scripts/video_copy.sh uxr,
 
   # Acesso à interface web (HTML/JS)
   /usr/share/transmission/ r,
