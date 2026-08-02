@@ -50,7 +50,9 @@ transmission_script()
 	
 	transmission_copy "video_copy.sh" "var/lib/transmission-daemon/scripts"
 	
-	sudo chmod +x /${DIR_ETC}/${FILE_SET}
+	sudo chmod 664 /${DIR_ETC}/${FILE_SET}
+	
+	chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /${DIR_ETC}
 	
 	ls -alh /${DIR_ETC}/${FILE_SET}
 	
