@@ -1,8 +1,9 @@
 # Permite ler e executar o seu script personalizado
 /var/lib/transmission-daemon/scripts/video_copy.sh ix,
 
-# Permissões para ferramentas de sistema usadas no script video_copy.sh
-# Permite executar o binário herdando as mesmas restrições
+# Permissões de execução para todas as ferramentas do script video_copy.sh
+/usr/bin/date Ix,
+/usr/bin/wc Ix,
 /usr/bin/du Ix,
 /usr/bin/head Ix,
 /usr/bin/chown Ix,
