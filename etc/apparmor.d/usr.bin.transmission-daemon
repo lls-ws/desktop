@@ -41,12 +41,6 @@
   
   # Permissão para o systemd notify
   /run/systemd/notify w,
-  
-  # Permissão de execução irrestrita para o script específico
-  /var/lib/transmission-daemon/scripts/video_copy.sh uxr,
-  /bin/bash ixr,
-  /bin/sh ixr,
-  /bin/dash ixr,
 
   # Acesso à interface web (HTML/JS)
   /usr/share/transmission/ r,
@@ -56,5 +50,21 @@
   /run/transmission-daemon.pid rwk,
   owner @{HOME}/.config/transmission-daemon/ rw,
   owner @{HOME}/.config/transmission-daemon/** rwk,
+  
+  /var/lib/transmission-daemon/scripts/video_copy.sh cx -> video_script,
+
+  # Permissão de execução irrestrita para o script específico
+  #/var/lib/transmission-daemon/scripts/video_copy.sh uxr,
+  #/bin/bash ixr,
+  #/bin/sh ixr,
+  #/bin/dash ixr,
+
+  profile video_script flags=(attach_disconnected) {
+    file,
+    capability,
+    network,
+    /usr/bin/** rmix,
+    /bin/** rmix,
+  }
   
 }
