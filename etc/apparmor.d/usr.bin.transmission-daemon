@@ -50,6 +50,10 @@
   /usr/bin/cat ix,
   /bin/curl ix,
   /usr/bin/curl ix,
+  /bin/basename ix,
+  /usr/bin/basename ix,
+  /bin/awk ix,
+  /usr/bin/awk ix,
 
   # Acesso à interface web (HTML/JS)
   /usr/share/transmission/ r,
