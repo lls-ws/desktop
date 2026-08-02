@@ -16,8 +16,6 @@ transmission_install()
 	
 	apt -y install ${NAME_APP} apparmor-utils
 	
-	transmission_conf
-	
 }
 
 transmission_conf()
