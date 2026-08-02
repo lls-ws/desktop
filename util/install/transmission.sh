@@ -26,11 +26,7 @@ transmission_conf()
 	
 	transmission_copy "settings.json" "etc/${NAME_APP}"
 	
-	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} /var/lib/transmission-daemon
-	
 	shared_dir
-	
-	apparmor_conf
 	
 	transmission_dir
 	
@@ -140,24 +136,6 @@ transmission_log()
 	
 }
 
-apparmor_conf()
-{
-	
-	FILE_APPARMOR="transmission"
-	DIR_APPARMOR="etc/apparmor.d"
-	
-	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
-	
-	sudo rm -fv /${DIR_APPARMOR}/${FILE_APPARMOR}.bak
-	
-	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
-	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
-	
-	echo "Reload AppArmor..."
-	sudo systemctl reload apparmor
-	
-}
-
 NAME_APP="transmission-daemon"
 
 DIR_TRANSMISSION="/home/torrents"
@@ -175,9 +153,6 @@ case "$1" in
 	log)
 		transmission_log
 		;;
-	apparmor)
-		apparmor_conf
-		;;
 	shared)
 		shared_dir
 		;;
@@ -187,10 +162,9 @@ case "$1" in
   	all)
   		transmission_install
   		transmission_conf
-  		apparmor_conf
   		;;
 	*)
-		echo "Use: $0 {all|install|version|conf|log|apparmor|shared|uninstall}"
+		echo "Use: $0 {all|install|version|conf|log|shared|uninstall}"
 		exit 1
 		;;
 esac
