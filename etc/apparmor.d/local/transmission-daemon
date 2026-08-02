@@ -1,6 +1,16 @@
 # Permite ler e executar o seu script personalizado
 /var/lib/transmission-daemon/scripts/video_copy.sh ix,
 
-# Permite o uso dos apps exigidos pelo script video_copy.sh
+# Permissões para ferramentas de sistema usadas no script video_copy.sh
 # Permite executar o binário herdando as mesmas restrições
+/usr/bin/du Ix,
+/usr/bin/head Ix,
+/usr/bin/chown Ix,
+/usr/bin/find Ix,
+/usr/bin/rm Ix,
+/usr/bin/ls Ix,
+/usr/bin/chmod Ix,
 /usr/bin/awk Ix,
+/usr/bin/sort Ix,
+/usr/bin/cat Ix,
+/usr/bin/curl Ix,
