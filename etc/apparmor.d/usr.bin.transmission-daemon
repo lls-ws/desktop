@@ -52,7 +52,7 @@
   /usr/bin/curl ix,
   /bin/basename ix,
   /usr/bin/basename ix,
-  /bin/awk ix,
+  /usr/share/awk ix,
   /usr/bin/awk ix,
 
   # Acesso à interface web (HTML/JS)
