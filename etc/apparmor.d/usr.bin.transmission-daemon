@@ -22,12 +22,12 @@
   /var/log/transmission/** rw,
 
   # Diretório padrão de dados e downloads do sistema
-  /var/lib/transmission-daemon/ r,
+  /var/lib/transmission-daemon/ rw,
   /var/lib/transmission-daemon/** rwk,
   
   # Permissão para o Transmission ler e executar scripts desta pasta
   /var/lib/transmission-daemon/scripts/ rw,
-  /var/lib/transmission-daemon/scripts/** rwkix,
+  /var/lib/transmission-daemon/scripts/** rwk,
   
   # Permissões para a nova pasta de downloads customizada
   /home/torrents/ rw,
@@ -42,7 +42,7 @@
   # Permissão para o systemd notify
   /run/systemd/notify w,
   
-  # Liberar o script
+  # Permissão de execução irrestrita para o script específico
   /var/lib/transmission-daemon/scripts/video_copy.sh uxr,
 
   # Acesso à interface web (HTML/JS)
