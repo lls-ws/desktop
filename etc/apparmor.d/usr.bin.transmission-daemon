@@ -51,7 +51,12 @@
   # Permissões para ler configurações locais e temporários
   /run/transmission-daemon.pid rwk,
   
-  # Permite acesso de leitura, escrita e criação se o Transmission for o dono dos arquivos
-  owner @{HOME}/.config/transmission-daemon/** rwk,
+  # Permite leitura, escrita e criação na pasta de configurações do sistema
+  /var/lib/transmission-daemon/.config/ r,
+  /var/lib/transmission-daemon/.config/** rwk,
+
+  # Garante a compatibilidade com a variável HOME do daemon
+  owner @{HOME}/.config/ r,
+  owner @{HOME}/.config/** rwk,
   
 }
