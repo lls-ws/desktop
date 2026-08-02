@@ -22,15 +22,15 @@
   /var/log/transmission/** rw,
 
   # Diretório padrão de dados e downloads do sistema
-  /var/lib/transmission-daemon/ r,
+  /var/lib/transmission-daemon/ rw,
   /var/lib/transmission-daemon/** rwk,
   
   # Permissão para o Transmission ler e executar scripts desta pasta
-  /var/lib/transmission-daemon/scripts/ r,
-  /var/lib/transmission-daemon/scripts/** rix,
+  /var/lib/transmission-daemon/scripts/ rw,
+  /var/lib/transmission-daemon/scripts/** rwkix,
   
   # Permissões para a nova pasta de downloads customizada
-  /home/torrents/ r,
+  /home/torrents/ rw,
   /home/torrents/** rwk,
   
   # Permissões para ler e listar a pasta compartilhada de filmes
@@ -67,9 +67,9 @@
 
   # Permissões para ler configurações locais e temporários
   /run/transmission-daemon.pid rwk,
-  owner @{HOME}/.config/transmission-daemon/ r,
+  owner @{HOME}/.config/transmission-daemon/ rw,
   owner @{HOME}/.config/transmission-daemon/** rwk,
-  /var/lib/transmission-daemon/.config/transmission-daemon/ r,
+  /var/lib/transmission-daemon/.config/transmission-daemon/ rw,
   /var/lib/transmission-daemon/.config/transmission-daemon/** rwk,
   
 }
