@@ -1,2 +1,3 @@
 owner /home/torrents/ rw,
 owner /home/torrents/** rw,
+/usr/bin/awk Ix,

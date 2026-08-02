@@ -143,6 +143,8 @@ transmission_log()
 apparmor_conf()
 {
 	
+	transmission_copy "transmission" "etc/apparmor.d/local"
+	
 	FILE_APPARMOR="usr.bin.transmission-daemon"
 	DIR_APPARMOR="etc/apparmor.d"
 	
@@ -153,25 +155,6 @@ apparmor_conf()
 	
 	echo "Reload AppArmor..."
 	sudo systemctl reload apparmor
-	
-	#apparmor_off
-	
-}
-
-apparmor_off()
-{
-	
-	echo "Força a desativação do perfil na inicialização:"
-	sudo ln -sf /etc/apparmor.d/usr.bin.transmission-daemon /etc/apparmor.d/disable/
-
-	echo "Remove o isolamento da memória agora:"
-	sudo apparmor_parser -R /etc/apparmor.d/usr.bin.transmission-daemon
-
-	#echo "Reinicie o serviço:"
-	#sudo systemctl restart transmission-daemon
-	
-	echo "Start ${NAME_APP} service..."
-	service ${NAME_APP} start
 	
 }
 
