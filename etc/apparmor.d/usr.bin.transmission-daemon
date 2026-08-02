@@ -35,6 +35,22 @@
   
   # Permissão para o systemd notify
   /run/systemd/notify w,
+  
+  # Permite executar comandos comuns do sistema dentro de scripts
+  #include <abstractions/base>
+  #include <abstractions/bash>
+  /bin/date ix,
+  /usr/bin/date ix,
+  /bin/find ix,
+  /usr/bin/find ix,
+  /bin/chown ix,
+  /usr/bin/chown ix,
+  /bin/du ix,
+  /usr/bin/du ix,
+  /bin/cat ix,
+  /usr/bin/cat ix,
+  /bin/curl ix,
+  /usr/bin/curl ix,
 
   # Acesso à interface web (HTML/JS)
   /usr/share/transmission/ r,
@@ -44,4 +60,7 @@
   /run/transmission-daemon.pid rwk,
   owner @{HOME}/.config/transmission-daemon/ r,
   owner @{HOME}/.config/transmission-daemon/** rwk,
+  /var/lib/transmission-daemon/.config/transmission-daemon/ r,
+  /var/lib/transmission-daemon/.config/transmission-daemon/** rwk,
+  
 }
