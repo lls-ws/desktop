@@ -23,7 +23,7 @@ docker_edit()
 docker_install()
 {
 	
-	docker_conf()
+	docker_conf
 	
 	echo "Atualize o sistema:"
 	sudo apt-get update
