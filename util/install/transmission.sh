@@ -56,8 +56,6 @@ transmission_script()
 	
 	ls -alh /${DIR_ETC}/${FILE_SET}
 	
-	sudo rm -fv /etc/apparmor.d/transmission
-	
 }
 
 transmission_copy()
