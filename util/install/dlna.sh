@@ -21,8 +21,6 @@ dlna_conf()
 	
 	dlna_version
 	
-	
-	
 	echo "Configure ${NAME_APP}..."
 	
 	update_file "${FILE_CONF}" "/${DIR_ETC}" "${DIR_ETC}"
