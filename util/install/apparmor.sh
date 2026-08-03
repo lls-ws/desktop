@@ -24,7 +24,7 @@ apparmor_conf()
 	FILE_APPARMOR="transmission"
 	DIR_APPARMOR="etc/apparmor.d"
 	
-	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
+	update_file "${FILE_APPARMOR}" /${DIR_APPARMOR} "${DIR_APPARMOR}"
 	
 	sudo rm -fv /${DIR_APPARMOR}/${FILE_APPARMOR}.bak
 	sudo rm -fv /${DIR_APPARMOR}/disable/${FILE_APPARMOR}
