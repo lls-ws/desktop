@@ -21,7 +21,7 @@ dlna_conf()
 	
 	dlna_version
 	
-	DIR_ETC="etc"
+	
 	
 	echo "Configure ${NAME_APP}..."
 	
@@ -76,6 +76,8 @@ dlna_uninstall()
 
 NAME_APP="minidlna"
 FILE_CONF="${NAME_APP}.conf"
+
+DIR_ETC="etc"
 
 case "$1" in
 	install)
