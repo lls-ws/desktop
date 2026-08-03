@@ -46,7 +46,7 @@ nfs_conf()
 nfs_version()
 {
 
-	echo "Versão: `sudo cat /proc/fs/nfsd/versions`"
+	echo "Suporte Ativo para Versões: `sudo cat /proc/fs/nfsd/versions`"
 	
 }
 
