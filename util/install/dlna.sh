@@ -14,8 +14,6 @@ dlna_install()
 	
 	apt -y install ${NAME_APP}
 	
-	dlna_conf
-	
 }
 
 dlna_conf()
