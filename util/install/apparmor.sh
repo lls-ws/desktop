@@ -27,12 +27,16 @@ apparmor_conf()
 	transmission_copy "${FILE_APPARMOR}" "${DIR_APPARMOR}"
 	
 	sudo rm -fv /${DIR_APPARMOR}/${FILE_APPARMOR}.bak
+	sudo rm -fv /${DIR_APPARMOR}/disable/${FILE_APPARMOR}
 	
 	echo "Update File : /${DIR_APPARMOR}/${FILE_APPARMOR}"
 	sudo apparmor_parser -r /${DIR_APPARMOR}/${FILE_APPARMOR}
 	
-	echo "Reload AppArmor..."
-	sudo systemctl reload apparmor
+	echo "Restart AppArmor..."
+	sudo systemctl restart ${NAME_APP}
+	
+	echo "Restart Transmission..."
+	sudo systemctl restart transmission-daemon
 	
 }
 
