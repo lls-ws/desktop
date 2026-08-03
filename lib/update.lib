@@ -209,12 +209,6 @@ shared_dir()
 	
 	DIR_SHD="/home/shared"
 	
-	if [ ! -d ${DIR_SHD} ]; then
-	
-		mkdir -pv ${DIR_SHD}
-		
-	fi
-	
 	DIRS_SET=(
 		"pendrive"
 		"imagens"
@@ -225,6 +219,19 @@ shared_dir()
 		"iso"
 		"log"
 	)
+	
+	create_dirs
+	
+}
+
+create_dirs()
+{
+	
+	if [ ! -d ${DIR_SHD} ]; then
+	
+		mkdir -pv ${DIR_SHD}
+		
+	fi
 	
 	for DIR_SET in "${DIRS_SET[@]}"
 	do
@@ -244,6 +251,25 @@ shared_dir()
 	chmod -R 777 ${DIR_SHD}
 	
 	ls -al ${DIR_SHD}
+	
+}
+
+movies_dir()
+{
+	
+	shared_dir
+	
+	DIR_SHD="/home/shared/filmes"
+	
+	DIRS_SET=(
+		"2026"
+		"2020"
+		"2010"
+		"2000"
+		"1900"
+	)
+	
+	create_dirs
 	
 }
 

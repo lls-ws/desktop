@@ -81,11 +81,11 @@ jellyfin_conf()
 	
 	update_file "${FILE_SET}" "${DIR_ETC}" "etc"
 	
-	shared_dir
+	movies_dir
 	
 	cat ${DIR_ETC}/${FILE_SET}
 	
-	# Prepare as pastas de dados
+	echo "Prepare as pastas de dados:"
 	sudo mkdir -pv ${DIR_ETC}/{config,cache,media}
 	
 	sudo chown -Rv ${USER}:${USER} "${DIR_ETC}"
