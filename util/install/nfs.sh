@@ -14,8 +14,6 @@ nfs_install()
 
 	apt -y install nfs-kernel-server nfs-common
 	
-	nfs_conf
-	
 }
 
 nfs_conf()

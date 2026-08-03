@@ -179,9 +179,6 @@ case "$1" in
 		grub_conf
 		logind_conf
 		set_profile
-		sudo bash util/install/dlna.sh install
-		sudo bash util/install/docker.sh install
-		sudo bash util/install/nfs.sh install
 		;;
 	*)
 		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile}"
