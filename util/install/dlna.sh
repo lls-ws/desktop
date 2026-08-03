@@ -50,7 +50,7 @@ dlna_conf()
 dlna_edit()
 {
 	
-	sudo nano ${FILE_CONF}
+	sudo nano /${DIR_ETC}/${FILE_CONF}
 	
 	dlna_conf
 	
