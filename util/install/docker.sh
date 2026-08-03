@@ -1,5 +1,6 @@
 #!/bin/sh
-# Script to Install and Configure Docker on Lubuntu Desktop
+# Script to Install and Configure Docker on Dell Ubuntu Server
+# Processador: Pentium(R) Dual-Core CPU       T4400  @ 2.20GHz
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -12,45 +13,59 @@ check_root "$1"
 docker_edit()
 {
 	
-	sudo nano ~/jellyfin/docker-compose.yml
+	FILE_JELLYFIN="docker-compose.yml"
+	
+	echo "Editar o arquivo ${FILE_JELLYFIN}"
+	sudo nano ~/jellyfin/${FILE_JELLYFIN}
 	
 }
 
 docker_install()
 {
 	
+	docker_conf()
+	
+	echo "Atualize o sistema:"
+	sudo apt-get update
+	
+	echo "Instale os pacotes do Docker:"
+	sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+	
+	echo "Permita gerenciar o Docker sem sudo:"
+	sudo usermod -aG docker ${USER}
+	
+	echo "Verificar a instalação:"
+	docker run hello-world
+	
+	jellyfin_conf
+	
+	docker_version
+	
+}
+
+docker_conf()
+{
+	
+	echo "Atualize o sistema:"
 	sudo apt update
+	
+	echo "Instale os pacotes de pré-requisito:"
 	sudo apt-get install -y ca-certificates curl gnupg
 
+	echo "Adicione a chave GPG oficial do Docker:"
 	sudo install -m 0755 -d /etc/apt/keyrings
 	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 	sudo chmod a+r /etc/apt/keyrings/docker.asc
 	
-	sudo rm -fv /etc/apt/keyrings/docker.gpg
-
+	echo "Remova o repositório estável às fontes do Apt:"
 	sudo rm -fv /etc/apt/sources.list.d/docker.list
 	
+	echo "Adicione o repositório estável às fontes do Apt:"
 	echo \
 	  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
 	  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 	  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-	sudo apt-get update
-	sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-	sudo systemctl enable --now docker
-
-	# Executar sem sudo
-	sudo usermod -aG docker ${USER}
-	newgrp docker
-	
-	# Verificar a instalação
-	docker run hello-world
-	
-	docker_version
-	
-	jellyfin_conf
-	
 }
 
 jellyfin_conf()
@@ -71,12 +86,12 @@ jellyfin_conf()
 	cat ${DIR_ETC}/${FILE_SET}
 	
 	# Prepare as pastas de dados
-	mkdir -pv ${DIR_ETC}/{config,cache,media}
+	sudo mkdir -pv ${DIR_ETC}/{config,cache,media}
 	
-	# Inicie o servidor
+	sudo chown -Rv ${USER}:${USER} "${DIR_ETC}"
+	
+	echo "Iniciando o servidor..."
 	(cd ${DIR_ETC}; sudo docker compose up -d)
-	
-	sudo chown -R ${USER}:${USER} "${DIR_ETC}"
 	
 }
 
