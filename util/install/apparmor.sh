@@ -21,7 +21,7 @@ apparmor_install()
 apparmor_conf()
 {
 	
-	FILE_APPARMOR="transmission"
+	FILE_APPARMOR="usr.bin.transmission-daemon"
 	DIR_APPARMOR="etc/apparmor.d"
 	
 	update_file "${FILE_APPARMOR}" /${DIR_APPARMOR} "${DIR_APPARMOR}"
