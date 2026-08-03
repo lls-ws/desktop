@@ -77,7 +77,7 @@ nfs_local()
 	
 	sudo mkdir -p ${DIR_SHARED}
 	
-	sudo chown nobody:nogroup ${DIR_SHARED}
+	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHARED}
 	
 	sudo chmod 777 ${DIR_SHARED}
 	
@@ -85,9 +85,9 @@ nfs_local()
 	
 	showmount -e dell
 	
-	sudo mount -t nfs dell:${DIR_SHARED} ${DIR_SHARED}
+	sudo mount -t nfs dell:${DIR_SHARED} ${DIR_SHARED}/dell
 	
-	ls -alh ${DIR_SHARED}
+	ls -alh ${DIR_SHARED}/dell
 	
 }
 
