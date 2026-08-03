@@ -16,7 +16,7 @@
     "cache-size-mb": 4,
     "default-trackers": "",
     "dht-enabled": true,
-    "download-dir": "/var/lib/transmission-daemon/downloads",
+    "download-dir": "/home/torrents",
     "download-limit": 100,
     "download-limit-enabled": 0,
     "download-queue-enabled": true,
