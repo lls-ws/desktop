@@ -46,7 +46,7 @@ nfs_conf()
 nfs_version()
 {
 
-	${NAME_APP}d -V
+	echo "Versão: `sudo cat /proc/fs/nfsd/versions`"
 	
 }
 
