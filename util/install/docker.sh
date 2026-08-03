@@ -88,7 +88,7 @@ jellyfin_conf()
 	echo "Prepare as pastas de dados:"
 	sudo mkdir -pv ${DIR_ETC}/{config,cache,media}
 	
-	sudo chown -Rv ${USER}:${USER} "${DIR_ETC}"
+	sudo chown -R ${USER}:${USER} "${DIR_ETC}"
 	
 	echo "Iniciando o servidor..."
 	(cd ${DIR_ETC}; sudo docker compose up -d)
