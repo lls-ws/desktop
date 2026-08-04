@@ -129,3 +129,15 @@ if [ `hostname` = "3green" ]; then
 	ls
 	
 fi
+
+if [ `hostname` = "dell" ]; then
+	
+	echo "Último Reboot: $(last reboot | tail -1)"
+	
+	echo "Log do Cron: $(sudo grep -i 'cron.*shutdown' /var/log/syslog)"
+	
+	echo "Tempo de Atividade: $(uptime)"
+	
+	ls
+	
+fi
