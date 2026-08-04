@@ -120,6 +120,10 @@ docker_uninstall()
 tizen_install()
 {
 	
+	echo "Atualizar a Imagem Docker no PC:"
+	sudo docker pull ghcr.io/georift/install-jellyfin-tizen:latest
+	
+	echo "Executar a Nova Instalação:"
 	sudo docker run --rm ghcr.io/georift/install-jellyfin-tizen tv.lls.net.br
 	
 }
