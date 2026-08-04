@@ -1,0 +1,1 @@
+30 6 * * * /sbin/shutdown -r now

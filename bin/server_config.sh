@@ -30,15 +30,11 @@ file_update()
 net_conf()
 {
 	
-	INTERFACE="enp8s0"
+	echo "Interface: enp8s0"
 	
-	# LAN
-	FILE_YAML="50-cloud-init.yaml"
-	DIR_NETPLAN="etc/netplan"
+	file_update "50-cloud-init.yaml" "etc/netplan"
 	
-	file_update "${FILE_YAML}" "${DIR_NETPLAN}"
-	
-	sudo chmod 600 /${DIR_NETPLAN}/${FILE_YAML}
+	sudo chmod 600 /${DIR_ETC}/${FILE_SET}
 	
 	echo "Aplique as mudanças:"
 	sudo netplan apply
@@ -46,7 +42,7 @@ net_conf()
 	sudo systemctl start ssh
 	sudo systemctl enable ssh
 	
-	sudo reboot
+	sudo shutdown -r now
 		
 }
 
@@ -150,6 +146,23 @@ set_profile()
 	
 }
 
+crontab_config()
+{
+	
+	echo "Configure Crontabs:"
+	
+	file_update "root" "var/spool/cron/crontabs"
+	
+	chmod -v 0600 /${DIR_ETC}/${FILE_SET}
+	
+	echo "Show crontab jobs..."
+	crontab -l
+	
+	echo "Restarting crontab..."
+	service cron restart
+	
+}
+
 case "$1" in
   	net)
 		net_conf
@@ -172,6 +185,9 @@ case "$1" in
   	profile)
 		set_profile
 		;;
+  	cron)
+		crontab_config
+		;;
   	all)
 		net_conf
 		grub_conf
@@ -179,9 +195,10 @@ case "$1" in
 		grub_conf
 		logind_conf
 		set_profile
+		crontab_config
 		;;
 	*)
-		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile}"
+		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile|cron}"
 		exit 1
 		;;
 esac
