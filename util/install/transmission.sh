@@ -33,7 +33,7 @@ transmission_conf()
 	transmission_script
 	
 	echo "Enable startup service ${NAME_APP}"
-	systemctl enable ${NAME_APP}.service
+	systemctl disable ${NAME_APP}.service
 	
 	echo "Start ${NAME_APP} service..."
 	service ${NAME_APP} start
