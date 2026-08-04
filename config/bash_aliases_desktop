@@ -138,6 +138,8 @@ if [ `hostname` = "dell" ]; then
 	
 	echo "Tempo de Atividade: $(uptime)"
 	
+	echo "Espaço em Disco: $(df -h /home)"
+	
 	ls
 	
 fi
