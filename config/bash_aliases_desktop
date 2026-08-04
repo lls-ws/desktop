@@ -134,11 +134,12 @@ if [ `hostname` = "dell" ]; then
 	
 	echo "Último Reboot: $(last reboot | tail -1)"
 	
-	echo "Log do Cron: $(sudo grep -i 'cron.*shutdown' /var/log/syslog)"
-	
 	echo "Tempo de Atividade: $(uptime)"
 	
-	echo "Espaço em Disco: $(df -h /home)"
+	echo "CronLog: $(sudo grep -i 'cron.*shutdown' /var/log/syslog)"
+	
+	echo "Espaço em Disco:"
+	df -h /home
 	
 	ls
 	
