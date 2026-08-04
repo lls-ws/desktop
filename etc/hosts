@@ -2,10 +2,11 @@
 192.168.0.1		router.lls.net.br		  		router
 192.168.0.2 	dell.lls.net.br			  		dell
 192.168.0.3		tv.lls.net.br			  		tv
-192.168.0.4		leandro.lls.net.br	      		leandro
-192.168.0.5		wanda.lls.net.br		  		wanda
-192.168.0.6		anna.lls.net.br		  			anna
-192.168.0.7		camera.lls.net.br		  		camera
+192.168.0.4		repeater.lls.net.br			  	repeater
+192.168.0.5		leandro.lls.net.br	      		leandro
+192.168.0.6		wanda.lls.net.br		  		wanda
+192.168.0.7		anna.lls.net.br		  			anna
+192.168.0.8		camera.lls.net.br		  		camera
 192.168.0.200	3green.lls.net.br		  		3green
 18.231.110.126	app.lls.net.br			  		app
 18.231.110.126	funchal.lls.net.br		  		funchal
