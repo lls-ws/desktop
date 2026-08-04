@@ -134,7 +134,7 @@ if [ `hostname` = "dell" ]; then
 	
 	echo "Último Reboot: $(last reboot | tail -1)"
 	
-	echo "Tempo de Atividade: $(uptime)"
+	echo "Em Atividade: $(uptime)"
 	
 	echo "CronLog: $(sudo grep -i 'cron.*shutdown' /var/log/syslog)"
 	
