@@ -124,7 +124,7 @@ tizen_install()
 	sudo docker pull ghcr.io/georift/install-jellyfin-tizen:latest
 	
 	echo "Executar a Nova Instalação:"
-	sudo docker run --rm ghcr.io/georift/install-jellyfin-tizen tv.lls.net.br
+	sudo docker run --rm ghcr.io/georift/install-jellyfin-tizen 192.168.0.3
 	
 }
 
