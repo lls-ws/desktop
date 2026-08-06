@@ -35,7 +35,7 @@ ytmusic_install()
  	
 	install_deb
 	
-	sudo apt -y install playerctl xdotool
+	sudo apt -y install playerctl xdotool wmctrl
 	
 	ytmusic_config
 	
@@ -60,7 +60,7 @@ ytmusic_config()
 		
 		chown -v lls:lls "${FILE_UPDATE}"
 		
-		cat "${FILE_UPDATE}" | grep -E "startMinimized|windowMaximized"
+		cat "${FILE_UPDATE}" | grep -E "startMinimized|windowMaximized|disableHardwareAcceleration|minimizeToTray|closeToTray"
 	
 	fi
 	

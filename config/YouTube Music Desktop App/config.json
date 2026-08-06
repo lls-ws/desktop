@@ -3,10 +3,10 @@
 		"version": 1
 	},
 	"general": {
-		"disableHardwareAcceleration": false,
+		"disableHardwareAcceleration": true,
 		"hideToTrayOnClose": true,
 		"showNotificationOnSongChange": false,
-		"startOnBoot": true,
+		"startOnBoot": false,
 		"startMinimized": true
 	},
 	"appearance": {
@@ -65,5 +65,9 @@
 		"migrations": {
 			"version": "2.0.11"
 		}
+	},
+	"options": {
+		"minimizeToTray": true,
+		"closeToTray": true
 	}
 }

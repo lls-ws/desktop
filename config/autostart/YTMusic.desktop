@@ -1,7 +1,8 @@
 [Desktop Entry]
-Exec=youtube-music-desktop-app && sleep 10 && pactl set-sink-input-volume \\\\\\\\\\$(pactl list short sink-inputs | awk \\\\\\\\\\'{print \\\\\\\\\\$1}\\\\\\\\\\') 120%
+Exec=/usr/bin/launch_ytm.sh
 Name=YouTube Music
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
 X-LXQt-Need-Tray=true
+X-LXQt-X11-Only=true
