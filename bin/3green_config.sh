@@ -26,6 +26,8 @@ user_conf()
 		su ${USER} -c "bash util/user/lxqt.sh all"
 		su ${USER} -c "bash util/user/kodi.sh all"
 		
+		sudo bash util/install/ytmusic.sh config
+		
 	fi
 
 }

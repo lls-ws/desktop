@@ -53,11 +53,11 @@ update_file()
 	
 	echo "Copy ${FILE_CONF} configuration..."
 	
-	if [ -f ${DIR_GIT}/${FILE_CONF} ]; then
+	if [ -f "${DIR_GIT}/${FILE_CONF}" ]; then
 	
-		rm -fv ${DIR_APP}/${FILE_CONF}
+		rm -fv "${DIR_APP}/${FILE_CONF}"
 	
-		cp -fv ${DIR_GIT}/${FILE_CONF} ${DIR_APP}
+		cp -fv "${DIR_GIT}/${FILE_CONF}" "${DIR_APP}"
 		
 	fi
 	

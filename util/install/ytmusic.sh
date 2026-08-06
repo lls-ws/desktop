@@ -37,9 +37,40 @@ ytmusic_install()
 	
 	sudo apt -y install playerctl
 	
+	ytmusic_config
+	
+}
+
+ytmusic_config()
+{
+	
+	echo "Configure ${NAME_APP}..."
+	
+	USER=`git config user.name`
+	
+	echo "User: ${USER}"
+	
+	FILE_NAME="config.json"
+	FILE_SOURCE='config/YouTube Music Desktop App'/${FILE_NAME}
+	FILE_UPDATE='/home/'${USER}'/.'${FILE_SOURCE}
+	
+	if [ ! -z "${USER}" ]; then
+	
+		cp -fv "${FILE_SOURCE}" "${FILE_UPDATE}"
+		
+		chown -v lls:lls "${FILE_UPDATE}"
+		
+		cat "${FILE_UPDATE}" | grep startMinimized
+	
+	fi
+	
 }
 
 NAME_APP="ytmusic"
+
+FILE_CONF="config.json"
+
+DIR_ETC="config/YouTube\ Music\ Desktop\ App/"
 
 case "$1" in
 	install)
@@ -48,8 +79,11 @@ case "$1" in
 	release)
 		ytmusic_release
 		;;
+	config)
+		ytmusic_config
+		;;
 	*)
-		echo "Use: $0 {install|release}"
+		echo "Use: $0 {install|release|config}"
 		exit 1
 		;;
 esac
