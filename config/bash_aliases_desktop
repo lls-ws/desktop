@@ -136,7 +136,7 @@ if [ `hostname` = "dell" ]; then
 	
 	echo "Atividade: $(uptime -p)"
 	
-	echo "Espaço em Disco: $(df -h /home)"
+	echo "Espaço Disponível: $(df -h /home | awk 'NR==2 {print $4}')"
 	
 	ls
 	
