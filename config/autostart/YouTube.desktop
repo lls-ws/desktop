@@ -1,9 +1,8 @@
 [Desktop Entry]
-Exec=/usr/bin/google-chrome-stable --password-store=basic https://www.youtube.com/@CazeTV
-Name=CazeTV
+Exec=/usr/bin/google-chrome-stable --password-store=basic https://calendar.google.com/calendar/u/0/r
+Name=Google Calendar
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
-X-LXQt-Autostart-disabled=true
 X-LXQt-Need-Tray=true
 X-LXQt-X11-Only=true

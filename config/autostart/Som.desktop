@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=pactl set-sink-volume 0 84%
-Name=Som
+Exec=pactl set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo && pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo false && pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo 100%
+Name=Headphones
 OnlyShowIn=LXQt;
 Type=Application
 Version=1.0
