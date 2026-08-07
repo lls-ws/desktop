@@ -8,9 +8,13 @@ while true; do
     HORA=$(date +%H)
 
     if [ "$HORA" -ge 21 ] || [ "$HORA" -lt 6 ]; then
-        # Período Noturno (21:00 às 06:00): Brilho em 10%
-        # Se preferir usar o comando do LXQt, mude para: lxqt-config-brightness -s 10
+        # Período Noturno (21:00 às 06:00): Brilho em 0%
+        # Se preferir usar o comando do LXQt, mude para: lxqt-config-brightness -s 0
         sudo brightnessctl set 0%
+    elif [ "$HORA" -ge 18 ] || [ "$HORA" -lt 21 ]; then
+        # Período Noturno (18:00 às 21:00): Brilho em 10%
+        # Se preferir usar o comando do LXQt, mude para: lxqt-config-brightness -s 10
+        sudo brightnessctl set 10%
     else
         # Período Diurno: Brilho em 50%
         # Se preferir usar o comando do LXQt, mude para: lxqt-config-brightness -s 50
