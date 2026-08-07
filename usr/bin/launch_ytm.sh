@@ -21,9 +21,11 @@ fi
 
 pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo 100%
 
-sleep 5
+sleep 10
 
 # 4 Aumenta o Volume do YouTube Music
 pactl set-sink-input-volume $(pactl list short sink-inputs | awk '{print $1}') 120%
+
+sleep 5
 
 google-chrome-stable --password-store=basic https://calendar.google.com/calendar/u/0/r
