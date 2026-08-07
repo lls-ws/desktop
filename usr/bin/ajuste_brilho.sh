@@ -14,7 +14,7 @@ while true; do
     else
         # Período Diurno: Brilho em 50%
         # Se preferir usar o comando do LXQt, mude para: lxqt-config-brightness -s 50
-        sudo brightnessctl set 5%
+        sudo brightnessctl set 30%
     fi
 
     # Verifica a hora a cada 5 minutos (300 segundos) para atualizar o brilho
