@@ -86,6 +86,12 @@ server_conf()
 	echo -e "\nConfigure Aliases:"
 	su lls -c "bash util/user/aliases.sh all"
 	
+	echo "Configure MOTD:"
+	
+	file_update "99-custom-info" "etc/update-motd.d"
+	
+	sudo chmod +x /${DIR_ETC}/${FILE_SET}
+	
 }
 	
 check_cloud()
