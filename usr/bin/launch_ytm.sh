@@ -1,6 +1,6 @@
 #!/bin/bash
 # 1. Abre o app forçando a camada XWayland (essencial para automação)
-env OZONE_PLATFORM=x11 youtube-music-desktop-app --ozone-platform=x11 --disable-accelerated-video-decode --disable-features=VaapiVideoDecoder &
+env OZONE_PLATFORM=x11 youtube-music-desktop-app --password-store="basic" --ozone-platform=x11 --disable-accelerated-video-decode --disable-features=VaapiVideoDecoder &
 
 # 2. Aguarda a janela abrir completamente
 sleep 12

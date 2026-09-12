@@ -2,7 +2,7 @@
 Name=YouTube Music Desktop App
 Comment=YouTube Music Desktop App
 GenericName=YouTube Music Desktop App
-Exec=youtube-music-desktop-app %U
+Exec=youtube-music-desktop-app --password-store="basic" %U
 Icon=youtube-music-desktop-app
 Type=Application
 StartupNotify=true
