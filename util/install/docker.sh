@@ -128,6 +128,19 @@ tizen_install()
 	
 }
 
+pendrive_conf()
+{
+	
+	sudo apt install -y ntfs-3g exfat-fuse exfatprogs
+	
+	sudo mount -t exfat -o uid=1000,gid=1000,umask=000 /dev/sdb1 /home/shared/pendrive
+	
+	UUID=$(sudo blkid /dev/sdb1 | cut -f 3 -d '=' | cut -f 2 -d '"')
+	
+	sudo echo "UUID=${UUID} /home/shared/pendrive exfat defaults,uid=1000,gid=1000,umask=000,nofail 0 0" >> /etc/fstab
+	
+}
+
 NAME_APP="docker"
 
 case "$1" in
@@ -146,8 +159,11 @@ case "$1" in
 	tizen)
 		tizen_install
 		;;
+	pendrive)
+		pendrive_conf
+		;;
 	*)
-		echo "Use: $0 {install|version|conf|tizen|edit}"
+		echo "Use: $0 {install|version|conf|tizen|edit|pendrive}"
 		exit 1
 		;;
 esac
