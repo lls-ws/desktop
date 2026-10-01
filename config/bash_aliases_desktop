@@ -70,7 +70,7 @@ alias nfs-umount='sudo umount /home/shared/dell'
 # Pendrive
 alias ventoy-stop='sudo umount /run/media/lls/Ventoy'
 alias pendrive-list='ls -alh /home/shared/pendrive'
-alias pendrive-start='sudo mount -t exfat -o uid=1000,gid=1000,umask=000 /dev/sdb1 /home/shared/pendrive; pendrive-list'
+alias pendrive-start='sudo mount -t exfat -o uid=1000,gid=1000,umask=022 /dev/sdb1 /home/shared/pendrive; pendrive-list'
 alias pendrive-stop='sudo umount /home/shared/pendrive; pendrive-list'
 
 # Docker
