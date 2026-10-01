@@ -134,7 +134,7 @@ pendrive_conf()
 	sudo apt install -y ntfs-3g exfat-fuse exfatprogs
 	
 	echo "Mount Pendrive:"
-	sudo mount -t exfat -o uid=1000,gid=1000,umask=000 /dev/sdb1 /home/shared/pendrive
+	sudo mount -t exfat -o uid=1000,gid=1000,umask=022 /dev/sdb1 /home/shared/pendrive
 	
 	FILE_FSTAB="/etc/fstab"
 	
