@@ -143,7 +143,7 @@ pendrive_conf()
 	echo "Remove UUID:${UUID}"
 	sed -i '/UUID=/d' ${FILE_FSTAB}
 	
-	sudo echo "UUID=${UUID} /home/shared/pendrive exfat defaults,uid=1000,gid=1000,umask=000,nofail 0 0" >> ${FILE_FSTAB}
+	sudo echo "UUID=${UUID} /home/shared/pendrive exfat defaults,uid=1000,gid=1000,umask=022,nofail 0 0" >> ${FILE_FSTAB}
 	
 	sudo cat ${FILE_FSTAB}
 	
