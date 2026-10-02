@@ -41,24 +41,6 @@ git_config()
 	
 }
 
-desktop_config()
-{	
-	
-	bash util/user/xscreensaver.sh conf
-	bash util/user/aliases.sh all
-	bash util/user/config.sh all
-	bash util/user/lxqt.sh all
-
-	sudo bash util/conf/applications.sh conf
-	sudo bash util/conf/sudo.sh conf
-	sudo bash util/conf/hosts.sh conf
-	sudo bash util/conf/sddm.sh conf
-	
-	sudo bash bin/3green_config.sh bin
-	sudo bash bin/dell_config.sh grub
-	
-}
-
 case "$1" in
   	wifi)
 		wifi_config
@@ -69,18 +51,13 @@ case "$1" in
 	git)
 		git_config
 		;;
-	desktop)
-		desktop_config
-		;;
 	all)
 		wifi_config
-		cloud_config
-		git_config
 		apps_install
-		desktop_config
+		git_config
 		;;
 	*)
-		echo "Use: $0 {all|wifi|cloud|apps|aliases|git|desktop}"
+		echo "Use: $0 {all|wifi|apps|git}"
 		exit 1
 		;;
 esac
