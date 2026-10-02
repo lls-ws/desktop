@@ -27,17 +27,19 @@ apps_install()
 	
 }
 
-git_config()
+video_config()
 {
 	
-	cd ~/cloud
-	
-	sudo bin/git_conf.sh name lls
-	sudo bin/git_conf.sh email lls.homeoffice@gmail.com
-	
-	sudo bin/git_conf.sh password 
-	sudo bin/git_conf.sh token 
-	echo -e "\nRun this command above to configure GitHub!"
+	echo "Verificar se o driver está ativo: i915"
+	lspci -k | grep -A 2 -i vga
+
+	echo "Install Mesa Utils:"
+	sudo apt install mesa-utils -y
+
+	echo "Suporte de aceleração 3D e renderização via Mesa (OpenGL):"
+	glxinfo | grep -E "OpenGL|renderer"
+
+	sudo mkdir -p /etc/X11/xorg.conf.d/ && echo -e 'Section "Device"\n    Identifier "Intel Graphics"\n    Driver "intel"\n    Option "AccelMethod" "uxa"\nEndSection' | sudo tee /etc/X11/xorg.conf.d/20-intel.conf
 	
 }
 
@@ -48,16 +50,16 @@ case "$1" in
 	apps)
 		apps_install
 		;;
-	git)
-		git_config
+	video)
+		video_config
 		;;
 	all)
 		wifi_config
 		apps_install
-		git_config
+		video_config
 		;;
 	*)
-		echo "Use: $0 {all|wifi|apps|git}"
+		echo "Use: $0 {all|wifi|apps|video}"
 		exit 1
 		;;
 esac
