@@ -23,7 +23,7 @@ wifi_config()
 apps_install()
 {
 	
-	sudo apt -y install qalculate-qt qpdfview
+	sudo apt -y install geany qalculate-qt qpdfview
 	
 }
 
@@ -41,19 +41,6 @@ git_config()
 	
 }
 
-cloud_config()
-{
-	
-	cd ~
-	git clone https://github.com/lls-ws/cloud.git && cd cloud
-	
-	sudo bin/ubuntu_conf.sh upgrade
-	sudo bin/ubuntu_conf.sh fonts
-	
-	bash bin/user_conf.sh aliases
-	
-}
-	
 desktop_config()
 {	
 	
@@ -75,9 +62,6 @@ desktop_config()
 case "$1" in
   	wifi)
 		wifi_config
-		;;
-  	cloud)
-		cloud_config
 		;;
 	apps)
 		apps_install
