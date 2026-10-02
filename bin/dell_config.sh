@@ -23,7 +23,7 @@ wifi_config()
 apps_install()
 {
 	
-	sudo apt -y install geany qalculate-qt qpdfview
+	sudo apt -y install audacious geany qalculate-qt qpdfview
 	
 }
 
