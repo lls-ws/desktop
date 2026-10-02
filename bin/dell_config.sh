@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to configure LLS Profile on Dell Inspiron
+# Script to configure LLS Profile Desktop on Notebook Dell Inspiron
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
