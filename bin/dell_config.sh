@@ -40,6 +40,8 @@ video_config()
 	glxinfo | grep -E "OpenGL|renderer"
 
 	sudo mkdir -p /etc/X11/xorg.conf.d/ && echo -e 'Section "Device"\n    Identifier "Intel Graphics"\n    Driver "intel"\n    Option "AccelMethod" "uxa"\nEndSection' | sudo tee /etc/X11/xorg.conf.d/20-intel.conf
+
+	sudo cat /etc/X11/xorg.conf.d/20-intel.conf
 	
 }
 
