@@ -17,21 +17,41 @@ google_install()
  	FILE_DEB="${NAME_APP}-stable_current_amd64.deb"
  	
  	apt -y remove --purge ${NAME_APP}-stable
- 	
- 	remove_list "${NAME_APP}"
- 	
+ 		
  	install_deb
  	
-	remove_list "${NAME_APP}"
-	
-	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > ${DIR_LIST}/${FILE_LIST}.list
-	
-	cat ${DIR_LIST}/${FILE_LIST}.list
-	
+	google_source
+		
 	google_config
 	
  	google_version
 	
+}
+
+google_source()
+{
+
+	remove_list "${NAME_APP}"
+	
+	echo "Criando diretorio Keyrings:"
+	sudo mkdir -pv /etc/apt/keyrings
+
+	echo "Baixando a chave GPG:"
+	curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/keyrings/google-chrome.gpg
+
+	echo "Criando o Source"
+	cat << 'EOF' | sudo tee /etc/apt/sources.list.d/google-chrome-fixed.sources
+Enabled: yes
+Types: deb
+Architectures: amd64
+URIs: https://dl.google.com/linux/chrome/deb/
+Suites: stable
+Components: main
+Signed-By: /etc/apt/keyrings/google-chrome.gpg
+EOF
+
+	cat ${DIR_LIST}/${FILE_LIST}.sources
+
 }
 
 google_config()
@@ -65,11 +85,14 @@ case "$1" in
 	config)
 		google_config
 		;;
-  	version)
+  	source)
+		google_source
+		;;
+	version)
 		google_version
 		;;
 	*)
-		echo "Use: $0 {install|config|version}"
+		echo "Use: $0 {install|config|source|version}"
 		exit 1
 		;;
 esac
