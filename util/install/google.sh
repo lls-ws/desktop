@@ -39,6 +39,8 @@ google_source()
 	echo "Baixando a chave GPG:"
 	curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --yes --dearmor -o /etc/apt/keyrings/google-chrome.gpg
 
+	ls -alh /etc/apt/keyrings/google-chrome.gpg
+
 	echo "Criando o Source"
 	cat << 'EOF' | sudo tee /etc/apt/sources.list.d/google-chrome-fixed.sources
 Enabled: yes
@@ -49,8 +51,6 @@ Suites: stable
 Components: main
 Signed-By: /etc/apt/keyrings/google-chrome.gpg
 EOF
-
-	cat ${DIR_LIST}/google-chrome-fixed.sources
 
 }
 
