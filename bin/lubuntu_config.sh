@@ -36,7 +36,7 @@ lubuntu_disable()
 	ls -alh /var/lib/update-notifier/hide-esm-in-motd
 
 	echo "Remover o cliente Ubuntu Pro"
-	sudo apt remove ubuntu-pro-client
+	sudo apt -y remove ubuntu-pro-client
 
 }
 
@@ -49,6 +49,7 @@ case "$1" in
 		;;
   	all)
 		lubuntu_upgrade
+		lubuntu_disable
 		;;
 	*)
 		echo "Use: $0 {all|upgrade|disable}"
