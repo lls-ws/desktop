@@ -27,15 +27,31 @@ lubuntu_upgrade()
 	
 }
 
+lubuntu_disable()
+{
+
+	echo "Criar o arquivo de ocultação oficial:"
+	sudo touch /var/lib/update-notifier/hide-esm-in-motd
+	
+	echo "Limpeza do cache de mensagens antigas:"
+	sudo /usr/lib/update-notifier/update-motd-updates-available --force
+	
+	ls -alh /var/lib/update-notifier/hide-esm-in-motd
+
+}
+
 case "$1" in
   	upgrade)
 		lubuntu_upgrade
+		;;
+	disable)
+		lubuntu_disable
 		;;
   	all)
 		lubuntu_upgrade
 		;;
 	*)
-		echo "Use: $0 {all|upgrade}"
+		echo "Use: $0 {all|upgrade|disable}"
 		exit 1
 		;;
 esac
