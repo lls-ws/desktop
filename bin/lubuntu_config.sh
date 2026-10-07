@@ -33,10 +33,10 @@ lubuntu_disable()
 	echo "Criar o arquivo de ocultação oficial:"
 	sudo touch /var/lib/update-notifier/hide-esm-in-motd
 	
-	echo "Limpeza do cache de mensagens antigas:"
-	sudo /usr/lib/update-notifier/update-motd-updates-available --force
-	
 	ls -alh /var/lib/update-notifier/hide-esm-in-motd
+
+	echo "Remover o cliente Ubuntu Pro"
+	sudo apt remove ubuntu-pro-client
 
 }
 
