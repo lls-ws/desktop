@@ -4,6 +4,9 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
+PATH=.:$(dirname $0):$PATH
+. lib/update.lib		|| exit 1
+
 clear
 
 wifi_config()
@@ -45,6 +48,17 @@ video_config()
 	
 }
 
+git_config()
+{
+	check_cloud
+	
+	sudo bin/git_conf.sh name "lls"
+	sudo bin/git_conf.sh email "lls.home.office@gmail.com"
+
+	sudo bin/git_conf.sh show
+	
+}
+
 case "$1" in
   	wifi)
 		wifi_config
@@ -55,13 +69,16 @@ case "$1" in
 	video)
 		video_config
 		;;
+	git)
+		git_config
+		;;
 	all)
 		wifi_config
 		apps_install
 		video_config
 		;;
 	*)
-		echo "Use: $0 {all|wifi|apps|video}"
+		echo "Use: $0 {all|wifi|apps|video|git}"
 		exit 1
 		;;
 esac
