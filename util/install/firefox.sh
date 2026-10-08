@@ -27,32 +27,33 @@ firefox_release()
 firefox_install()
 {
 
-	firefox_release
+	echo "Criando diretório para armazenar chaves APT:"
+	sudo install -d -m 0755 /etc/apt/keyrings
 	
-	snap remove ${NAME_APP}
+	echo "Importe a chave de assinatura do repositório APT da Mozilla:"
+	wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
  	
-	URL_TAR="https://download-installer.cdn.mozilla.net/pub/${NAME_APP}/releases/${VERSION_FILE}/linux-x86_64/pt-BR"
- 	
- 	FILE_TAR="${NAME_APP}-${VERSION_FILE}.tar.xz"
- 	
- 	wget -O /opt/${FILE_TAR} ${URL_TAR}/${FILE_TAR}
- 	
-	rm -fv /usr/local/bin/${NAME_APP}
-	rm -fv /usr/local/share/applications/${NAME_APP}.desktop
-	
-	cd /opt
-	
-	tar xfv ${FILE_TAR}
-	
-	if [ -d "/opt/${NAME_APP}" ]; then
-		
-		ln -s /opt/${NAME_APP}/${NAME_APP} /usr/local/bin/${NAME_APP}
-		
-		rm -fv ${FILE_TAR}
-		
-	fi
- 	
- 	cd -
+	echo "Adicionando repositório APT da Mozilla:"
+	sudo tee /etc/apt/sources.list.d/mozilla.sources > /dev/null << EOF
+Types: deb
+URIs: https://packages.mozilla.org/apt
+Suites: mozilla
+Components: main
+Signed-By: /etc/apt/keyrings/packages.mozilla.org.asc
+EOF
+
+	echo "Configure o APT prioridade a pacotes do repositório da Mozilla:"
+	sudo tee /etc/apt/preferences.d/mozilla > /dev/null << EOF
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+EOF
+
+	echo "Atualizando APT:"
+	sudo apt-get update
+
+	echo "Instalando ${NAME_APP}"
+	sudo apt-get -y install firefox firefox-l10n-pt-br
 		
  	firefox_version
 	
