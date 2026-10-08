@@ -94,22 +94,6 @@ server_conf()
 	
 }
 	
-check_cloud()
-{
-	
-	DIR_LLS="/home/lls"
-	DIR_CLOUD="${DIR_LLS}/cloud"
-	
-	if [ ! -d ${DIR_CLOUD} ]; then
-	
-		(cd ${DIR_LLS}; git clone https://github.com/lls-ws/cloud.git)
-	
-	fi
-	
-	cd ${DIR_CLOUD}
-	
-}
-
 ssh_local()
 {
 	
