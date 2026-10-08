@@ -76,6 +76,7 @@ case "$1" in
 		wifi_config
 		apps_install
 		video_config
+		git_config
 		;;
 	*)
 		echo "Use: $0 {all|wifi|apps|video|git}"
