@@ -59,6 +59,8 @@ git_config()
 	sudo bin/git_conf.sh show
 
 	cd ${DIR_LLS}/desktop
+
+	sudo rm -rf ${DIR_LLS}/cloud
 	
 }
 
