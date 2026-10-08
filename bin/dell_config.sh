@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to configure LLS Profile Desktop on Notebook Dell Inspiron
+# Script to configure LLS Profile Desktop on Notebook Dell Inspiron 1428
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -50,12 +50,15 @@ video_config()
 
 git_config()
 {
+	
 	check_cloud
 	
 	sudo bin/git_conf.sh name "lls"
 	sudo bin/git_conf.sh email "lls.home.office@gmail.com"
 
 	sudo bin/git_conf.sh show
+
+	cd ${DIR_LLS}/desktop
 	
 }
 
