@@ -78,6 +78,11 @@ apps_remove()
 	sudo apt autoremove --purge -y
 	sudo apt clean
 
+}
+
+memory_config()
+{
+
 	echo "Reduzir o uso do Swap:"
 	sudo echo "vm.swappiness=10" > /etc/sysctl.conf
 	sudo cat /etc/sysctl.conf
@@ -103,6 +108,9 @@ case "$1" in
 	remove)
 		apps_remove
 		;;
+	memory)
+		memory_config
+		;;
 	all)
 		wifi_config
 		apps_install
@@ -110,7 +118,7 @@ case "$1" in
 		git_config
 		;;
 	*)
-		echo "Use: $0 {all|wifi|apps|video|git}"
+		echo "Use: $0 {all|wifi|apps|video|git|remove|memory}"
 		exit 1
 		;;
 esac
