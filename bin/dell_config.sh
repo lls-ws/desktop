@@ -64,17 +64,26 @@ git_config()
 	
 }
 
-dell_disable()
+dell_remove()
 {
 	
 	echo "Remover serviços invisíveis:"
-	sudo apt -y purge cups cups-browsed cups-daemon cups-core-drivers apport apport-gtk samba-common cups-pk-helper avahi-daemon mdns-scan
-	
-	
-	echo "Limpeza profunda do sistema:"
+	sudo apt -y purge \
+	    cups cups-browsed cups-daemon cups-core-drivers cups-pk-helper \
+	    apport apport-gtk \
+	    samba-common avahi-daemon mdns-scan \
+	    blueman bluez bluez-tools rfkill
+
+	echo "Removendo pacotes desnecessários:"
 	sudo apt autoremove --purge -y
 	sudo apt clean
-	rm -rf ~/.cache/*
+
+	echo "Reduzir o uso do Swap:"
+	sudo echo "vm.swappiness=10" > /etc/sysctl.conf
+	sudo cat /etc/sysctl.conf
+
+	echo "Dados da Memória:"
+	sudo dmidecode --type memory | grep -E "Size|Type|Speed"
 	
 }
 
