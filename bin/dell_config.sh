@@ -64,6 +64,20 @@ git_config()
 	
 }
 
+dell_disable()
+{
+	
+	echo "Remover serviços invisíveis:"
+	sudo apt -y purge cups cups-browsed cups-daemon cups-core-drivers apport apport-gtk samba-common cups-pk-helper avahi-daemon mdns-scan
+	
+	
+	echo "Limpeza profunda do sistema:"
+	sudo apt autoremove --purge -y
+	sudo apt clean
+	rm -rf ~/.cache/*
+	
+}
+
 case "$1" in
   	wifi)
 		wifi_config
