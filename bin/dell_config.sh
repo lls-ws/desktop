@@ -64,7 +64,7 @@ git_config()
 	
 }
 
-dell_remove()
+apps_remove()
 {
 	
 	echo "Remover serviços invisíveis:"
@@ -99,6 +99,9 @@ case "$1" in
 		;;
 	git)
 		git_config
+		;;
+	remove)
+		apps_remove
 		;;
 	all)
 		wifi_config
