@@ -105,6 +105,11 @@ services_mask()
 	echo "Desativar o serviço de verificação de disco desnecessário"
 	sudo systemctl disable --now e2scrub_reap.service
 	sudo systemctl mask e2scrub_reap.service
+
+	echo "Desativar o Networkd-Dispatcher"
+	sudo systemctl disable --now networkd-dispatcher.service
+	sudo systemctl mask networkd-dispatcher.service
+
 	
 	systemd-analyze blame
 	
