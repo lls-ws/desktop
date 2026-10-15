@@ -22,6 +22,8 @@ services_disable()
 		sudo systemctl disable "${SERVICE}.service"
 		
 	done
+
+	services_mask
 	
 	services_list
 	
