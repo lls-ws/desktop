@@ -68,12 +68,25 @@ services_mask()
 	
 	echo "Estatísticas de sistema e Agendador secundário"
 	sudo systemctl disable --now sysstat.service anacron.service
-
+	
 	echo "Desativa e para o temporizador do anacron"
 	sudo systemctl disable --now anacron.timer
 	
 	echo "Mascara o temporizador para garantir que nada consiga reativá-lo"
 	sudo systemctl mask anacron.timer
+	
+	echo "Desativar Descoberta de Rede e Impressão"
+	sudo systemctl disable --now avahi-daemon.service legacy-printer-app.service
+	sudo systemctl mask avahi-daemon.service legacy-printer-app.service
+
+	echo "Para e desativa o socket do Avahi"
+	sudo systemctl disable --now avahi-daemon.socket
+	
+	echo "Mascara o socket para impedir que ele seja reativado por outros programas"
+	sudo systemctl mask avahi-daemon.socket
+
+
+	
 	
 }
 
