@@ -55,6 +55,28 @@ services_list()
 	
 }
 
+services_mask()
+{
+
+	echo "Telemetria e relatórios de erro do Ubuntu (Consomem muita CPU)"
+	sudo systemctl disable --now ubuntu-advantage.service ua-reboot-cmds.service whoopsie.path
+	sudo systemctl mask ubuntu-advantage.service ua-reboot-cmds.service whoopsie.path
+	
+	echo "Suporte a Modems 3G/Dispositivos móveis antigos (Inútil para Wi-Fi/Cabo)"
+	sudo systemctl disable --now ModemManager.service
+	sudo systemctl mask ModemManager.service
+	
+	echo "Estatísticas de sistema e Agendador secundário"
+	sudo systemctl disable --now sysstat.service anacron.service
+
+	echo "Desativa e para o temporizador do anacron"
+	sudo systemctl disable --now anacron.timer
+	
+	echo "Mascara o temporizador para garantir que nada consiga reativá-lo"
+	sudo systemctl mask anacron.timer
+	
+}
+
 SERVICES=(
 	"transmission-daemon"
 	"cups-browsed"
