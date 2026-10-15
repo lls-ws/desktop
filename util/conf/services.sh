@@ -85,7 +85,20 @@ services_mask()
 	echo "Mascara o socket para impedir que ele seja reativado por outros programas"
 	sudo systemctl mask avahi-daemon.socket
 
+	echo "Desativar Atualizações de Segurança de Fundo"
+	sudo systemctl disable --now unattended-upgrades.service
 
+	echo "Desativa e para os serviços e timers do APT diário"
+	sudo systemctl disable --now apt-daily.service apt-daily.timer
+
+	echo "Para e desativa os timers residualmente"
+	sudo systemctl disable --now apt-daily.timer apt-daily-upgrade.timer
+
+	echo "Mascara os timers para impedir qualquer ativação automática"
+	sudo systemctl mask apt-daily.timer apt-daily-upgrade.timer
+	
+	echo "Mascara os serviços para garantir que o sistema não os force a iniciar"
+	sudo systemctl mask apt-daily.service apt-daily-upgrade.service
 	
 	
 }
