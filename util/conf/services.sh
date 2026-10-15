@@ -24,6 +24,8 @@ services_disable()
 	done
 
 	services_mask
+
+	services_analyze
 	
 	services_list
 	
@@ -109,7 +111,12 @@ services_mask()
 	echo "Desativar o Networkd-Dispatcher"
 	sudo systemctl disable --now networkd-dispatcher.service
 	sudo systemctl mask networkd-dispatcher.service
-	
+
+}
+
+services_analyze()
+{
+
 	systemd-analyze blame
 	systemd-analyze
 	
@@ -144,6 +151,9 @@ case "$1" in
 	list)
 		services_list
 		;;
+	analyze)
+		services_analyze
+		;;
 	all)
 		services_disable
 		services_show
@@ -151,7 +161,7 @@ case "$1" in
 		services_boot
 		;;
 	*)
-		echo "Use: $0 {disable|show|load|boot|list}"
+		echo "Use: $0 {disable|show|load|boot|list|analyze}"
 		exit 1
 		;;
 esac
