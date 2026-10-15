@@ -26,7 +26,7 @@ wifi_config()
 apps_install()
 {
 	
-	sudo apt -y install audacious geany qalculate-qt qpdfview pulseaudio-utils
+	sudo apt -y install audacious geany qalculate-qt qpdfview pulseaudio-utils streamripper
 	
 }
 
