@@ -99,7 +99,12 @@ services_mask()
 	
 	echo "Mascara os serviços para garantir que o sistema não os force a iniciar"
 	sudo systemctl mask apt-daily.service apt-daily-upgrade.service
+
+	echo "Desativar o serviço de verificação de disco desnecessário"
+	sudo systemctl disable --now e2scrub_reap.service
+	sudo systemctl mask e2scrub_reap.service
 	
+	systemd-analyze blame
 	
 }
 
