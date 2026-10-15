@@ -72,7 +72,8 @@ apps_remove()
 	    cups cups-browsed cups-daemon cups-core-drivers cups-pk-helper \
 	    apport apport-gtk \
 	    samba-common avahi-daemon mdns-scan \
-	    blueman bluez bluez-tools rfkill
+	    blueman bluez bluez-tools rfkill \
+		"libreoffice*"
 
 	echo "Removendo pacotes desnecessários:"
 	sudo apt autoremove --purge -y
