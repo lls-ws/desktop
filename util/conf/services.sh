@@ -109,9 +109,9 @@ services_mask()
 	echo "Desativar o Networkd-Dispatcher"
 	sudo systemctl disable --now networkd-dispatcher.service
 	sudo systemctl mask networkd-dispatcher.service
-
 	
 	systemd-analyze blame
+	systemd-analyze
 	
 }
 
