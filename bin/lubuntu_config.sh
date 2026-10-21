@@ -36,7 +36,13 @@ lubuntu_disable()
 	ls -alh /var/lib/update-notifier/hide-esm-in-motd
 
 	echo "Remover o cliente Ubuntu Pro"
-	sudo apt -y remove ubuntu-pro-client
+	sudo apt purge -y ubuntu-pro-client
+	
+	echo "Remova dependências desnecessárias:"
+	sudo apt autoremove --purge -y
+
+	echo "Remova os diretórios residuais:"
+	sudo rm -rfv /var/lib/ubuntu-pro-client /etc/ubuntu-pro
 
 }
 

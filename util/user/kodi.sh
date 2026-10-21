@@ -101,7 +101,7 @@ kodi_uninstall()
 		mplayer mpv x264
 		
 	echo "Deleting ${APP_NAME} files..."
-	rm -rf ~/.${APP_NAME}
+	rm -rfv ~/.${APP_NAME}
 	
 }
 

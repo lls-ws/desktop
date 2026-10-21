@@ -32,6 +32,23 @@ user_conf()
 
 }
 
+user_clear()
+{
+	
+	echo "Remove Package Manager:"
+	rm -rfv /home/lls/.package-manager
+	
+	echo "Remove Google Default Cache:"
+	rm -rfv /home/lls/.config/google-chrome/Default/Cache/* /home/lls/.config/google-chrome/Default/Media\ Cache/*
+	
+	echo "Remove Google Profile 2 Cache:"
+	rm -rfv "/home/lls/.config/google-chrome/Profile 2/Service Worker/CacheStorage/"* "/home/lls/.config/google-chrome/Profile 2/Service Worker/ScriptCache/"*
+
+	echo "Remove Google Profile 3 Cache:"
+	rm -rfv "/home/lls/.config/google-chrome/Profile 3/Service Worker/CacheStorage/"* "/home/lls/.config/google-chrome/Profile 3/Service Worker/ScriptCache/"*
+	
+}
+
 case "$1" in
   	install)
 		run_scripts "install"
@@ -45,6 +62,9 @@ case "$1" in
   	bin)
 		list_dir "usr/bin"
 		;;
+  	clear)
+		user_clear
+		;;
   	all)
 		run_scripts "install"
 		run_scripts "conf"
@@ -52,7 +72,7 @@ case "$1" in
 		user_conf
 		;;
 	*)
-		echo "Use: $0 {all|install|conf|user|bin}"
+		echo "Use: $0 {all|install|conf|user|bin|clear}"
 		exit 1
 		;;
 esac

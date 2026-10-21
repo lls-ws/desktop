@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script to Install and Configure MiniDLNA on Lubuntu Desktop
+# Script to Install and Configure MiniDLNA on Ubuntu Server
 #
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
@@ -68,7 +68,7 @@ dlna_uninstall()
 	
 	apt -y remove --purge ${NAME_APP}
 	
-	apt -y autoremove
+	sudo apt autoremove --purge -y
 	
 }
 

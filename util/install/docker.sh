@@ -111,9 +111,19 @@ docker_uninstall()
 
 	clear
 	
-	apt -y remove --purge ${NAME_APP}
+	sudo apt -y remove --purge --auto-remove ${NAME_APP}
+	sudo apt purge -y docker-engine docker.io docker-ce docker-ce-cli containerd containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
 	
-	apt -y autoremove
+	sudo apt autoremove --purge -y
+	
+	sudo rm -rfv /var/lib/docker
+	sudo rm -rfv /var/lib/containerd
+
+	sudo rm -rfv /etc/docker
+	sudo rm -fv /etc/apt/keyrings/docker.asc
+	sudo rm -fv /etc/apt/sources.list.d/docker.list
+	
+	sudo rm -rfv /home/lls/.jellyfin/
 	
 }
 
@@ -170,8 +180,11 @@ case "$1" in
 	pendrive)
 		pendrive_conf
 		;;
+	uninstall)
+		docker_uninstall
+		;;
 	*)
-		echo "Use: $0 {install|version|conf|tizen|edit|pendrive}"
+		echo "Use: $0 {install|version|conf|tizen|edit|pendrive|uninstall}"
 		exit 1
 		;;
 esac

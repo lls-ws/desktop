@@ -123,9 +123,10 @@ transmission_uninstall()
 
 	clear
 	
-	apt -y remove --purge ${NAME_APP}
+	sudo apt purge -y ${NAME_APP}
 	
-	apt -y autoremove
+	echo "Limpe os pacotes órfãos do sistema:"
+	sudo apt autoremove --purge -y
 	
 	sudo rm -rfv /var/lib/transmission-daemon/
 	
