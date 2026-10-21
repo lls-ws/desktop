@@ -164,8 +164,108 @@ server_disable()
 
 	echo "Remover configurações residuais de serviços inúteis:"
 	sudo apt purge -y apport plymouth unattended-upgrades
+	
+	echo "Desativar Serviços de Nuvem:"
+	sudo systemctl disable --now cloud-config.service cloud-final.service cloud-init-local.service cloud-init.service cloud-init-hotplugd.socket
+
+	echo "Remover Serviços de Nuvem:"
+	sudo apt purge -y cloud-init
+	sudo rm -rfv /etc/cloud/ /var/lib/cloud/
+	
+	echo "Pare socket e serviço Snap:"
+	sudo systemctl stop snapd.socket snapd.service
+
+	echo "Desative socket e serviço Snap:"
+	sudo systemctl disable snapd.socket snapd.service
+	
+	echo "Desative e remova o Snap do sistema:"
+	sudo systemctl disable --now snapd.seeded.service snapd.autoimport.service snapd.apparmor.service snapd.snap-repair.timer
+	
+	echo "Remova o pacote snapd:"
+	sudo apt purge -y snapd
+
+	echo "Elimine as pastas residuais do snap:"
+	sudo rm -rf /var/cache/snapd/ /root/snap /var/snap /snap
+	
+	echo "Para serviço e socket Multipath:"
+	sudo systemctl stop multipathd.service multipathd.socket
+	
+	echo "Desativa serviço e socket Multipath:"
+	sudo systemctl disable multipathd.service multipathd.socket
+	
+	echo "Aplica um mask no serviço e socket Multipath:"
+	sudo systemctl mask multipathd.service multipathd.socket
+	
+	echo "Para serviço e socket iSCSI:"
+	sudo systemctl stop open-iscsi.service iscsid.socket
+	
+	echo "Desativa serviço e socket iSCSI:"
+	sudo systemctl disable open-iscsi.service iscsid.socket
+	
+	echo "Aplica um mask no serviço e socket iSCSI:"
+	sudo systemctl mask open-iscsi.service iscsid.socket
+	
+	echo "Desativa o instalador automático do LXD:"
+	sudo systemctl disable --now lxd-installer.socket
+	
+	echo "Desativa o gerenciador térmico da Intel:"
+	sudo systemctl disable --now thermald.service
+	
+	echo "Desativa o dispatcher de rede:"
+	sudo systemctl disable --now networkd-dispatcher.service
+	
+	echo "Desativar Serviços de Telemetria e Anúncios da Canonical:"
+	sudo systemctl disable --now ua-reboot-cmds.service ubuntu-advantage.service ua-timer.timer motd-news.timer pollinate.service
+
+	echo "Para os serviços binfmt blk backlight:"
+	sudo systemctl stop systemd-binfmt blk-availability systemd-backlight@backlight:acpi_video0
+	
+	echo "Desativa os serviços binfmt blk backlight:"
+	sudo systemctl disable systemd-binfmt blk-availability systemd-backlight@backlight:acpi_video0
+	
+	echo "Aplica um mask nos serviços binfmt blk backlight:"
+	sudo systemctl mask systemd-binfmt blk-availability systemd-backlight@backlight:acpi_video0
+	
+	echo "Desativa o serviço e2scrub:"
+	sudo systemctl disable --now e2scrub_reap.service
+	
+	echo "Aplica um mask no serviço e2scrub:"
+	sudo systemctl mask e2scrub_reap.service
+
+	echo "Desativa o serviço systemd-networkd-wait-online:"
+	sudo systemctl disable systemd-networkd-wait-online.service
+	
+	echo "Aplica um mask no serviço systemd-networkd-wait-online:"
+	sudo systemctl mask systemd-networkd-wait-online.service
+
+	echo "Limpe os pacotes órfãos do sistema:"
 	sudo apt autoremove --purge -y
 	
+}
+
+server_remove()
+{
+	
+	echo "Remove cabeçalhos, ferramentas de debug de performance e traços de kernels antigos:"
+	sudo apt purge -y bpfcc-tools bpftrace trace-cmd strace linux-headers-6.8.0-142 linux-headers-6.8.0-142-generic linux-headers-6.8.0-147 linux-headers-6.8.0-147-generic linux-headers-generic linux-tools-6.8.0-142 linux-tools-6.8.0-142-generic linux-tools-6.8.0-147 linux-tools-6.8.0-147-generic linux-tools-common
+
+	echo "Remover Clientes de Protocolos Obsoletos e Inseguros:"
+	sudo apt purge -y inetutils-telnet telnet ftp tnftp
+
+	echo "Remover Pacotes de Armazenamento Corporativo e Redundantes:"
+	sudo apt purge -y multipath-tools open-iscsi lxd-installer bcache-tools
+	
+	echo "Remover Telemetria e Clientes Corporativos da Canonical:"
+	sudo apt purge -y ubuntu-pro-client ubuntu-pro-client-l10n pollinate
+
+	echo "Remover diretórios desnecessários:"
+	sudo rm -rf /var/lib/update-manager /etc/pollinate
+
+	echo "Remover Utilitários de Hardware Desnecessários:"
+	sudo apt purge -y thermald networkd-dispatcher
+
+	
+
 	
 	
 }
@@ -198,6 +298,9 @@ case "$1" in
   	disable)
 		server_disable
 		;;
+	remove)
+		server_remove
+		;;
 	all)
 		net_conf
 		grub_conf
@@ -207,9 +310,10 @@ case "$1" in
 		set_profile
 		crontab_config
 		server_disable
+		server_remove
 		;;
 	*)
-		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile|cron|disable}"
+		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile|cron|disable|remove}"
 		exit 1
 		;;
 esac

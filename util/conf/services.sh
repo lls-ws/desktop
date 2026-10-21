@@ -122,6 +122,14 @@ services_analyze()
 	
 }
 
+packages_list()
+{
+	
+	echo "Listar todos os pacotes instalados:"
+	dpkg --get-selections
+	
+}
+
 SERVICES=(
 	"transmission-daemon"
 	"cups-browsed"
@@ -157,6 +165,9 @@ case "$1" in
 	analyze)
 		services_analyze
 		;;
+	packages)
+		packages_list
+		;;
 	all)
 		services_disable
 		services_show
@@ -164,7 +175,7 @@ case "$1" in
 		services_boot
 		;;
 	*)
-		echo "Use: $0 {disable|show|load|boot|list|mask|analyze}"
+		echo "Use: $0 {disable|show|load|boot|list|mask|analyze|packages}"
 		exit 1
 		;;
 esac
