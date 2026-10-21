@@ -29,7 +29,7 @@ aliases_conf()
 	done
 	
 	echo "# Se não for uma sessão interativa, pare a execução aqui" > ~/.bashrc
-	echo "[[ $- != *i* ]] && return" >> ~/.bashrc
+	echo '[[ $- != *i* ]] && return' >> ~/.bashrc
 
 	cat ~/.bash_aliases >> ~/.bashrc
 	source ~/.bashrc
