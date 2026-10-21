@@ -93,23 +93,6 @@ memory_config()
 	
 }
 
-server_disable()
-{
-	
-	echo "Desativar Serviços:"
-	sudo systemctl disable --now apport plymouth plymouth-log unattended-upgrades
-	
-	echo "Mascarar Serviços:"
-	sudo systemctl mask apport plymouth plymouth-log unattended-upgrades
-
-	echo "Remover configurações residuais de serviços inúteis:"
-	sudo apt purge -y apport plymouth unattended-upgrades
-	sudo apt autoremove --purge -y
-	
-	
-	
-}
-
 case "$1" in
   	wifi)
 		wifi_config
@@ -129,9 +112,6 @@ case "$1" in
 	memory)
 		memory_config
 		;;
-	disable)
-		server_disable
-		;;
 	all)
 		wifi_config
 		apps_install
@@ -139,7 +119,7 @@ case "$1" in
 		git_config
 		;;
 	*)
-		echo "Use: $0 {all|wifi|apps|video|git|remove|memory|disable}"
+		echo "Use: $0 {all|wifi|apps|video|git|remove|memory}"
 		exit 1
 		;;
 esac

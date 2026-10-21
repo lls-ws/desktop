@@ -5,6 +5,5 @@ if [ "$(hostname)" = "dell" ]; then
     echo " Tempo Atividade: $(uptime -p)"
     echo " ROOT Disponível: $(df -h / | awk 'NR==2 {print $4}')"
     echo " HOME Disponível: $(df -h /home | awk 'NR==2 {print $4}')"
-    echo " USB1 Disponível: $(df -h /home/shared/pendrive | awk 'NR==2 {print $4}')"
     echo "=================================================="
 fi

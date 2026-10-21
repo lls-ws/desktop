@@ -153,6 +153,23 @@ crontab_config()
 	
 }
 
+server_disable()
+{
+	
+	echo "Desativar Serviços:"
+	sudo systemctl disable --now apport plymouth plymouth-log unattended-upgrades
+	
+	echo "Mascarar Serviços:"
+	sudo systemctl mask apport plymouth plymouth-log unattended-upgrades
+
+	echo "Remover configurações residuais de serviços inúteis:"
+	sudo apt purge -y apport plymouth unattended-upgrades
+	sudo apt autoremove --purge -y
+	
+	
+	
+}
+
 case "$1" in
   	net)
 		net_conf
@@ -178,7 +195,10 @@ case "$1" in
   	cron)
 		crontab_config
 		;;
-  	all)
+  	disable)
+		server_disable
+		;;
+	all)
 		net_conf
 		grub_conf
 		server_conf
@@ -186,9 +206,10 @@ case "$1" in
 		logind_conf
 		set_profile
 		crontab_config
+		server_disable
 		;;
 	*)
-		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile|cron}"
+		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile|cron|disable}"
 		exit 1
 		;;
 esac
