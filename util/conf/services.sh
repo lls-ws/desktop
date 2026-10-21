@@ -151,6 +151,9 @@ case "$1" in
 	list)
 		services_list
 		;;
+	mask)
+		services_mask
+		;;
 	analyze)
 		services_analyze
 		;;
@@ -161,7 +164,7 @@ case "$1" in
 		services_boot
 		;;
 	*)
-		echo "Use: $0 {disable|show|load|boot|list|analyze}"
+		echo "Use: $0 {disable|show|load|boot|list|mask|analyze}"
 		exit 1
 		;;
 esac

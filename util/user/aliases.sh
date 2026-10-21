@@ -28,7 +28,10 @@ aliases_conf()
 		
 	done
 	
-	cp -fv ~/.bash_aliases ~/.bashrc
+	echo "# Se não for uma sessão interativa, pare a execução aqui" > ~/.bashrc
+	echo "[[ $- != *i* ]] && return" >> ~/.bashrc
+
+	cat ~/.bash_aliases >> ~/.bashrc
 	source ~/.bashrc
 	
 	aliases_show
