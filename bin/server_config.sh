@@ -264,9 +264,41 @@ server_remove()
 	echo "Remover Utilitários de Hardware Desnecessários:"
 	sudo apt purge -y thermald networkd-dispatcher
 
-	
+	echo "Remover Drivers e Codecs Gráficos Inúteis:"
+	sudo apt purge -y mesa-va-drivers mesa-vdpau-drivers mesa-vulkan-drivers va-driver-all vdpau-driver-all xauth
 
+	echo "Remove utilitários de ambiente desktop e importação de chaves SSH de nuvem:"
+	sudo apt purge -y xdg-user-dirs ssh-import-id
+
+	echo "Remover automaticamente todos pacotes com status deinstall:"
+	dpkg --get-selections | grep deinstall | awk '{print $1}' | xargs -r sudo apt purge -y
+
+	echo "Limpe os pacotes órfãos do sistema:"
+	sudo apt autoremove --purge -y
+
+	sudo apt clean
 	
+	sudo update-grub
+	
+}
+
+server_swap()
+{
+	
+	echo "Cria um arquivo vazio de 2 Gigabytes no sistema:"
+	sudo fallocate -l 2G /swapfile
+
+	echo "Ajusta as permissões de segurança para que apenas o sistema acesse:"
+	sudo chmod -v 600 /swapfile
+
+	echo "Formata o arquivo como espaço de Swap:"
+	sudo mkswap /swapfile
+
+	echo "Ativa o arquivo de Swap imediatamente:"
+	sudo swapon /swapfile
+	
+	echo "Adicione no arquivo de montagem do sistema:"
+	echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 	
 }
 
@@ -301,6 +333,9 @@ case "$1" in
 	remove)
 		server_remove
 		;;
+	swap)
+		server_swap
+		;;
 	all)
 		net_conf
 		grub_conf
@@ -313,7 +348,7 @@ case "$1" in
 		server_remove
 		;;
 	*)
-		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile|cron|disable|remove}"
+		echo "Use: $0 {all|net|grub|logind|conf|key|remote|profile|cron|disable|remove|swap}"
 		exit 1
 		;;
 esac
