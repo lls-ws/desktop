@@ -3,16 +3,15 @@
 mixer-element=Master
 
 [audacious]
-no_playlist_advance=TRUE
 repeat=TRUE
-show_interface=FALSE
+use_qt=TRUE
 
 [audgui]
 clear_song_fields=FALSE
 eq_preset_win=0,0,1280,800
 equalizer_win=506,251,342,288
-filebrowser_win=768,0,512,760
-filesel_path=/mnt/shared
+filebrowser_win=768,0,1013,760
+filesel_path=/home/lls/.musica
 info_win=768,0,787,760
 no_confirm_playlist_delete=FALSE
 playlist_export_win=768,0,583,760
@@ -20,11 +19,19 @@ playlist_import_win=768,0,512,760
 playlist_path=file:///home/lls
 url_opener_win=768,0,384,187
 
+[audqt]
+icon_theme=audacious-flat-dark
+theme=dark
+
 [gtkui]
-column_widths=10,604,288,10,175,175,10,100,52,10,275,275,275,10,275,175,75
+column_widths=10,604,288,10,175,175,10,100,62,10,275,275,275,10,275,175,75,10
+infoarea_show_art=FALSE
+infoarea_show_vis=FALSE
+infoarea_visible=FALSE
+menu_visible=FALSE
 player_height=1042
 player_width=888
-player_x=1024
+player_x=4
 player_y=0
 
 [gtkui-layout]
@@ -40,7 +47,9 @@ item4_name=Analisador Espectro
 item4_pos=-1,0,558,1912,480
 item5_name=Ofuscar Escopo
 item5_pos=-1,0,0,1912,577
-item_count=6
+item6_name=Playlist Manager
+item6_pos=-1,4,0,379,188
+item_count=7
 
 [history]
 entry0=https://www.uturnradio.com/media/electro_house.m3u
@@ -48,19 +57,29 @@ entry1=https://playerservices.streamtheworld.com/api/livestream-redirect/RADIO_8
 entry2=https://cloud2.cdnseguro.com:20000/stream
 entry3=http://relay.uturnradio.com/classic_rock_32.m3u
 
+[qtui]
+infoarea_show_art=FALSE
+infoarea_show_vis=FALSE
+infoarea_visible=FALSE
+menu_visible=FALSE
+
 [search-tool]
 path=/home/lls
 
 [skins]
-equalizer_visible=TRUE
-equalizer_x=319
-equalizer_y=140
-player_x=319
-player_y=24
-playlist_visible=TRUE
-playlist_x=594
-playlist_y=24
+equalizer_x=1535
+equalizer_y=580
+player_shaded=TRUE
+player_x=1535
+player_y=0
+playlist_height=580
+playlist_width=325
+playlist_x=1810
+playlist_y=0
 skin=/usr/share/audacious/Skins/Default
+
+[skins-layout]
+qt-spectrum=1527,0,288,192
 
 [statusicon]
 close_to_tray=TRUE

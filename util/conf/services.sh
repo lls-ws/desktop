@@ -11,26 +11,6 @@ clear
 
 check_root "$1"
 
-services_disable()
-{
-
-	for SERVICE in "${SERVICES[@]}"
-	do
-		
-		sudo systemctl stop "${SERVICE}.service"
-		
-		sudo systemctl disable "${SERVICE}.service"
-		
-	done
-
-	services_mask
-
-	services_analyze
-	
-	services_list
-	
-}
-
 services_show()
 {
 	
@@ -130,22 +110,26 @@ packages_list()
 	
 }
 
-SERVICES=(
-	"transmission-daemon"
-	"cups-browsed"
-	"teamviewerd"
-	"anydesk"
-	"openvpn"
-	"tomcat9"
-	"mariadb"
-	"cups"
-	"cron"
-	"ssh"
-)
+hardware_show()
+{
+	
+	fastfetch
+	
+}
+
+hardware_details()
+{
+	
+	inxi -Fz
+	
+}
 
 case "$1" in
-	disable)
-		services_disable
+	hardware)
+		hardware_show
+		;;
+	details)
+		hardware_details
 		;;
 	show)
 		services_show

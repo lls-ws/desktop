@@ -46,6 +46,4 @@ cp -fv ~/.${NAME_APP} ${DIR_UPDATE}
 
 ls -al ${DIR_UPDATE}
 
-bash util/user/kodi.sh backup
-
 echo -e "\nBackup done!"

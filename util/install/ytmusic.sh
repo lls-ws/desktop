@@ -66,6 +66,17 @@ ytmusic_config()
 	
 }
 
+ytmusic_uninstall()
+{
+
+	sudo apt -y purge youtube-music-desktop-app playerctl xdotool wmctrl
+	
+	sudo apt -y autoremove
+	
+	rm -rfv '/home/lls/.config/YouTube Music Desktop App'
+	
+}
+
 NAME_APP="ytmusic"
 
 FILE_CONF="config.json"
@@ -82,8 +93,11 @@ case "$1" in
 	config)
 		ytmusic_config
 		;;
+	uninstall)
+		ytmusic_uninstall
+		;;
 	*)
-		echo "Use: $0 {install|release|config}"
+		echo "Use: $0 {install|release|config|uninstall}"
 		exit 1
 		;;
 esac

@@ -18,6 +18,9 @@ lxqt_conf()
 	
 	apps_show "${APP_NAME}"
 	
+	echo "Set GTK Theme:"
+	gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+	
 	echo "Restart LXQT Panel"
   	lxqt-panel restart &
 	

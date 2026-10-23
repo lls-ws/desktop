@@ -1,9 +1,10 @@
 [Desktop Entry]
-Type=Application
-Name=Controle de Brilho Automático
 Comment=Ajusta o brilho da tela com base no horário
 Exec=/usr/bin/ajuste_brilho.sh
+Name=Controle de Brilho Automático
 OnlyShowIn=LXQt;
 Terminal=false
+Type=Application
+X-LXQt-Autostart-disabled=true
 X-LXQt-Need-Tray=false
 X-LXQt-X11-Only=true

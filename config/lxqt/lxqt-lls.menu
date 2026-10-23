@@ -51,7 +51,6 @@
 		<Directory>lxqt-audio-video.directory</Directory>
 		<Include>
 			<Filename>audacious.desktop</Filename>
-			<Filename>youtube-music-desktop-app.desktop</Filename>
 		</Include>
 	</Menu> <!-- End Multimedia -->
 

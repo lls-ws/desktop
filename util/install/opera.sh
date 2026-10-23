@@ -35,11 +35,9 @@ opera_install()
  	
 	apt -y remove --purge ${NAME_APP}
 	
-	remove_list "${NAME_APP}"
-	
 	install_deb
 	
-	cat ${DIR_LIST}/${FILE_LIST}.list
+	cat ${DIR_LIST}/${FILE_LIST}.source
 		
  	opera_version
 	
