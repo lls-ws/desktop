@@ -4,6 +4,7 @@ mixer-element=Master
 
 [audacious]
 repeat=TRUE
+show_interface=FALSE
 use_qt=TRUE
 
 [audgui]
@@ -62,6 +63,8 @@ infoarea_show_art=FALSE
 infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 menu_visible=FALSE
+player_height=1046
+player_width=951
 
 [search-tool]
 path=/home/lls

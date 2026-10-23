@@ -9,24 +9,31 @@ ssh_command()
 
 	echo "Connect on cloud: ${DNAME}"
 	
-	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}"
+	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER_SSH}@${DNAME}"
 	
 	echo "Command: ${CMD_SSH}"
+	
+	change_scheme
+	
+	qterminal -e "${CMD_SSH}" 2>/dev/null &
+	
+}
+	
+change_scheme()
+{
 
 	COLOR_SCHEME="WhiteOnBlack"
-
+	
  	if [ "${HOSTNAME}" = "dell" ]; then
  	
 		COLOR_SCHEME="GreenOnBlack"
 		
 	fi
  	
- 	sed -i 's/^colorScheme=.*/colorScheme='${COLOR_SCHEME}'/' ~/.config/qterminal.org/qterminal.ini
- 	
- 	qterminal -e "${CMD_SSH}" &
-		
-}
+ 	sed -i "s/^colorScheme=.*/colorScheme=${COLOR_SCHEME}/" ~/.config/qterminal.org/qterminal.ini
 
+}
+	
 ssh_clear()
 {
 	
@@ -38,26 +45,18 @@ ssh_clear()
 			
 	chown -v ${USER}:${USER} ${FILE_HOSTS}
 	
-	ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER}@${DNAME}
+	change_scheme
+	
+	ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER_SSH}@${DNAME}
 	
 }
 
-USER=`sudo git config user.name`
-
-if [ -z "${USER}" ]; then
-		
-	echo "Not found a user name!"
-	echo "Use: sudo git_conf.sh name {NAME}"
-	exit 1
-	
-fi
-
 SSH_PORT="22"
-DIR_USER="/home/${USER}"
-DIR_SSH="${DIR_USER}/.ssh"
+USER_SSH=$USER
+DIR_SSH="/home/$USER/.ssh"
 SSH_KEY="${DIR_SSH}/id_rsa"
 
-DNAME="${USER}.net.br"
+DNAME="$USER.net.br"
 
 HOSTNAME="$1"
 
@@ -75,16 +74,16 @@ fi
 
 if [ "$2" = "ubuntu" ]; then
 
-	SSH_KEY=`ls ${DIR_SSH}/${USER}-${HOSTNAME}-*.pem | tail -1`
+	SSH_KEY=`ls ${DIR_SSH}/$USER-${HOSTNAME}-*.pem | tail -1`
 	
-	USER="$2"
+	USER_SSH="$2"
 
 fi
 
 if [ ! -f "${SSH_KEY}" ]; then
 	
 	echo "SSH Key File not found!"
-	echo "Use: `basename $0` [HOSTNAME] [USER]"
+	echo "Use: `basename $0` [HOSTNAME] [USER_SSH]"
 	exit 1;
 
 fi

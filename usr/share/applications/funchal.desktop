@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=utilities-terminal
+Exec=/usr/bin/cloud_connect.sh funchal
+Terminal=false
+Categories=Qt;System;TerminalEmulator;
+Actions=Dropdown;
+
+Name[pt_BR]=Funchal
+GenericName[pt_BR]=Terminal SSH AWS Funchal
+Comment[pt_BR]=Terminal SSH AWS Funchal

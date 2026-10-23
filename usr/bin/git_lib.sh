@@ -68,7 +68,7 @@ fi
 
 URL="https://github.com/lls-ws"
 
-USER=`git config user.name`
+USER=`sudo git config user.name`
 USER_DIR="/home/${USER}"
 
 REPOSITORY_NAME="$1"

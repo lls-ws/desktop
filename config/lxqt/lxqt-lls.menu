@@ -4,7 +4,6 @@
 <Menu>
 
 	<Name>Applications</Name>
-	
 
 	<!-- Read standard .directory and .desktop file locations -->
 	<DefaultAppDirs/>
@@ -21,6 +20,16 @@
 			<Filename>qterminal.desktop</Filename>
 		</Include>
 	</Menu> <!-- End LLS -->
+	
+	<!-- System Tools -->
+	<Menu>
+		<Name>System</Name>
+		<Directory>lxqt-system-tools.directory</Directory>
+		<Include>
+			<Filename>geany.desktop</Filename>
+			<Filename>pcmanfm-qt.desktop</Filename>
+		</Include>
+	</Menu> <!-- End System Tools -->
 
 	<!-- Development Tools -->
 	<Menu>
@@ -28,8 +37,8 @@
 		<Directory>lxqt-development.directory</Directory>
 		<Include>
 			<Filename>dell.desktop</Filename>
-			<Filename>geany.desktop</Filename>
-			<Filename>pcmanfm-qt.desktop</Filename>
+			<Filename>funchal.desktop</Filename>
+			
 		</Include>
 	</Menu>
 	<!-- End Development Tools -->
@@ -40,8 +49,6 @@
 		<Directory>lxqt-office.directory</Directory>
 		<Include>
 			<Filename>io.github.Qalculate.qalculate-qt.desktop</Filename>
-			<Filename>screengrab.desktop</Filename>
-			<Filename>lxqt-config-session.desktop</Filename>
 		</Include>
 	</Menu> <!-- End Office -->
 	
@@ -77,9 +84,9 @@
 
 	<Layout>
 		<Menuname show_empty="false" inline="true">LLS</Menuname>
+		<Menuname show_empty="false" inline="true">System</Menuname>
 		<Separator/>
-		<Menuname show_empty="false" inline="true">Development</Menuname>
-		<Separator/>
+		<Menuname show_empty="false" inline="false">Development</Menuname>
 		<Merge type="files"/>
 		<Merge type="menus"/>
 		<Separator/>

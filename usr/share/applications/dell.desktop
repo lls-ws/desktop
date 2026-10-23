@@ -1,21 +1,11 @@
 [Desktop Entry]
 Type=Application
 Icon=utilities-terminal
-Exec=qterminal -e "ssh -i ~/.ssh/id_rsa lls@dell.lls.net.br"
+Exec=/usr/bin/cloud_connect.sh dell
 Terminal=false
 Categories=Qt;System;TerminalEmulator;
 Actions=Dropdown;
 
-Name=Dell
-GenericName=Terminal Dell
-Comment=Terminal Dell
 Name[pt_BR]=Dell
-GenericName[pt_BR]=Emulador de terminal Dell
-Comment[pt_BR]=Emulador de terminal Dell
-
-[Desktop Action Dropdown]
-Exec=qterminal --drop
-Icon=utilities-terminal
-
-Name=Drop-down Terminal
-Name[pt_BR]=Terminal suspenso
+GenericName[pt_BR]=Terminal SSH Dell Home Server
+Comment[pt_BR]=Terminal SSH Dell Inspiron 1428 Home Server

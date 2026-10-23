@@ -14,30 +14,22 @@ clear
 user_conf()
 {
 	
-	USER=`git config user.name`
-	
-	echo "User: ${USER}"
-	
-	if [ ! -z "${USER}" ]; then
-		
-		DIR_DELL="/home/${USER}/.dell"
-	
-		if [ ! -d "${DIR_DELL}" ]; then
-		
-			su ${USER} -c "mkdir -pv ${DIR_DELL}"
-		
-		fi
-		
-		ls -alh ${DIR_DELL}
-		
-		echo "Adicionar a configuração no arquivo do sistema:"
-		grep -q "dell:/home/shared" /etc/fstab || echo "dell:/home/shared   /home/lls/.dell   nfs   defaults,noatime,x-systemd.automount,bg,timeo=14,x-systemd.idle-timeout=60   0   0" | sudo tee -a /etc/fstab
-		
-		echo "Aplicar as mudanças sem reiniciar:"
-		sudo systemctl daemon-reload && sudo systemctl restart remote-fs.target
-		
-	fi
+	DIR_DELL="/home/${USER}/.dell"
 
+	if [ ! -d "${DIR_DELL}" ]; then
+	
+		su ${USER} -c "mkdir -pv ${DIR_DELL}"
+	
+	fi
+	
+	ls -alh ${DIR_DELL}
+	
+	echo "Adicionar a configuração no arquivo do sistema:"
+	grep -q "dell:/home/shared" /etc/fstab || echo "dell:/home/shared   /home/lls/.dell   nfs   defaults,noatime,x-systemd.automount,bg,timeo=14,x-systemd.idle-timeout=60   0   0" | sudo tee -a /etc/fstab
+	
+	echo "Aplicar as mudanças sem reiniciar:"
+	sudo systemctl daemon-reload && sudo systemctl restart remote-fs.target
+	
 }
 
 user_clear()
@@ -194,6 +186,17 @@ apps_remove()
 	
 }
 
+USER=`git config user.name`
+	
+echo "User: ${USER}"
+	
+if [ -z "${USER}" ]; then
+
+	echo "User not found!"
+	exit 1;
+
+fi
+
 case "$1" in
   	install)
 		apps_install
@@ -222,6 +225,9 @@ case "$1" in
   	remove)
 		apps_remove
 		;;
+  	terminal)
+		terminal_conf
+		;;
   	all)
 		run_scripts "install"
 		run_scripts "conf"
@@ -231,7 +237,7 @@ case "$1" in
 		swappiness_conf
 		;;
 	*)
-		echo "Use: $0 {all|install|conf|user|bin|clear|swap|swappiness|snap|remove}"
+		echo "Use: $0 {all|install|conf|user|bin|clear|swap|swappiness|snap|remove|terminal}"
 		exit 1
 		;;
 esac
