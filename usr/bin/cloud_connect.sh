@@ -22,13 +22,17 @@ ssh_command()
 change_scheme()
 {
 
-	COLOR_SCHEME="WhiteOnBlack"
-	
- 	if [ "${HOSTNAME}" = "dell" ]; then
- 	
-		COLOR_SCHEME="GreenOnBlack"
-		
-	fi
+	case ${HOSTNAME} in
+		dell)
+			COLOR_SCHEME="GreenOnBlack"
+			;;
+		funchal)
+			COLOR_SCHEME="WhiteOnBlack"
+			;;
+		*)
+			COLOR_SCHEME="Falcon"
+			;;
+	esac
  	
  	sed -i "s/^colorScheme=.*/colorScheme=${COLOR_SCHEME}/" ~/.config/qterminal.org/qterminal.ini
 

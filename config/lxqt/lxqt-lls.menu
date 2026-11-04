@@ -38,7 +38,7 @@
 		<Include>
 			<Filename>dell.desktop</Filename>
 			<Filename>funchal.desktop</Filename>
-			
+			<Filename>development.desktop</Filename>
 		</Include>
 	</Menu>
 	<!-- End Development Tools -->

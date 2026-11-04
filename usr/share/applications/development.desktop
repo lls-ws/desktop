@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=utilities-terminal
+Exec=/usr/bin/cloud_connect.sh dev
+Terminal=false
+Categories=Qt;System;TerminalEmulator;
+Actions=Dropdown;
+
+Name[pt_BR]=LLS Development
+GenericName[pt_BR]=Terminal SSH AWS LLS Development
+Comment[pt_BR]=Terminal SSH AWS LLS Development
