@@ -4,7 +4,7 @@
 # Autor: Leandro Luiz
 # email: lls.homeoffice@gmail.com
 
-DIR_LLS="/home/lls/lls-src"
+DIR_LLS="/home/lls/funchal"
 
 if [ ! -d ${DIR_LLS} ]; then
 
