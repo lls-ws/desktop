@@ -17,7 +17,8 @@
 		<Name>LLS</Name>
 		<Include>
 			<Filename>google-chrome.desktop</Filename>
-			<Filename>qterminal.desktop</Filename>
+			<Filename>geany.desktop</Filename>
+			<Filename>development.desktop</Filename>
 		</Include>
 	</Menu> <!-- End LLS -->
 	
@@ -26,7 +27,7 @@
 		<Name>System</Name>
 		<Directory>lxqt-system-tools.directory</Directory>
 		<Include>
-			<Filename>geany.desktop</Filename>
+			
 			<Filename>pcmanfm-qt.desktop</Filename>
 		</Include>
 	</Menu> <!-- End System Tools -->
@@ -38,7 +39,7 @@
 		<Include>
 			<Filename>dell.desktop</Filename>
 			<Filename>funchal.desktop</Filename>
-			<Filename>development.desktop</Filename>
+			<Filename>qterminal.desktop</Filename>
 		</Include>
 	</Menu>
 	<!-- End Development Tools -->
@@ -86,9 +87,12 @@
 		<Menuname show_empty="false" inline="true">LLS</Menuname>
 		<Menuname show_empty="false" inline="true">System</Menuname>
 		<Separator/>
-		<Menuname show_empty="false" inline="false">Development</Menuname>
 		<Merge type="files"/>
 		<Merge type="menus"/>
+		<Menuname show_empty="false" inline="false">Internet</Menuname>
+		<Menuname show_empty="false" inline="false">Office</Menuname>
+		<Menuname show_empty="false" inline="false">Multimedia</Menuname>
+		<Menuname show_empty="false" inline="false">Development</Menuname>
 		<Separator/>
 		<Menuname show_empty="false">Leave</Menuname>
 	</Layout>

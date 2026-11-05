@@ -64,7 +64,7 @@ infoarea_show_vis=FALSE
 infoarea_visible=FALSE
 menu_visible=FALSE
 player_height=1046
-player_width=951
+player_width=957
 
 [search-tool]
 path=/home/lls
