@@ -11,27 +11,6 @@ check_root "$1"
 
 clear
 
-user_conf()
-{
-	
-	DIR_DELL="/home/${USER}/.dell"
-
-	if [ ! -d "${DIR_DELL}" ]; then
-	
-		su ${USER} -c "mkdir -pv ${DIR_DELL}"
-	
-	fi
-	
-	ls -alh ${DIR_DELL}
-	
-	echo "Adicionar a configuração no arquivo do sistema:"
-	grep -q "dell:/home/shared" /etc/fstab || echo "dell:/home/shared   /home/lls/.dell   nfs   defaults,noatime,x-systemd.automount,bg,timeo=14,x-systemd.idle-timeout=60   0   0" | sudo tee -a /etc/fstab
-	
-	echo "Aplicar as mudanças sem reiniciar:"
-	sudo systemctl daemon-reload && sudo systemctl restart remote-fs.target
-	
-}
-
 user_clear()
 {
 	
@@ -204,9 +183,6 @@ case "$1" in
   	conf)
 		run_scripts "conf"
 		;;
-  	user)
-		user_conf
-		;;
   	bin)
 		list_dir "usr/bin"
 		;;
@@ -225,19 +201,8 @@ case "$1" in
   	remove)
 		apps_remove
 		;;
-  	terminal)
-		terminal_conf
-		;;
-  	all)
-		run_scripts "install"
-		run_scripts "conf"
-		list_dir "usr/bin"
-		user_conf
-		swap_conf
-		swappiness_conf
-		;;
-	*)
-		echo "Use: $0 {all|install|conf|user|bin|clear|swap|swappiness|snap|remove|terminal}"
+  	*)
+		echo "Use: $0 {all|install|conf|bin|clear|swap|swappiness|snap|remove}"
 		exit 1
 		;;
 esac

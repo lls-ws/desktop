@@ -22,16 +22,22 @@ aliases_conf()
 	
 	for FILE in ~/.bash_aliases_*; do
 	
-		echo ${FILE}
+		FILE=$(basename ${FILE})
 	
-		echo ". ${FILE}" >> ${FILE_ALIASES}
+		echo '. /home/$USER/'${FILE}'' >> ${FILE_ALIASES}
 		
 	done
 	
 	echo "# Se não for uma sessão interativa, pare a execução aqui" > ~/.bashrc
-	echo '[[ $- != *i* ]] && return' >> ~/.bashrc
+	echo -e '[[ $- != *i* ]] && return\n' >> ~/.bashrc
 
 	cat ~/.bash_aliases >> ~/.bashrc
+	
+	echo -e "\n# Conecta automaticamente no SSH se o terminal for o do Geany" >> ~/.bashrc
+	echo 'if [ -n "$GEANY_WINDOW" ] || [ "$PPID" = "$(pgrep geany)" ]; then' >> ~/.bashrc
+	echo "    connect_dev" >> ~/.bashrc
+	echo "fi" >> ~/.bashrc
+	
 	source ~/.bashrc
 	
 	aliases_show
@@ -41,7 +47,7 @@ aliases_conf()
 aliases_show()
 {
 	
-	cat ${FILE_ALIASES}
+	cat ${FILE_ALIASES} ~/.bashrc
 	
 }
 
