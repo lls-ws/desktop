@@ -9,7 +9,7 @@ ssh_command()
 
 	echo "Connect on cloud: ${DNAME}"
 	
-	CMD_SSH="ssh -i ${SSH_KEY} -p ${SSH_PORT} ${USER_SSH}@${DNAME}"
+	CMD_SSH="ssh -o ConnectTimeout=1 -o ConnectionAttempts=1 -i ${SSH_KEY} -p ${SSH_PORT} ${USER_SSH}@${DNAME}"
 	
 	echo "Command: ${CMD_SSH}"
 	
