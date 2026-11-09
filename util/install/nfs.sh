@@ -12,7 +12,7 @@ check_root "$1"
 nfs_install()
 {
 
-	apt -y install nfs-kernel-server nfs-common
+	apt -y install nfs-kernel-server
 	
 }
 

@@ -21,6 +21,7 @@ fstab_conf()
 	echo "Aplicar as mudanças sem reiniciar:"
 	sudo systemctl daemon-reload
 	sudo systemctl restart remote-fs.target
+	sudo systemctl restart media-funchal.automount
 	
 }
 

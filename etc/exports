@@ -1,2 +1,3 @@
-/home/shared *(rw,sync,no_subtree_check,all_squash,insecure)
-/home/shared/pendrive *(rw,sync,no_subtree_check,all_squash,insecure)
+#/home/shared *(rw,sync,no_subtree_check,all_squash,insecure)
+#/home/shared/pendrive *(rw,sync,no_subtree_check,all_squash,insecure)
+/home/lls/funchal 181.222.237.166(rw,sync,no_subtree_check,no_root_squash,insecure)
