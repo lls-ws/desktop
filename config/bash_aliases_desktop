@@ -122,7 +122,7 @@ if [ `hostname` = "3green" ]; then
 
 	rmdir 'Desktop' 'Documents' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
 
-	rm -rf '.cache' '.dosbox' '.gnome' 'snap' 2> /dev/null
+	rm -rf '.cache' '.dosbox' '.gnome' 'snap' '.local/share/Trash' 2> /dev/null
 	rm -f '.fehbg' 2> /dev/null
 	rm -f ~/*.csv 2> /dev/null
 	
