@@ -1,10 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Name=Chrome
 Name[pt_BR]=Chrome
-GenericName=Web Browser
-GenericName[pt_BR]=Navegador da Internet
-Comment=Access the Internet
+GenericName[pt_BR]=Navegador de Internet Google
 Comment[pt_BR]=Acessar a internet
 Exec=/usr/bin/google-chrome-stable --password-store=basic %U
 StartupNotify=true
@@ -16,11 +13,9 @@ MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xht
 Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
-Name=New Window
 Name[pt_BR]=Nova janela
 Exec=/usr/bin/google-chrome-stable --password-store=basic
 
 [Desktop Action new-private-window]
-Name=New Incognito Window
 Name[pt_BR]=Nova janela anônima
 Exec=/usr/bin/google-chrome-stable --password-store=basic --incognito

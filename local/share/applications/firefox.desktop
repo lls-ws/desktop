@@ -1,11 +1,8 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox Web Browser
 Name[pt_BR]=Firefox
-Comment=Browse the World Wide Web
-Comment[pt_BR]=Navegador de Internet
-GenericName=Web Browser
-GenericName[pt_BR]=Navegador de Internet
+GenericName[pt_BR]=Navegador de Internet Firefox
+Comment[pt_BR]=Acessar a internet
 Keywords=Internet;WWW;Browser;Web;Explorer
 Exec=firefox %u
 Terminal=false

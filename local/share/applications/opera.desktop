@@ -1,10 +1,8 @@
 [Desktop Entry]
 Version=1.0
-Name=Opera
 Name[pt_BR]=Opera
-GenericName=Web browser
-GenericName[pt_BR]=Navegador de Internet
-Comment=Fast and secure web browser
+GenericName[pt_BR]=Navegador de Internet Opera
+Comment[pt_BR]=Acessar a internet
 TryExec=opera
 Exec=opera --password-store=basic --start-maximized %U
 Terminal=false

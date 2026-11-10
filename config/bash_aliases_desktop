@@ -110,9 +110,8 @@ alias services-load='systemctl -t service --state=active'
 alias services-boot='systemctl list-unit-files --state=enabled'
 alias services-list='ls /etc/systemd/system/multi-user.target.wants'
 
-# Browsers
-alias update_opera="sudo sed -i '/^Exec/ s/opera/opera --password-store=basic/' /usr/share/applications/opera.desktop"
-alias update_google="sudo sed -i '/^Exec/ s/google-chrome-stable/google-chrome-stable --password-store=basic/' /usr/share/applications/google-chrome.desktop"
+# Desktop Applications
+alias update_apps="sudo rm -fv /usr/share/applications/*.cache; sudo update-desktop-database /usr/share/applications; sudo ls -alh /usr/share/applications/*.cache"
 
 # Clean and Remove Packages
 alias clean-packages='sudo lls_update.sh remove'
@@ -123,7 +122,7 @@ if [ `hostname` = "3green" ]; then
 
 	rmdir 'Desktop' 'Documents' 'Music' 'Public' 'Videos' 'Pictures' 'Templates' 2> /dev/null
 
-	rm -rf '.cache' '.dosbox' '.gnome' '.local' 'snap' 2> /dev/null
+	rm -rf '.cache' '.dosbox' '.gnome' 'snap' 2> /dev/null
 	rm -f '.fehbg' 2> /dev/null
 	rm -f ~/*.csv 2> /dev/null
 	

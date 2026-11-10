@@ -34,9 +34,9 @@ aliases_conf()
 	cat ~/.bash_aliases >> ~/.bashrc
 	
 	echo -e "\n# Conecta automaticamente no SSH se o terminal for o do Geany" >> ~/.bashrc
-	echo 'if [ -n "$GEANY_WINDOW" ] || [ "$PPID" = "$(pgrep geany)" ]; then' >> ~/.bashrc
-	echo "    connect_dev" >> ~/.bashrc
-	echo "fi" >> ~/.bashrc
+	echo '#if [ -n "$GEANY_WINDOW" ] || [ "$PPID" = "$(pgrep geany)" ]; then' >> ~/.bashrc
+	echo "#    connect_dev" >> ~/.bashrc
+	echo "#fi" >> ~/.bashrc
 	
 	source ~/.bashrc
 	
