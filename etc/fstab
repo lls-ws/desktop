@@ -9,5 +9,5 @@ UUID=97fb4bb9-7ea8-4070-a4bf-05385bae544a /              ext4    discard    0 1
 /swapfile                                 swap           swap    defaults   0 0
 tmpfs                                     /tmp           tmpfs   defaults,noatime,mode=1777 0 0
 UUID=0ba6ece0-ce09-4794-a744-4397773a0a51 /home          ext4    defaults   0  2
-dell:/home/shared   /media/dell   nfs   noauto,x-systemd.automount,x-systemd.mount-timeout=3,x-systemd.idle-timeout=60,bg,soft,retrans=2,timeo=50,intr,_netdev,noatime   0   0
-dev.lls.net.br:/home/lls/funchal /media/funchal nfs4 noauto,x-systemd.automount,x-systemd.mount-timeout=3,x-systemd.idle-timeout=60,bg,soft,retrans=2,timeo=50,intr,_netdev,noresvport,user   0   0
+#dell:/home/shared   /media/dell   nfs   noauto,x-systemd.automount,x-systemd.mount-timeout=3,x-systemd.idle-timeout=60,bg,soft,retrans=2,timeo=50,intr,_netdev,noatime   0   0
+dev.lls.net.br:/home/lls/lls-src /media/lls_src nfs4 noauto,x-systemd.automount,x-systemd.mount-timeout=3,x-systemd.idle-timeout=60,bg,soft,retrans=2,timeo=50,intr,_netdev,noresvport,user   0   0

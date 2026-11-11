@@ -70,27 +70,6 @@ nfs_uninstall()
 	
 }
 
-nfs_local()
-{
-	
-	DIR_SHARED="/home/shared"
-	
-	sudo mkdir -p ${DIR_SHARED}
-	
-	sudo chown -Rv ${USER_TRANSMISISON}:${USER_TRANSMISISON} ${DIR_SHARED}
-	
-	sudo chmod 777 ${DIR_SHARED}
-	
-	sudo apt -y install nfs-common
-	
-	showmount -e dell
-	
-	sudo mount -t nfs dell:${DIR_SHARED} ${DIR_SHARED}/dell
-	
-	ls -alh ${DIR_SHARED}/dell
-	
-}
-
 NAME_APP="nfs-server"
 FILE_CONF="exports"
 
@@ -107,14 +86,11 @@ case "$1" in
 	edit)
 		nfs_edit
 		;;
-	local)
-		nfs_local
-		;;
 	uninstall)
 		nfs_uninstall
 		;;
 	*)
-		echo "Use: $0 {install|version|conf|uninstall|edit|local}"
+		echo "Use: $0 {install|version|conf|uninstall|edit}"
 		exit 1
 		;;
 esac

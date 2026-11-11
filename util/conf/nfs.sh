@@ -21,7 +21,7 @@ fstab_conf()
 	echo "Aplicar as mudanças sem reiniciar:"
 	sudo systemctl daemon-reload
 	sudo systemctl restart remote-fs.target
-	sudo systemctl restart media-funchal.automount
+	sudo systemctl restart media-lls_src.automount
 	
 }
 
@@ -30,7 +30,7 @@ nfs_conf()
 	
 	DIRS_NFS=(
 		"dell"
-		"funchal"
+		"lls_src"
 	)
 	
 	for DIR_NFS in "${DIRS_NFS[@]}"
