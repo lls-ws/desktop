@@ -18,7 +18,7 @@ git_upload()
 		
 	fi
 	
-	git_clean
+	#git_clean
 	
 	echo "Updating repository ${REPOSITORY_NAME}"
 	
