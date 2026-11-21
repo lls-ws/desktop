@@ -28,6 +28,8 @@ git_upload()
 	 git remote set-url origin ${URL:0:6}//${TOKEN}@${URL:8:17}/${REPOSITORY_NAME}.git;
 	 git push -u origin main;
 	 cd -)
+	 
+	 sudo chown -R lls:lls ${REPOSITORY_DIR}
 	
 }
 
